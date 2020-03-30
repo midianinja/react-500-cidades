@@ -5,6 +5,16 @@
     box-sizing: border-box;
 }
 
+:root{
+    --blue: #4ACAC1;
+    --darker-blue: #3FACA4;
+    --green: #7DC9C0;
+    --darker-green: #5E9690;
+    --red: #DF4545;
+    --darker-red: #B42E2E;
+    --white: #f0f0f5;
+}
+
 body {
     font: 400 14px Roboto, sans-serif;
     background: #f0f0f5;

@@ -1,3 +1,22 @@
 .landing{
+    height:100vh;
     background-color: #3B2737;
+}
+
+.heading-secondary{
+    display: flex;
+    flex-direction: column;
+}
+.heading-secondary--white{
+    color: var(--white);
+}
+.heading-secondary--green{
+    color: var(--green);
+}
+
+.background-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
 }

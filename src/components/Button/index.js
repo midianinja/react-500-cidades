@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-export const Button = ({
+const Button = ({
     children,
     type,
     onClick,
@@ -13,3 +13,5 @@ export const Button = ({
         </button>
     );
 }
+
+export default Button;

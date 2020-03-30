@@ -8,7 +8,7 @@
 
 .btn{
     cursor: pointer;
-    /* transition: transform .3s ease; */
+    transition: transform .3s ease;
 }
 
 .btn:hover{
@@ -17,4 +17,6 @@
 
 .btn:active{
     filter: brightness(1.4);
+    transform: translateY(2px);
+    box-shadow: none;
 }
