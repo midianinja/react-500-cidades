@@ -1,0 +1,20 @@
+/* :root{
+    --blue: #4ACAC1;
+    --darker-blue: #3FACA4;
+    --red: #DF4545;
+    --darker-red: #B42E2E;
+    --white: #f0f0f5;
+} */
+
+.btn{
+    cursor: pointer;
+    /* transition: transform .3s ease; */
+}
+
+.btn:hover{
+    filter: brightness(0.8);
+}
+
+.btn:active{
+    filter: brightness(1.4);
+}
