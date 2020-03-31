@@ -15,10 +15,11 @@
     --red: #DF4545;
     --darker-red: #B42E2E;
     --white: #f0f0f5;
+    --brown: #3B2737;
 }
 
 body {
-    font: 400 14px Roboto, sans-serif;
+    font: 400 16px Roboto, sans-serif;
     background: #f0f0f5;
     -webkit-font-smoothing: antialiased;
 }

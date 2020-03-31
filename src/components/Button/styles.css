@@ -8,6 +8,7 @@
 
 .btn{
     cursor: pointer;
+    font-weight: 700;
     transition: transform .3s ease;
 }
 
