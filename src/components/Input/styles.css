@@ -1,0 +1,13 @@
+.field{
+    font-weight: 700;
+    border-radius: .3rem;
+    border:none;
+}
+
+.field:focus{
+    /* ? */
+}
+
+.label-field{
+    font-weight: 700;
+}

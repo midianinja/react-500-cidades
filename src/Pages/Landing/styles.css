@@ -1,22 +1,158 @@
 .landing{
-    height:100vh;
-    background-color: #3B2737;
+    height: 200vh;
+    background-image: url("../../assets/mergulho-500cidades-mobile.png");
+    background-color: var(--brown);
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    background-position-x: 43rem;
 }
 
-.heading-secondary{
+.landing-top{
+    /* flex-grow: 1; */
+    margin-top: 25px;
+}
+
+.landing-logo{
+    width: 100%;
+}
+
+.logo-img{
+    height: 22rem;
+}
+
+.landing-title{
+    margin: -4.3rem 0 0 1.5rem;
+    padding: 1.5rem;
+    font-size: 20px;
+}
+
+.heading-primary{
     display: flex;
     flex-direction: column;
 }
-.heading-secondary--white{
+.heading-primary--white{
     color: var(--white);
 }
-.heading-secondary--green{
+.heading-primary--green{
     color: var(--green);
 }
 
-.background-image{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
+.btn--red{
+    width:fit-content;
+    background-color: var(--red);
+    padding: 1rem;
+    border: none;
+    box-shadow: 0px 2.5px 0 var(--darker-red);
+    border-radius: .3rem;
+    color: var(--white);
+}
+
+.landing-bottom{
+    /* flex-grow: 2; */
+    color: var(--white);
+    width: max-content;
+}
+
+.heading-secondary--landing-bottom{
+    font-size: 48px;
+    padding: 2rem;
+    word-spacing: 2vw;
+    /* margin-top: 7rem; */
+    width: 360px;
+}
+
+.paragraph--landing-bottom{
+    padding: 0 2rem;
+    line-height: 1.6rem;
+    word-spacing: 2vw;
+}
+
+.btn--blue{
+    color: var(--white);
+    background-color: var(--blue);
+    box-shadow: 0px 2.5px 0 var(--darker-blue);
+    border: none;
+    padding: .5rem 1.5rem;
+    border-radius: .3rem;
+    margin: 2rem;
+}
+.activist-map{
+    height:100vh;
+    margin-top: 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.map-img{
+    width: 70vw;
+    max-width: 674px;
+}
+.steps{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 674px;
+}
+.steps-img{
+    width: 14vw;
+    max-width: 140px;
+}
+.about{
+    height:100vh;
+    background-color: var(--blue);
+    color: var(--white);
+}
+.heading-secondary--about{
+    font-size: 37px;
+    margin-bottom: 2rem;
+}
+.paragraph--about{
+    line-height: 1.6rem;
+    word-spacing: 2vw;
+    max-width: 355px;
+}
+.newsletter{
+    background-color: var(--red);
+    display:flex;
+}
+.footer{
+    display:flex;
+}
+.org{
+    flex-grow: 1;
+    background-color: var(--eggplant);
+}
+.more-about{
+    flex-grow: 1;
+    background-color: var(--brown);
+}
+
+@media (min-width: 580px){
+    .landing{
+        height: 100vh;
+        background-position: top;
+    }
+
+    .landing-bottom{
+        width: min-content;
+    }
+
+    .heading-secondary--landing-bottom{
+        width: 355px;
+        font-size: 37px;
+        word-spacing: unset;
+    }
+    .paragraph--landing-bottom{
+        word-spacing: unset;
+        width: 355px;
+    }
+}
+
+@media (min-width:750px){
+    .landing{
+        background-image: url("../../assets/mergulho-500cidades-desktop.png");
+    }
 }
