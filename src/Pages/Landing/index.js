@@ -1,10 +1,15 @@
 import React from 'react';
 import Button from '../../components/Button'
+import Input from '../../components/Input'
 import logoImg from '../../assets/500cidades-logo.png'
 import mapImg from '../../assets/mapa-ativista.png'
 import stepImg1 from '../../assets/passos-cadastro.png'
 import stepImg2 from '../../assets/passos-cidade-mapa.png'
 import stepImg3 from '../../assets/passos-historia.png'
+import newsletterImg from '../../assets/newsletter.png'
+import logoNinjaImg from '../../assets/logo-midia-ninja.png'
+import logoCircleImg from '../../assets/logo-circle.png'
+import logoAmzImg from '../../assets/logo-amazonia-org.png'
 import './styles.css';
 
 const Landing = () => {
@@ -45,28 +50,47 @@ const Landing = () => {
                 </div>
             </section>
             <section className="about">
-            <h2 className="heading-secondary--about">
-                500 cidades
-            </h2>
-            <div className="paragraph-about">
-                    <p>
-                        O 500 cidades é um projeto organizado pela rede de coletivos culturais Fora do Eixo e a rede de mídia livre Ninja e tem por objetivo identificar pessoas, projetos e espaços espalhados pelo Brasil para construir uma rede de territórios ativistas e promover a criação de redes de confiança, empatia e solidariedade, a partir de experiências e histórias de vida.                   
-                    </p>
-                    <p>
-                        Enquanto uma onda de intolerância e conservadorismo ganha força, milhares de experiências e práticas colaborativas de superação pessoal e coletiva emergem transformando todo o país num grande laboratório de uma nova cidadania no século XXI. Participar da vida social e política é uma das principais atitudes que caracterizam o brasileiro do século XXI, principalmente depois das jornadas de junho de 2013. 
-                    </p>
-                    <p>
-                        Segundo especialistas estamos diante da maior crise humanitária do último século. Não bastasse tudo isso, o Brasil tem neste momento um presidente incapaz de lidar com os desafios que temos pela frente. Estes dois fatores dão a dimensão da EMERGÊNCIA deste chamado a participação.
-                    </p>
-                    <p>
-                        Temos que aproveitar este momento para se abrir ainda mais e ampliar as conexões entre as pessoas dispostas a construir em seus territórios esta rede de confiança. Debaixo pra cima, a partir de cada local, chegou a hora de semearmos um novo projeto de sociedade. Mais justo e igualitário. Que empodere e dê visibilidade a toda potência de um Brasil profundo e que precisa emergir. 
-                    </p>
-                    <p>
-                        Venha fazer parte desta história...
-                    </p>
+                <div>
+                    <h2 className="heading-secondary--about">
+                        500 cidades
+                    </h2>
+                    <div className="paragraph-about">
+                        <p>O 500 cidades é um projeto organizado pela rede de coletivos culturais Fora do Eixo e a rede de mídia livre Ninja e tem por objetivo identificar pessoas, projetos e espaços espalhados pelo Brasil para construir uma rede de territórios ativistas e promover a criação de redes de confiança, empatia e solidariedade, a partir de experiências e histórias de vida.</p>
+                        <p>Enquanto uma onda de intolerância e conservadorismo ganha força, milhares de experiências e práticas colaborativas de superação pessoal e coletiva emergem transformando todo o país num grande laboratório de uma nova cidadania no século XXI. Participar da vida social e política é uma das principais atitudes que caracterizam o brasileiro do século XXI, principalmente depois das jornadas de junho de 2013.</p>
+                        <p>Segundo especialistas estamos diante da maior crise humanitária do último século. Não bastasse tudo isso, o Brasil tem neste momento um presidente incapaz de lidar com os desafios que temos pela frente. Estes dois fatores dão a dimensão da EMERGÊNCIA deste chamado a participação.</p>
+                        <p>Temos que aproveitar este momento para se abrir ainda mais e ampliar as conexões entre as pessoas dispostas a construir em seus territórios esta rede de confiança. Debaixo pra cima, a partir de cada local, chegou a hora de semearmos um novo projeto de sociedade. Mais justo e igualitário. Que empodere e dê visibilidade a toda potência de um Brasil profundo e que precisa emergir.</p>
+                        <p>Venha fazer parte desta história...</p>
+                    </div>
                 </div>
             </section>
-            <section className="footer"></section>
+            <section className="newsletter">
+                <img className="newsletter-img" src={newsletterImg} alt="Newsletter" />
+                <div className="newsletter-text">
+                    <h3 className="heading-terciary--mailing">Saiba tudo que está rolando no 500 cidades</h3>
+                    <p>Assine nossa newsletter</p>
+                    <Input
+                    type="e-mail"
+                    classInput="newsletter-email"
+                    placeholder="Insira aqui seu e-mail"
+                    id="newsletterEmail"
+                    classLabel="label-email"
+                    />
+                    <Button className="btn--blue">></Button>
+                </div>
+            </section>
+            <section className="footer">
+                <div className="org">
+                    <p>Quem constrói isso com a gente</p>
+                    <img className="org-logo" src={logoNinjaImg} alt="Logo Mídia Ninja" />
+                    <img className="org-logo" src={logoCircleImg} alt="pesquisar....." />
+                    <img className="org-logo" src={logoAmzImg} alt="Logo Amazônia.org" />
+                </div>
+                <div className="more-about">
+                    <a href="#sobre">Sobre</a>
+                    <a href="#politica">Política de privacidade</a>
+                    <a href="#termos">Termos de uso</a>
+                </div>
+            </section>
         </div>
     );
 }
