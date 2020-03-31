@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Landing from './pages/Landing/index';
-import Register from './pages/Register/index';
-import Profile from './pages/Profile/index';
-import UserList from './pages/UserList/index';
-import UserMap from './pages/UserMap/index';
+import Landing from './Pages/Landing';
+import Register from './Pages/Register';
+import Profile from './Pages/Profile';
+import UserList from './Pages/UserList';
+import UserMap from './Pages/UserMap';
 
 export default function Routes() {
     return (
