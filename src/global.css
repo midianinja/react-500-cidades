@@ -14,13 +14,13 @@
     --darker-green: #5E9690;
     --red: #DF4545;
     --darker-red: #B42E2E;
-    --white: #f0f0f5;
+    --white: #fff;
     --brown: #3B2737;
 }
 
 body {
     font: 400 16px Roboto, sans-serif;
-    background: #f0f0f5;
+    background: var(--white);
     -webkit-font-smoothing: antialiased;
 }
 
@@ -31,3 +31,8 @@ body {
 button {
     cursor: pointer;
 } */
+
+.heading-secondary{
+    margin-bottom: 1.5rem;
+    font-size: 27px;
+}

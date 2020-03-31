@@ -13,11 +13,10 @@
 }
 
 .btn:hover{
-    filter: brightness(0.8);
+    filter: brightness(0.9);
 }
 
 .btn:active{
-    filter: brightness(1.4);
-    transform: translateY(2px);
-    box-shadow: none;
+    transform: translateY(1px);
+    outline: none;
 }
