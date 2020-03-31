@@ -1,14 +1,14 @@
 import React from 'react';
-
-//import Routes from './routes';
-
+import Routes from './routes';
+import { BrowserRouter} from 'react-router-dom';
 import './global.css';
 
 function App() {
 
   return (
-    //<Routes />
-    <h1>500 Cidades</h1>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
   );
 }
 
