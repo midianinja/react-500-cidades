@@ -1,11 +1,12 @@
-.landing{
-    height: 200vh;
-    background-image: url("../../assets/mergulho-500cidades-mobile.png");
-    background-color: var(--brown);
+.landing-container{
+    background: url("../../assets/mergulho-500cidades-mobile.png") var(--brown) 43rem;
     background-size: cover;
+    height: 100vh;
+}
+
+.landing{
     display: flex;
     flex-wrap: wrap;
-    background-position-x: 43rem;
 }
 
 .landing-top{
@@ -152,7 +153,10 @@
 }
 
 @media (min-width:750px){
-    .landing{
-        background-image: url("../../assets/mergulho-500cidades-desktop.png");
+    .landing-container{
+        background: url("../../assets/mergulho-500cidades-desktop.png") no-repeat 100% 100% var(--brown);
+        max-width: 100vw;
+        width: 100%;
+        height: 300vh;
     }
 }

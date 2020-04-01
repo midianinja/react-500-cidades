@@ -6,17 +6,28 @@
     --white: #f0f0f5;
 } */
 
-.btn{
-    cursor: pointer;
+
+.btn {
+    display: inline-block;
     font-weight: 700;
-    transition: transform .3s ease;
-}
-
-.btn:hover{
-    filter: brightness(0.9);
-}
-
-.btn:active{
-    transform: translateY(1px);
+    transition: transform .3s ease; 
+    position: relative;
+    border: none;
     outline: none;
+    padding: 1rem;
+    font-size: 1.4rem;
+    min-width: 100px;
+}
+
+
+.btn:hover {
+    filter: brightness(0.9);
+    transition: all 0.1s ease-in;
+}
+
+
+.btn:active {
+    transform: translateY(4px);
+    border-bottom-width: 2px;
+    box-shadow: none;
 }
