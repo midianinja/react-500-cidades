@@ -14,7 +14,6 @@ import logoAmzImg from '../../assets/logo-amazonia-org.png'
 import './styles.css';
 
 const Landing = () => {
-
     return (
         <div className="landing-container">
             <section className="landing">
@@ -42,17 +41,29 @@ const Landing = () => {
                 </div>
             </section>
             <section className="activist-map">
-                <h2 className="heading-secondary">Mapa Ativista</h2>
-                <img className="map-img" src={mapImg} alt="Mapa Ativista" />
+                <div style={{textAlign:"left"}}>
+                    <h2 className="heading-secondary">Mapa Ativista</h2>
+                    <img className="map-img" src={mapImg} alt="Mapa Ativista" />
+                </div>
                 <Button className="btn--blue">Navegue e descubra mais</Button>
                 <div className="steps">
-                    <img className="steps-img" src={stepImg1} alt="Cadastre-se" />
-                    <img className="steps-img" src={stepImg2} alt="Coloque sua cidade" />
-                    <img className="steps-img" src={stepImg3} alt="Escreva sua história" />
+                    <div>
+                        <img className="steps-img" src={stepImg1} alt="Cadastre-se" />
+                        <p>Cadastre-se</p>
+                    </div>
+                    <div>
+                        <img className="steps-img" src={stepImg2} alt="Coloque sua cidade" />   
+                        <p>Coloque sua cidade no mapa</p>
+                    </div>
+                    <div>
+                        <img className="steps-img" src={stepImg3} alt="Escreva sua história" />
+                        <p>Conte sua história <span>(em breve)</span></p>
+                    </div>
                 </div>
             </section>
             <section className="about">
                 <div>
+                    {/* <Container> */}
                     <h2 className="heading-secondary--about">
                         500 cidades
                     </h2>
@@ -62,35 +73,40 @@ const Landing = () => {
                         <p>Segundo especialistas estamos diante da maior crise humanitária do último século. Não bastasse tudo isso, o Brasil tem neste momento um presidente incapaz de lidar com os desafios que temos pela frente. Estes dois fatores dão a dimensão da EMERGÊNCIA deste chamado a participação.</p>
                         <p>Temos que aproveitar este momento para se abrir ainda mais e ampliar as conexões entre as pessoas dispostas a construir em seus territórios esta rede de confiança. Debaixo pra cima, a partir de cada local, chegou a hora de semearmos um novo projeto de sociedade. Mais justo e igualitário. Que empodere e dê visibilidade a toda potência de um Brasil profundo e que precisa emergir.</p>
                         <p>Venha fazer parte desta história...</p>
-                    </div>
+                        </div>
+                    {/* </Container> */}
                 </div>
             </section>
             <section className="newsletter">
                 <img className="newsletter-img" src={newsletterImg} alt="Newsletter" />
                 <div className="newsletter-text">
-                    <h3 className="heading-terciary--mailing">Saiba tudo que está rolando no 500 cidades</h3>
+                    <h3 className="heading-terciary--newsletter">Saiba tudo que está rolando no 500 cidades</h3>
                     <p>Assine nossa newsletter</p>
-                    <Input
-                    type="e-mail"
-                    classInput="newsletter-email"
-                    placeholder="Insira aqui seu e-mail"
-                    id="newsletterEmail"
-                    classLabel="label-email"
-                    />
-                    <Button className="btn--blue">></Button>
+                    <div className="newsletter-subscription">
+                        <Input
+                        type="e-mail"
+                        classInput="newsletter-email"
+                        placeholder="Insira aqui seu e-mail"
+                        id="newsletterEmail"
+                        classLabel="label-email"
+                        />
+                        <Button className="newsletter-btn--blue">></Button>
+                    </div>
                 </div>
             </section>
             <section className="footer">
                 <div className="org">
                     <p>Quem constrói isso com a gente</p>
-                    <img className="org-logo" src={logoNinjaImg} alt="Logo Mídia Ninja" />
-                    <img className="org-logo" src={logoCircleImg} alt="pesquisar....." />
-                    <img className="org-logo" src={logoAmzImg} alt="Logo Amazônia.org" />
+                    <div className="org-logos">
+                        <img className="org-logo" src={logoNinjaImg} alt="Logo Mídia Ninja" />
+                        <img className="org-logo" src={logoCircleImg} alt="pesquisar....." />
+                        <img className="org-logo" src={logoAmzImg} alt="Logo Amazônia.org" />
+                    </div>
                 </div>
                 <div className="more-about">
-                    <a href="#sobre">Sobre</a>
-                    <a href="#politica">Política de privacidade</a>
-                    <a href="#termos">Termos de uso</a>
+                    <a className="more-about-link" href="#sobre">Sobre</a>
+                    <a className="more-about-link" href="#politica">Política de privacidade</a>
+                    <a className="more-about-link" href="#termos">Termos de uso</a>
                 </div>
             </section>
         </div>

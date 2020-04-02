@@ -14,15 +14,18 @@
     position: relative;
     border: none;
     outline: none;
-    padding: 1rem;
     font-size: 1.4rem;
-    min-width: 100px;
+    /* padding: 1rem;
+    min-width: 100px; */
 }
-
 
 .btn:hover {
     filter: brightness(0.9);
     transition: all 0.1s ease-in;
+}
+
+.btn:focus{
+    outline: none;
 }
 
 
