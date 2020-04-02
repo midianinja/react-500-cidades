@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import logoImg from '../../assets/500cidades-logo.png'
@@ -28,6 +29,7 @@ const Landing = () => {
                             <span className="heading-primary--white">no mapa</span>
                         </h1>
                         <Button className="btn--red">Quero!</Button>
+                        <Link href="#" alt="Já tenho cadastro">Já tenho cadastro.</Link>
                     </div>
                 </div>
                 <div className="landing-bottom">
