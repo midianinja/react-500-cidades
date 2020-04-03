@@ -33,6 +33,11 @@ button {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 .heading-secondary{
     margin-bottom: 1.5rem;
     font-size: 27px;
