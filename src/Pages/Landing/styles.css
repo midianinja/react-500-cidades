@@ -1,24 +1,30 @@
-.landing-container{
-    /* background: url("../../assets/mergulho-500cidades-mobile.png") var(--brown) 43rem;
+/* .landing-container{
+    background: url("../../assets/mergulho-500cidades-mobile.png") var(--brown) 43rem;
     background-size: cover;
-    height: 200vh; */
-}
+    height: 200vh;
+} */
 
 .landing{
     display: flex;
     flex-wrap: wrap;
-    background: url("../../assets/mergulho-500cidades-mobile.png") var(--brown) 43rem;
+    background-image: url("../../assets/mergulho-500cidades-mobile.png");
+    background-color: var(--brown);
+    background-repeat: no-repeat; 
     background-size: cover;
-    height: 200vh;
+    background-position: -60rem 0;
+    height: 300vh;
 }
 
 .landing-top{
-    /* flex-grow: 1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     margin-top: 25px;
 }
 
-.landing-logo{
-    width: 100%;
+.landing-logo img{
+    max-width: 100%;
 }
 
 .logo-img{
@@ -26,7 +32,7 @@
 }
 
 .landing-title{
-    margin: -4.3rem 0 0 0;
+    margin: -2.3rem 0 0 0;
     padding: 1.5rem;
     font-size: 20px;
 }
@@ -34,12 +40,30 @@
 .heading-primary{
     display: flex;
     flex-direction: column;
+    font-size: 2rem;
 }
 .heading-primary--white{
     color: var(--white);
 }
 .heading-primary--green{
     color: var(--green);
+}
+
+.landing-top-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.anchor-link {
+    color: var(--white);
+    padding: 0.8rem;
+    font-size: 1rem;
+    text-decoration:none;
+}
+
+.anchor-link:hover {
+    color: var(--red);
+    text-decoration: none;
 }
 
 .btn--red{
@@ -55,15 +79,17 @@
 .landing-bottom{
     /* flex-grow: 2; */
     color: var(--white);
-    width: max-content;
+    font-stretch: normal;
+    width: 100%;
+    border: 1px solid red;
 }
 
-.heading-secondary--landing-bottom{
-    font-size: 48px;
-    padding: 2rem;
+.heading-secondary--landing-bottom {
+    font-size: 47px;
+    padding: 0 1rem 0 2rem;
     word-spacing: 2vw;
-    /* margin-top: 7rem; */
-    width: 360px;
+    margin-top: 7rem;
+    width: 320px;
 }
 
 .paragraph--landing-bottom{
@@ -185,7 +211,7 @@
     height: 100%;
     align-items: center;
     flex-wrap: wrap;
-    min-width: 345px;
+    min-width: 320px;
     min-height: 14vh;
 }
 .org-logos{
@@ -203,7 +229,7 @@
     justify-content: space-evenly;
     align-items: flex-start;
     flex: 50% 1;
-    min-width: 345px;
+    min-width: 320px;
     min-height: 14vh;
     padding: 1rem 2rem;
 }
@@ -218,7 +244,30 @@
     text-decoration:underline;
 }
 
+@media (min-width: 360px){
+    .landing{
+        background-position: -69rem 0rem;
+        height: 250vh;
+    }
+    .more-about{
+        flex-direction: row;
+        align-items: center;
+    }
+    .heading-terciary--newsletter{
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 411px){
+    .landing{
+        background-position: -79rem 0rem;
+    }
+}
 @media (min-width: 420px){
+    .landing{
+        background-position: -79rem 0rem;
+        height: 250vh;
+    }
     .more-about{
         flex-direction: row;
         align-items: center;
@@ -230,12 +279,12 @@
 
 @media (min-width: 580px){
     .landing{
-        height: 100vh;
+        height: 180vh;
         background-position: top;
     }
 
     .landing-bottom{
-        width: min-content;
+        align-self: center;
     }
 
     .heading-secondary--landing-bottom{
@@ -256,16 +305,54 @@
 }
 
 @media (min-width:750px){
-    .landing-container{
-        /* background: url("../../assets/mergulho-500cidades-desktop.png") no-repeat 100% 100% var(--brown);
-        max-width: 100vw;
-        width: 100%;
-        height: 100vh; */
-    }
+    /* .landing-container{
+    } */
     .landing{
-        background: url("../../assets/mergulho-500cidades-desktop.png") no-repeat 100% 100% var(--brown);
-        max-width: 100vw;
-        width: 100%;
-        height: 100vh;
+        background-image: url("../../assets/mergulho-500cidades-desktop.png");
+        background-position: 0 -3rem;
+        max-width: content;
+        justify-content: center;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-content: stretch;
+        height: 180vh;
+        
     }
+    .landing-top{
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 25px;
+        border: 1px solid red;
+    }
+    .logo-img {
+        height: 36rem;
+    }
+    .landing-logo img{
+        max-width: 150%;
+    }
+    .landing-title {
+        margin: 10rem 0 0 0;
+        padding: 0;
+        font-size: 20px;
+    }
+    .landing-bottom {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        border: 1px solid red;
+        align-self: center;
+        max-width: content;
+    }
+    .heading-secondary--landing-bottom {
+        font-size: 48px;
+    }
+    .paragraph--landing-bottom {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width:1024px){
+
 }

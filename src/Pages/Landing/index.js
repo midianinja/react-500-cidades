@@ -1,21 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from '../../components/Button'
-import Input from '../../components/Input'
-import logoImg from '../../assets/500cidades-logo.png'
-import mapImg from '../../assets/mapa-ativista.png'
-import stepImg1 from '../../assets/passos-cadastro.png'
-import stepImg2 from '../../assets/passos-cidade-mapa.png'
-import stepImg3 from '../../assets/passos-historia.png'
-import newsletterImg from '../../assets/newsletter.png'
-import logoNinjaImg from '../../assets/logo-midia-ninja.png'
-import logoCircleImg from '../../assets/logo-circle.png'
-import logoAmzImg from '../../assets/logo-amazonia-org.png'
+import { Link } from "react-router-dom";
+import Routes from '../../routes';
+
+import Button from '../../components/Button';
+import Menu from '../../components/Menu';
+import Input from '../../components/Input';
+
+import logoImg from '../../assets/500cidades-logo.png';
+import mapImg from '../../assets/mapa-ativista.png';
+import stepImg1 from '../../assets/passos-cadastro.png';
+import stepImg2 from '../../assets/passos-cidade-mapa.png';
+import stepImg3 from '../../assets/passos-historia.png';
+import newsletterImg from '../../assets/newsletter.png';
+import logoNinjaImg from '../../assets/logo-midia-ninja.png';
+import logoCircleImg from '../../assets/logo-circle.png';
+import logoAmzImg from '../../assets/logo-amazonia-org.png';
+
 import './styles.css';
+
 
 const Landing = () => {
     return (
         <div className="landing-container">
+            <Menu>
+                <Routes/>
+            </Menu>
             <section className="landing">
                 <div className="landing-top">
                     <div className="landing-logo">
@@ -27,8 +36,10 @@ const Landing = () => {
                             <span className="heading-primary--green">sua quebrada</span>
                             <span className="heading-primary--white">no mapa</span>
                         </h1>
-                        <Button className="btn--red">Quero!</Button>
-                        <Link href="#" alt="Já tenho cadastro">Já tenho cadastro.</Link>
+                        <div className="landing-top-links">
+                            <Button className="btn--red">Quero!</Button>
+                            <Link href="#" alt="Já tenho cadastro" className="anchor-link">Já tenho cadastro.</Link>
+                        </div>
                     </div>
                 </div>
                 <div className="landing-bottom">
