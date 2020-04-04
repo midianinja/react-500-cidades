@@ -17,6 +17,10 @@
     --white: #fff;
     --brown: #3B2737; 
     --eggplant: #4B3046;
+    --off-white: #f9f9f9;
+    --light-gray: #e0e0e0;
+    --lighter-gray: #e5e5e5;
+    --gray: #888;
 }
 
 body {
@@ -36,4 +40,9 @@ button {
 .heading-secondary{
     margin-bottom: 1.5rem;
     font-size: 27px;
+}
+
+.heading-terciary{
+    margin-bottom: 1.5rem;
+    font-size: 22px;
 }
