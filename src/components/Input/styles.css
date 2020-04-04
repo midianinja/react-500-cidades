@@ -1,11 +1,13 @@
 .field{
+    display:flex;
+    flex-direction: column;
+}
+.input-field{
     border-radius: .3rem;
     border:none;
 }
 
-.field:focus{
-    /* ? */
-}
+/* .input-field:focus{}*/
 
 .label-field{
     font-weight: 700;

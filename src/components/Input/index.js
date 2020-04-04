@@ -7,12 +7,13 @@ const Input = ({
     placeholder,
     id,
     classLabel,
+    children
 }) => {
     return (
-        <>
-        <input type={type} className={`field ${classInput}`} placeholder={placeholder} id={id} /*required*/ />
-        <label for={id} className={`label-field ${classLabel}`}></label>
-        </>  
+        <div className="field">
+            <label htmlFor={id} className={`label-field ${classLabel}`}>{children}</label>
+            <input type={type} className={`input-field ${classInput}`} placeholder={placeholder} id={id} /*required*/ />
+        </div>  
     );
 }
 
