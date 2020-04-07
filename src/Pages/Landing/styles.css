@@ -1,9 +1,3 @@
-/* .landing-container{
-    background: url("../../assets/mergulho-500cidades-mobile.png") var(--brown) 43rem;
-    background-size: cover;
-    height: 200vh;
-} */
-
 .landing{
     display: flex;
     flex-wrap: wrap;
@@ -11,8 +5,8 @@
     background-color: var(--brown);
     background-repeat: no-repeat; 
     background-size: cover;
-    background-position: -60rem 0;
-    height: 300vh;
+    background-position: -43rem 0;
+    height: 170vh;
 }
 
 .landing-top{
@@ -23,12 +17,8 @@
     margin-top: 25px;
 }
 
-.landing-logo img{
-    max-width: 100%;
-}
-
-.logo-img{
-    height: 22rem;
+.logo-img {
+    max-width: 80%;
 }
 
 .landing-title{
@@ -77,11 +67,9 @@
 }
 
 .landing-bottom{
-    /* flex-grow: 2; */
     color: var(--white);
     font-stretch: normal;
     width: 100%;
-    border: 1px solid red;
 }
 
 .heading-secondary--landing-bottom {
@@ -244,11 +232,13 @@
     text-decoration:underline;
 }
 
+contentStyle {
+  background: rgba(255,255,255,0);
+  width: 80%;
+  border: none;
+}
+
 @media (min-width: 360px){
-    .landing{
-        background-position: -69rem 0rem;
-        height: 250vh;
-    }
     .more-about{
         flex-direction: row;
         align-items: center;
@@ -257,16 +247,15 @@
         font-size: 1.75rem;
     }
 }
-
-@media (min-width: 411px){
-    .landing{
-        background-position: -79rem 0rem;
-    }
+@media (min-width: 390px){
+    .landing {
+        height: 180vh;
+    }    
 }
 @media (min-width: 420px){
-    .landing{
-        background-position: -79rem 0rem;
-        height: 250vh;
+    .landing {
+        /* background-position: -60rem 0; */
+        height: 200vh;
     }
     .more-about{
         flex-direction: row;
@@ -277,12 +266,14 @@
     }
 }
 
-@media (min-width: 580px){
-    .landing{
-        height: 180vh;
-        background-position: top;
-    }
 
+@media (min-width: 576px){
+    .landing {
+        height: 220vh;
+    }
+      .landing-top{
+        margin-left: 2rem;
+    }   
     .landing-bottom{
         align-self: center;
     }
@@ -304,46 +295,67 @@
     }
 }
 
-@media (min-width:750px){
-    /* .landing-container{
-    } */
-    .landing{
-        background-image: url("../../assets/mergulho-500cidades-desktop.png");
-        background-position: 0 -3rem;
-        max-width: content;
+@media (min-width: 768px){
+ .landing{
+        background-image: url(/static/media/mergulho-500cidades-desktop.a6bcae5d.png);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-size: cover;
         justify-content: center;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         align-content: stretch;
-        height: 180vh;
-        
+        height: 170vh; 
     }
     .landing-top{
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
         margin-top: 25px;
-        border: 1px solid red;
     }
     .logo-img {
-        height: 36rem;
-    }
-    .landing-logo img{
-        max-width: 150%;
+        max-width: 80%;
     }
     .landing-title {
-        margin: 10rem 0 0 0;
+        margin: 12rem 5rem 0 -8rem;
         padding: 0;
-        font-size: 20px;
+    }
+    .heading-primary{
+        font-size: 2.5rem;
     }
     .landing-bottom {
         display: flex;
         flex-direction: column;
         align-content: center;
-        border: 1px solid red;
+        flex-wrap: wrap;
         align-self: center;
-        max-width: content;
+    }
+    .heading-secondary--landing-bottom {
+        font-size: 3rem;
+    }
+    .paragraph--landing-bottom {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width:992px){
+    .logo-img {
+        max-width: 80%;
+    }
+    .landing-title {
+        margin: 12rem 10rem  0 -8rem;
+        padding: 0;
+    }
+    .heading-primary{
+        font-size: 2.5rem;
+    }
+    .landing-bottom {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-self: center;
     }
     .heading-secondary--landing-bottom {
         font-size: 48px;
@@ -351,8 +363,4 @@
     .paragraph--landing-bottom {
         font-size: 1rem;
     }
-}
-
-@media (min-width:1024px){
-
 }

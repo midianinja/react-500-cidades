@@ -1,3 +1,13 @@
+nav{
+  background-color: var(--brown);
+}
+
+nav a {
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: 'Roboto Condensed', sans-serif;
+}
 .menu {
   width: 100%;
   display: block;
@@ -19,9 +29,8 @@
 .menu li:hover {
   color: var(--green);
 }
-
-@media (min-width:750px){
-   .menu {
-        display: none;
-    } 
+@media (min-width:992px){
+  .menu {
+    display: none;
+  } 
 }
