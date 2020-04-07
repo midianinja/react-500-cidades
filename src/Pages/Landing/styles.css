@@ -297,7 +297,7 @@ contentStyle {
 
 @media (min-width: 768px){
  .landing{
-        background-image: url(/static/media/mergulho-500cidades-desktop.a6bcae5d.png);
+        background-image: url("../../assets/mergulho-500cidades-desktop.png");
         background-position: center center;
         background-repeat: no-repeat;
         background-attachment: scroll;
