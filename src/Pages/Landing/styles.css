@@ -56,16 +56,24 @@
     text-decoration: none;
 }
 
-.btn--red{
+.btn3D--red{
     width:fit-content;
     background-color: var(--red);
     padding: 1rem;
     border: none;
-    box-shadow: 0px 2.5px 0 var(--darker-red);
+    -moz-box-shadow: 0 2.8px 0 var(--darker-red);
+    -webkit-box-shadow: 0 2.8px 0 var(--darker-red);
+    box-shadow: 0 2.8px 0 var(--darker-red);
     border-radius: .3rem;
     color: var(--white);
 }
 
+.btn3D--red:visited{
+    background-color: var(--red);
+    -moz-box-shadow: 0 2.8px 0 var(--darker-red);
+    -webkit-box-shadow: 0 2.8px 0 var(--darker-red);
+    box-shadow: 0 2.8px 0 var(--darker-red);
+}
 .landing-bottom{
     color: var(--white);
     font-stretch: normal;
@@ -86,7 +94,7 @@
     word-spacing: 2vw;
 }
 
-.btn--blue{
+.btn3D--blue{
     color: var(--white);
     background-color: var(--blue);
     box-shadow: 0px 2.5px 0 var(--darker-blue);
@@ -95,6 +103,13 @@
     border-radius: .3rem;
     margin: 2rem;
     font-size: 4vw;
+}
+
+.btn3D--blue:visited{
+    background-color: var(--blue);
+    -moz-box-shadow: 0 2.8px 0 var(--darker-red);
+    -webkit-box-shadow: 0 2.8px 0 var(--darker-red);
+    box-shadow: 0px 2.5px 0 var(--darker-blue);
 }
 .activist-map{
     min-height:100vh;
@@ -172,7 +187,7 @@
     padding: .5rem;
     border-radius:.3rem 0 0 .3rem;
 }
-.newsletter-btn--blue{
+.newsletter-btn3D--blue{
     color: var(--white);
     background-color: var(--blue);
     box-shadow: none;
@@ -290,7 +305,7 @@ contentStyle {
     .steps{
         flex-direction: row;
     }
-    .btn--blue{
+    .btn3D--blue{
         font-size: 1.4rem;
     }
 }

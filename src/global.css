@@ -42,6 +42,10 @@ button:focus {
     box-shadow: none;
 }
 
+label {
+    margin-bottom: 0;
+}
+
 .heading-secondary{
     margin-bottom: 1.5rem;
     font-size: 27px;

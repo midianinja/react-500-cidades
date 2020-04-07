@@ -41,7 +41,7 @@ const Landing = () => {
                 <span className="heading-primary--white">no mapa</span>
               </h1>
               <div className="landing-top-links">
-                <Button className="btn--red">Quero!</Button>
+                <Button className="btn3D--red">Quero!</Button>
                 <Link href="#" alt="Já tenho cadastro" className="anchor-link">
                   Já tenho cadastro.
                 </Link>
@@ -65,7 +65,7 @@ const Landing = () => {
             <h2 className="heading-secondary">Mapa Ativista</h2>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" />
           </div>
-          <Button className="btn--blue">Navegue e descubra mais</Button>
+          <Button className="btn3D--blue">Navegue e descubra mais</Button>
           <div className="steps">
             <div>
               <img className="steps-img" src={stepImg1} alt="Cadastre-se" />
@@ -153,7 +153,7 @@ const Landing = () => {
                 id="newsletterEmail"
                 classLabel="label-email"
               />
-              <Button className="newsletter-btn--blue">></Button>
+              <Button className="newsletter-btn3D--blue">></Button>
             </div>
           </div>
         </section>
