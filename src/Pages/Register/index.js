@@ -7,6 +7,7 @@ import './styles.css';
 const Register = () => {
     // const [name, useName] = useState('Seu Nome');
     // const [job, useJob] = useState('Profissão');
+
     return (
         <div className="register-container">
             <section className="navigation">
@@ -23,13 +24,13 @@ const Register = () => {
                 </div>
             </section>
             <form className="register-form">
-                <div>
+                <div className="biography">
                     <h3 className="heading-terciary">
                         Escreva uma biografia
                     </h3>
                     <textarea id="biography" placeholder="Digite aqui sua biografia" maxLength="250"></textarea>
                 </div>
-                <div>
+                <div className="role">
                     <h3 className="heading-terciary">
                         Qual a sua área de atuação?
                     </h3>
@@ -41,7 +42,7 @@ const Register = () => {
                         children="Adicione suas tags"
                     />
                 </div>
-                <div>
+                <div className="personal-info">
                     <h3 className="heading-terciary">
                         Adicionar informações pessoais
                     </h3>
@@ -149,11 +150,11 @@ const Register = () => {
                 <div className="register-submit">
                     <Button
                         children="Criar conta"
-                        className="btn--blue"
+                        className="btn3D--blue"
                     />
                     <Button
                         children="Cancelar"
-                        className="btn--transparent"
+                        className="btn3D--transparent"
                     />
                 </div>
             </form>

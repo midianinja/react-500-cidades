@@ -15,6 +15,8 @@
     border: none;
     outline: none;
     font-size: 1.4rem;
+    border-radius: .6rem;
+    width: 100%;
 }
 
 .btn3D:hover {
@@ -30,4 +32,16 @@
     transform: translateY(4px);
     border-bottom-width: 2px;
     box-shadow: none;
+}
+
+@media (min-width: 560px){
+    .btn3D {
+        width: 40%;  
+    }
+}
+
+@media (min-width: 992px){
+    .btn3D {
+        width: 20%;  
+    }
 }

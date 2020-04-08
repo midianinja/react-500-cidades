@@ -20,6 +20,14 @@
     margin: auto 11vw;
 }
 
+.biography{
+    margin-bottom: 1rem;
+}
+.role, .personal-info{
+    margin-bottom: 2rem;
+}
+
+
 .add-photo{
     background-color: var(--lighter-gray);
     border-radius: 100%;
@@ -53,12 +61,11 @@ textarea {
 .register-label{
     color: var(--lighter-gray);
 }
-.btn--transparent{
+.btn3D--transparent{
     color: var(--blue);
     background-color: transparent;
     border: 1px solid var(--blue);
     padding: .5rem 1.5rem;
-    border-radius: .3rem;
 }
 .add-details{
     display:flex;
