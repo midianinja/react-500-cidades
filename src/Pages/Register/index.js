@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 //import { Link } from 'react-router-dom';
 import { FaCamera, FaPen } from 'react-icons/fa';
-import ViaCep from "react-via-cep";
-import { phoneMask, cepMask } from "../../components/Masks";
+// import ViaCep from "react-via-cep";
+import { phoneMask, cepMask } from '../../components/Masks';
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import './styles.css';
@@ -14,13 +14,15 @@ const Register = () => {
     const [ phone, setPhone ] = useState('');
     const [ cep, setCep ] = useState('');
 
+    console.log(phone);
+
     return (
       <div className="register-container">
         <section className="navigation"></section>
         {/* component navigation */}
         <section className="register-cover">
           <div className="add-photo">
-            <FaCamera size={28} color="#888" />
+              <FaCamera size={28} color="#888" />
           </div>
           <div className="register-text">
             <h1 className="add-name" contentEditable="false">
