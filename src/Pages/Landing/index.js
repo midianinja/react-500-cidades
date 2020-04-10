@@ -148,10 +148,9 @@ const Landing = () => {
             <div className="newsletter-subscription">
               <Input
                 type="e-mail"
-                classInput="newsletter-email"
+                inputClass="newsletter-email"
                 placeholder="Insira aqui seu e-mail"
-                id="newsletterEmail"
-                classLabel="label-email"
+                labelClass="label-email"
               />
               <Button className="newsletter-btn3D--blue">></Button>
             </div>

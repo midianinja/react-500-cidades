@@ -181,11 +181,13 @@
 }
 .newsletter-email{
     background:rgba(255, 255, 255, .3);
-    font-weight: 700;
     color:var(--white);
     border: none;
     padding: .5rem;
     border-radius:.3rem 0 0 .3rem;
+}
+.newsletter-email::placeholder{
+    color:var(--white);
 }
 .newsletter-btn3D--blue{
     color: var(--white);
