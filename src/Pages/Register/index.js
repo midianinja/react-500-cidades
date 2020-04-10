@@ -176,6 +176,7 @@ const Register = () => {
                             labelClass="register-label"
                             labelName="Gênero"
                         />
+                        
                         <Select
                             options={options.sexual_orientation}
                             name="sexual_orientation"
