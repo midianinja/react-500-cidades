@@ -2,17 +2,19 @@ import React from 'react';
 import './styles.css';
 
 const Input = ({
+    name,
+    value,
+    onChange,
     type,
-    classInput,
     placeholder,
-    id,
-    classLabel,
-    children
+    inputClass,
+    labelClass,
+    labelName
 }) => {
     return (
         <div className="field">
-            <label htmlFor={id} className={`label-field ${classLabel}`}>{children}</label>
-            <input type={type} className={`input-field ${classInput}`} placeholder={placeholder} id={id} /*required*/ />
+            <label htmlFor={name} className={`label-field ${labelClass}`}>{labelName}</label>
+            <input name={name} value={value} onChange={onChange} type={type} placeholder={placeholder} id={name} className={`input-field ${inputClass}`} /*required*/ />
         </div>  
     );
 }

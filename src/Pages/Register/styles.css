@@ -53,6 +53,20 @@ textarea {
 .register-label{
     color: var(--lighter-gray);
 }
+
+.register-select{
+    cursor:pointer;
+    background-color: var(--lighter-gray);
+    padding: .5rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+.register-option{
+    background-color: var(--lighter-gray);
+}
+select option:hover{
+    background-color: var(--blue);
+}
 .btn--transparent{
     color: var(--blue);
     background-color: transparent;
