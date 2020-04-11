@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { FaCamera, FaPen } from "react-icons/fa";
-
-import { socialMidiaMask, phoneMask, cepMask } from "../../components/Masks";
+import { FaCamera, FaPen, FaSave } from "react-icons/fa";
+import { phoneMask, cepMask } from "../../components/Masks";
 //import { Link } from 'react-router-dom';
 // import gql from 'graphql-tag'
 //import { gql } from 'apollo-boost';
@@ -22,18 +21,18 @@ import './styles.css';
 
 const Register = () => {
     // const {loading, data: {putUser: user} } = useQuery(PUT_USER_QUERY) 
+    const [edit, setEdit] = useState(false)
     const [userInfo, setUserInfo] = useState({
-        tipology: '', //?
         name: 'Seu nome',
         job: 'Profissão',
         profile_image: '',
         cover_image: '',
         biography: '',
-        skills: [],//tags
+        skills: [],
         email: '',
         phone: '',
-        instagram: '',
-        facebook: '',
+        instagram: 'instagram.com/',
+        facebook: 'facebook.com/',
         site_address: '',
         birth_date: '',
         gender: '',
@@ -45,29 +44,29 @@ const Register = () => {
         number: '',
         complement: '',
         district: '',
+        district2: '',
         city: '',
         zipcode: '',
         state: '',
         country: '',
-        place_id: '',
-        geometry: '',
+        place_id: '',//google
+        geometry: '',//google
         latitude: '',
         longitude: '',
     })
-
     const onChangeUserInfo = (e) => {
         console.log(e.target.name, e.target.value)
-        setUserInfo({...userInfo, [e.target.name]: e.target.value})
+        setUserInfo({...userInfo, [e.target.name]: e.target.value});
         console.log(userInfo)
     }
-
     const onChangeAddressInfo = (e) => {
         setAddressInfo({...addressInfo, [e.target.name]: e.target.value})
     }
-
-    // const onSubmit = (e) => {
-    //     e.preventDefault();
-    // }
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(userInfo)
+        console.log(addressInfo)
+    }
 
     return (
       <div className="register-container">
@@ -75,11 +74,41 @@ const Register = () => {
         <section className="register-cover">
           {/* icon */}
           <div className="add-photo">
-            {/* icon */}
             <FaCamera size={28} color="#888" />
           </div>
           <div className="register-text">
-            {/* <h1 className="add-name" contentEditable="false">{userInfo.name}</h1> <FaPen size={20} color="#888" /> <icon onClick={this.contenteditable = "true"}> */}
+            {edit
+              ? (
+                <>
+                <div className="add-name">
+                  <Input
+                    name="name"
+                    value={userInfo.name}
+                    onChange={onChangeUserInfo}
+                    type="text"
+                    inputClass="name-input"
+                  />
+                </div>
+                  <icon onClick={() => setEdit(false)}>
+                  <FaSave size={20} color="#888" />
+                </icon>
+                </>
+              ) : (
+                <>
+                <h1 className="add-name">{userInfo.name}</h1>
+                <icon onClick={() => setEdit(true)}>
+                  <FaPen size={20} color="#888" />
+                  </icon>
+                </>
+              )}
+            <Select
+                options={options.job}
+                name="job"
+                value={userInfo.job}
+                onChange={onChangeUserInfo}
+                selectClass="job-select"
+                optionClass="job-option"
+              />
             {/* <h2 className="add-job" contentEditable="false">{userInfo.job}</h2>  <FaPen size={20} color="#888" /> <icon onClick={this.contenteditable = "true"}> */}
           </div>
         </section>
@@ -131,18 +160,19 @@ const Register = () => {
               />
               <Input
                 name="instagram"
-                value={socialMidiaMask(userInfo.instagram)}
+                value={userInfo.instagram}
                 onChange={onChangeUserInfo}
                 type="url"
-                placeholder="https://www.instagram.com/seu_@aqui:)"
+                placeholder="instagram.com/seu_@aqui:)"
                 inputClass="register-input"
                 labelClass="register-label"
                 labelName="Instagram"
               />
               <Input
                 name="facebook"
-                value={socialMidiaMask(userInfo.facebook)}
+                value={userInfo.facebook}
                 onChange={onChangeUserInfo}
+                placeholder="facebook.com/seu_@aqui:)"
                 type="url"
                 inputClass="register-input"
                 labelClass="register-label"
@@ -198,6 +228,33 @@ const Register = () => {
                 labelName="Raça/cor"
               />
               <Input
+                name="street"
+                value={addressInfo.street}
+                onChange={onChangeAddressInfo}
+                type="text"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Rua"
+              />
+              <Input
+                name="number"
+                value={addressInfo.number}
+                onChange={onChangeAddressInfo}
+                type="number"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Número"
+              />
+              <Input
+                name="complement"
+                value={addressInfo.complement}
+                onChange={onChangeAddressInfo}
+                type="text"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Complemento"
+              />
+              <Input
                 name="zipcode"
                 placeholder="0000-000"
                 value={cepMask(addressInfo.zipcode)}
@@ -208,12 +265,18 @@ const Register = () => {
                 labelName="CEP"
               />
               <Input
+                name="district"
+                value={addressInfo.district}
+                onChange={onChangeAddressInfo}
                 type="text"
                 inputClass="register-input"
                 labelClass="register-label"
                 labelName="Bairro"
               />
               <Input
+                name="district2"
+                value={addressInfo.district2}
+                onChange={onChangeAddressInfo}
                 type="text"
                 inputClass="register-input"
                 labelClass="register-label"
@@ -227,6 +290,15 @@ const Register = () => {
                 inputClass="register-input"
                 labelClass="register-label"
                 labelName="Cidade"
+              />
+              <Input
+                name="state"
+                value={addressInfo.state}
+                onChange={onChangeAddressInfo}
+                type="text"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Estado"
               />
               <Input
                 name="country"
@@ -244,6 +316,7 @@ const Register = () => {
               type="submit"
               children="Criar conta"
               className="btn3D--blue"
+              onClick={(e) => onSubmit(e)}
             />
             <Button children="Cancelar" className="btn3D--transparent" />
           </div>

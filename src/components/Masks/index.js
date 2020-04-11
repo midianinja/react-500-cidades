@@ -3,9 +3,9 @@ function socialMidiaMask(value) {
   return "instagram.com/" + str;
 }
 
-function faceMask(value) {
-//   return "www.facebook.com/" + value;
-}
+// function faceMask(value) {
+// //   return "www.facebook.com/" + value;
+// }
 
 function phoneMask(value) {
   return value
