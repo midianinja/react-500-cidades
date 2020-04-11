@@ -1,3 +1,6 @@
+icon{
+    cursor: pointer;
+}
 .register-cover {
     background: linear-gradient( to bottom, var(--light-gray) 50%, var(--gray) 100% );
     padding: 1rem 1rem 2rem 1rem;
@@ -20,6 +23,7 @@
     width: 15vh;
     box-shadow: 0px 16px 19px -1px grey;
     margin: 5vw 1.5vw 0 5vw;
+    min-width: 95px;
 }
 
 .register-form{
@@ -42,10 +46,26 @@
 .add-name{ 
     font-size: 1.8rem;
 }
- .add-job{ 
-    font-size: 1.5rem;
+.name-input{
+    border: none;
+    background-color: transparent;
+    color: var(--gray);
 }
-
+.add-job{ 
+    font-size  : 1.5rem;
+}
+.job-select{
+    cursor: pointer;
+    background-color: transparent;
+    color:var(--white)
+}
+.job-option{
+    color: var(--gray);
+    background-color: var(--light-gray);
+}
+.job-select option::selection{
+    width: fit-content;
+}
 textarea {
     border-radius: .3rem;
     border:none;
@@ -70,7 +90,6 @@ textarea {
 .register-label{
     color: var(--lighter-gray);
 }
-
 .register-select{
     cursor:pointer;
     background-color: var(--lighter-gray);
@@ -80,9 +99,6 @@ textarea {
 }
 .register-option{
     background-color: var(--lighter-gray);
-}
-select option:hover{
-    background-color: var(--blue);
 }
 
 .btn3D--transparent{
