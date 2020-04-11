@@ -41,7 +41,9 @@ const Landing = () => {
                 <span className="heading-primary--white">no mapa</span>
               </h1>
               <div className="landing-top-links">
-                <Button className="btn3D--red">Quero!</Button>
+                <Link to="/register">
+                  <Button className="btn3D--red">Quero!</Button>
+                </Link>
                 <Link href="#" alt="Já tenho cadastro" className="anchor-link">
                   Já tenho cadastro.
                 </Link>

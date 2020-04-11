@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { FaCamera, FaPen } from "react-icons/fa";
+
+import { socialMidiaMask, phoneMask, cepMask } from "../../components/Masks";
 //import { Link } from 'react-router-dom';
 // import gql from 'graphql-tag'
 //import { gql } from 'apollo-boost';
@@ -67,191 +70,185 @@ const Register = () => {
     // }
 
     return (
-        <div className="register-container">
-            {/* component menu */}
-            <section className="register-cover">
-                {/* icon */}
-                <div className="add-photo">
-                    {/* icon */}
-                </div>
-                <div className="register-text">
-                    {/* <h1 className="add-name" contentEditable="false">{userInfo.name}</h1>  <icon onClick={this.contenteditable = "true"}> */}
-                    {/* <h2 className="add-job" contentEditable="false">{userInfo.job}</h2>  <icon onClick={this.contenteditable = "true"}> */}
-                </div>
-            </section>
-            <form className="register-form">
-                <div>
-                    <h3 className="heading-terciary">
-                        Escreva uma biografia
-                    </h3>
-                    <textarea
-                        name="biography"
-                        placeholder="Digite aqui sua biografia"
-                        maxLength="300"
-                        value={userInfo.biography}
-                        onChange={onChangeUserInfo}
-                    >
-                    </textarea>
-                </div>
-                <div>
-                    <h3 className="heading-terciary">
-                        Qual a sua área de atuação?
-                    </h3>
-                    <Input
-                        name="skills"
-                        value={userInfo.skills}
-                        onChange={onChangeUserInfo}
-                        type="text"
-                        inputClass="register-input"
-                        labelClass="register-label"
-                        labelName="Adicione suas tags"
-                    />
-                </div>
-                <div>
-                    <h3 className="heading-terciary">
-                        Adicionar informações pessoais
-                    </h3>
-                    <div  className="add-details">
-                        <Input
-                            name="email"
-                            value={userInfo.email}
-                            onChange={onChangeUserInfo}
-                            type="email"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="E-mail"
-                        />
-                        <Input
-                            name="phone"
-                            value={userInfo.phone}
-                            onChange={onChangeUserInfo}
-                            type="tel"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="Telefone"
-                        />
-                        <Input
-                            name="instagram"
-                            value={userInfo.instagram}
-                            onChange={onChangeUserInfo}
-                            type="url"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="Instagram"
-                        />
-                        <Input
-                            name="facebook"
-                            value={userInfo.facebook}
-                            onChange={onChangeUserInfo}
-                            type="url"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="Facebook"
-                        />
-                        <Input
-                            name="site_address"
-                            value={userInfo.site_address}
-                            onChange={onChangeUserInfo}
-                            type="url"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="Site/portifolio"
-                        />
-                        <Input
-                            name="birth_date"
-                            value={userInfo.birth_date}
-                            onChange={onChangeUserInfo}
-                            type="date"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="Data de nascimento"
-                        />
-                        <Select
-                            options={options.gender}
-                            name="gender"
-                            value={userInfo.gender}
-                            onChange={onChangeUserInfo}
-                            selectClass="register-select"
-                            optionClass="register-option"
-                            labelClass="register-label"
-                            labelName="Gênero"
-                        />
-                        
-                        <Select
-                            options={options.sexual_orientation}
-                            name="sexual_orientation"
-                            value={userInfo.sexual_orientation}
-                            onChange={onChangeUserInfo}
-                            selectClass="register-select"
-                            optionClass="register-option"
-                            labelClass="register-label"
-                            labelName="Orientação Sexual"
-                        />
-                        <Select
-                            options={options.race}
-                            name="race"
-                            value={userInfo.race}
-                            onChange={onChangeUserInfo}
-                            selectClass="register-select"
-                            optionClass="register-option"
-                            labelClass="register-label"
-                            labelName="Raça/cor"
-                        />
-                        <Input
-                            name="zipcode"
-                            value={addressInfo.zipcode}
-                            onChange={onChangeAddressInfo}
-                            type="text"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="CEP"
-                        />
-                        <Input
-                            type="text"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="Bairro"
-                        />
-                        <Input
-                            type="text"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="Município"
-                        />
-                        <Input
-                            name="city"
-                            value={addressInfo.city}
-                            onChange={onChangeAddressInfo}
-                            type="text"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="Cidade"
-                        />
-                        <Input
-                            name="country"
-                            value={addressInfo.country}
-                            onChange={onChangeAddressInfo}
-                            type="text"
-                            inputClass="register-input"
-                            labelClass="register-label"
-                            labelName="País"
-                        />
-                    </div>
-                </div>
-                <div className="register-submit">
-                    <Button
-                        type="submit"
-                        children="Criar conta"
-                        className="btn--blue"
-                    />
-                    <Button
-                        children="Cancelar"
-                        className="btn--transparent"
-                    />
-                </div>
-            </form>
-            
-        </div>
+      <div className="register-container">
+        {/* component menu */}
+        <section className="register-cover">
+          {/* icon */}
+          <div className="add-photo">
+            {/* icon */}
+            <FaCamera size={28} color="#888" />
+          </div>
+          <div className="register-text">
+            {/* <h1 className="add-name" contentEditable="false">{userInfo.name}</h1> <FaPen size={20} color="#888" /> <icon onClick={this.contenteditable = "true"}> */}
+            {/* <h2 className="add-job" contentEditable="false">{userInfo.job}</h2>  <FaPen size={20} color="#888" /> <icon onClick={this.contenteditable = "true"}> */}
+          </div>
+        </section>
+        <form className="register-form">
+          <div>
+            <h3 className="heading-terciary">Escreva uma biografia</h3>
+            <textarea
+              name="biography"
+              placeholder="Digite aqui sua biografia"
+              maxLength="300"
+              value={userInfo.biography}
+              onChange={onChangeUserInfo}
+            ></textarea>
+          </div>
+          <div>
+            <h3 className="heading-terciary">Qual a sua área de atuação?</h3>
+            <Input
+              name="skills"
+              value={userInfo.skills}
+              onChange={onChangeUserInfo}
+              type="text"
+              inputClass="register-input"
+              labelClass="register-label"
+              labelName="Adicione suas tags"
+            />
+          </div>
+          <div>
+            <h3 className="heading-terciary">Adicionar informações pessoais</h3>
+            <div className="add-details">
+              <Input
+                name="email"
+                value={userInfo.email}
+                onChange={onChangeUserInfo}
+                type="email"
+                placeholder="seuemail@exemplo.com"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="E-mail"
+              />
+              <Input
+                name="phone"
+                value={phoneMask(userInfo.phone)}
+                onChange={onChangeUserInfo}
+                type="tel"
+                placeholder="(00) 0000-0000"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Telefone"
+              />
+              <Input
+                name="instagram"
+                value={socialMidiaMask(userInfo.instagram)}
+                onChange={onChangeUserInfo}
+                type="url"
+                placeholder="https://www.instagram.com/seu_@aqui:)"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Instagram"
+              />
+              <Input
+                name="facebook"
+                value={socialMidiaMask(userInfo.facebook)}
+                onChange={onChangeUserInfo}
+                type="url"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Facebook"
+              />
+              <Input
+                name="site_address"
+                value={userInfo.site_address}
+                onChange={onChangeUserInfo}
+                type="url"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Site/portifolio"
+              />
+              <Input
+                name="birth_date"
+                value={userInfo.birth_date}
+                onChange={onChangeUserInfo}
+                type="date"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Data de nascimento"
+              />
+              <Select
+                options={options.gender}
+                name="gender"
+                value={userInfo.gender}
+                onChange={onChangeUserInfo}
+                selectClass="register-select"
+                optionClass="register-option"
+                labelClass="register-label"
+                labelName="Gênero"
+              />
+
+              <Select
+                options={options.sexual_orientation}
+                name="sexual_orientation"
+                value={userInfo.sexual_orientation}
+                onChange={onChangeUserInfo}
+                selectClass="register-select"
+                optionClass="register-option"
+                labelClass="register-label"
+                labelName="Orientação Sexual"
+              />
+              <Select
+                options={options.race}
+                name="race"
+                value={userInfo.race}
+                onChange={onChangeUserInfo}
+                selectClass="register-select"
+                optionClass="register-option"
+                labelClass="register-label"
+                labelName="Raça/cor"
+              />
+              <Input
+                name="zipcode"
+                placeholder="0000-000"
+                value={cepMask(addressInfo.zipcode)}
+                onChange={onChangeAddressInfo}
+                type="text"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="CEP"
+              />
+              <Input
+                type="text"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Bairro"
+              />
+              <Input
+                type="text"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Município"
+              />
+              <Input
+                name="city"
+                value={addressInfo.city}
+                onChange={onChangeAddressInfo}
+                type="text"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="Cidade"
+              />
+              <Input
+                name="country"
+                value={addressInfo.country}
+                onChange={onChangeAddressInfo}
+                type="text"
+                inputClass="register-input"
+                labelClass="register-label"
+                labelName="País"
+              />
+            </div>
+          </div>
+          <div className="register-submit">
+            <Button
+              type="submit"
+              children="Criar conta"
+              className="btn3D--blue"
+            />
+            <Button children="Cancelar" className="btn3D--transparent" />
+          </div>
+        </form>
+      </div>
     );
 }
 
