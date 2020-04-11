@@ -1,5 +1,6 @@
 icon{
     cursor: pointer;
+    margin:0 3vh;
 }
 .register-cover {
     background: linear-gradient( to bottom, var(--light-gray) 50%, var(--gray) 100% );
@@ -11,8 +12,13 @@ icon{
     flex-direction: row;
     align-items: flex-end;
     margin-bottom: 4rem;
+    position: relative;
 }
-
+.cover-photo {
+    position: absolute;
+    top: 10%;
+    right: 4%;
+}
 .add-photo {
     display: flex;
     justify-content: center;
@@ -43,13 +49,22 @@ icon{
     align-items: flex-start;
     flex-direction: column;
 }
+.register-edit-text{
+    display: flex;
+    width: -webkit-fill-available;
+}
+
 .add-name{ 
+    color: var(--white);
     font-size: 1.8rem;
+    word-wrap: break-word;
 }
 .name-input{
     border: none;
+    padding-bottom: 1.3vh;
     background-color: transparent;
-    color: var(--gray);
+    color: var(--white);
+    max-width: 60vw;
 }
 .add-job{ 
     font-size  : 1.5rem;
@@ -62,9 +77,6 @@ icon{
 .job-option{
     color: var(--gray);
     background-color: var(--light-gray);
-}
-.job-select option::selection{
-    width: fit-content;
 }
 textarea {
     border-radius: .3rem;
@@ -83,6 +95,8 @@ textarea {
     padding: .5rem;
     margin-bottom: 1rem;
     margin-right: 1rem;
+    min-width: 250px;
+    /* width: -webkit-fill-available; */
 }
 .register-input:not(:first-child){
    margin-right: 1rem;
@@ -114,7 +128,40 @@ textarea {
 .register-submit{
     text-align: center;
 }
+/* #email{
+    width:66%;
+}
+#phone, #birth_date{
+    width:34%;
+}
+#facebook, #instagram, #street{
+    width:50%;
+}
+#site_address{
+    width:66%;
+}
+#gender, #race, #sexual_orientation{
+    width:33.3%;
+}
+#complement{
+    width:29%;
+}
+#street{
+    width: 39vw;
+}
+#zipcode{
+    width: 20%;
+}
+#district, #district2{
+    width:40%
+} */
 @media (min-width: 768px){
+    .add-name{ 
+        font-size  : 1.8rem;
+    }
+    .add-job{ 
+        font-size  : 1.5rem;
+    }
     .register-cover{
         padding: 2rem;
     }

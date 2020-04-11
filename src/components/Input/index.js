@@ -9,12 +9,26 @@ const Input = ({
     placeholder,
     inputClass,
     labelClass,
-    labelName
+    labelName,
+    autofocus,
+    style,
+    maxlength
 }) => {
     return (
         <div className="field">
             <label htmlFor={name} className={`label-field ${labelClass}`}>{labelName}</label>
-            <input name={name} value={value} onChange={onChange} type={type} placeholder={placeholder} id={name} className={`input-field ${inputClass}`} /*required*/ />
+            <input 
+                name={name} 
+                value={value} 
+                onChange={onChange} 
+                type={type} 
+                placeholder={placeholder} 
+                id={name} 
+                className={`input-field ${inputClass}`} 
+                autoFocus={autofocus}
+                style={style} 
+                maxLength={maxlength}
+            />
         </div>  
     );
 }
