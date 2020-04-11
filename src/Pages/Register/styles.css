@@ -23,6 +23,7 @@ icon{
     width: 15vh;
     box-shadow: 0px 16px 19px -1px grey;
     margin: 5vw 1.5vw 0 5vw;
+    min-width: 95px;
 }
 
 .register-form{

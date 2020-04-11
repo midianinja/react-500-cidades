@@ -31,8 +31,8 @@ const Register = () => {
         skills: [],
         email: '',
         phone: '',
-        instagram: 'instagram.com/',
-        facebook: 'facebook.com/',
+        instagram: 'www.instagram.com/',
+        facebook: 'www.facebook.com/',
         site_address: '',
         birth_date: '',
         gender: '',
@@ -40,24 +40,22 @@ const Register = () => {
         race: '',
     })
     const [addressInfo, setAddressInfo] = useState({
-        street: '',
-        number: '',
-        complement: '',
-        district: '',
-        district2: '',
-        city: '',
-        zipcode: '',
-        state: '',
-        country: '',
+        street: '', //0
+        number: '', //1
+        complement: '', //2
+        district: '', //3
+        district2: '', //4
+        city: '', //5
+        zipcode: '', //6
+        state: '', //7
+        country: '', //9
         place_id: '',//google
         geometry: '',//google
-        latitude: '',
-        longitude: '',
+        latitude: '',//google
+        longitude: ''//google
     })
     const onChangeUserInfo = (e) => {
-        console.log(e.target.name, e.target.value)
         setUserInfo({...userInfo, [e.target.name]: e.target.value});
-        console.log(userInfo)
     }
     const onChangeAddressInfo = (e) => {
         setAddressInfo({...addressInfo, [e.target.name]: e.target.value})
@@ -72,7 +70,7 @@ const Register = () => {
       <div className="register-container">
         {/* component menu */}
         <section className="register-cover">
-          {/* icon */}
+          <FaCamera size={28} color="#888" />
           <div className="add-photo">
             <FaCamera size={28} color="#888" />
           </div>
@@ -89,7 +87,7 @@ const Register = () => {
                     inputClass="name-input"
                   />
                 </div>
-                  <icon onClick={() => setEdit(false)}>
+                <icon onClick={() => setEdit(false)}>
                   <FaSave size={20} color="#888" />
                 </icon>
                 </>
@@ -109,7 +107,6 @@ const Register = () => {
                 selectClass="job-select"
                 optionClass="job-option"
               />
-            {/* <h2 className="add-job" contentEditable="false">{userInfo.job}</h2>  <FaPen size={20} color="#888" /> <icon onClick={this.contenteditable = "true"}> */}
           </div>
         </section>
         <form className="register-form">
