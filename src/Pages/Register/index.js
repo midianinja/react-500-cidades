@@ -40,15 +40,15 @@ const Register = () => {
         race: '',
     })
     const [addressInfo, setAddressInfo] = useState({
-        street: '', //0
-        number: '', //1
-        complement: '', //2
-        district: '', //3
-        district2: '', //4
-        city: '', //5
-        zipcode: '', //6
-        state: '', //7
-        country: '', //9
+        street: '',
+        number: '',
+        complement: '',
+        district: '',
+        district2: '',
+        city: '',
+        zipcode: '',
+        state: '',
+        country: '',
         place_id: '',//google
         geometry: '',//google
         latitude: '',//google
@@ -70,11 +70,14 @@ const Register = () => {
       <div className="register-container">
         {/* component menu */}
         <section className="register-cover">
-          <FaCamera size={28} color="#888" />
+          <div className="cover-photo">
+            <FaCamera size={28} color="#888" />
+          </div>
           <div className="add-photo">
             <FaCamera size={28} color="#888" />
           </div>
           <div className="register-text">
+            <div className="register-edit-text">
             {edit
               ? (
                 <>
@@ -85,6 +88,9 @@ const Register = () => {
                     onChange={onChangeUserInfo}
                     type="text"
                     inputClass="name-input"
+                    autofocus={true}
+                    maxlength="33"
+                    style={{"width": userInfo.name.length +'ch'}}
                   />
                 </div>
                 <icon onClick={() => setEdit(false)}>
@@ -99,6 +105,7 @@ const Register = () => {
                   </icon>
                 </>
               )}
+            </div>  
             <Select
                 options={options.job}
                 name="job"
@@ -106,6 +113,7 @@ const Register = () => {
                 onChange={onChangeUserInfo}
                 selectClass="job-select"
                 optionClass="job-option"
+                style={{"width": (userInfo.job.length + 1) +'ch'}}
               />
           </div>
         </section>
@@ -237,7 +245,7 @@ const Register = () => {
                 name="number"
                 value={addressInfo.number}
                 onChange={onChangeAddressInfo}
-                type="number"
+                type="text"
                 inputClass="register-input"
                 labelClass="register-label"
                 labelName="Número"
