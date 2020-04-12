@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaCamera, FaPen, FaSave } from "react-icons/fa";
 import { phoneMask, cepMask } from "../../components/Masks";
 //import { Link } from 'react-router-dom';
@@ -66,6 +66,22 @@ const Register = () => {
         console.log(addressInfo)
     }
 
+    useEffect(() => {
+      if(addressInfo.zipcode.length === 9){
+        return async function(){
+          try{
+            const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressInfo.zipcode}&key=${process.env.REACT_APP_MAP_KEY}`);
+            const result = await zipcodeAddress.json();
+            return console.log(result);
+          } catch(error){
+            return console.log(error);
+          }
+          // with places: const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${addressInfo.zipcode}&key=${process.env.REACT_APP_MAP_KEY}`);
+          //return: "This API project is not authorized to use this API."
+        }
+      }
+    })
+
     return (
       <div className="register-container">
         {/* component menu */}
@@ -129,16 +145,8 @@ const Register = () => {
             ></textarea>
           </div>
           <div>
-            <h3 className="heading-terciary">Qual a sua área de atuação?</h3>
-            <Input
-              name="skills"
-              value={userInfo.skills}
-              onChange={onChangeUserInfo}
-              type="text"
-              inputClass="register-input"
-              labelClass="register-label"
-              labelName="Adicione suas tags"
-            />
+            <h3 className="heading-terciary">Qual a sua área de interesse?</h3>
+            {/* {options.skills.map(() => {construir tags})} */}
           </div>
           <div>
             <h3 className="heading-terciary">Adicionar informações pessoais</h3>
