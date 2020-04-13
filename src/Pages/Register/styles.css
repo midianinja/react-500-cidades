@@ -78,6 +78,14 @@ icon{
     color: var(--gray);
     background-color: var(--light-gray);
 }
+.tags{
+    display:flex;
+    width:80vw;
+    margin:1rem auto;
+}
+.toggle-tags{
+    margin:.5rem;
+}
 textarea {
     border-radius: .3rem;
     border:none;
