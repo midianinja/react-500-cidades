@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 // import gql from 'graphql-tag'
 //import { gql } from 'apollo-boost';
 // import { useQuery } from 'react-apollo'
-import * as options from '../../register-options.json'
-import Button from '../../components/Button'
-import Input from '../../components/Input'
-import Select from '../../components/Select'
+import * as options from '../../register-options.json';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
+import Select from '../../components/Select';
+import SelectTags from '../../components/SelectTags';
 import './styles.css';
 
 // const REGISTER_USER = gql`
@@ -55,13 +56,7 @@ const Register = () => {
         latitude: '',//google
         longitude: ''//google
     })
-    const selectTags = (e) => {
-      console.log(e.target.classList)
 
-      userInfo.skills.includes(e.target.textContent) 
-      ? setUserInfo({...userInfo, skills: userInfo.skills.filter(el => el !== e.target.textContent)})
-      : setUserInfo({...userInfo, skills: [...userInfo.skills, e.target.textContent]})
-    }
     const onChangeUserInfo = (e) => {
         setUserInfo({...userInfo, [e.target.name]: e.target.value});
     }
@@ -70,15 +65,14 @@ const Register = () => {
     }
     const onSubmit = (e) => {
         e.preventDefault();
-        // console.log(userInfo)
-        console.log(addressInfo)
+        console.log(userInfo)
+        //console.log(addressInfo)
     }
     const getAddress = async(zipcodeInput) => {
       try{
         const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcodeInput}&sensor=false&language=pt&key=${process.env.REACT_APP_MAP_KEY}`);
         const result = await zipcodeAddress.json();
-
-        // if(result.status === "OK" && result.results.length > 0){
+        if(result.results.length > 0){
           const placeResults = result.results[0];
           setAddressInfo(addressInfo => ({
             ...addressInfo,
@@ -90,9 +84,9 @@ const Register = () => {
             latitude: placeResults.geometry.location.lat,
             longitude : placeResults.geometry.location.lng
           }));
-        // } else {
-        //   throw new Error("Couldn't find zipcode")
-        // }
+        } else {
+          throw new Error("Couldn't find zipcode")
+        }
       } catch(error){
         return console.log(error);
       }
@@ -152,6 +146,7 @@ const Register = () => {
                 onChange={onChangeUserInfo}
                 selectClass="job-select"
                 optionClass="job-option"
+                defaultName="Profissão"
                 style={{"width": (userInfo.job.length + 1) +'ch'}}
               />
           </div>
@@ -169,11 +164,7 @@ const Register = () => {
           </div>
           <div>
             <h3 className="heading-terciary">Qual a sua área de interesse?</h3>
-            <div className="tags">
-            {options.skills.map((i,index) =>
-              <div key={index} className="toggle-tags" onClick={(e) => selectTags(e)}>{i}</div>
-            )}
-            </div> 
+            <SelectTags userInfo={userInfo} setUserInfo={setUserInfo} />
           </div>
           <div>
             <h3 className="heading-terciary">Adicionar informações pessoais</h3>
@@ -246,7 +237,6 @@ const Register = () => {
                 labelClass="register-label"
                 labelName="Gênero"
               />
-
               <Select
                 options={options.sexual_orientation}
                 name="sexual_orientation"
