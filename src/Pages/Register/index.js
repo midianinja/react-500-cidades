@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { FaCamera, FaPen, FaSave } from "react-icons/fa";
 import { phoneMask, cepMask } from "../../components/Masks";
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import gql from 'graphql-tag'
 //import { gql } from 'apollo-boost';
 // import { useQuery } from 'react-apollo'
-import * as options from '../../register-options.json'
-import Button from '../../components/Button'
-import Input from '../../components/Input'
-import Select from '../../components/Select'
+import * as options from '../../register-options.json';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
+import Select from '../../components/Select';
+import SelectTags from '../../components/SelectTags';
 import './styles.css';
 
 // const REGISTER_USER = gql`
@@ -39,6 +40,7 @@ const Register = () => {
         sexual_orientation: '',
         race: '',
     })
+
     const [addressInfo, setAddressInfo] = useState({
         street: '',
         number: '',
@@ -50,10 +52,11 @@ const Register = () => {
         state: '',
         country: '',
         place_id: '',//google
-        geometry: '',//google
+        geometry: {},//google
         latitude: '',//google
         longitude: ''//google
     })
+
     const onChangeUserInfo = (e) => {
         setUserInfo({...userInfo, [e.target.name]: e.target.value});
     }
@@ -63,24 +66,38 @@ const Register = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(userInfo)
-        console.log(addressInfo)
+        //console.log(addressInfo)
+    }
+    const getAddress = async(zipcodeInput) => {
+      try{
+        const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcodeInput}&sensor=false&language=pt&key=${process.env.REACT_APP_MAP_KEY}`);
+        const result = await zipcodeAddress.json();
+        if(result.results.length > 0){
+          const placeResults = result.results[0];
+          setAddressInfo(addressInfo => ({
+            ...addressInfo,
+            city: placeResults.address_components.find(i => i.types.includes("administrative_area_level_2")).long_name,
+            state: placeResults.address_components.find(i => i.types.includes("administrative_area_level_1")).long_name,
+            country: placeResults.address_components.find(i => i.types.includes("country")).long_name,
+            geometry: placeResults.geometry.bounds,
+            place_id: placeResults.place_id,
+            latitude: placeResults.geometry.location.lat,
+            longitude : placeResults.geometry.location.lng
+          }));
+        } else {
+          throw new Error("Couldn't find zipcode")
+        }
+      } catch(error){
+        return console.log(error);
+      }
     }
 
     useEffect(() => {
       if(addressInfo.zipcode.length === 9){
-        return async function(){
-          try{
-            const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressInfo.zipcode}&key=${process.env.REACT_APP_MAP_KEY}`);
-            const result = await zipcodeAddress.json();
-            return console.log(result);
-          } catch(error){
-            return console.log(error);
-          }
-          // with places: const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${addressInfo.zipcode}&key=${process.env.REACT_APP_MAP_KEY}`);
-          //return: "This API project is not authorized to use this API."
-        }
+        const zipcodeInput = addressInfo.zipcode.replace(/-/g,"");
+        return getAddress(zipcodeInput);
       }
-    })
+    },[addressInfo.zipcode])
 
     return (
       <div className="register-container">
@@ -129,6 +146,7 @@ const Register = () => {
                 onChange={onChangeUserInfo}
                 selectClass="job-select"
                 optionClass="job-option"
+                defaultName="Profissão"
                 style={{"width": (userInfo.job.length + 1) +'ch'}}
               />
           </div>
@@ -146,7 +164,7 @@ const Register = () => {
           </div>
           <div>
             <h3 className="heading-terciary">Qual a sua área de interesse?</h3>
-            {/* {options.skills.map(() => {construir tags})} */}
+            <SelectTags userInfo={userInfo} setUserInfo={setUserInfo} />
           </div>
           <div>
             <h3 className="heading-terciary">Adicionar informações pessoais</h3>
@@ -219,7 +237,6 @@ const Register = () => {
                 labelClass="register-label"
                 labelName="Gênero"
               />
-
               <Select
                 options={options.sexual_orientation}
                 name="sexual_orientation"
@@ -331,7 +348,9 @@ const Register = () => {
               className="btn3D--blue"
               onClick={(e) => onSubmit(e)}
             />
-            <Button children="Cancelar" className="btn3D--transparent" />
+            <Link to="/">
+              <Button children="Cancelar" className="btn3D--transparent" />
+            </Link>
           </div>
         </form>
       </div>

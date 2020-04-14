@@ -78,6 +78,7 @@ icon{
     color: var(--gray);
     background-color: var(--light-gray);
 }
+
 textarea {
     border-radius: .3rem;
     border:none;
