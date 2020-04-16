@@ -46,6 +46,7 @@ const SelectTags = (props) => {
                 name="optionsTags"
                 value={optionsTags}
                 onChange={(e) => addTags(e)}
+                multiple={true}
                 selectClass="register-select"
                 optionClass="register-option"
                 labelClass="register-label"

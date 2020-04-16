@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaCamera, FaPen, FaSave } from "react-icons/fa";
+import { FaPen, FaSave } from "react-icons/fa";
 import { phoneMask, cepMask } from "../../components/Masks";
 import { Link } from 'react-router-dom';
 // import gql from 'graphql-tag'
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import * as options from '../../register-options.json';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import InputFile from '../../components/InputFile';
 import Select from '../../components/Select';
 import SelectTags from '../../components/SelectTags';
 import './styles.css';
@@ -63,10 +64,20 @@ const Register = () => {
     const onChangeAddressInfo = (e) => {
         setAddressInfo({...addressInfo, [e.target.name]: e.target.value})
     }
+
+  const [profileImage, setProfileImage] = useState({
+      file: null
+    });
+  const [coverImage, setCoverImage] = useState({
+    file: null
+  });
+
+
+
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(userInfo)
-        //console.log(addressInfo)
+        console.log(addressInfo)
     }
     const getAddress = async(zipcodeInput) => {
       try{
@@ -102,54 +113,63 @@ const Register = () => {
     return (
       <div className="register-container">
         {/* component menu */}
-        <section className="register-cover">
-          <div className="cover-photo">
-            <FaCamera size={28} color="#888" />
-          </div>
-          <div className="add-photo">
-            <FaCamera size={28} color="#888" />
-          </div>
-          <div className="register-text">
-            <div className="register-edit-text">
-            {edit
-              ? (
-                <>
-                <div className="add-name">
-                  <Input
-                    name="name"
-                    value={userInfo.name}
-                    onChange={onChangeUserInfo}
-                    type="text"
-                    inputClass="name-input"
-                    autofocus={true}
-                    maxlength="33"
-                    style={{"width": userInfo.name.length +'ch'}}
-                  />
-                </div>
-                <icon onClick={() => setEdit(false)}>
-                  <FaSave size={20} color="#888" />
-                </icon>
-                </>
-              ) : (
-                <>
-                <h1 className="add-name">{userInfo.name}</h1>
-                <icon onClick={() => setEdit(true)}>
-                  <FaPen size={20} color="#888" />
-                  </icon>
-                </>
-              )}
-            </div>  
-            <Select
+        <section className="register-cover" style={{ backgroundImage: coverImage.file ? `url(${coverImage.file})` : 'linear-gradient(to bottom, var(--light-gray) 50%, var(--gray) 100% )' }}>
+            <div className="cover-photo">
+              <InputFile
+                id="cover_image"
+                name="cover_image"
+                onChange={(e) => setCoverImage({ file: URL.createObjectURL(e.target.files[0]) })}
+                inputClass="cover-image"
+              />
+            </div>
+          <div className="add-photo" style={{ backgroundImage: `url(${profileImage.file})` }}>
+              <InputFile
+                borderRadius="100%"
+                id="profile_image"
+                name="profile_image"
+                value={profileImage}
+                onChange={(e) => setProfileImage({ file: URL.createObjectURL(e.target.files[0]) })}
+                inputClass="profile-image"
+              />
+            </div>
+            <div className="register-text">
+              <div className="register-edit-text">
+                {edit
+                  ? (
+                    <>
+                      <div className="add-name">
+                        <Input
+                          name="name"
+                          value={userInfo.name}
+                          onChange={onChangeUserInfo}
+                          type="text"
+                          inputClass="name-input"
+                          autofocus={true}
+                          maxlength="33"
+                          style={{ "width": userInfo.name.length + 'ch' }}
+                        />
+                      </div>
+                      <FaSave size={20} color="#888" onClick={() => setEdit(false)} />
+                    </>
+                  ) : (
+                    <>
+                      <h1 className="add-name">{userInfo.name}</h1>
+                      <FaPen size={20} color="#888" onClick={() => setEdit(true)} />
+                    </>
+                  )}
+              </div>
+              <Select
                 options={options.job}
                 name="job"
                 value={userInfo.job}
                 onChange={onChangeUserInfo}
+
                 selectClass="job-select"
                 optionClass="job-option"
                 defaultName="Profissão"
-                style={{"width": (userInfo.job.length + 1) +'ch'}}
+                style={{ "width": (userInfo.job.length + 1) + 'ch' }}
               />
-          </div>
+            </div>
         </section>
         <form className="register-form">
           <div>
