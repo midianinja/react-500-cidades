@@ -195,9 +195,10 @@ const Register = () => {
                 onChange={onChangeUserInfo}
                 type="email"
                 placeholder="seuemail@exemplo.com"
-                inputClass="register-input"
+                inputClass="register-input email"
                 labelClass="register-label"
                 labelName="E-mail"
+                size="1000"
               />
               <Input
                 name="phone"
@@ -205,7 +206,7 @@ const Register = () => {
                 onChange={onChangeUserInfo}
                 type="tel"
                 placeholder="(00) 0000-0000"
-                inputClass="register-input"
+                inputClass="register-input phone"
                 labelClass="register-label"
                 labelName="Telefone"
               />
@@ -215,7 +216,7 @@ const Register = () => {
                 onChange={onChangeUserInfo}
                 type="url"
                 placeholder="instagram.com/seu_@aqui:)"
-                inputClass="register-input"
+                inputClass="register-input insta"
                 labelClass="register-label"
                 labelName="Instagram"
               />
@@ -225,7 +226,7 @@ const Register = () => {
                 onChange={onChangeUserInfo}
                 placeholder="facebook.com/seu_@aqui:)"
                 type="url"
-                inputClass="register-input"
+                inputClass="register-input face"
                 labelClass="register-label"
                 labelName="Facebook"
               />
@@ -234,7 +235,7 @@ const Register = () => {
                 value={userInfo.site_address}
                 onChange={onChangeUserInfo}
                 type="url"
-                inputClass="register-input"
+                inputClass="register-input portfolio"
                 labelClass="register-label"
                 labelName="Site/portifolio"
               />
@@ -243,7 +244,7 @@ const Register = () => {
                 value={userInfo.birth_date}
                 onChange={onChangeUserInfo}
                 type="date"
-                inputClass="register-input"
+                inputClass="register-input birth-date"
                 labelClass="register-label"
                 labelName="Data de nascimento"
               />
@@ -252,7 +253,7 @@ const Register = () => {
                 name="gender"
                 value={userInfo.gender}
                 onChange={onChangeUserInfo}
-                selectClass="register-select"
+                selectClass="register-select gender"
                 optionClass="register-option"
                 labelClass="register-label"
                 labelName="Gênero"
@@ -262,7 +263,7 @@ const Register = () => {
                 name="sexual_orientation"
                 value={userInfo.sexual_orientation}
                 onChange={onChangeUserInfo}
-                selectClass="register-select"
+                selectClass="register-select sexual-orientation"
                 optionClass="register-option"
                 labelClass="register-label"
                 labelName="Orientação Sexual"
@@ -272,7 +273,7 @@ const Register = () => {
                 name="race"
                 value={userInfo.race}
                 onChange={onChangeUserInfo}
-                selectClass="register-select"
+                selectClass="register-select race"
                 optionClass="register-option"
                 labelClass="register-label"
                 labelName="Raça/cor"
@@ -282,7 +283,7 @@ const Register = () => {
                 value={addressInfo.street}
                 onChange={onChangeAddressInfo}
                 type="text"
-                inputClass="register-input"
+                inputClass="register-input street"
                 labelClass="register-label"
                 labelName="Rua"
               />
@@ -291,7 +292,7 @@ const Register = () => {
                 value={addressInfo.number}
                 onChange={onChangeAddressInfo}
                 type="text"
-                inputClass="register-input"
+                inputClass="register-input number"
                 labelClass="register-label"
                 labelName="Número"
               />
@@ -300,7 +301,7 @@ const Register = () => {
                 value={addressInfo.complement}
                 onChange={onChangeAddressInfo}
                 type="text"
-                inputClass="register-input"
+                inputClass="register-input complement"
                 labelClass="register-label"
                 labelName="Complemento"
               />
@@ -310,7 +311,7 @@ const Register = () => {
                 value={cepMask(addressInfo.zipcode)}
                 onChange={onChangeAddressInfo}
                 type="text"
-                inputClass="register-input"
+                inputClass="register-input zipcode"
                 labelClass="register-label"
                 labelName="CEP"
               />
@@ -319,7 +320,7 @@ const Register = () => {
                 value={addressInfo.district}
                 onChange={onChangeAddressInfo}
                 type="text"
-                inputClass="register-input"
+                inputClass="register-input neiborhood"
                 labelClass="register-label"
                 labelName="Bairro"
               />
@@ -328,7 +329,7 @@ const Register = () => {
                 value={addressInfo.district2}
                 onChange={onChangeAddressInfo}
                 type="text"
-                inputClass="register-input"
+                inputClass="register-input district"
                 labelClass="register-label"
                 labelName="Município"
               />
@@ -337,7 +338,7 @@ const Register = () => {
                 value={addressInfo.city}
                 onChange={onChangeAddressInfo}
                 type="text"
-                inputClass="register-input"
+                inputClass="register-input city"
                 labelClass="register-label"
                 labelName="Cidade"
               />
@@ -346,7 +347,7 @@ const Register = () => {
                 value={addressInfo.state}
                 onChange={onChangeAddressInfo}
                 type="text"
-                inputClass="register-input"
+                inputClass="register-input state"
                 labelClass="register-label"
                 labelName="Estado"
               />
@@ -355,7 +356,7 @@ const Register = () => {
                 value={addressInfo.country}
                 onChange={onChangeAddressInfo}
                 type="text"
-                inputClass="register-input"
+                inputClass="register-input country"
                 labelClass="register-label"
                 labelName="País"
               />
