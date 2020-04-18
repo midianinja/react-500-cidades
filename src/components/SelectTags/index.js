@@ -1,64 +1,78 @@
-import React, { useState, useEffect } from 'react';
-import Input from '../Input';
-import Select from '../Select';
-import { skills } from '../../register-options.json';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import skills from './tags.model';
+import { FaTimes } from "react-icons/fa";
 import './styles.css'
 
-const SelectTags = (props) => {
-    const [filterTags, setfilterTags] = useState('');
-    const [optionsTags, setOptionsTags] = useState(skills);
-    const [selectedTags, setSelectedTags] = useState([])
+const normalize = (v) => v.toUpperCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-    const addTags = e => {  
-        if(!selectedTags.includes(e.target.value)) { 
-            setSelectedTags([...selectedTags, e.target.value])
-            props.setUserInfo({...props.userInfo, skills: [...props.userInfo.skills, e.target.value]})
-        }    
-    };
-    const removeTags = e => {
-        selectedTags.filter(el => el !== e.target.textContent)
-        props.setUserInfo({...props.userInfo, skills: props.userInfo.skills.filter(el => el !== e.target.textContent)})
-        
-    };
-    const selectSearchTags = e => {
-        setfilterTags(e.target.value);
-    }
-    useEffect(() => {
-        const selectOptions = skills.filter(el =>
-            el.toLowerCase().includes(filterTags.toLowerCase())
-        )
-        setOptionsTags(selectOptions)
-    }, [filterTags])
+const filterTags = (value = '') => {
+    const myValue = normalize(value);
+    return skills.filter((item) => new RegExp(myValue, 'gm').test(normalize(item)));
+}
+
+const renderOptions = (skill, onClick) => (
+    <li key={skill} className="skill-option" onClick={() => onClick(skill)}>
+        {skill}
+    </li>
+)
+
+const removeTags = ({
+    tags, toDelete, handleChange
+}) => {
+    const newTags = tags.filter(t => t !== toDelete);
+    handleChange(newTags);
+}
+const addTags = ({ tags, toAdd, handleChange }) => {
+    const newTags = tags.filter(t => t !== toAdd)
+    handleChange([...newTags, toAdd]);
+}
+
+const SelectTags = ({
+    tags, placeholder, handleChange,
+}) => {
+    const [value, setValue] = useState('');
+    const [showList, setShowList] = useState(false)
 
     return (
         <div className="tags-field">
-            <Input
-                name="filterTags"
-                value={filterTags}
-                onChange={(e) => selectSearchTags(e)}
-                type="text"
-                inputClass="register-input"
-                labelClass="register-label"
-                labelName="Palavras-chave"
-              />
-              <Select
-                options={optionsTags}
-                name="optionsTags"
-                value={optionsTags}
-                onChange={(e) => addTags(e)}
-                multiple={true}
-                selectClass="register-select"
-                optionClass="register-option"
-                labelClass="register-label"
-                defaultName="Escolha suas palavras-chave"
-              />
-            <div className="tags">
-            {selectedTags.map((i,index) =>
-              <div key={index} className="selected-tags" onClick={(e) => removeTags(e)}>{i}</div>
-            )}
+            <label>Palavras Chave</label>
+            <input 
+                value={value} 
+                onChange={({ target }) => setValue(target.value)} 
+                type={'text'}  
+                placeholder={placeholder} 
+                className={'input-tag-list'} 
+                onFocus={() => setShowList(true)}
+                onBlur={() => setTimeout(() => setShowList(false), 200)}
+            />
+            <ul onClick={(e) => e.stopPropagation()} className={`list   ${showList ? '' : 'hide'}`}>
+                {filterTags(value).map(sk => renderOptions(
+                    sk,
+                    (tag) => addTags({ tags, toAdd: tag, handleChange })
+                ))}
+            </ul>
+            <div className={'tags'}>
+                {tags.map((tag, index) =>
+                    <div
+                        key={index}
+                        className="selected-tags"
+                        onClick={() => removeTags({ tags, toDelete: tag, handleChange })}
+                    >
+                        {tag}
+                        <FaTimes className="close-icon" />
+                    </div>
+                )}
             </div> 
         </div>
     );
+}
+
+SelectTags.propTypes = {
+    placeholder: PropTypes.string.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default SelectTags;

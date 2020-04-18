@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 .input-field{
-    border-radius: .3rem;
+    border-radius: 10px;
     border: none;
 }
 

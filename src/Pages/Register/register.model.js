@@ -1,4 +1,4 @@
-{
+export default {
     "gender":[
         "Mulher cisgênero",
         "Mulher trans",
@@ -310,4 +310,4 @@
         "Contrarregra",
         "Trilheiro/Músico de cinema"
     ]
-}
+};
