@@ -55,3 +55,7 @@ label {
     margin-bottom: 1.5rem;
     font-size: 22px;
 }
+
+input {
+    border: 0;
+}
