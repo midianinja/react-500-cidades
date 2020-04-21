@@ -5,6 +5,7 @@ import SelectTags from "../../../components/SelectTags";
 import Input from "../../../components/Input";
 import Select from "../../../components/Select";
 import Button from "../../../components/Button";
+import Snackbar from '../../../components/Snackbar';
 import { phoneMask, cepMask } from '../../../components/Masks';
 import options from '../register.model';
 
@@ -217,6 +218,7 @@ const Form = ({
           children="Criar conta"
           className="btn3D--blue"
         />
+        <Snackbar ref={} />
         <Link to="/">
           <Button
             children="Cancelar"
