@@ -1,26 +1,31 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import './styles.css';
+import Store from '../../store/Store';
 
 
 
-const Snackbar = ({
-    props,
-    isActive,
-    setIsActive,
-    message,
-}) => {
-    const [isActive, setIsActive] = useState(false);
-    const openSnackBar = (message = 'Something went wrong...') => {
-        message = message;
-        this.setIsActive({ isActive: true }, () => {
-            setTimeout(() => {
-                this.setIsActive({ isActive: false });
-            }, 3000);
-        });
+const Snackbar = () => {
+    const { state, dispatch } = useContext(Store);
+    const hideClass = state.toast.show ? '' : 'hide'
+    if (state.toast.show) {
+        setTimeout(() => {
+            dispatch({ type: 'HIDE_TOAST' });
+        }, 5000);
     }
+
     return (
-        <div className={isActive ? ['snackbar', 'show'].join(" ") : 'snackbar'}>
-            {message}
+        <div className={`snackbar ${hideClass}`}>
+            <img className="toast-icon" alt={state.toast.msg} src="/icons/green-check.svg" />
+            {state.toast.msg}
         </div>
     )
 };
+
+Snackbar.propTypes = {
+    isActive: PropTypes.bool.isRequired,
+    setIsActive: PropTypes.bool.isRequired,
+    message: PropTypes.bool.isRequired,
+}
+
+export default Snackbar;
