@@ -7,8 +7,8 @@
     border: none;
 }
 
-/* .input-field:focus{}*/
-
-.label-field{
-    font-weight: 700;
+::placeholder {
+    color: var(--light-gray);
+    opacity: 1; /* Firefox */
 }
+

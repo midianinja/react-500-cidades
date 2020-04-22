@@ -49,9 +49,13 @@
 
 .input-tag-list {
     width: 100%;
-    background-color: #F1F1F1;
-    border-radius: .3rem;
     padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--lighter-gray);
+    padding: .5rem;
+    margin-bottom: 5px;
+    min-width: 250px;
 }
 
 .hide {

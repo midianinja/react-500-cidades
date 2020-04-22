@@ -1,0 +1,142 @@
+.register-form{
+  display: flex;
+  flex-direction: column;
+  margin: auto 11vw;
+}
+
+.biography{
+  border-radius: 10px;
+  border:none;
+  resize: none;
+  background-color:var(--lighter-gray);
+  padding: 1rem;
+  width: 100%;
+  height: 23vh;
+  margin-bottom: 20px;
+}
+
+.heading-terciary{
+  font-size: 22px;
+}
+
+.add-details{
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.register-input{
+  border-radius: 10px;
+  border:none;
+  background-color: var(--lighter-gray);
+  padding: .5rem;
+}
+
+@media(max-width: 768px) {
+  .register-input {
+      width: 100%;
+      margin: 0;
+  }
+  .register-select {
+      width: 100%;
+  }
+}
+
+.register-label{
+   color: var(--gray-02);
+}
+
+.register-select{
+  cursor:pointer;
+  background-color: var(--lighter-gray);
+  padding: .5rem;
+}
+.register-option{
+  background-color: var(--lighter-gray);
+}
+
+.btn3D--transparent{
+  color: var(--blue);
+  background-color: transparent;
+  border: 1px solid var(--blue);
+  padding: .5rem 1.5rem;
+}
+
+.register-submit{
+  text-align: center;
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+  margin: 0 0 20px;
+}
+
+.common-input {
+  width: 100%;
+}
+
+.tags-style {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .last-row {
+    justify-content: flex-start;
+  }
+  
+  .common-input.email {
+    width: 65%;
+  }
+  
+  .common-input.phone {
+    width: 30%;
+  }
+
+  .common-input.insta  {
+    width: 32%;
+  }
+  .common-input.face {
+    width: 32%;
+  }
+  .common-input.site {
+    width: 32%;
+  }
+  
+  .common-input.birth-date {
+    width: 24%;
+  }
+  .common-input.gender {
+    width: 24%;
+  }
+  .common-input.sexual-orientation {
+    width: 24%;
+  }
+  .common-input.race {
+    width: 24%;
+  }
+ 
+  .common-input.zipcode {
+    width: 32%;
+  }
+  .common-input.neighborhood {
+    width: 32%;
+  }
+  .common-input.city {
+    width: 32%;
+  }
+  
+  .common-input.state {
+    width: 32%;
+    margin-right: 15px;
+  }
+  .common-input.country {
+    width: 32%;
+  }
+
+  
+}

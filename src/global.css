@@ -14,6 +14,7 @@
     --darker-green: #5E9690;
     --red: #DF4545;
     --darker-red: #B42E2E;
+    --gray-02: #BFBFBF;
     --white: #fff;
     --brown: #3B2737; 
     --eggplant: #4B3046;
@@ -49,11 +50,6 @@ label {
 .heading-secondary{
     margin-bottom: 1.5rem;
     font-size: 27px;
-}
-
-.heading-terciary{
-    margin-bottom: 1.5rem;
-    font-size: 22px;
 }
 
 input {

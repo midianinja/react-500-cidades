@@ -11,10 +11,11 @@ const Select = ({
     labelName,
     multiple,
     defaultName,
-    style
+    style,
+    adicionalClass
 }) => {
     return (
-        <div className="field">
+        <div className={`field ${adicionalClass}`}>
             <label htmlFor={name} className={`label-field ${labelClass}`}>{labelName}</label>
             <select id={name} className={`input-field ${selectClass}`} name={name} value={value} onChange={onChange} multiple={false} style={style}>
                 <option className={optionClass} defaultValue={value}>{defaultName}</option>

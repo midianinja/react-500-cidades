@@ -12,10 +12,11 @@ const Input = ({
     labelName,
     autofocus,
     style,
-    maxlength
+    maxlength,
+    adicionalClass,
 }) => {
     return (
-        <div className="field">
+        <div className={`field ${adicionalClass}`}>
             <label htmlFor={name} className={`label-field ${labelClass}`}>{labelName}</label>
             <input 
                 name={name} 
