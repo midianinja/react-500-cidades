@@ -31,12 +31,13 @@ const addTags = ({ tags, toAdd, handleChange }) => {
 
 const SelectTags = ({
     tags, placeholder, handleChange,
+    adicionalClass,
 }) => {
     const [value, setValue] = useState('');
     const [showList, setShowList] = useState(false)
 
     return (
-        <div className="tags-field">
+        <div className={`tags-field ${adicionalClass}`}>
             <label>Palavras Chave</label>
             <input 
                 value={value} 
@@ -70,7 +71,6 @@ const SelectTags = ({
 }
 
 SelectTags.propTypes = {
-    placeholder: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 }

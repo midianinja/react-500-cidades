@@ -8,7 +8,6 @@ export const registerUserMutation = gql`
       user: $user
     ) {
       id
-      tipology
       name
       profile_image {
         mimified

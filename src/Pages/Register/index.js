@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FaPen, FaSave } from "react-icons/fa";
 import options from './register.model';
 import Input from '../../components/Input';
@@ -7,18 +7,42 @@ import Select from '../../components/Select';
 import './styles.css';
 import { registerAction } from './controller';
 import Form from './components/Form';
+import Store from '../../store/Store';
 
-// const REGISTER_USER = gql`
-//     mutation user?? (
-//      $name: String
-//      ) { }
+const renderNameField = ({
+  edit, setEdit, userInfo, onChangeUserInfo,
+}) =>{ 
+  if (!edit) {
+    return (
+      <>
+        <h1 className="add-name">{userInfo.name}</h1>
+        <FaPen size={20} color="#888" onClick={() => setEdit(true)} />
+      </>
+    );
+  }
 
-//      {tipology, name, job, profile_image, cover_image, biography, skills, email, phone, instagram, facebook,
-//      site_address, birth_date, gender, sexual_orientation, race}
+  return (
+      <>
+        <div className="add-name">
+          <Input
+            name="name"
+            value={userInfo.name}
+            onChange={onChangeUserInfo}
+            type="text"
+            inputClass="name-input"
+            autofocus={true}
+            maxlength="33"
+            style={{ "width": userInfo.name.length + 'ch' }}
+          />
+        </div>
+        <FaSave size={20} color="#888" onClick={() => setEdit(false)} />
+      </>
+    );
+}
 
 const Register = () => {
-  // const {loading, data: {putUser: user} } = useQuery(PUT_USER_QUERY) 
   const [edit, setEdit] = useState(false);
+  const { dispatch } = useContext(Store);
   const [loading, setLoading] = useState(false);
   const [skills, setSkills] = useState([]);
   const [userInfo, setUserInfo] = useState({
@@ -26,14 +50,14 @@ const Register = () => {
     job: 'Profissão',
     profile_image: '',
     cover_image: '',
-    biography: 'Biogragfia do carilho, da silva salro, jorge dragão, note de olivera',
+    biography: '',
     skills: [],
-    email: 'email@mail.com',
-    phone: '11986756060',
-    instagram: 'www.instagram.com/lokaum',
-    facebook: 'www.facebook.com/lokinho',
-    site_address: 'meusite.com.br',
-    birth_date: '2020-04-01',
+    email: '',
+    phone: '',
+    instagram: '',
+    facebook: '',
+    site_address: '',
+    birth_date: '',
     gender: '',
     sexual_orientation: '',
     race: '',
@@ -44,15 +68,14 @@ const Register = () => {
     number: '',
     complement: '',
     district: '',
-    district2: '',
     city: '',
     zipcode: '',
     state: '',
     country: '',
-    place_id: '',//google
-    geometry: {},//google
-    latitude: '',//google
-    longitude: ''//google
+    place_id: '',
+    geometry: {},
+    latitude: '',
+    longitude: ''
   });
 
   const onChangeUserInfo = (e) => {
@@ -64,7 +87,7 @@ const Register = () => {
 
   const getAddress = async (zipcodeInput) => {
     try {
-      const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcodeInput}&sensor=false&language=pt&key=${process.env.REACT_APP_MAP_KEY}`);
+      const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcodeInput}&language=pt&key=${process.env.REACT_APP_MAP_KEY}`);
       const result = await zipcodeAddress.json();
       if (result.results.length > 0) {
         const placeResults = result.results[0];
@@ -73,6 +96,7 @@ const Register = () => {
           city: placeResults.address_components.find(i => i.types.includes("administrative_area_level_2")).long_name,
           state: placeResults.address_components.find(i => i.types.includes("administrative_area_level_1")).long_name,
           country: placeResults.address_components.find(i => i.types.includes("country")).long_name,
+          district: placeResults.address_components.find(i => i.types.includes("sublocality")).long_name,
           geometry: placeResults.geometry.bounds,
           place_id: placeResults.place_id,
           latitude: placeResults.geometry.location.lat,
@@ -89,26 +113,27 @@ const Register = () => {
   useEffect(() => {
     if (addressInfo.zipcode.length === 9) {
       const zipcodeInput = addressInfo.zipcode.replace(/-/g, "");
-      return getAddress(zipcodeInput);
+      console.log('zipcodeInput:', zipcodeInput)
+      getAddress(zipcodeInput);
     }
   }, [addressInfo.zipcode])
 
   return (
     <div className="register-container">
       {/* component menu */}
-      <section className="register-cover" style={{ backgroundImage: userInfo.cover_image ? `url(${userInfo.profile_image})` : 'linear-gradient(to bottom, var(--light-gray) 50%, var(--gray) 100% )' }}>
+      <section className="register-cover" style={{ backgroundImage: userInfo.cover_image ? `url(${userInfo.cover_image.url})` : 'linear-gradient(to bottom, var(--light-gray) 50%, var(--gray) 100% )' }}>
         <div className="cover-photo">
           <InputFile
             id="cover_image"
             name="cover_image"
             onChange={(e) => setUserInfo({
               ...userInfo,
-              cover_image: URL.createObjectURL(e.target.files[0]),
+              cover_image: { file: e.target.files[0], url: URL.createObjectURL(e.target.files[0])},
             })}
             inputClass="cover-image"
           />
         </div>
-        <div className="add-photo" style={{ backgroundImage: `url(${userInfo.cover_image})` }}>
+        <div className="add-photo" style={{ backgroundImage: `url(${userInfo.profile_image.url})` }}>
           <InputFile
             borderRadius="100%"
             id="profile_image"
@@ -116,36 +141,14 @@ const Register = () => {
             value={userInfo.profile_image}
             onChange={(e) => setUserInfo({
               ...userInfo,
-              profile_image: URL.createObjectURL(e.target.files[0]),
+              profile_image: { file: e.target.files[0], url: URL.createObjectURL(e.target.files[0])},
             })}
             inputClass="profile-image"
           />
         </div>
         <div className="register-text">
           <div className="register-edit-text">
-            {edit
-              ? (
-                <>
-                  <div className="add-name">
-                    <Input
-                      name="name"
-                      value={userInfo.name}
-                      onChange={onChangeUserInfo}
-                      type="text"
-                      inputClass="name-input"
-                      autofocus={true}
-                      maxlength="33"
-                      style={{ "width": userInfo.name.length + 'ch' }}
-                    />
-                  </div>
-                  <FaSave size={20} color="#888" onClick={() => setEdit(false)} />
-                </>
-              ) : (
-                <>
-                  <h1 className="add-name">{userInfo.name}</h1>
-                  <FaPen size={20} color="#888" onClick={() => setEdit(true)} />
-                </>
-              )}
+            {renderNameField({ edit, setEdit, userInfo, onChangeUserInfo })}
           </div>
           <Select
             options={options.job}
@@ -173,10 +176,8 @@ const Register = () => {
           [e.target.name]: e.target.value,
         })}
         onSubmit={(event) => registerAction({
-          event,
-          userInfo,
-          addressInfo,
-          setLoading,
+          event, userInfo, dispatch,
+          addressInfo, setLoading, skills,
         })}
         setLoading={setLoading}
         loading={loading}
