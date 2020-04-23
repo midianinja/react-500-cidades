@@ -10,6 +10,7 @@ allUsers(
 user: $user
 paginator: $paginator
 ){
+  id
   name
 }
 }`

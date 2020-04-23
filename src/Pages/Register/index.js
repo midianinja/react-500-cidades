@@ -8,6 +8,8 @@ import './styles.css';
 import { registerAction } from './controller';
 import Form from './components/Form';
 import Store from '../../store/Store';
+// import Menu from '../../components/Menu';
+// import Routes from '../../routes';
 
 const renderNameField = ({
   edit, setEdit, userInfo, onChangeUserInfo,
@@ -120,7 +122,9 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      {/* component menu */}
+      {/* <Menu>
+        <Routes/>
+      </Menu> */}
       <section className="register-cover" style={{ backgroundImage: userInfo.cover_image ? `url(${userInfo.cover_image.url})` : 'linear-gradient(to bottom, var(--light-gray) 50%, var(--gray) 100% )' }}>
         <div className="cover-photo">
           <InputFile

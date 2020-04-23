@@ -5,30 +5,46 @@ import './styles.css';
 import { userQueries } from "./queries";
 import apollo from '../../service/apollo';
 
+
+
+
 const UserList = () => {
 
     apollo.query({
         query: userQueries,
         variables: {
-            user: {
-
-            }
+            user: {}
         }
     })
+        .then(result => {
+            const data = result
+
+
+            console.log(data.data.allUsers) 
+        })
+
+
 
     return (
         <>
             <Menu>
                 <Routes />
             </Menu>
-            {/* {data.users.map(({ id, name }) => (
-                <div key={id}>
-                    <p>
-                        {id}: {name}
-                    </p>
-                </div>
+            {({ loading, error, data }) => {
+                if (loading) return <p>Loading</p>
+                if (error) return <p>Error</p>
 
-            ))}; */}
+                return data.data.allUsers.map(({ id, name }) => (
+                    <div key={id}>
+                        <p>
+                            {`Usuário: ${name}`}
+                        </p>
+                    </div>
+                ))
+
+            }
+
+            }
         </>
     )
 
