@@ -1,29 +1,29 @@
-.userinfo-container {
-    display: flex;
-    padding: 0 60px;
-    padding-top: 20px;
-    justify-content: center;
+.card--blue{
+    color: var(--white);
+    background-color: var(--blue);
+    border: none;
+    padding: .5rem 1.5rem;
+    border-radius: 20px;
 }
 
-.userinfo-container ul {
-    flex-direction: row;
-    list-style: none;
-    justify-content: space-between;
+.div-usercard {
+    margin: 20px;
     align-items: center;
-
+    min-width: 260px;
+    min-height: 210px;
+    max-width: 350px;
+    max-height: 210px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 3px 3px 17px -2px lightgrey;
+    border-radius: 7px;
 }
-
-.userinfo-container ul li {
-    background: #fff;
-    padding: 24px;
-    border-radius: 8px;
-    position: relative;
+.container-usercard {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
-
-
-.userinfo-container ul li strong {
-    display: block;
-    margin-bottom: 16px;
-    color:#41414d;
+.userinfo {
+    margin: 20px;
 }
-

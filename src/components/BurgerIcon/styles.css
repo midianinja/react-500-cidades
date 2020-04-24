@@ -6,7 +6,7 @@
   top: 0px;
   left: 10px;
   z-index: 9999;
-  background-color: var(--brown);
+  background-color: transparent;
   padding: 10px;
   height: 2.7rem;
 }
@@ -16,7 +16,7 @@
 .bar3 {
   width: 25px;
   height: 3px;
-  background-color: var(--white);
+  background-color: var(--brown);
   margin: 4px 0;
   transition: 0.4s;
 }
