@@ -20,7 +20,7 @@ const UserList = () => {
             .then(result => {
                 setData(result.data.allUsers)
                 setAddress(result.data.allAdresses)
-
+                console.log(result.data.skills)
             })
 
     }, [])
@@ -31,14 +31,15 @@ const UserList = () => {
             <Menu>
                 <Routes />
             </Menu>
-            <section className="container-usercard">
+            <section className="container-usercard gradient">
                 {data.map(({ id, name, job, skills }) => (
                     <div className="div-usercard" key={id}>
                         <p className="userinfo">   {`ID: ${id}`}
                             {`Usuário: ${name}`}
                             {`Trabalho: ${job}`}
                         </p>
-                        <p className="card--blue"> {`${skills}`}</p>
+                        {}
+                        <p className="card--blue">{`${skills}`}</p>
                     </div>
                 ))
                 }

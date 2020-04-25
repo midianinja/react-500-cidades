@@ -5,19 +5,18 @@
     padding: .5rem 1.5rem;
     border-radius: 20px;
 }
-
-.div-usercard {
+.div-usercard { 
     margin: 20px;
     align-items: center;
     min-width: 260px;
     min-height: 210px;
     max-width: 350px;
     max-height: 210px;
-    display: flex;
     flex-direction: column;
     padding: 20px;
     box-shadow: 3px 3px 17px -2px lightgrey;
     border-radius: 7px;
+    display: flex;
 }
 .container-usercard {
     display: flex;
@@ -27,3 +26,14 @@
 .userinfo {
     margin: 20px;
 }
+
+.gradient {
+    background-image:
+      linear-gradient(
+        to top, 
+        rgba(206, 206, 206, 0.51),
+        #ffffff, 
+        #ffffff, 
+        rgba(206, 206, 206, 0.51)
+      );
+  }
