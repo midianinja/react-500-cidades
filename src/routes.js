@@ -6,7 +6,7 @@ import Register from './Pages/Register';
 import Snackbar from './components/Snackbar';
 // import Profile from './Pages/Profile';
 import UserList from './Pages/UserList';
-// import UserMap from './Pages/UserMap';
+import UserMap from './Pages/UserMap';
 
 export default function Routes() {
     return (
@@ -16,7 +16,7 @@ export default function Routes() {
                 <Route path="/register" component={Register} />
                 {/* <Route path="/profile" component={Profile} /> */}
                 <Route path="/userlist" component={UserList} />
-                {/* <Route path="/usermap" component={UserMap} /> */}
+                <Route path="/mapa" component={UserMap} />
             </Switch>
             <Snackbar />
         </BrowserRouter>
