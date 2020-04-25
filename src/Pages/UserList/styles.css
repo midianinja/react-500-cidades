@@ -1,14 +1,15 @@
-.card--blue{
+/* .card--blue{
     color: var(--white);
     background-color: var(--blue);
     border: none;
     padding: .5rem 1.5rem;
     border-radius: 20px;
-}
+    width: fit-content;
+} */
 .div-usercard { 
     margin: 20px;
     align-items: center;
-    min-width: 260px;
+    min-width: 339px;
     min-height: 210px;
     max-width: 350px;
     max-height: 210px;
@@ -16,7 +17,7 @@
     padding: 20px;
     box-shadow: 3px 3px 17px -2px lightgrey;
     border-radius: 7px;
-    display: flex;
+    display: grid;   
 }
 .container-usercard {
     display: flex;
@@ -37,3 +38,28 @@
         rgba(206, 206, 206, 0.51)
       );
   }
+
+  .skill-name {
+    color: var(--white);
+    font-weight: bold;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    background-color: var(--blue);
+    height: 30px;
+    border-radius: 20px;
+}
+
+.skill{
+    margin-top: 24px;
+    margin-bottom: 64px;
+    font-size: 14px;
+    
+}
+
+main .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}

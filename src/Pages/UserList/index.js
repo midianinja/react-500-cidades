@@ -24,25 +24,31 @@ const UserList = () => {
             })
 
     }, [])
-
+    const arr = ["java", "react", "vue"]
 
     return (
         <>
             <Menu>
                 <Routes />
             </Menu>
-            <section className="container-usercard gradient">
+            <main className="container-usercard gradient">
                 {data.map(({ id, name, job, skills }) => (
                     <div className="div-usercard" key={id}>
-                        <p className="userinfo">   {`ID: ${id}`}
+                        <p className="userinfo">
                             {`Usuário: ${name}`}
                             {`Trabalho: ${job}`}
                         </p>
-                        {}
-                        <p className="card--blue">{`${skills}`}</p>
+                        <section class="skills">
+                            <div class="skill">
+                                <div class="skill-name">{`${skills}`}</div>
+                            </div>
+                        </section>
                     </div>
+
                 ))
                 }
+
+
                 {/* {address.map(({ id, city }) => (
                     <div key={id}>
                         <p>
@@ -52,7 +58,7 @@ const UserList = () => {
                     </div>
                 ))
                 } */}
-            </section>
+            </main>
 
         </>
     )
