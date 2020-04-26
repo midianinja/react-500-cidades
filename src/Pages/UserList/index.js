@@ -51,10 +51,11 @@ const UserList = () => {
 
                 ))
                 }
-                <div>
+                <div className="botoes">
                     <Link to="/usermap">
                         <Button className="links-fixos">Mapa</Button>
                     </Link>
+    
                 </div>
             </main>
 
