@@ -10,7 +10,7 @@
     margin: 20px;
     align-items: center;
     min-width: 339px;
-    min-height: 210px;
+    min-height: fit-content;
     max-width: 350px;
     max-height: 210px;
     flex-direction: column;
@@ -62,3 +62,24 @@ main .skills {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+.links-fixos{
+    /*você pode alterar largura usando width*/
+    padding:5px;
+    background:rgba(0,0,0,0.2);
+    float:right;
+    z-index:0;
+    position:fixed;
+    bottom:20px;
+    right:15px;
+
+
+    color: var(--white);
+    background-color: var(--blue);
+    border: none;
+    padding: .5rem 1.5rem;
+    border-radius: 20px;
+    width: fit-content;
+  }
+
+  

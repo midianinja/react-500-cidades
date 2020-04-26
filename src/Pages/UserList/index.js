@@ -4,7 +4,9 @@ import Menu from '../../components/Menu';
 import './styles.css';
 import { userQueries } from "./queries";
 import apollo from '../../service/apollo';
-// import Button from '../../components/Button'
+import Button from '../../components/Button'
+import { Link } from "react-router-dom";
+
 const UserList = () => {
 
     const [data, setData] = useState([]);
@@ -49,6 +51,11 @@ const UserList = () => {
 
                 ))
                 }
+                <div>
+                    <Link to="/usermap">
+                        <Button className="links-fixos">Mapa</Button>
+                    </Link>
+                </div>
             </main>
 
         </>
