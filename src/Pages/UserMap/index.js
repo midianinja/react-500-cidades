@@ -1,6 +1,8 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import GoogleMap from 'google-map-react'
-import Marker from './components/Marker'
+import React, { useEffect, useCallback } from 'react';
+// import GoogleMap from 'google-map-react'
+// import Marker from './components/Marker'
+// import { Link } from 'react-router-dom';
+import pin from '../../assets/marcador-oportunidade.svg'
 import './styles.css';
 
 const agents = [
@@ -37,78 +39,88 @@ const agents = [
 ]
 
 const UserMap = () => {
-  const [centerMap, setCenterMap] = useState({lat:-15.763178, lng:-47.870717})
-  const [zoom, setZoom] = useState(12)
+  // const [centerMap, setCenterMap] = useState({lat:-15.763178, lng:-47.870717})
+  // const [zoom, setZoom] = useState(12)
 
-  return(
-    <div className="map-container">
-      <GoogleMap
-        bootstrapURLKeys={{key: process.env.REACT_APP_MAP_KEY}}
-        defaultCenter={centerMap}
-        defaultZoom={zoom}
-        yesIWantToUseGoogleMapApiInternals
-      > 
-        {agents.map(agent => 
-          <Marker 
-            key={agent.id}
-            lat={parseFloat(agent.lat)}
-            lng={parseFloat(agent.lng)}
-            content={agent}
-            zoom={zoom}
-          />
-        )}
-      </GoogleMap>
-    </div>
+  const initMap = useCallback(() => {
+    const map = new window.google.maps.Map(document.getElementById('map'), { //document.getElementById('map')
+        center: {lat:-15.763178, lng:-47.870717},
+        zoom: 12
+    });
+    
+    let infoWindow = new window.google.maps.InfoWindow();
+    agents.map(agent => {
+      const marker = new window.google.maps.Marker({
+        position: {lat:parseFloat(agent.lat), lng:parseFloat(agent.lng)}, 
+        icon: pin,
+        map: map
+      });
+      return marker.addListener('click', () => {
+        const skill = agent.skills.map((skill,index) => `<div class='agent-skills-item' key=${index}>${skill}</div>`)
+        infoWindow.setContent(
+        `<div class='info-window'>
+          <div class='agent-info'>
+            <div class='agent-info--img'></div>
+            <div>
+              <p class='agent-info--text1'>${agent.name}</p>
+              <p class='agent-info--text2'>${agent.city} / ${agent.state}</p>
+              <p class='agent-info--text3'>${agent.job}</p>
+            </div>
+          </div>
+          <div class='agent-skills'>${skill}</div>
+          <a href="#" class='agent-plus'>Ver Mais</a>
+        </div>`
+      )
+        return infoWindow.open(map, marker)
+      })
+    });
+  },[])
+
+  const loadMap = useCallback((url) => {
+    const scripts = window.document.getElementsByTagName('script')[0]
+    const newScript = document.createElement('script')
+    newScript.src = url
+    newScript.async = true
+    newScript.defer = true
+    scripts.parentNode.insertBefore(newScript, scripts)
+  }, [])
+
+  const renderMap = useCallback(() => {
+    loadMap(`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_KEY}&callback=initMap`);
+    window.initMap = initMap;
+  }, [initMap, loadMap])
+
+    useEffect(() => {
+        renderMap();
+    }, [renderMap]);
+
+  return (
+    <div id="map" className="map-container"></div>
   )
 }
 
 export default UserMap;
 
-//   const [centerMap, setCenterMap] = useState({lat:-15.763178, lng:-47.870717})
-//   const [zoom, setZoom] = useState(12)
-// const initMap = useCallback(() => {
-//   const map = new window.google.maps.Map(document.getElementById('map'), { //document.getElementById('map')
-//       center: {lat:-15.763178, lng:-47.870717},
-//       zoom: 12
-//   });
-  
-//   let infoWindow = new window.google.maps.Marker();
-//   agents.map(agent => {
-//       const marker = new window.google.maps.Marker({
-//           position: {lat:agent.lat, lng:agent.lng}, 
-//           map: map
-//       });
-//       return marker.addListener('click', () => {
-//           infoWindow.setContent(agent.name)
-//           return infoWindow.open(map, marker)
-//       })
-//   });
-// },[])
+  // const [centerMap, setCenterMap] = useState({lat:-15.763178, lng:-47.870717})
+  // const [zoom, setZoom] = useState(12)
 
-// const loadMap = useCallback((url) => {
-//   const scripts = window.document.getElementsByTagName('script')[0]
-//   const newScript = document.createElement('script')
-//   newScript.src = url
-//   newScript.async = true
-//   newScript.defer = true
-//   scripts.parentNode.insertBefore(newScript, scripts)
-// }, [])
-
-// const renderMap = useCallback(() => {
-//   loadMap(`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_KEY}&callback=initMap`);
-//   window.initMap = initMap;
-// }, [initMap, loadMap])
-
-//   useEffect(() => {
-//       renderMap();
-//   }, [renderMap]);
-
-// return (
-//   <div>
-//       <div 
-//           id="map" 
-//           className="map-container"
-//       >
-//       </div>
-//   </div>
-// )
+  // return(
+  //   <div className="map-container">
+  //     <GoogleMap
+  //       bootstrapURLKeys={{key: process.env.REACT_APP_MAP_KEY}}
+  //       defaultCenter={centerMap}
+  //       defaultZoom={zoom}
+  //       yesIWantToUseGoogleMapApiInternals
+  //     > 
+  //       {agents.map(agent => 
+  //         <Marker 
+  //           key={agent.id}
+  //           lat={parseFloat(agent.lat)}
+  //           lng={parseFloat(agent.lng)}
+  //           content={agent}
+  //           zoom={zoom}
+  //         />
+  //       )}
+  //     </GoogleMap>
+  //   </div>
+  // )

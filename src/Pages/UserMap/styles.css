@@ -1,4 +1,86 @@
 .map-container{
-    height: 500px;
-    width: 500px;
+    height: 100vh;
+    width: 100%;
+}
+
+.gm-style-iw.gm-style-iw-c{
+    min-height: 222px;
+    width: 260px;
+}
+
+.gm-style-iw-d{
+    overflow: unset;
+}
+
+.info-window{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height:100%;
+    width:100%;
+    padding-bottom: .4rem;
+    padding-left: 0.4rem;
+    font-size: 12px;
+}
+
+.agent-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+}
+  
+.agent-info--img {
+    border: 1px solid black;
+    border-radius: 100%;
+    width: 57px;
+    height: 57px;
+    margin-right: 20px;
+}
+  
+.agent-info--text1 {
+    margin-bottom: 2px;
+    font-size: 16px;
+    font-weight: 700;
+}
+  
+.agent-info--text2 {
+    margin-bottom: 2px;
+    font-size: 14px;
+    color: var(--gray);
+}
+  
+.agent-info--text3 {
+    margin-bottom: 0;
+    color: var(--gray);
+}
+  
+.agent-skills {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+.agent-skills-item {
+    background-color: var(--blue);
+    border-radius: 20px;
+    padding: .3rem .8rem;
+    color: var(--white);
+    margin: 0 .5rem .5rem 0;
+    text-transform: uppercase;
+}
+  
+.agent-plus {
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.agent-plus:hover {
+    color: var(--blue);
 }
