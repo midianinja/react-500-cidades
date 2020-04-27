@@ -16,7 +16,7 @@ const InputFile = (props) => {
                 type="file"
             />
             <label htmlFor={props.id}>
-                <FaCamera className={!props.value.file ? 'iconcamera' : 'iconcameraopacity'} />
+                <FaCamera className={props.value.file ? 'iconcameraopacity': 'iconcamera' } />
             </label>
         </div>
     );

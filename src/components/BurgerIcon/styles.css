@@ -6,7 +6,7 @@
   top: 0px;
   left: 10px;
   z-index: 9999;
-  background-color: var(--brown);
+  background-color: transparent;
   padding: 10px;
   height: 2.7rem;
 }

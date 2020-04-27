@@ -1,27 +1,31 @@
-icon{
-    cursor: pointer;
-    margin:0 3vh;
+
+.register-container{
+    overflow-x: hidden;
 }
 .register-cover {
-    height: 100%; 
-    width: 100%;
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover;
-    padding: 1rem 1rem 2rem 1rem;
     color: var(--off-white);
     font-weight: 700;
     font-size: 24px;
+}
+.gradient{
+    background-image: linear-gradient(to bottom, var(--light-gray) 50%, var(--gray) 100% ) !important;
+}
+.cover-photo{
+    z-index: 0;
+    padding: 1rem 1rem 2rem 1rem;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     margin-bottom: 4rem;
     position: relative;
+    background-position: 50% 40%;
+    background-repeat: no-repeat; 
+    background-size: cover;
 }
-.cover-photo {
+.cover-image {
     position: absolute;
-    top: 10%;
-    right: 4%;
+    bottom: 30%;
+    left: 38%;
 }
 .add-photo {
     display: flex;
@@ -31,7 +35,9 @@ icon{
     border-radius: 100%;
     height: 100px;
     width: 100px;
-    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     box-shadow: 0px 16px 19px -1px grey;
     margin: 5vw 1.5vw 0 5vw;
 }
@@ -55,6 +61,12 @@ icon{
     color: var(--white);
     font-size: 1.8rem;
     word-wrap: break-word;
+    margin-right: 10px;
+    line-height: 2;
+    text-shadow: 2px 2px #333;
+}
+.icons-input{
+   margin: 20px 5px;
 }
 .name-input{
     border: none;
@@ -69,7 +81,8 @@ icon{
 .job-select{
     cursor: pointer;
     background-color: transparent;
-    color:var(--white)
+    color:var(--white);
+    text-shadow: 2px 2px #333;
 }
 .job-option{
     color: var(--gray);
@@ -122,9 +135,6 @@ icon{
     }
     .add-job{ 
         font-size  : 1.5rem;
-    }
-    .register-cover{
-        padding: 2rem;
     }
     .add-photo{
         margin: 5vw 1.5vw 0 8vw;
