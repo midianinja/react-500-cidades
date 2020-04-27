@@ -1,8 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
-// import GoogleMap from 'google-map-react'
-// import Marker from './components/Marker'
-// import { Link } from 'react-router-dom';
-import pin from '../../assets/marcador-oportunidade.svg'
+import Input from '../../components/Input';
+import pin from '../../assets/marcador-oportunidade.svg';
 import './styles.css';
 
 const agents = [
@@ -39,13 +37,13 @@ const agents = [
 ]
 
 const UserMap = () => {
-  // const [centerMap, setCenterMap] = useState({lat:-15.763178, lng:-47.870717})
-  // const [zoom, setZoom] = useState(12)
 
   const initMap = useCallback(() => {
-    const map = new window.google.maps.Map(document.getElementById('map'), { //document.getElementById('map')
-        center: {lat:-15.763178, lng:-47.870717},
-        zoom: 12
+    const map = new window.google.maps.Map(document.getElementById('map'), {
+      center: {lat:-15.763178, lng:-47.870717},
+      zoom: 12,
+      mapTypeControl: false,
+      streetViewControl: false
     });
     
     let infoWindow = new window.google.maps.InfoWindow();
@@ -56,7 +54,7 @@ const UserMap = () => {
         map: map
       });
       return marker.addListener('click', () => {
-        const skill = agent.skills.map((skill,index) => `<div class='agent-skills-item' key=${index}>${skill}</div>`)
+        const skill = agent.skills.map((skill,index) => `<div class='agent-skills-item' id=${index}>${skill}</div>`).join('');
         infoWindow.setContent(
         `<div class='info-window'>
           <div class='agent-info'>
@@ -95,32 +93,11 @@ const UserMap = () => {
     }, [renderMap]);
 
   return (
-    <div id="map" className="map-container"></div>
+    <div>
+      <Input className="search-map"/>
+      <div id="map" className="map-container"></div>
+    </div>
   )
 }
 
 export default UserMap;
-
-  // const [centerMap, setCenterMap] = useState({lat:-15.763178, lng:-47.870717})
-  // const [zoom, setZoom] = useState(12)
-
-  // return(
-  //   <div className="map-container">
-  //     <GoogleMap
-  //       bootstrapURLKeys={{key: process.env.REACT_APP_MAP_KEY}}
-  //       defaultCenter={centerMap}
-  //       defaultZoom={zoom}
-  //       yesIWantToUseGoogleMapApiInternals
-  //     > 
-  //       {agents.map(agent => 
-  //         <Marker 
-  //           key={agent.id}
-  //           lat={parseFloat(agent.lat)}
-  //           lng={parseFloat(agent.lng)}
-  //           content={agent}
-  //           zoom={zoom}
-  //         />
-  //       )}
-  //     </GoogleMap>
-  //   </div>
-  // )

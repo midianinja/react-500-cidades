@@ -17,7 +17,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height:100%;
+    height: -webkit-fill-available;
     width:100%;
     padding-bottom: .4rem;
     padding-left: 0.4rem;
@@ -63,6 +63,7 @@
     flex-wrap: wrap;
     white-space: nowrap;
     font-weight: 400;
+    flex: 1;
 }
 
 .agent-skills-item {
@@ -72,6 +73,7 @@
     color: var(--white);
     margin: 0 .5rem .5rem 0;
     text-transform: uppercase;
+    height: 23px;
 }
   
 .agent-plus {
