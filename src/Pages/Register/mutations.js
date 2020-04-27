@@ -30,3 +30,27 @@ export const registerUserMutation = gql`
     }
   }
 `;
+
+export const registerAddressMutation = gql`
+  mutation createAddress(
+    $address: AddressInput!
+) {
+    createAddress(
+      address: $address
+  ) {
+      id
+      street
+      complement
+      district
+      city
+      number
+      zipcode
+      state
+      country
+      place_id
+      geometry
+      latitude
+      longitude
+    }
+  }
+`;
