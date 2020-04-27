@@ -4,8 +4,11 @@ import Menu from '../../components/Menu';
 import './styles.css';
 import { userQueries } from "./queries";
 import apollo from '../../service/apollo';
-import Button from '../../components/Button'
+import ToggleButton from './components/ToggleButton'
 import { Link } from "react-router-dom";
+import logoCircleImg from '../../assets/logo-circle.png';
+import Input from '../../components/Input';
+import { FaSearch } from 'react-icons/fa'
 
 const UserList = () => {
 
@@ -33,29 +36,56 @@ const UserList = () => {
                 <Routes />
             </Menu>
             <main className="container-usercard gradient">
+                <div className="search-icon">
+                    <Input
+                        name="name"
+                        type="text"
+                        inputClass="name-input"
+                        autofocus={true}
+                        maxlength="33"
+                        style={{ "color": "black" }}
+                        placeholder="Faça sua busca"
+                    />
+                    <label>
+                        <FaSearch/>
+                    </label>
+                </div>
+
+
+
                 {data.map(({ id, name, job }) => (
                     <div className="div-usercard" key={id}>
-                        <p className="userinfo">
-                            {`Usuário: ${name}`}
-                            {`Trabalho: ${job}`}
-                        </p>
-                        <section class="skills">
-                            {data.map(({ skills }) => (
-                                <div class="skill">
-                                    <p class="skill-name">{`${skills}`}</p>
+                        <div className="userinfo">
+                            <img
+                                className="logo-img"
+                                src={logoCircleImg}
+                                alt="Logotipo 500 Cidades"
+                            />
+                            <div className="user">
+                                <p>{`Rafaela Martins`}</p>
+                                <p>{`São Paulo/ SP`}</p>
+                                <p>{`Artesã`}</p>
+                            </div>
+
+                        </div>
+                        <div className="skills">
+                            {data.map(({ skills, id }) => (
+                                <div className="skill" key={id}>
+                                    <p className="skill-name">{`${skills}`}</p>
                                 </div>
                             ))}
 
-                        </section>
+                        </div>
                     </div>
-
                 ))
                 }
-                <div className="botoes">
+                <div className="pagination links-fixos">
                     <Link to="/usermap">
-                        <Button className="links-fixos">Mapa</Button>
+                        <ToggleButton className="btn-toggle">Mapa</ToggleButton>
                     </Link>
-    
+                    <Link to="/userlist">
+                        <ToggleButton className="btn-toggle--blue">Lista</ToggleButton>
+                    </Link>
                 </div>
             </main>
 
