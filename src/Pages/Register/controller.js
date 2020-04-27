@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { getBase64 } from "../../utils/file.utils";
 import apollo from "../../service/apollo";
-import { registerUserMutation } from "./mutations";
+import { registerUserMutation, registerAddressMutation } from "./mutations";
 
 const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
@@ -103,11 +103,15 @@ export const registerAction = async ({
     });
 
     const registeredUser = await sendUserToApi(mappedUser);
-    console.log('mappedUser:', mappedUser);
+    const registerAddress = await apollo.mutate({
+      mutation: registerAddressMutation,
+      variables: {
+        address: addressInfo,
+      }
+    });
+    console.log('registerAddress:', registerAddress);
     console.log('registeredUser:', registeredUser);
 
-    console.log('coverImage:', coverImage);
-    console.log('profileImage:', profileImage);
     dispatch({ type: 'SHOW_TOAST', data: 'Cadastro efetuado com sucesso!'});
     setLoading(false);
   } catch(err) {
