@@ -106,7 +106,7 @@ export const registerAction = async ({
     const registerAddress = await apollo.mutate({
       mutation: registerAddressMutation,
       variables: {
-        address: addressInfo,
+        address: { ...addressInfo, user: registeredUser.data.createUser.id },
       }
     });
     console.log('registerAddress:', registerAddress);
