@@ -103,15 +103,12 @@ export const registerAction = async ({
     });
 
     const registeredUser = await sendUserToApi(mappedUser);
-    const registerAddress = await apollo.mutate({
+    await apollo.mutate({
       mutation: registerAddressMutation,
       variables: {
         address: { ...addressInfo, user: registeredUser.data.createUser.id },
       }
     });
-    console.log('registerAddress:', registerAddress);
-    console.log('registeredUser:', registeredUser);
-
     dispatch({ type: 'SHOW_TOAST', data: 'Cadastro efetuado com sucesso!'});
     setLoading(false);
   } catch(err) {
