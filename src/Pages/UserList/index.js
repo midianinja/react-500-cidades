@@ -13,7 +13,6 @@ import { FaSearch } from 'react-icons/fa'
 const UserList = () => {
 
     const [data, setData] = useState([]);
-    // const [address, setAddress] = useState([]);
 
     useEffect(() => {
         apollo.query({
@@ -24,18 +23,18 @@ const UserList = () => {
         })
             .then(result => {
                 setData(result.data.allUsers)
+
                 console.log(result.data.allUsers)
             })
 
     }, [])
-
 
     return (
         <>
             <Menu>
                 <Routes />
             </Menu>
-            <main className="container-usercard gradient">
+            <main className="container-usercard">
                 <div className="search-icon">
                     <Input
                         name="name"
@@ -47,11 +46,10 @@ const UserList = () => {
                         placeholder="Faça sua busca"
                     />
                     <label>
-                        <FaSearch/>
+                        <FaSearch />
                     </label>
                 </div>
-
-                {data.map(({ id, name, job }) => (
+                {data.map(({ id, name, job, skills }) => (
                     <div className="div-usercard" key={id}>
                         <div className="userinfo">
                             <img
@@ -60,16 +58,14 @@ const UserList = () => {
                                 alt="Logotipo 500 Cidades"
                             />
                             <div className="user">
-                                <p>{`Rafaela Martins`}</p>
-                                <p>{`São Paulo/ SP`}</p>
-                                <p>{`Artesã`}</p>
+                                <p>{name}</p>
+                                <p>{job}</p>
                             </div>
-
                         </div>
                         <div className="skills">
-                            {data.map(({ skills, id }) => (
-                                <div className="skill" key={id}>
-                                    <p className="skill-name">{"Administração"}</p>
+                            {skills.map((skill) => (
+                                <div className="skill">
+                                    <p className="skill-name">{skill}</p>
                                 </div>
                             ))}
 

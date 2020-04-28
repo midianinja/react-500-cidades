@@ -12,6 +12,8 @@ paginator: $paginator
 ){
   name
   phone
+  job
+  skills
  address {
      country
      district

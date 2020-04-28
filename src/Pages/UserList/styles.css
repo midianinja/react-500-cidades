@@ -2,7 +2,7 @@
     margin: 20px;
     align-items: center;
     min-width: 339px;
-    min-height: fit-content;
+    min-height: 215px;
     max-width: 350px;
     max-height: 210px;
     flex-direction: column;
@@ -35,6 +35,7 @@
     text-transform: uppercase;
     padding: .3rem .8rem;
     margin: 0 .5rem .5rem 0;
+    white-space: nowrap;
 }
 
 .skill{
@@ -43,8 +44,8 @@
 }
 
 main .skills {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .links-fixos{
@@ -71,7 +72,12 @@ main .skills {
         margin: 100px;
     }
     .links-fixos{
+        z-index: 0;
+        position: fixed;
         top: 20px;
+        right: 15px;
+        border: none;
+        height: fit-content;
     }
 }
 
