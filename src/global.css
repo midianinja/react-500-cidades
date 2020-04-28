@@ -28,6 +28,8 @@ body {
     font: 400 16px Roboto, sans-serif;
     background: var(--white);
     -webkit-font-smoothing: antialiased;
+    position: relative;
+    margin: 0 auto;
 }
 
 button {
