@@ -1,13 +1,13 @@
 {
   "name": "quinhentascidades",
-  "version": "0.1.0",
+  "version": "1.22.0",
   "private": true,
   "dependencies": {
     "@apollo/federation": "^0.14.1",
     "@apollo/react-hooks": "^3.1.5",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.3",
+    "@testing-library/user-event": "^10.1.0",
     "apollo-boost": "^0.4.7",
     "apollo-client": "^2.6.8",
     "apollo-link-context": "^1.0.20",
@@ -16,7 +16,7 @@
     "graphql": "^15.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-icons": "^3.9.0",
+    "react-icons": "^3.10.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "reactjs-popup": "^1.5.0"

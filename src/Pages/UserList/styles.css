@@ -1,29 +1,74 @@
-.userinfo-container {
-    display: flex;
-    padding: 0 60px;
-    padding-top: 20px;
-    justify-content: center;
-}
 
-.userinfo-container ul {
-    flex-direction: row;
-    list-style: none;
-    justify-content: space-between;
+.div-usercard { 
+    margin: 20px;
     align-items: center;
-
+    min-width: 339px;
+    min-height: fit-content;
+    max-width: 350px;
+    max-height: 210px;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 3px 3px 17px -2px lightgrey;
+    border-radius: 12px;
+    display: grid;   
+}
+.container-usercard {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.user { 
+    display: flex;
+    flex-direction: column;
+}
+.userinfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-.userinfo-container ul li {
-    background: #fff;
-    padding: 24px;
-    border-radius: 8px;
+/* .gradient {
+    background-image:
+      linear-gradient(
+        to top, 
+        rgba(206, 206, 206, 0.51)0%,
+        #ffffff, 
+        #ffffff, 
+        #ffffff, 
+        #ffffff, 
+        rgba(206, 206, 206, 0.51)100%
+      );
+  } */
+
+  .skill-name {
+    color: var(--white);
+    font-weight: bold;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
     position: relative;
+    justify-content: center;
+    background-color: var(--blue);
+    height: 30px;
+    border-radius: 20px;
+    width: auto;
 }
 
-
-.userinfo-container ul li strong {
-    display: block;
-    margin-bottom: 16px;
-    color:#41414d;
+.skill{
+    margin: 10px 0px -5px 5px;
+    font-size: 14px;
+    
 }
 
+main .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.links-fixos{
+    float:right;
+    z-index:0;
+    position:fixed;
+    bottom:20px;
+    right:15px;
+    border: none;
+      }

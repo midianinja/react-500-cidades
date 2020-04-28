@@ -12,5 +12,19 @@ paginator: $paginator
 ){
   id
   name
+  job
+  skills
 }
-}`
+allAdresses{
+  id
+ city
+ state
+
+   }
+}
+
+
+
+
+ `
+
