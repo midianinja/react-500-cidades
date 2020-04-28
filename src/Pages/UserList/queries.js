@@ -10,21 +10,13 @@ allUsers(
 user: $user
 paginator: $paginator
 ){
-  id
   name
-  job
-  skills
+  phone
+ address {
+     country
+     district
+     city
+ }
 }
-allAdresses{
-  id
- city
- state
-
-   }
 }
-
-
-
-
  `
-

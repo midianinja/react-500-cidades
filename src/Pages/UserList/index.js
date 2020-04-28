@@ -13,7 +13,7 @@ import { FaSearch } from 'react-icons/fa'
 const UserList = () => {
 
     const [data, setData] = useState([]);
-    const [address, setAddress] = useState([]);
+    // const [address, setAddress] = useState([]);
 
     useEffect(() => {
         apollo.query({
@@ -24,7 +24,7 @@ const UserList = () => {
         })
             .then(result => {
                 setData(result.data.allUsers)
-                setAddress(result.data.allAdresses)
+                console.log(result.data.allUsers)
             })
 
     }, [])
@@ -51,8 +51,6 @@ const UserList = () => {
                     </label>
                 </div>
 
-
-
                 {data.map(({ id, name, job }) => (
                     <div className="div-usercard" key={id}>
                         <div className="userinfo">
@@ -71,7 +69,7 @@ const UserList = () => {
                         <div className="skills">
                             {data.map(({ skills, id }) => (
                                 <div className="skill" key={id}>
-                                    <p className="skill-name">{`${skills}`}</p>
+                                    <p className="skill-name">{"Administração"}</p>
                                 </div>
                             ))}
 
@@ -80,7 +78,7 @@ const UserList = () => {
                 ))
                 }
                 <div className="pagination links-fixos">
-                    <Link to="/usermap">
+                    <Link to="/mapa">
                         <ToggleButton className="btn-toggle">Mapa</ToggleButton>
                     </Link>
                     <Link to="/userlist">
