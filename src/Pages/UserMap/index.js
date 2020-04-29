@@ -1,11 +1,10 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import ToggleButton from '../UserList/components/ToggleButton'
+import ToggleButton from '../../components/ToggleButton';
 import pin from '../../assets/marcador-oportunidade.svg';
 import { FaSearch } from "react-icons/fa";
 import './styles.css';
-import { allUsersQuery } from "../UserList/queries";
-import apollo from '../../service/apollo';
+import AllUsers from '../../context/AllUsersContext'
 
 // const agents = [
 //     {
@@ -42,31 +41,18 @@ import apollo from '../../service/apollo';
 
 const UserMap = () => {
   const [search, setSearch] = useState('');
-  const [agents, setAgents] = useState('');
-
-  useEffect(() => {
-    apollo.query({
-        query: allUsersQuery,
-        variables: {
-            user: {}
-        }
-    })
-        .then(result => {
-            setAgents(result.data.allUsers.filter(el => Object.values(el).some(x => x == null) === false))
-        })
-
-}, [])
+  const {state} = useContext(AllUsers);
 
   const initMap = useCallback(() => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: {lat:-15.763178, lng:-47.870717},
+      center: {lat:-23.543095, lng:-46.627235},
       zoom: 12,
       mapTypeControl: false,
       streetViewControl: false
     });
     
     let infoWindow = new window.google.maps.InfoWindow();
-    agents.map(agent => {
+    state.map(agent => {
       const marker = new window.google.maps.Marker({
         position: {lat:agent.address.latitude, lng:agent.address.longitude}, 
         icon: pin,
@@ -91,7 +77,7 @@ const UserMap = () => {
         return infoWindow.open(map, marker)
       })
     });
-  },[agents])
+  },[state])
 
   const loadMap = useCallback((url) => {
     const scripts = window.document.getElementsByTagName('script')[0]
