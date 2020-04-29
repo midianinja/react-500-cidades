@@ -40,7 +40,6 @@ const agents = [
 
 const UserMap = () => {
   const [search, setSearch] = useState('');
-
   const initMap = useCallback(() => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat:-15.763178, lng:-47.870717},
