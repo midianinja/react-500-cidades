@@ -40,20 +40,6 @@ const agents = [
 
 const UserMap = () => {
   const [search, setSearch] = useState('');
-  // const [user, setUser] = useState([]);
-  // const [address, setAddress] = useState([]);
-
-  // useEffect(() => {
-  //   apollo.query({
-  //       query: userQueries,
-  //       variables: {
-  //         user: {}
-  //       }
-  //   })
-  //   .then(result => {
-  //       console.log(result)
-  //   })
-  // }, [])
 
   const initMap = useCallback(() => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
