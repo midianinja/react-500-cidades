@@ -80,7 +80,7 @@ const UserList = () => {
                 ))
                 }
                 <div className="pagination links-fixos">
-                    <Link to="/usermap">
+                    <Link to="/mapa">
                         <ToggleButton className="btn-toggle">Mapa</ToggleButton>
                     </Link>
                     <Link to="/userlist">

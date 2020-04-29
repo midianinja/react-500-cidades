@@ -1,6 +1,8 @@
-import React, { useEffect, useCallback } from 'react';
-import Input from '../../components/Input';
+import React, { useEffect, useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
+import ToggleButton from '../UserList/components/ToggleButton'
 import pin from '../../assets/marcador-oportunidade.svg';
+import { FaSearch } from "react-icons/fa";
 import './styles.css';
 
 const agents = [
@@ -37,6 +39,21 @@ const agents = [
 ]
 
 const UserMap = () => {
+  const [search, setSearch] = useState('');
+  // const [user, setUser] = useState([]);
+  // const [address, setAddress] = useState([]);
+
+  // useEffect(() => {
+  //   apollo.query({
+  //       query: userQueries,
+  //       variables: {
+  //         user: {}
+  //       }
+  //   })
+  //   .then(result => {
+  //       console.log(result)
+  //   })
+  // }, [])
 
   const initMap = useCallback(() => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
@@ -93,9 +110,30 @@ const UserMap = () => {
     }, [renderMap]);
 
   return (
-    <div>
-      <Input className="search-map"/>
-      <div id="map" className="map-container"></div>
+    <div className='map-container'>
+      <div className='map-input'>
+        <div className='input-container'>
+          <input 
+            name='search'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)} 
+            type='text' 
+            placeholder='Procurar...' 
+            id='search'
+            className='input-container--search'
+          />
+          <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
+        </div>
+      </div>
+      <div className="map-toggles">
+        <Link to="/mapa">
+            <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
+        </Link>
+        <Link to="/userlist">
+            <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
+        </Link>
+      </div>
+      <div id='map' className='map-display'></div>
     </div>
   )
 }
