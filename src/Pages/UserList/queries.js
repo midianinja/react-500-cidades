@@ -1,30 +1,28 @@
 import gql from 'graphql-tag';
 
-export const userQueries = gql`
+export const allUsersQuery = gql`
 query 
-allUsers(
-$user: UserInput!
-$paginator: PaginatorInput
-){
-allUsers(
-user: $user
-paginator: $paginator
-){
-  id
-  name
-  job
-  skills
-}
-allAdresses{
-  id
- city
- state
-
-   }
-}
-
-
-
-
- `
+  allUsers(
+    $user: UserInput!
+    $paginator: PaginatorInput
+  ){
+    allUsers(
+      user: $user
+      paginator: $paginator
+    ){
+      id
+      name
+      job
+      profile_image  {
+        mimified
+      }
+      skills
+      address{
+        city
+        state
+        latitude
+        longitude
+      }
+    }
+  }`
 

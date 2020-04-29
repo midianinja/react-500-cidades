@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Routes from '../../routes';
 import Menu from '../../components/Menu';
 import './styles.css';
-import { userQueries } from "./queries";
+import { allUsersQuery } from "./queries";
 import apollo from '../../service/apollo';
 import ToggleButton from './components/ToggleButton'
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ const UserList = () => {
 
     useEffect(() => {
         apollo.query({
-            query: userQueries,
+            query: allUsersQuery,
             variables: {
                 user: {}
             }
