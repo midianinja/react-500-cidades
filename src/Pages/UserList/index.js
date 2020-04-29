@@ -53,18 +53,19 @@ const UserList = () => {
                     <div className="div-usercard" key={id}>
                         <div className="userinfo">
                             <img
-                                className="logo-img"
+                                className="user-info--img"
                                 src={logoCircleImg}
                                 alt="Logotipo 500 Cidades"
                             />
                             <div className="user">
-                                <p>{name}</p>
-                                <p>{job}</p>
+                                <p className="p-name">{name}</p>
+                                <p className="p-city">{"São Paulo"}</p>
+                                <p className="p-job">{"Developer"}</p>
                             </div>
                         </div>
                         <div className="skills">
-                            {skills.map((skill) => (
-                                <div className="skill">
+                            {skills.map((skill, index) => (
+                                <div className="skill" id={index}>
                                     <p className="skill-name">{skill}</p>
                                 </div>
                             ))}

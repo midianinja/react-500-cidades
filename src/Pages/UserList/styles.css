@@ -16,13 +16,35 @@
     align-items: center;
     flex-direction: column;
 }
-.user { 
-    display: flex;
-    flex-direction: column;
-}
+
 .userinfo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+    justify-content: space-around;
+}
+.user-info--img {
+    border: 1px solid black;
+    border-radius: 100%;
+    width: 57px;
+    height: 57px;
+    margin-right: 20px;
+}
+.p-name {
+    margin-bottom: 2px;
+    font-size: 16px;
+    font-weight: 700;
+}
+.p-city {
+    margin-bottom: 2px;
+    font-size: 14px;
+    color: var(--gray);
+}
+.p-job {
+    margin-bottom: 0;
+    color: var(--gray);
+    font-size: 13px;
 }
   .skill-name {
     color: var(--white);
@@ -60,6 +82,7 @@ main .skills {
 @media (min-width: 560px){
     .div-usercard {
         max-width: none;
+        min-height: unset;
         width: 100%;
         display: flex;
         flex-direction: row;
