@@ -5,16 +5,14 @@ import apollo from '../service/apollo';
 
 const AllUsers = createContext();
 
-const INITIAL_STATE = 'INITIAL_STATE'
-
 export const initialState = data => ({
-    type:INITIAL_STATE,
+    type:'INITIAL_STATE',
     data
 })
 
 export const reducer = (state, action) => {
     switch(action.type){
-        case INITIAL_STATE:
+        case 'INITIAL_STATE':
             return [...action.data]
         default: 
             return state;
