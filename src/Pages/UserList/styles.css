@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
 }
 
 .userinfo {
@@ -81,6 +82,26 @@ main .skills {
 .links-fixos p, .infolist {
     display: none;
 }
+.input-container{
+    width: 28vw;
+    max-width: 600px;
+    padding-bottom: 10px;
+    min-width: 70px;
+    margin: 45px 10px 0px 10px;
+}
+
+.input-container--search{
+    box-shadow: 3px 3px 17px -2px lightgrey;
+    border-radius: 30px;
+    height: 54px;
+    padding: .2rem 1.2rem .2rem 3rem;
+    width: -webkit-fill-available;
+}
+.title-search {
+    padding: 10px 26px 15px 30px;
+    font-size: 18px;
+    white-space: break-spaces;
+}
 
 @media (min-width: 560px){
     .userinfo {
@@ -122,21 +143,21 @@ main .skills {
         margin: 0px 0px 0px -120px;
         color: var(--gray);
     }
+
+
 }
 
-/* @media (min-width: 992px){
+@media (min-width: 768px){
     .container-usercard {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin: 33px;
+        justify-content: flex-start;
+        align-items: flex-start;
     }
-    .links-fixos{
-        z-index: 0;
-        position: fixed;
-        top: 20px;
-        right: 15px;
-        border: none;
+    .input-container{
+        padding: 0px;
+        margin: 10px 0px 40px 23px;
     }
-    
-} */
+    .title-search {
+        padding: 0px 0px 65px 22px;
+        font-size: 28px;
+    }
+}
