@@ -1,0 +1,43 @@
+.header-profile {
+    width: 100%;
+    height: 280px;
+    background-image: linear-gradient(to bottom, var(--light-gray) 50%, var(--gray) 100% );
+    padding: 24px;
+    color: var(--white);
+}
+.image-profile {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+.header-title {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 36px;
+}
+.header-profession {
+    font-size: 16px;
+    line-height: 13px;
+}
+.contact-info p, .text-biography {
+    font-size: 16px;
+    line-height: 13px;
+    color: var(--brown); 
+}
+.contact-info p.minor-text {
+    font-size: 14px;
+    opacity: 0.5;
+}
+.blue-pills {
+    border-radius: 60px;
+    color: var(--white);
+    background-color: var(--blue);
+    padding: 5px 10px;
+    margin: .5rem;
+}
+.title-biography {
+    color: var(--blue);
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 36px;
+}
