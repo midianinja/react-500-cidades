@@ -11,6 +11,7 @@ import AllUsers from '../../context/AllUsersContext';
 
 const UserList = () => {
     const {state} = useContext(AllUsers);
+    console.log(state)
     return (
         <>
             <Menu>
@@ -41,8 +42,8 @@ const UserList = () => {
                         <div className="userinfo">
                             <img
                                 className="user-info--img"
-                                src={logoCircleImg}
-                                alt="Logotipo 500 Cidades"
+                                alt="user-photo"
+                                src={agent.profile_image.mimified}
                             />
                             <div className="user">
                                 <p className="p-name">{agent.name}</p>

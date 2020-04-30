@@ -18,7 +18,7 @@
 }
 
 .userinfo {
-    width: 50%;
+    width: 80%;
     display: flex;
     align-items: center;
     margin: 1rem;
@@ -83,6 +83,10 @@ main .skills {
 }
 
 @media (min-width: 560px){
+    .userinfo {
+        width: 50%;
+    }
+
     .div-usercard {
         max-width: none;
         min-height: unset;
