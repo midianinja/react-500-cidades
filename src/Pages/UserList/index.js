@@ -49,6 +49,11 @@ const UserList = () => {
                         <FaSearch />
                     </label>
                 </div>
+                <div className="infolist">
+                    <p>Agente</p>
+                    <p>Local</p>
+                    <p>Tags</p>
+                </div>
                 {data.map(({ id, name, job, skills }) => (
                     <div className="div-usercard" key={id}>
                         <div className="userinfo">
@@ -60,7 +65,7 @@ const UserList = () => {
                             <div className="user">
                                 <p className="p-name">{name}</p>
                                 <p className="p-city">{"São Paulo"}</p>
-                                <p className="p-job">{"Developer"}</p>
+                                <p className="p-job">{job}</p>
                             </div>
                         </div>
                         <div className="skills">
@@ -74,7 +79,8 @@ const UserList = () => {
                     </div>
                 ))
                 }
-                <div className="pagination links-fixos">
+                <div className="links-fixos">
+                    <p>Tipo de Vizualização</p>
                     <Link to="/mapa">
                         <ToggleButton className="btn-toggle">Mapa</ToggleButton>
                     </Link>
