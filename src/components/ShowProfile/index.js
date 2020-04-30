@@ -18,7 +18,7 @@ const ShowProfile = (props) => {
             overlayStyle={{ background: "rgb(255, 255, 255)" }}
             contentStyle={containerModal}
             closeOnDocumentClick={true}
-            trigger={(open) => <FaTimesCircle open={open} />}
+            trigger={(open) => <FaTimesCircle size={28} color={'#fff'} open={open} />}
         >
             {(close) => <ShowProfile close={close} />}>
             <header className="header-profile">

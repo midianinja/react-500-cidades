@@ -4,12 +4,14 @@ import ToggleButton from '../../components/ToggleButton';
 import pin from '../../assets/marcador-oportunidade.svg';
 import { FaSearch } from "react-icons/fa";
 import './styles.css';
-import AllUsers from '../../context/AllUsersContext'
+import AllUsers from '../../context/AllUsersContext';
+
+import ShowProfile from '../../components/ShowProfile';
 
 const UserMap = () => {
   const [search, setSearch] = useState('');
   const { state } = useContext(AllUsers);
-
+  console.log('state', state);
   const initMap = useCallback(() => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: -23.543095, lng: -46.627235 },
@@ -72,6 +74,7 @@ const UserMap = () => {
 
   return (
     <div className='map-container'>
+      <ShowProfile />
       <div className='map-input'>
         <div className='input-container'>
           <input
