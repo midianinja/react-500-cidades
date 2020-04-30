@@ -4,34 +4,30 @@ import Menu from '../../components/Menu';
 import './styles.css';
 import ToggleButton from '../../components/ToggleButton';
 import { Link } from "react-router-dom";
-import logoCircleImg from '../../assets/logo-circle.png';
 import Input from '../../components/Input';
 import { FaSearch } from 'react-icons/fa';
 import AllUsers from '../../context/AllUsersContext';
 
 const UserList = () => {
-    const {state} = useContext(AllUsers);
-    console.log(state)
+    const { state } = useContext(AllUsers);
+
     return (
         <>
             <Menu>
                 <Routes />
             </Menu>
             <main className="container-usercard">
-                <div className="search-icon">
-                    <Input
-                        name="name"
-                        type="text"
-                        inputClass="name-input"
-                        autofocus={true}
-                        maxlength="33"
-                        style={{ "color": "black" }}
-                        placeholder="Faça sua busca"
+                <div className='input-container'>
+                    <input
+                        name='search'
+                        type='text'
+                        placeholder='Procurar...'
+                        id='search'
+                        className='input-container--search'
                     />
-                    <label>
-                        <FaSearch />
-                    </label>
+                    <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
                 </div>
+                <h1 className="title-search">Você procurou por <strong>{state.length} Agentes</strong> em <strong>São Paulo</strong> </h1>
                 <div className="infolist">
                     <p>Agente</p>
                     <p>Local</p>
@@ -47,12 +43,12 @@ const UserList = () => {
                             />
                             <div className="user">
                                 <p className="p-name">{agent.name}</p>
-                                <p  className="p-city">{agent.address.city} / {agent.address.state}</p>
+                                <p className="p-city">{agent.address.city} / {agent.address.state}</p>
                                 <p className="p-job">{agent.job}</p>
                             </div>
                         </div>
                         <div className="skills">
-                            {agent.skills.map(( skill, index ) => (
+                            {agent.skills.map((skill, index) => (
                                 <div className="skill" key={index}>
                                     <p className="skill-name">{skill}</p>
                                 </div>
