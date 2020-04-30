@@ -20,8 +20,8 @@
 
 .input-container--search{
     border-radius: 30px;
-    height: 9vh;
-    padding: .2rem 1.2rem .2rem 2.5rem;
+    height: 54px;
+    padding: .2rem 1.2rem .2rem 3rem;
     width: -webkit-fill-available;
 }
 
@@ -68,6 +68,9 @@
 .gm-style-iw-d{
     overflow: unset;
 }
+button.gm-ui-hover-effect{
+margin: 10px !important;
+}
 
 .info-window{
     display: flex;
@@ -89,7 +92,7 @@
 }
   
 .agent-info--img {
-    border: 1px solid black;
+    border:none;
     border-radius: 100%;
     width: 57px;
     height: 57px;
