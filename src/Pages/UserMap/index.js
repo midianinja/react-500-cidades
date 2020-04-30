@@ -4,7 +4,8 @@ import ToggleButton from '../../components/ToggleButton';
 import pin from '../../assets/marcador-oportunidade.svg';
 import { FaSearch } from "react-icons/fa";
 import './styles.css';
-import AllUsers from '../../context/AllUsersContext'
+import AllUsers from '../../context/AllUsersContext';
+import NavigationBar from '../../components/NavigationBar';
 
 const UserMap = () => {
   const [search, setSearch] = useState('');
@@ -71,6 +72,8 @@ const UserMap = () => {
   }, [renderMap]);
 
   return (
+    <>
+    <NavigationBar />
     <div className='map-container'>
       <div className='map-input'>
         <div className='input-container'>
@@ -96,6 +99,7 @@ const UserMap = () => {
       </div>
       <div id='map' className='map-display'></div>
     </div>
+    </>
   )
 }
 

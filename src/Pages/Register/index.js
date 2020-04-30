@@ -9,6 +9,7 @@ import { registerAction } from './controller';
 import Form from './components/Form';
 import Store from '../../store/Store';
 import Menu from '../../components/Menu';
+import NavigationBar from '../../components/NavigationBar';
 import Routes from '../../routes';
 
 const renderNameField = ({
@@ -121,6 +122,8 @@ const Register = () => {
   }, [addressInfo.zipcode])
 
   return (
+    <>
+    <NavigationBar />
     <div className="register-container">
         <Menu>
           <Routes/>
@@ -189,6 +192,7 @@ const Register = () => {
           setSkills={setSkills}
         />
     </div>
+    </>
   );
 }
 
