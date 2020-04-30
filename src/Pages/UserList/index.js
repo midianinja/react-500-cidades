@@ -1,34 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import Routes from '../../routes';
 import Menu from '../../components/Menu';
 import './styles.css';
-import { userQueries } from "./queries";
-import apollo from '../../service/apollo';
-import ToggleButton from './components/ToggleButton'
+import ToggleButton from '../../components/ToggleButton';
 import { Link } from "react-router-dom";
 import logoCircleImg from '../../assets/logo-circle.png';
 import Input from '../../components/Input';
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch } from 'react-icons/fa';
+import AllUsers from '../../context/AllUsersContext';
 
 const UserList = () => {
-
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        apollo.query({
-            query: userQueries,
-            variables: {
-                user: {}
-            }
-        })
-            .then(result => {
-                setData(result.data.allUsers)
-
-                console.log(result.data.allUsers)
-            })
-
-    }, [])
-
+    const {state} = useContext(AllUsers);
     return (
         <>
             <Menu>
@@ -54,8 +36,8 @@ const UserList = () => {
                     <p>Local</p>
                     <p>Tags</p>
                 </div>
-                {data.map(({ id, name, job, skills }) => (
-                    <div className="div-usercard" key={id}>
+                {state.map(agent => (
+                    <div className="div-usercard" key={agent.id}>
                         <div className="userinfo">
                             <img
                                 className="user-info--img"
@@ -63,14 +45,14 @@ const UserList = () => {
                                 alt="Logotipo 500 Cidades"
                             />
                             <div className="user">
-                                <p className="p-name">{name}</p>
-                                <p className="p-city">{"São Paulo"}</p>
-                                <p className="p-job">{job}</p>
+                                <p className="p-name">{agent.name}</p>
+                                <p  className="p-city">{agent.address.city} / {agent.address.state}</p>
+                                <p className="p-job">{agent.job}</p>
                             </div>
                         </div>
                         <div className="skills">
-                            {skills.map((skill, index) => (
-                                <div className="skill" id={index}>
+                            {agent.skills.map(( skill, index ) => (
+                                <div className="skill" key={index}>
                                     <p className="skill-name">{skill}</p>
                                 </div>
                             ))}
