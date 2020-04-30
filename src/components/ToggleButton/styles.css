@@ -8,8 +8,9 @@
     transform: translate(26px, 0px);
 }
 .btn-toggle:hover {
-    filter: brightness(0.9);
+    background-color: var(--blue);
     transition: all 0.1s ease-in;
+    color: white;
 }
 
 .btn-toggle:focus{

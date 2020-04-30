@@ -1,9 +1,8 @@
-
 .div-usercard { 
     margin: 20px;
     align-items: center;
     min-width: 339px;
-    min-height: fit-content;
+    min-height: 215px;
     max-width: 350px;
     max-height: 210px;
     flex-direction: column;
@@ -17,51 +16,58 @@
     align-items: center;
     flex-direction: column;
 }
-.user { 
-    display: flex;
-    flex-direction: column;
-}
+
 .userinfo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-/* .gradient {
-    background-image:
-      linear-gradient(
-        to top, 
-        rgba(206, 206, 206, 0.51)0%,
-        #ffffff, 
-        #ffffff, 
-        #ffffff, 
-        #ffffff, 
-        rgba(206, 206, 206, 0.51)100%
-      );
-  } */
-
-  .skill-name {
-    color: var(--white);
-    font-weight: bold;
-    font-size: 12px;
+    width: 80%;
     display: flex;
     align-items: center;
-    position: relative;
+    margin: 1rem;
+    justify-content: space-around;
+}
+.user-info--img {
+    border: none;
+    border-radius: 100%;
+    width: 57px;
+    height: 57px;
+    margin-right: 20px;
+}
+.p-name {
+    margin-bottom: 2px;
+    font-size: 16px;
+    font-weight: 700;
+}
+.p-city {
+    margin-bottom: 2px;
+    font-size: 14px;
+    color: var(--gray);
+}
+.p-job {
+    margin-bottom: 0;
+    color: var(--gray);
+    font-size: 13px;
+}
+  .skill-name {
+    color: var(--white);
+    display: flex;
+    align-items: center;
     justify-content: center;
     background-color: var(--blue);
-    height: 30px;
     border-radius: 20px;
     width: auto;
+    text-transform: uppercase;
+    padding: .3rem .8rem;
+    margin: 0 .5rem .5rem 0;
+    white-space: nowrap;
 }
 
 .skill{
     margin: 10px 0px -5px 5px;
-    font-size: 14px;
-    
+    font-size: 14px;    
 }
 
 main .skills {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .links-fixos{
@@ -72,3 +78,65 @@ main .skills {
     right:15px;
     border: none;
       }
+.links-fixos p, .infolist {
+    display: none;
+}
+
+@media (min-width: 560px){
+    .userinfo {
+        width: 50%;
+    }
+
+    .div-usercard {
+        max-width: none;
+        min-height: unset;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .container-usercard {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 100px;
+    }
+    .links-fixos{
+        z-index: 0;
+        position: fixed;
+        top: 20px;
+        right: 15px;
+        border: none;
+        height: fit-content;
+    }
+    .links-fixos p {
+        display: flex;
+        margin: 0px 0px 0px 35px;
+        font-weight: 600;
+    }
+    .infolist{
+        width: 100%;
+        display: flex;
+        align-items: unset;
+        justify-content: space-around;
+        margin: 0px 0px 0px -120px;
+        color: var(--gray);
+    }
+}
+
+/* @media (min-width: 992px){
+    .container-usercard {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 33px;
+    }
+    .links-fixos{
+        z-index: 0;
+        position: fixed;
+        top: 20px;
+        right: 15px;
+        border: none;
+    }
+    
+} */

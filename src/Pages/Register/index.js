@@ -76,8 +76,8 @@ const Register = () => {
     country: '',
     place_id: '',
     geometry: {},
-    latitude: '',
-    longitude: ''
+    latitude: null,
+    longitude: null
   });
 
   const onChangeUserInfo = (e) => {

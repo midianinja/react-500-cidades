@@ -11,12 +11,13 @@ import AllUsers from '../../context/AllUsersContext';
 
 const UserList = () => {
     const {state} = useContext(AllUsers);
+    console.log(state)
     return (
         <>
             <Menu>
                 <Routes />
             </Menu>
-            <main className="container-usercard gradient">
+            <main className="container-usercard">
                 <div className="search-icon">
                     <Input
                         name="name"
@@ -28,24 +29,27 @@ const UserList = () => {
                         placeholder="Faça sua busca"
                     />
                     <label>
-                        <FaSearch/>
+                        <FaSearch />
                     </label>
                 </div>
-
+                <div className="infolist">
+                    <p>Agente</p>
+                    <p>Local</p>
+                    <p>Tags</p>
+                </div>
                 {state.map(agent => (
                     <div className="div-usercard" key={agent.id}>
                         <div className="userinfo">
                             <img
-                                className="logo-img"
-                                src={logoCircleImg}
-                                alt="Logotipo 500 Cidades"
+                                className="user-info--img"
+                                alt="user-photo"
+                                src={agent.profile_image.mimified}
                             />
                             <div className="user">
-                                <p>{agent.name}</p>
-                                <p>{agent.address.city} / {agent.address.state}</p>
-                                <p>{agent.job}</p>
+                                <p className="p-name">{agent.name}</p>
+                                <p  className="p-city">{agent.address.city} / {agent.address.state}</p>
+                                <p className="p-job">{agent.job}</p>
                             </div>
-
                         </div>
                         <div className="skills">
                             {agent.skills.map(( skill, index ) => (
@@ -58,7 +62,8 @@ const UserList = () => {
                     </div>
                 ))
                 }
-                <div className="pagination links-fixos">
+                <div className="links-fixos">
+                    <p>Tipo de Vizualização</p>
                     <Link to="/mapa">
                         <ToggleButton className="btn-toggle">Mapa</ToggleButton>
                     </Link>
