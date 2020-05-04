@@ -18,7 +18,7 @@ const UserList = () => {
             </Menu>
             <main className="container-usercard">
                 <div className='input-container'>
-                    <input
+                    <Input
                         name='search'
                         type='text'
                         placeholder='Procurar...'
@@ -38,7 +38,7 @@ const UserList = () => {
                         <div className="userinfo">
                             <img
                                 className="user-info--img"
-                                alt="user-photo"
+                                alt="Foto de perfil do Agente"
                                 src={agent.profile_image.mimified}
                             />
                             <div className="user">
@@ -63,7 +63,7 @@ const UserList = () => {
                     <Link to="/mapa">
                         <ToggleButton className="btn-toggle">Mapa</ToggleButton>
                     </Link>
-                    <Link to="/userlist">
+                    <Link to="/lista-de-agentes">
                         <ToggleButton className="btn-toggle--blue">Lista</ToggleButton>
                     </Link>
                 </div>

@@ -11,7 +11,6 @@ import ShowProfile from '../../components/ShowProfile';
 const UserMap = () => {
   const [search, setSearch] = useState('');
   const { state } = useContext(AllUsers);
-  console.log('state', state);
   const initMap = useCallback(() => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: -23.543095, lng: -46.627235 },
@@ -27,6 +26,7 @@ const UserMap = () => {
         icon: pin,
         map: map
       });
+      console.log('state', state);
       return marker.addListener('click', () => {
         const skill = agent.skills.map((skill, index) => `<div class='agent-skills-item' id=${index}>${skill}</div>`).join('');
         infoWindow.setContent(
@@ -53,7 +53,6 @@ const UserMap = () => {
       })
     });
   }, [state])
-
   const loadMap = useCallback((url) => {
     const scripts = window.document.getElementsByTagName('script')[0]
     const newScript = document.createElement('script')
@@ -93,7 +92,7 @@ const UserMap = () => {
         <Link to="/mapa">
           <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
         </Link>
-        <Link to="/userlist">
+        <Link to="/lista-de-agentes">
           <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
         </Link>
       </div>
