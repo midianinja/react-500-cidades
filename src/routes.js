@@ -13,10 +13,10 @@ export default function Routes() {
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Landing} />
-                <Route path="/register" component={Register} />
+                <Route path="/cadastre-se" component={Register} />
                 {/* <Route path="/profile" component={Profile} /> */}
                 <AllUsersProvider>
-                    <Route path="/userlist" component={UserList} />
+                    <Route path="/lista-de-agentes" component={UserList} />
                     <Route path="/mapa" component={UserMap} />
                 </AllUsersProvider>
             </Switch>
