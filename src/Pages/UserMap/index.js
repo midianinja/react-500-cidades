@@ -8,6 +8,9 @@ import AllUsers from '../../context/AllUsersContext';
 
 import ShowProfile from '../../components/ShowProfile';
 
+import NavigationBar from '../../components/NavigationBar';
+
+
 const UserMap = () => {
   const [search, setSearch] = useState('');
   const { state } = useContext(AllUsers);
@@ -72,6 +75,8 @@ const UserMap = () => {
   }, [renderMap]);
 
   return (
+    <>
+    <NavigationBar />
     <div className='map-container'>
       <ShowProfile />
       <div className='map-input'>
@@ -98,6 +103,7 @@ const UserMap = () => {
       </div>
       <div id='map' className='map-display'></div>
     </div>
+    </>
   )
 }
 
