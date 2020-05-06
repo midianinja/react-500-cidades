@@ -4,8 +4,7 @@ import ToggleButton from '../../components/ToggleButton';
 import pin from '../../assets/marcador-oportunidade.svg';
 import { FaSearch } from "react-icons/fa";
 import './styles.css';
-import AllUsers from '../../context/AllUsersContext';
-
+import Store from '../../store/Store';
 import ShowProfile from '../../components/ShowProfile';
 
 import NavigationBar from '../../components/NavigationBar';
@@ -13,7 +12,8 @@ import NavigationBar from '../../components/NavigationBar';
 
 const UserMap = () => {
   const [search, setSearch] = useState('');
-  const { state } = useContext(AllUsers);
+  const { state } = useContext(Store);
+
   const initMap = useCallback(() => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: -23.543095, lng: -46.627235 },
@@ -23,13 +23,13 @@ const UserMap = () => {
     });
 
     let infoWindow = new window.google.maps.InfoWindow();
-    state.map(agent => {
+    state.allusers.map(agent => {
       const marker = new window.google.maps.Marker({
         position: { lat: agent.address.latitude, lng: agent.address.longitude },
         icon: pin,
         map: map
       });
-      console.log('state', state);
+
       return marker.addListener('click', () => {
         const skill = agent.skills.map((skill, index) => `<div class='agent-skills-item' id=${index}>${skill}</div>`).join('');
         infoWindow.setContent(
@@ -94,10 +94,10 @@ const UserMap = () => {
           </div>
         </div>
         <div className="map-toggles">
-          <Link to="/mapa">
+          <Link to="/users/mapa">
             <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
           </Link>
-          <Link to="/lista-de-agentes">
+          <Link to="/users/lista-de-agentes">
             <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
           </Link>
         </div>

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import Popup from "reactjs-popup";
-import AllUsers from '../../context/AllUsersContext';
 import { FaTimesCircle } from "react-icons/fa";
 
 
 import './styles.css';
+import Store from '../../store/Store';
 
 const ShowProfile = (props) => {
 
@@ -15,7 +15,7 @@ const ShowProfile = (props) => {
         width: '50%',
         padding: '2rem',
     };
-    const { state } = useContext(AllUsers);
+    const { state } = useContext(Store);
     console.log('state', state);
     return (
         <Popup
@@ -24,7 +24,7 @@ const ShowProfile = (props) => {
             contentStyle={containerModal}
             closeOnDocumentClick={false}
             trigger={({ open }) => <FaTimesCircle size={28} color={'#333'} open={open} />}>
-            {state.map(agent => (
+            {state.allusers.map(agent => (
                 <article className="profile"key={agent.id}>
                     {(close) => <ShowProfile close={close} />}
                     <header className="header-profile">
