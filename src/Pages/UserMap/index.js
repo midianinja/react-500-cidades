@@ -76,33 +76,33 @@ const UserMap = () => {
 
   return (
     <>
-    <NavigationBar />
-    <div className='map-container'>
-      <ShowProfile />
-      <div className='map-input'>
-        <div className='input-container'>
-          <input
-            name='search'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            type='text'
-            placeholder='Procurar...'
-            id='search'
-            className='input-container--search'
-          />
-          <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
+      <NavigationBar />
+      <div className='map-container'>
+        <ShowProfile />
+        <div className='map-input'>
+          <div className='input-container'>
+            <input
+              name='search'
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              type='text'
+              placeholder='Procurar...'
+              id='search'
+              className='input-container--search'
+            />
+            <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
+          </div>
         </div>
+        <div className="map-toggles">
+          <Link to="/mapa">
+            <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
+          </Link>
+          <Link to="/lista-de-agentes">
+            <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
+          </Link>
+        </div>
+        <div id='map' className='map-display'></div>
       </div>
-      <div className="map-toggles">
-        <Link to="/mapa">
-          <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
-        </Link>
-        <Link to="/lista-de-agentes">
-          <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
-        </Link>
-      </div>
-      <div id='map' className='map-display'></div>
-    </div>
     </>
   )
 }
