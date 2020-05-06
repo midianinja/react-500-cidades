@@ -13,6 +13,8 @@ query
       id
       name
       job
+      phone
+      biography
       profile_image  {
         mimified
       }
@@ -20,9 +22,12 @@ query
       address{
         city
         state
+        street
+        complement
+        district
+        zipcode
         latitude
         longitude
       }
     }
   }`
-

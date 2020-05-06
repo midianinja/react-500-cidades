@@ -9,15 +9,20 @@ const initialState = {
   auth: {
     name: 'Fulano',
     sobrenome: 'Fulano',
-  }
+  },
+  allusers: [],
+  loading: true,
 };
 
 export const reducer = (state, action) => {
   const cases = {
-    SHOW_TOAST: (oldState, data) => ({ ...oldState, toast: { show: true, msg: data.data }}),
-    HIDE_TOAST: (oldState, data) => ({ ...oldState, toast: initialState.toast })
+    SHOW_TOAST: (oldState, data) => ({ ...oldState, toast: { show: true, msg: data.data } }),
+    HIDE_TOAST: (oldState, data) => ({ ...oldState, toast: initialState.toast }),
+    SET_ALL_USERS: (oldState, data) => ({ ...oldState, allusers: action.data }),
+    SET_LOADING: (oldState, data) => ({ ...oldState, loading: action.data })
   };
   return cases[action.type](state, action);
+
 };
 
 export const StoreProvider = ({ children }) => {

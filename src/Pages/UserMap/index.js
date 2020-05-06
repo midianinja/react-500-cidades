@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import ToggleButton from '../../components/ToggleButton';
 import pin from '../../assets/marcador-oportunidade.svg';
 import { FaSearch } from "react-icons/fa";
-import AllUsers from '../../context/AllUsersContext';
+import './styles.css';
+import Store from '../../store/Store';
+import ShowProfile from '../../components/ShowProfile';
 import NavigationBar from '../../components/NavigationBar';
 import './styles.css';
 
+
 const UserMap = () => {
-  const { state } = useContext(AllUsers);
+  const { state } = useContext(Store);
   const searchInputRef = useRef(null);
   const mapRef = useRef(null);
   const brazilBounds = {
@@ -28,12 +31,13 @@ const UserMap = () => {
     });
       
     let infoWindow = new window.google.maps.InfoWindow();
-    state.map(agent => {
+    state.allusers.map(agent => {
       const marker = new window.google.maps.Marker({
         position: { lat: agent.address.latitude, lng: agent.address.longitude },
         icon: pin,
         map: mapRef.current
       });
+
       return marker.addListener('click', () => {
         const skill = agent.skills.map((skill, index) => `<div class='agent-skills-item' id=${index}>${skill}</div>`).join('');
         infoWindow.setContent(`
@@ -113,17 +117,16 @@ const UserMap = () => {
           />
           <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
         </div>
+        <div className="map-toggles">
+          <Link to="/users/mapa">
+            <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
+          </Link>
+          <Link to="/users/lista-de-agentes">
+            <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
+          </Link>
+        </div>
+        <div id='map' className='map-display'></div>
       </div>
-      <div className="map-toggles">
-        <Link to="/mapa">
-          <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
-        </Link>
-        <Link to="/userlist">
-          <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
-        </Link>
-      </div>
-      <div id='map' className='map-display'></div>
-    </div>
     </>
   )
 }

@@ -124,8 +124,8 @@ main .skills {
     }
     .links-fixos{
         z-index: 0;
-        position: fixed;
-        top: 20px;
+        position: absolute;
+        top: 86px;
         right: 15px;
         border: none;
         height: fit-content;
