@@ -5,9 +5,7 @@ import pin from '../../assets/marcador-oportunidade.svg';
 import { FaSearch } from "react-icons/fa";
 import './styles.css';
 import Store from '../../store/Store';
-import ShowProfile from '../../components/ShowProfile';
 import NavigationBar from '../../components/NavigationBar';
-import './styles.css';
 
 
 const UserMap = () => {
@@ -15,21 +13,21 @@ const UserMap = () => {
   const searchInputRef = useRef(null);
   const mapRef = useRef(null);
   const brazilBounds = {
-    north:-73.9872354804, south:-33.7683777809, west:-34.7299934555, east:5.24448639569
+    north: -73.9872354804, south: -33.7683777809, west: -34.7299934555, east: 5.24448639569
   }
 
   const initMap = useCallback(() => {
     mapRef.current = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: -23.543095, lng: -46.627235 },
       zoom: 12,
-      restriction:{
+      restriction: {
         latLngBounds: brazilBounds,
         strictBounds: false
       },
       mapTypeControl: false,
       streetViewControl: false
     });
-      
+
     let infoWindow = new window.google.maps.InfoWindow();
     state.allusers.map(agent => {
       const marker = new window.google.maps.Marker({
@@ -103,25 +101,26 @@ const UserMap = () => {
 
   return (
     <>
-    <NavigationBar />
-    <div className='map-container'>
-      <div className='map-input'>
-        <div className='input-container'>
-          <input
-            name='search'
-            ref={searchInputRef}
-            type='text'
-            placeholder='Procurar...'
-            id='search'
-            className='input-container--search'
-          />
-          <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
+      <NavigationBar />
+      <div className='map-container'>
+        <div className='map-input'>
+          <div className='input-container'>
+            <input
+              name='search'
+              ref={searchInputRef}
+              type='text'
+              placeholder='Procurar...'
+              id='search'
+              className='input-container--search'
+            />
+            <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
+          </div>
         </div>
         <div className="map-toggles">
-          <Link to="/users/mapa">
+          <Link to="/mapa">
             <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
           </Link>
-          <Link to="/users/lista-de-agentes">
+          <Link to="/userlist">
             <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
           </Link>
         </div>

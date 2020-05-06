@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import Routes from '../../routes';
 import Menu from '../../components/Menu';
 import './styles.css';

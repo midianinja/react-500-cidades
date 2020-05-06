@@ -20,7 +20,7 @@ export default function UserRoutes() {
             dispatch({ type: 'SET_LOADING', data: false })
         })
 
-    }, [])
+    }, [dispatch])
 
 
     return (
