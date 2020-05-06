@@ -60,7 +60,6 @@ const UserMap = () => {
     });
 
     const autocomplete = new window.google.maps.places.Autocomplete(searchInputRef.current);
-    // autocomplete.bindTo('bounds', map);
     autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
 
     autocomplete.addListener('place_changed', () => {
@@ -68,9 +67,7 @@ const UserMap = () => {
       if (!place.geometry) {
         window.alert(`Não foi possível encontrar ${place.name}`);
         return;
-     // }
-     // if (place.geometry.viewport) {
-     //   map.fitBounds(place.geometry.viewport);
+ 
       } else {
         mapRef.current.setCenter(place.geometry.location);
         mapRef.current.setZoom(17);
