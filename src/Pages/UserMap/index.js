@@ -5,10 +5,15 @@ import pin from '../../assets/marcador-oportunidade.svg';
 import { FaSearch } from "react-icons/fa";
 import './styles.css';
 import AllUsers from '../../context/AllUsersContext';
+
+import ShowProfile from '../../components/ShowProfile';
+
 import NavigationBar from '../../components/NavigationBar';
+
 
 const UserMap = () => {
   const { state } = useContext(AllUsers);
+
   const searchInputRef = useRef(null);
   const mapRef = useRef(null);
 
@@ -27,6 +32,7 @@ const UserMap = () => {
         icon: pin,
         map: mapRef.current
       });
+      console.log('state', state);
       return marker.addListener('click', () => {
         const skill = agent.skills.map((skill, index) => `<div class='agent-skills-item' id=${index}>${skill}</div>`).join('');
         infoWindow.setContent(`
@@ -71,7 +77,6 @@ const UserMap = () => {
       }
     });
   }, [state])
-
   const loadMap = useCallback((url) => {
     const scripts = window.document.getElementsByTagName('script')[0]
     const newScript = document.createElement('script')
@@ -94,6 +99,7 @@ const UserMap = () => {
     <>
     <NavigationBar />
     <div className='map-container'>
+      <ShowProfile />
       <div className='map-input'>
         <div className='input-container'>
           <input
@@ -111,7 +117,7 @@ const UserMap = () => {
         <Link to="/mapa">
           <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
         </Link>
-        <Link to="/userlist">
+        <Link to="/lista-de-agentes">
           <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
         </Link>
       </div>

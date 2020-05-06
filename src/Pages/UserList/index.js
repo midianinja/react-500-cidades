@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { FaSearch } from 'react-icons/fa';
 import AllUsers from '../../context/AllUsersContext';
 import NavigationBar from '../../components/NavigationBar';
+import ShowProfile from '../../components/ShowProfile';
 
 const UserList = () => {
     const { state } = useContext(AllUsers);
@@ -14,6 +15,7 @@ const UserList = () => {
     return (
         <>
         <NavigationBar />
+        <ShowProfile />
         <Menu>
             <Routes />
         </Menu>
@@ -55,6 +57,7 @@ const UserList = () => {
                             </div>
                         ))}
                     </div>
+
                 </div>
             ))}
             <div className="links-fixos">
@@ -62,7 +65,7 @@ const UserList = () => {
                 <Link to="/mapa">
                     <ToggleButton className="btn-toggle">Mapa</ToggleButton>
                 </Link>
-                <Link to="/userlist">
+                <Link to="/lista-de-agentes">
                     <ToggleButton className="btn-toggle--blue">Lista</ToggleButton>
                 </Link>
             </div>
