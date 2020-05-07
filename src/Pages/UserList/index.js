@@ -37,11 +37,6 @@ const renderList = (list, dispatch) => list.map(agent => (
 const UserList = () => {
     const { state, dispatch } = useContext(Store);
 
-//     if (state.profile) {
-//         dispatch({ type: 'SHOW_PROFILE' });
-//         console.log('profile')
-// }
-
     return (
         <>
             <NavigationBar />
