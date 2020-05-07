@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo using variables
+      - echo NODE_ENV = $NODE_ENV
+      - echo DOMAIN = $DOMAIN
+      - echo GRAPH_URI = $GRAPH_URI
+      
+      - echo runing npm install...
+      - npm install
+
+  build:
+    commands:
+      - echo ---------- making build ----------
+      - npm run deploy:dev
+  post_build:
+    commands:
+      - sls deploy | tee deploy.out
+      - echo finished deploy
+
+# Create our resources with separate CloudFormation templates
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
