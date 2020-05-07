@@ -36,7 +36,7 @@ const Landing = () => {
             </div>
             <div className="landing-title">
               <h1 className="heading-primary">
-                <span className="heading-primary--white">Coloqueaaa</span>
+                <span className="heading-primary--white">Coloque</span>
                 <span className="heading-primary--green">sua quebrada</span>
                 <span className="heading-primary--white">no mapa</span>
               </h1>
