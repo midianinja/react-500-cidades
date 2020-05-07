@@ -1,8 +1,14 @@
 .profile {
-    width: 100%;
+    width: 50%;
     display: block;
     padding: 0px;
-    border: 1px solid red;
+    border: 1px solid grey;
+    z-index: 0;
+    position: absolute;
+    top: 86px;
+    left: 15px;
+    background: white;
+    height: 100%;
 }
 .subtitle-profile{
     font-size: 18px;

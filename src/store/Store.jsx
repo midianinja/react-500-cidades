@@ -21,7 +21,8 @@ export const reducer = (state, action) => {
     HIDE_TOAST: (oldState, data) => ({ ...oldState, toast: initialState.toast }),
     SET_ALL_USERS: (oldState, data) => ({ ...oldState, allusers: action.data }),
     SET_LOADING: (oldState, data) => ({ ...oldState, loading: action.data }),
-    SHOW_PROFILE:(oldState, data) => ({ ...oldState, profile:action.data })
+    SHOW_PROFILE:(oldState, data) => ({ ...oldState, profile:action.data }),
+    HIDE_PROFILE:(oldState, data) => ({ ...oldState, profile:initialState.profile })
   };
   return cases[action.type](state, action);
 

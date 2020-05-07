@@ -160,4 +160,17 @@ main .skills {
         padding: 0px 0px 65px 22px;
         font-size: 28px;
     }
+
+    .show-profile{
+        z-index: 1;
+        height: 100%;
+        width: 50%;
+        transition: all .2s linear;
+        left: -300px;
+    }
+    
+    #div::content ~.show-profile {
+        transform:translateX(300px);
+    }
+    
 }

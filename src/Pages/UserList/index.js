@@ -10,7 +10,7 @@ import NavigationBar from '../../components/NavigationBar';
 import ShowProfile from '../../components/ShowProfile'
 
 const renderList = (list, dispatch) => list.map(agent => (
-    <div className="div-usercard" onClick={()=> dispatch({type:'SHOW_PROFILE', data:agent.id})} key={agent.id} >
+    <div className="div-usercard show prifile" onClick={()=> dispatch({type:'SHOW_PROFILE', data:agent.id})} key={agent.id} >
         <div className="userinfo" >
             <img
                 className="user-info--img"
