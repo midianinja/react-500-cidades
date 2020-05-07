@@ -17,10 +17,4 @@ phases:
       - npm run deploy:dev
   post_build:
     commands:
-      - sls deploy | tee deploy.out
       - echo finished deploy
-
-# Create our resources with separate CloudFormation templates
-resources:
-  # API Gateway Errors
-  - ${file(resources/api-gateway-errors.yml)}
