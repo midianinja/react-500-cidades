@@ -40,19 +40,12 @@ const containerModal = {
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  onClick={close}
-                  activeClassName="current"
-                  to="/profile"
-                >
-                  Perfil
-                </NavLink>
               </li>
               <li>
                 <NavLink
                   onClick={close}
                   activeClassName="current"
-                  to="/userlist"
+                  to="/users/lista-de-agentes"
                 >
                   Lista
                 </NavLink>
