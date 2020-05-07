@@ -16,7 +16,6 @@ const ShowProfile = (props) => {
         padding: '2rem',
     };
     const { state } = useContext(Store);
-    console.log('state', state);
     return (
         <Popup
             modal
