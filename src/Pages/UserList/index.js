@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 import { FaSearch } from 'react-icons/fa';
 import Store from '../../store/Store'
 import NavigationBar from '../../components/NavigationBar';
+import ShowProfile from '../../components/ShowProfile'
 
-
-const renderList = (list) => list.map(agent => (
-    <div className="div-usercard" key={agent.id} >
-        <div className="userinfo">
+const renderList = (list, dispatch) => list.map(agent => (
+    <div className="div-usercard" onClick={()=> dispatch({type:'SHOW_PROFILE', data:agent.id})} key={agent.id} >
+        <div className="userinfo" >
             <img
                 className="user-info--img"
                 alt="Agente"
@@ -35,7 +35,12 @@ const renderList = (list) => list.map(agent => (
 ))
 
 const UserList = () => {
-    const { state } = useContext(Store);
+    const { state, dispatch } = useContext(Store);
+
+//     if (state.profile) {
+//         dispatch({ type: 'SHOW_PROFILE' });
+//         console.log('profile')
+// }
 
     return (
         <>
@@ -60,7 +65,7 @@ const UserList = () => {
                     <p>Local</p>
                     <p>Tags</p>
                 </div>
-                {state.loading ? <p>Carregando...</p> : renderList(state.allusers)}
+                {state.loading ? <p>Carregando...</p> : renderList(state.allusers, dispatch)}
                 <div className="links-fixos">
                     <p>Tipo de Vizualização</p>
                     <Link to="/users/mapa">
@@ -71,6 +76,7 @@ const UserList = () => {
                     </Link>
                 </div>
             </main>
+            <ShowProfile/>
         </>
     )
 

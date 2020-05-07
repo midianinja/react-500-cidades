@@ -12,6 +12,7 @@ const initialState = {
   },
   allusers: [],
   loading: true,
+  profile: false,
 };
 
 export const reducer = (state, action) => {
@@ -19,7 +20,8 @@ export const reducer = (state, action) => {
     SHOW_TOAST: (oldState, data) => ({ ...oldState, toast: { show: true, msg: data.data } }),
     HIDE_TOAST: (oldState, data) => ({ ...oldState, toast: initialState.toast }),
     SET_ALL_USERS: (oldState, data) => ({ ...oldState, allusers: action.data }),
-    SET_LOADING: (oldState, data) => ({ ...oldState, loading: action.data })
+    SET_LOADING: (oldState, data) => ({ ...oldState, loading: action.data }),
+    SHOW_PROFILE:(oldState, data) => ({ ...oldState, profile:action.data })
   };
   return cases[action.type](state, action);
 

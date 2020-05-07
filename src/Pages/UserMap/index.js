@@ -9,7 +9,8 @@ import NavigationBar from '../../components/NavigationBar';
 
 
 const UserMap = () => {
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
+
   const searchInputRef = useRef(null);
   const mapRef = useRef(null);
   const brazilBounds = {
@@ -29,7 +30,8 @@ const UserMap = () => {
     });
 
     let infoWindow = new window.google.maps.InfoWindow();
-    state.allusers.map(agent => {
+
+     state.allusers.map(agent => {
       const marker = new window.google.maps.Marker({
         position: { lat: agent.address.latitude, lng: agent.address.longitude },
         icon: pin,
@@ -38,6 +40,7 @@ const UserMap = () => {
 
       return marker.addListener('click', () => {
         const skill = agent.skills.map((skill, index) => `<div class='agent-skills-item' id=${index}>${skill}</div>`).join('');
+
         infoWindow.setContent(`
           <div class='info-window'>
             <div class='agent-info'>
@@ -55,7 +58,7 @@ const UserMap = () => {
               </div>
             </div>
             <div class='agent-skills'>${skill}</div>
-            <a href="#" class='agent-plus'>Ver Mais</a>
+            <a class='agent-plus'>Ver Mais</a>
           </div>`
         )
         return infoWindow.open(mapRef.current, marker)
@@ -96,8 +99,8 @@ const UserMap = () => {
   }, [initMap, loadMap]);
 
   useEffect(() => {
-    renderMap();
-  }, [renderMap]);
+    if(state.allusers.length) renderMap();
+  }, [state.allusers]);
 
   return (
     <>
@@ -117,10 +120,10 @@ const UserMap = () => {
           </div>
         </div>
         <div className="map-toggles">
-          <Link to="/mapa">
+          <Link to="/users/mapa">
             <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
           </Link>
-          <Link to="/userlist">
+          <Link to="/users/lista-de-agentes">
             <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
           </Link>
         </div>

@@ -5,7 +5,7 @@
 .map-input{
     position: absolute;
     top: 8vh;
-    z-index: 9999;
+    z-index: 56;
     margin: 0 auto;
     width: 100%;
     display: flex;
