@@ -113,7 +113,7 @@ export const registerAction = async ({
     setLoading(false);
   } catch(err) {
     setLoading(false);
-    console.log('err:', [err]);
+    console.error('err:', [err]);
   }
   
 }

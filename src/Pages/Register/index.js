@@ -109,14 +109,13 @@ const Register = () => {
         throw new Error("Couldn't find zipcode")
       }
     } catch (error) {
-      return console.log(error);
+      return console.error(error);
     }
   }
 
   useEffect(() => {
     if (addressInfo.zipcode.length === 9) {
       const zipcodeInput = addressInfo.zipcode.replace(/-/g, "");
-      console.log('zipcodeInput:', zipcodeInput)
       getAddress(zipcodeInput);
     }
   }, [addressInfo.zipcode])

@@ -25,6 +25,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "deploy:dev": "react-scripts build && aws s3 sync build s3://development.500cidades.org --acl public-read --cache-control public,max-age=60",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
