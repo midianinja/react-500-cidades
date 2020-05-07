@@ -13,7 +13,6 @@ const defaultOptions = {
     errorPolicy: 'all',
   },
 };
-console.log('process.env.REACT_APP_GRAPH_API_URI:', process.env.REACT_APP_GRAPH_API_URI)
 
 const link = createHttpLink({ uri: process.env.REACT_APP_GRAPH_API_URI });
 const cache = new InMemoryCache({

@@ -10,6 +10,7 @@ const ShowProfile = () => {
     const agent = state.allusers.find(agent => agent.id === state.profile )
 
     return (  
+
                 <article className="profile"key={agent.id}>
                     <header className="header-profile">
                         <img className="image-profile" src={agent.profile_image.mimified} alt="Por do Sol"></img>
