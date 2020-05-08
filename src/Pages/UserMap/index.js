@@ -16,7 +16,7 @@ const UserMap = () => {
   const searchInputRef = useRef(null);
   const mapRef = useRef(null);
   const brazilBounds = {
-    north: -73.9872354804, south: -33.7683777809, west: -34.7299934555, east: 5.24448639569
+    west: -73.9872354804, south: -33.7683777809, east: -34.7299934555, north: 5.24448639569
   }
 
   const initMap = useCallback(() => {
