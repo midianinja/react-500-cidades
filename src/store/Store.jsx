@@ -24,6 +24,7 @@ export const reducer = (state, action) => {
     SHOW_PROFILE:(oldState, data) => ({ ...oldState, profile:action.data }),
     HIDE_PROFILE:(oldState, data) => ({ ...oldState, profile:initialState.profile })
   };
+  console.log(action)
   return cases[action.type](state, action);
 
 };

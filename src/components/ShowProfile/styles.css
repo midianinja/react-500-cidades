@@ -1,14 +1,13 @@
 .profile {
     width: 50%;
     display: block;
-    padding: 0px;
     border: 1px solid grey;
-    z-index: 0;
-    position: absolute;
-    top: 86px;
-    left: 15px;
+    z-index: 60;
     background: white;
     height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
 }
 .subtitle-profile{
     font-size: 18px;
@@ -65,4 +64,27 @@
     font-weight: bold;
     font-size: 28px;
     line-height: 1.6;
+}
+.wrapper {
+height: 100vh;
+width: 100vw;
+position: fixed;
+top:0;
+left: 0;
+background-color: rgba(0, 0, 0, .8);
+z-index: 60;
+}
+.svg {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 100%;
+    box-shadow: 1px 1px 5px 1px;
+    background-color: rgba(0, 0, 0,.3)
+}
+
+@media (max-width: 768px){
+   .profile {
+       width: 100vw;
+    } 
 }

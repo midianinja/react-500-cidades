@@ -10,7 +10,7 @@ import NavigationBar from '../../components/NavigationBar';
 import ShowProfile from '../../components/ShowProfile'
 
 const renderList = (list, dispatch) => list.map(agent => (
-    <div className="div-usercard show prifile" onClick={()=> dispatch({type:'SHOW_PROFILE', data:agent.id})} key={agent.id} >
+    <div className="div-usercard" onClick={() => dispatch({ type: 'SHOW_PROFILE', data: agent.id })} key={agent.id} >
         <div className="userinfo" >
             <img
                 className="user-info--img"
@@ -60,7 +60,9 @@ const UserList = () => {
                     <p>Local</p>
                     <p>Tags</p>
                 </div>
-                {state.loading ? <p>Carregando...</p> : renderList(state.allusers, dispatch)}
+                <div className="container-list">
+                    {state.loading ? <p>Carregando...</p> : renderList(state.allusers, dispatch)}
+                </div>
                 <div className="links-fixos">
                     <p>Tipo de Vizualização</p>
                     <Link to="/users/mapa">
@@ -71,7 +73,7 @@ const UserList = () => {
                     </Link>
                 </div>
             </main>
-            <ShowProfile/>
+            <ShowProfile />
         </>
     )
 

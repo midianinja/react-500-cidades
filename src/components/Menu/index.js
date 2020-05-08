@@ -40,8 +40,6 @@ const containerModal = {
                 </NavLink>
               </li>
               <li>
-              </li>
-              <li>
                 <NavLink
                   onClick={close}
                   activeClassName="current"

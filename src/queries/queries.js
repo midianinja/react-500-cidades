@@ -16,6 +16,9 @@ query
       phone
       email
       biography
+      cover_image  {
+        mimified
+      }
       profile_image  {
         mimified
       }
