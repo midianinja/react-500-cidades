@@ -58,6 +58,12 @@
     border-radius: .6rem;
     z-index: 59;
 }
+.btn-ver-mais {
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: var(--blue);
+}
 
 .map-display{
     height: 100vh;

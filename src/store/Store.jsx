@@ -13,6 +13,7 @@ const initialState = {
   allusers: [],
   loading: true,
   profile: false,
+  menu:false
 };
 
 export const reducer = (state, action) => {
@@ -22,7 +23,8 @@ export const reducer = (state, action) => {
     SET_ALL_USERS: (oldState, data) => ({ ...oldState, allusers: action.data }),
     SET_LOADING: (oldState, data) => ({ ...oldState, loading: action.data }),
     SHOW_PROFILE:(oldState, data) => ({ ...oldState, profile:action.data }),
-    HIDE_PROFILE:(oldState, data) => ({ ...oldState, profile:initialState.profile })
+    HIDE_PROFILE:(oldState, data) => ({ ...oldState, profile:initialState.profile }),
+    TOGGLE_MENU:(oldState, data) => ({ ...oldState, menu:action.data }),
   };
   console.log(action)
   return cases[action.type](state, action);

@@ -1,58 +1,72 @@
-import React from 'react';
-import { NavLink } from "react-router-dom";
-import Popup from "reactjs-popup";
-
-import BurgerIcon from '../BurgerIcon';
-
+import React, { useContext } from 'react';
+import { NavLink, withRouter } from "react-router-dom";
+import Store from '../../store/Store';
 import './styles.css';
 
-const Menu = ({ close })  => {
-const containerModal = {
-  border: "none",
-  position: 'relative',
-  background: 'rgb(59, 39, 55)',
-  width: '50%',
-};
-    return (
-      <Popup
-        modal
-        overlayStyle={{ background: "rgb(59, 39, 55)" }}
-        contentStyle={containerModal}
-        closeOnDocumentClick={false}
-        trigger={(open) => <BurgerIcon open={open} />}
-      >
-        {(close) => <Menu close={close} />}
-        <nav>
-          <div className="menu">
-            <ul>
-              <li>
-                <NavLink onClick={close} activeClassName="current" to="/">
-                  Home
+
+const Menu = ({ white, history }) => {
+  const { state, dispatch } = useContext(Store);
+
+  if (!state.menu) return <img
+    className="toggle-icon"
+    open={state.menu}
+    src={white ? "/icons/menu_white.svg" : "/icons/menu.svg"}
+    onClick={() => dispatch({ type: 'TOGGLE_MENU', data: !state.menu })}
+  />
+
+  return (
+    <div className="wrapper">
+      <img
+        className="toggle-icon"
+        open={state.menu}
+        src="/icons/close.svg"
+        onClick={() => dispatch({ type: 'TOGGLE_MENU', data: !state.menu })}
+      />
+      <nav>
+        <div className="menu">
+          <ul>
+            <li>
+              <NavLink
+                onClick={(e) => {
+                  e.preventDefault()
+                  dispatch({ type: 'TOGGLE_MENU', data: !state.menu })
+                  history.push('/')
+                }}
+                activeClassName="current" to="/">
+                Home
                 </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  onClick={close}
-                  activeClassName="current"
-                  to="/register"
-                >
-                  Cadastre-se
+            </li>
+            <li>
+              <NavLink
+                onClick={(e) => {
+                  e.preventDefault()
+                  dispatch({ type: 'TOGGLE_MENU', data: !state.menu })
+                  history.push('/cadastre-se')
+                }}
+                activeClassName="current"
+                to="/cadastre-se"
+              >
+                Cadastre-se
                 </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  onClick={close}
-                  activeClassName="current"
-                  to="/users/lista-de-agentes"
-                >
-                  Lista
+            </li>
+            <li>
+              <NavLink
+                onClick={(e) => {
+                  e.preventDefault()
+                  dispatch({ type: 'TOGGLE_MENU', data: !state.menu })
+                  history.push('/users/lista-de-agentes')
+                }}
+                activeClassName="current"
+                to="/users/lista-de-agentes"
+              >
+                Lista
                 </NavLink>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </Popup>
-    );
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  );
 }
 
-export default Menu;
+export default withRouter(Menu);

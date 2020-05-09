@@ -23,9 +23,7 @@ const Landing = () => {
     return (
       <div className="landing-container">
         <section className="landing">
-          <Menu>
-            <Routes />
-          </Menu>
+          <Menu white/>
           <div className="landing-top">
             <div className="landing-logo">
               <img

@@ -60,7 +60,7 @@ const UserMap = () => {
               </div>
             </div>
             <div class='agent-skills'>${skill}</div>
-            <button type="button" onclick="document.getElementById('${agent.id}').click()" class='agent-plus'>Ver Mais</button>
+            <button class='btn-ver-mais' type="button" onclick="document.getElementById('${agent.id}').click()" class='agent-plus'>Ver Mais</button>
           </div>`
         )
         return infoWindow.open(mapRef.current, marker)

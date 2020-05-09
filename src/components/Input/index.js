@@ -14,6 +14,7 @@ const Input = ({
     style,
     maxlength,
     adicionalClass,
+    onBlur
 }) => {
     return (
         <div className={`field ${adicionalClass}`}>
@@ -29,6 +30,7 @@ const Input = ({
                 autoFocus={autofocus}
                 style={style} 
                 maxLength={maxlength}
+                onBlur={onBlur}
             />
         </div>  
     );
