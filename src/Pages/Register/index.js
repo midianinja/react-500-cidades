@@ -14,33 +14,34 @@ import Routes from '../../routes';
 
 const renderNameField = ({
   edit, setEdit, userInfo, onChangeUserInfo,
-}) =>{ 
+}) => {
   if (!edit) {
     return (
       <>
-        <h1 className="add-name">{userInfo.name}</h1>
+        <h1 onClick={() => setEdit(true)} className="add-name">{userInfo.name}</h1>
         <FaPen className="icons-input" size={20} color="#888" onClick={() => setEdit(true)} />
       </>
     );
   }
 
   return (
-      <>
-        <div className="add-name">
-          <Input
-            name="name"
-            value={userInfo.name}
-            onChange={onChangeUserInfo}
-            type="text"
-            inputClass="name-input"
-            autofocus={true}
-            maxlength="33"
-            style={{ "width": userInfo.name.length + 'ch' }}
-          />
-        </div>
+    <>
+      <div className="add-name">
+        <Input
+          name="name"
+          value={userInfo.name}
+          onChange={onChangeUserInfo}
+          type="text"
+          inputClass="name-input"
+          autofocus={true}
+          maxlength="33"
+          style={{ "width": userInfo.name.length + 'ch' }}
+          onBlur={() => setEdit(false)}
+        />
+      </div>
       <FaSave className="icons-input" size={20} color="#888" onClick={() => setEdit(false)} />
-      </>
-    );
+    </>
+  );
 }
 
 const Register = () => {
@@ -122,50 +123,50 @@ const Register = () => {
 
   return (
     <>
-    <NavigationBar />
-    <div className="register-container">
-        <Menu>
-          <Routes/>
-        </Menu>
+      <NavigationBar />
+      <div className="register-container">
+        <Menu />
         <section className="register-cover">
           <div className={!userInfo.cover_image ? "cover-photo gradient" : "cover-photo"} style={{ backgroundImage: `url(${userInfo.cover_image.url})` }}>
-            <InputFile
-              id="cover_image"
-              name="cover_image"
-              value={userInfo.cover_image}
-              onChange={(e) => setUserInfo({
-                ...userInfo,
-                cover_image: { file: e.target.files[0], url: URL.createObjectURL(e.target.files[0])},
-              })}
-              inputClass="cover-image"
-            />
-            <div className="add-photo" style={{ backgroundImage: `url(${userInfo.profile_image.url})` }}>
+            <div className={!userInfo.cover_image ? "cover-wrapper" : "cover-wrapper photo-gradient"}>
               <InputFile
-                borderRadius="100%"
-                id="profile_image"
-                name="profile_image"
-                value={userInfo.profile_image}
+                id="cover_image"
+                name="cover_image"
+                value={userInfo.cover_image}
                 onChange={(e) => setUserInfo({
                   ...userInfo,
-                  profile_image: { file: e.target.files[0], url: URL.createObjectURL(e.target.files[0])},
+                  cover_image: { file: e.target.files[0], url: URL.createObjectURL(e.target.files[0]) },
                 })}
-                inputClass="profile-image"
+                inputClass="cover-image"
               />
-            </div>
-            <div className="register-text">
-              <div className="register-edit-text">
-                {renderNameField({ edit, setEdit, userInfo, onChangeUserInfo })}
+              <div className="add-photo" style={{ backgroundImage: `url(${userInfo.profile_image.url})` }}>
+                <InputFile
+                  borderRadius="100%"
+                  id="profile_image"
+                  name="profile_image"
+                  value={userInfo.profile_image}
+                  onChange={(e) => setUserInfo({
+                    ...userInfo,
+                    profile_image: { file: e.target.files[0], url: URL.createObjectURL(e.target.files[0]) },
+                  })}
+                  inputClass="profile-image"
+                />
               </div>
-              <Select
-                options={options.job}
-                name="job"
-                value={userInfo.job}
-                onChange={onChangeUserInfo}
-                selectClass="job-select"
-                optionClass="job-option"
-                defaultName="Profissão"
-                style={{ "width": (userInfo.job.length + 1) + 'ch' }}
-              />
+              <div className="register-text">
+                <div className="register-edit-text">
+                  {renderNameField({ edit, setEdit, userInfo, onChangeUserInfo })}
+                </div>
+                <Select
+                  options={options.job}
+                  name="job"
+                  value={userInfo.job}
+                  onChange={onChangeUserInfo}
+                  selectClass="job-select"
+                  optionClass="job-option"
+                  defaultName="Profissão"
+                  style={{ "width": (userInfo.job.length + 1) + 'ch' }}
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -190,7 +191,7 @@ const Register = () => {
           skills={skills}
           setSkills={setSkills}
         />
-    </div>
+      </div>
     </>
   );
 }

@@ -25,6 +25,7 @@ const removeTags = ({
     handleChange(newTags);
 }
 const addTags = ({ tags, toAdd, handleChange }) => {
+    if(tags.length === 5) return;
     const newTags = tags.filter(t => t !== toAdd)
     handleChange([...newTags, toAdd]);
 }

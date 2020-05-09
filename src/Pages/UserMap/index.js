@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useRef, useContext } from 'react';
+import React, { useEffect, useCallback, useRef, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ToggleButton from '../../components/ToggleButton';
 import pin from '../../assets/marcador-oportunidade.svg';
@@ -6,14 +6,17 @@ import { FaSearch } from "react-icons/fa";
 import './styles.css';
 import Store from '../../store/Store';
 import NavigationBar from '../../components/NavigationBar';
+import ShowProfile from '../../components/ShowProfile';
 
 
 const UserMap = () => {
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
+  const [searchFocus, setSearchFocus] = useState(false);
+
   const searchInputRef = useRef(null);
   const mapRef = useRef(null);
   const brazilBounds = {
-    north: -73.9872354804, south: -33.7683777809, west: -34.7299934555, east: 5.24448639569
+    west: -73.9872354804, south: -33.7683777809, east: -34.7299934555, north: 5.24448639569
   }
 
   const initMap = useCallback(() => {
@@ -29,6 +32,7 @@ const UserMap = () => {
     });
 
     let infoWindow = new window.google.maps.InfoWindow();
+
     state.allusers.map(agent => {
       const marker = new window.google.maps.Marker({
         position: { lat: agent.address.latitude, lng: agent.address.longitude },
@@ -38,6 +42,7 @@ const UserMap = () => {
 
       return marker.addListener('click', () => {
         const skill = agent.skills.map((skill, index) => `<div class='agent-skills-item' id=${index}>${skill}</div>`).join('');
+
         infoWindow.setContent(`
           <div class='info-window'>
             <div class='agent-info'>
@@ -55,7 +60,7 @@ const UserMap = () => {
               </div>
             </div>
             <div class='agent-skills'>${skill}</div>
-            <a href="#" class='agent-plus'>Ver Mais</a>
+            <button class='btn-ver-mais' type="button" onclick="document.getElementById('${agent.id}').click()" class='agent-plus'>Ver Mais</button>
           </div>`
         )
         return infoWindow.open(mapRef.current, marker)
@@ -96,8 +101,8 @@ const UserMap = () => {
   }, [initMap, loadMap]);
 
   useEffect(() => {
-    renderMap();
-  }, [renderMap]);
+    if (state.allusers.length) renderMap();
+  }, [state.allusers]);
 
   return (
     <>
@@ -111,21 +116,25 @@ const UserMap = () => {
               type='text'
               placeholder='Procurar...'
               id='search'
-              className='input-container--search'
+              className={`input-container--search ${searchFocus ? 'input-active' : ''}`}
+              onFocus={() => setSearchFocus(true)}
+              onBlur={() => setSearchFocus(false)}
             />
             <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
           </div>
         </div>
         <div className="map-toggles">
-          <Link to="/mapa">
+          <Link to="/users/mapa">
             <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
           </Link>
-          <Link to="/userlist">
+          <Link to="/users/lista-de-agentes">
             <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
           </Link>
         </div>
         <div id='map' className='map-display'></div>
       </div>
+      {state.allusers.map((user) => <button className="hide" id={user.id} onClick={() => dispatch({ type: 'SHOW_PROFILE', data: user.id })}></button>)}
+      <ShowProfile />
     </>
   )
 }

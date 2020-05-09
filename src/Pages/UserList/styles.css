@@ -1,5 +1,5 @@
 .div-usercard { 
-    margin: 20px;
+    margin: 20px 0px;
     align-items: center;
     min-width: 339px;
     min-height: 215px;
@@ -16,6 +16,16 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    max-width:100%;
+    width: 768px;
+    padding: 0 20px;
+}
+.container-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 20px;
 }
 
 .userinfo {
@@ -120,7 +130,7 @@ main .skills {
         display: flex;
         align-items: center;
         flex-direction: column;
-        margin: 100px;
+        width: 100%;
     }
     .links-fixos{
         z-index: 0;
@@ -160,4 +170,6 @@ main .skills {
         padding: 0px 0px 65px 22px;
         font-size: 28px;
     }
+
+    
 }
