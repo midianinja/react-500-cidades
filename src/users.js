@@ -16,18 +16,24 @@ export default function UserRoutes() {
                 user: {}
             }
         }).then(result => {
-            dispatch({ type: 'SET_ALL_USERS', data: result.data.allUsers.filter(el => Object.values(el).some(x => x == null) === false) })
-            dispatch({ type: 'SET_LOADING', data: false })
+            dispatch({
+                type: 'SET_ALL_USERS',
+                data: result.data.allUsers.filter(el => Object.values(el).some(x => x == null) === false),
+            });
+            dispatch({
+                type: 'SET_LOADING',
+                data: false,
+            })
         })
 
-    }, [dispatch])
+    }, [dispatch]);
 
 
     return (
-        <Route path="/users">
+        <Route path="/usuario">
             <Switch>
-                <Route path="/users/lista-de-agentes" component={UserList} />
-                <Route path="/users/mapa" component={UserMap} />
+                <Route path="/usuario/lista-de-agentes" component={UserList} />
+                <Route path="/usuario/mapa" component={UserMap} />
             </Switch>
         </Route>
     );

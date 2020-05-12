@@ -71,6 +71,10 @@
   margin: 0 0 20px;
 }
 
+.input-group-wrapper {
+  width: 100%;
+}
+
 .common-input {
   width: 100%;
   padding: 10px 0;

@@ -109,6 +109,11 @@
 .job-option{
     color: var(--gray);
     background-color: var(--light-gray);
+    content: '\25BE';
+    pointer-events: none;
+}
+.error {
+    font-size: 0.7em;
 }
 
 

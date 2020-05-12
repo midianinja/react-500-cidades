@@ -16,7 +16,11 @@ const Snackbar = () => {
 
     return (
         <div className={`snackbar ${hideClass}`}>
-            <img className="toast-icon" alt={state.toast.msg} src="/icons/green-check.svg" />
+            <img
+                className="toast-icon"
+                alt={state.toast.msg}
+                src={state.toast.error ? '/icons/close_red.svg' : '/icons/green-check.svg'}
+            />
             {state.toast.msg}
         </div>
     )

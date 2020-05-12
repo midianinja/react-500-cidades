@@ -74,7 +74,13 @@ const UserMap = () => {
     autocomplete.addListener('place_changed', () => {
       const place = autocomplete.getPlace();
       if (!place.geometry) {
-        window.alert(`Não foi possível encontrar ${place.name}`);
+        dispatch({
+          type: 'SHOW_TOAST',
+          data: {
+            error: true,
+            msg: "endereço não encontrado"
+          }
+        })
         return;
       }
       if (place.geometry.viewport) {
@@ -124,10 +130,10 @@ const UserMap = () => {
           </div>
         </div>
         <div className="map-toggles">
-          <Link to="/users/mapa">
+          <Link to="/usuario/mapa">
             <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
           </Link>
-          <Link to="/users/lista-de-agentes">
+          <Link to="/usuario/lista-de-agentes">
             <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
           </Link>
         </div>

@@ -30,9 +30,16 @@ const addTags = ({ tags, toAdd, handleChange }) => {
     handleChange([...newTags, toAdd]);
 }
 
+const renderTags =(value,  tags, handleChange) => {
+    return filterTags(value).map(sk => renderOptions(
+        sk,
+        (tag) => addTags({ tags, toAdd: tag, handleChange })
+    ));
+}
+
 const SelectTags = ({
     tags, placeholder, handleChange,
-    adicionalClass,
+    adicionalClass, error,
 }) => {
     const [value, setValue] = useState('');
     const [showList, setShowList] = useState(false)
@@ -50,10 +57,7 @@ const SelectTags = ({
                 onBlur={() => setTimeout(() => setShowList(false), 200)}
             />
             <ul onClick={(e) => e.stopPropagation()} className={`list   ${showList ? '' : 'hide'}`}>
-                {filterTags(value).map(sk => renderOptions(
-                    sk,
-                    (tag) => addTags({ tags, toAdd: tag, handleChange })
-                ))}
+                {renderTags(value, tags, handleChange)}
             </ul>
             <div className={'tags'}>
                 {tags.map((tag, index) =>
@@ -67,6 +71,7 @@ const SelectTags = ({
                     </div>
                 )}
             </div> 
+            {error ? <span className="error">{error}.</span> : null}
         </div>
     );
 }

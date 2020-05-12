@@ -14,7 +14,7 @@ const NavigationBar = ()  => {
                 </NavLink>
                 </li>
                 <li>
-                <NavLink to="/">
+                <NavLink to="/usuario/mapa">
                     Mapa
                 </NavLink>
                 </li>
