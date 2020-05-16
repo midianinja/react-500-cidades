@@ -6,19 +6,25 @@ import InputFile from '../../components/InputFile';
 import Select from '../../components/Select';
 import './styles.css';
 import { registerAction } from './controller';
+import { withRouter } from 'react-router-dom';
 import Form from './components/Form';
 import Store from '../../store/Store';
 import Menu from '../../components/Menu';
 import NavigationBar from '../../components/NavigationBar';
-import Routes from '../../routes';
+
+const getMapsProperty = (placeResults, id) => {
+  const component = placeResults.address_components.find(i => i.types.includes(id));
+  return component ? component.long_name : '';
+}
 
 const renderNameField = ({
   edit, setEdit, userInfo, onChangeUserInfo,
+  error,
 }) => {
   if (!edit) {
     return (
       <>
-        <h1 onClick={() => setEdit(true)} className="add-name">{userInfo.name}</h1>
+        <h1 onClick={() => setEdit(true)} className="add-name">{userInfo.name || 'Seu Nome'}</h1>
         <FaPen className="icons-input" size={20} color="#888" onClick={() => setEdit(true)} />
       </>
     );
@@ -33,6 +39,7 @@ const renderNameField = ({
           onChange={onChangeUserInfo}
           type="text"
           inputClass="name-input"
+          error={error}
           autofocus={true}
           maxlength="33"
           style={{ "width": userInfo.name.length + 'ch' }}
@@ -44,14 +51,14 @@ const renderNameField = ({
   );
 }
 
-const Register = () => {
+const Register = ({ history }) => {
   const [edit, setEdit] = useState(false);
   const { dispatch } = useContext(Store);
   const [loading, setLoading] = useState(false);
   const [skills, setSkills] = useState([]);
   const [userInfo, setUserInfo] = useState({
-    name: 'Seu nome',
-    job: 'Profissão',
+    name: '',
+    job: '',
     profile_image: '',
     cover_image: '',
     biography: '',
@@ -65,6 +72,24 @@ const Register = () => {
     gender: '',
     sexual_orientation: '',
     race: '',
+  });
+  const [errors, setErrors] = useState({
+    name: '',
+    job: '',
+    profile_image: '',
+    cover_image: '',
+    biography: '',
+    skills: '',
+    email: '',
+    phone: '',
+    instagram: '',
+    facebook: '',
+    site_address: '',
+    birth_date: '',
+    gender: '',
+    sexual_orientation: '',
+    race: '',
+    zipcode: '',
   });
 
   const [addressInfo, setAddressInfo] = useState({
@@ -90,6 +115,7 @@ const Register = () => {
   };
 
   const getAddress = async (zipcodeInput) => {
+    console.log('zipcodeInput:', zipcodeInput)
     try {
       const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcodeInput}&language=pt&key=${process.env.REACT_APP_MAP_KEY}`);
       const result = await zipcodeAddress.json();
@@ -97,10 +123,10 @@ const Register = () => {
         const placeResults = result.results[0];
         setAddressInfo(addressInfo => ({
           ...addressInfo,
-          city: placeResults.address_components.find(i => i.types.includes("administrative_area_level_2")).long_name,
-          state: placeResults.address_components.find(i => i.types.includes("administrative_area_level_1")).long_name,
-          country: placeResults.address_components.find(i => i.types.includes("country")).long_name,
-          district: placeResults.address_components.find(i => i.types.includes("sublocality")).long_name,
+          city: getMapsProperty(placeResults, "administrative_area_level_2"),
+          state: getMapsProperty(placeResults, "administrative_area_level_1"),
+          country: getMapsProperty(placeResults, "country"),
+          district: getMapsProperty(placeResults, "sublocality"),
           geometry: placeResults.geometry.bounds,
           place_id: placeResults.place_id,
           latitude: placeResults.geometry.location.lat,
@@ -115,9 +141,9 @@ const Register = () => {
   }
 
   useEffect(() => {
-    if (addressInfo.zipcode.length === 9) {
-      const zipcodeInput = addressInfo.zipcode.replace(/-/g, "");
-      getAddress(zipcodeInput);
+    const myZipcode = addressInfo.zipcode.replace(/-/g, "");
+    if (myZipcode.length === 8) {
+      getAddress(myZipcode);
     }
   }, [addressInfo.zipcode])
 
@@ -154,23 +180,24 @@ const Register = () => {
               </div>
               <div className="register-text">
                 <div className="register-edit-text">
-                  {renderNameField({ edit, setEdit, userInfo, onChangeUserInfo })}
+                  {renderNameField({ edit, setEdit, userInfo, onChangeUserInfo, error: errors.name })}
                 </div>
                 <Select
                   options={options.job}
                   name="job"
-                  value={userInfo.job}
+                  value={userInfo.job || 'Profissão'}
+                  error={errors.job}
                   onChange={onChangeUserInfo}
                   selectClass="job-select"
                   optionClass="job-option"
                   defaultName="Profissão"
-                  style={{ "width": (userInfo.job.length + 1) + 'ch' }}
                 />
               </div>
             </div>
           </div>
         </section>
         <Form
+          errors={errors}
           userInfo={userInfo}
           onChangeUserInfo={(e) => setUserInfo({
             ...userInfo,
@@ -183,8 +210,9 @@ const Register = () => {
             [e.target.name]: e.target.value,
           })}
           onSubmit={(event) => registerAction({
-            event, userInfo, dispatch,
+            event, userInfo, dispatch, history,
             addressInfo, setLoading, skills,
+            setErrors,
           })}
           setLoading={setLoading}
           loading={loading}
@@ -196,4 +224,4 @@ const Register = () => {
   );
 }
 
-export default Register;
+export default withRouter(Register);

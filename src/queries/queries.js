@@ -67,3 +67,35 @@ query
     }
   }
   `
+  
+  export const searchUserQuery = gql`
+  query 
+  searchUser(
+    $key_word: String!
+  ){
+    searchUser(
+      key_word: $key_word
+    ){
+      id
+      name
+      job
+      phone
+      email
+      biography
+      profile_image  {
+        mimified
+      }
+      skills
+      address{
+        city
+        state
+        street
+        complement
+        district
+        zipcode
+        latitude
+        longitude
+      }
+    }
+  }
+  `

@@ -12,12 +12,19 @@ const ShowProfile = () => {
     return (
         <div className="wrapper">
             <article className="profile " key={agent.id}>
-                <img src="/icons/close.svg" size={28} color={'#333'} className="svg" onClick={() => dispatch({ type: 'HIDE_PROFILE', data: agent.id })} />
+                <img
+                    src="/icons/close.svg"
+                    className="svg"
+                    alt="Fechar"
+                    onClick={() => dispatch({ type: 'HIDE_PROFILE', data: agent.id })}
+                />
                 <header className="header-profile" style={{ backgroundImage: `url(${agent.cover_image.mimified})` }}>
-                    <img className="image-profile" src={agent.profile_image.mimified} alt="Por do Sol"></img>
-                    <div className="header-title">
-                        <h2 className="user-name">{agent.name}</h2>
-                        <h5 className="user-profession">{agent.job}</h5>
+                    <div className="show-profile-wrapper">
+                        <img className="image-profile" src={agent.profile_image.mimified} alt="Por do Sol"></img>
+                        <div className="header-title">
+                            <h2 className="user-name">{agent.name}</h2>
+                            <h5 className="user-profession">{agent.job}</h5>
+                        </div>
                     </div>
                 </header>
                 <section className="contact-info">

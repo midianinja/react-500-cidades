@@ -14,7 +14,8 @@ const Input = ({
     style,
     maxlength,
     adicionalClass,
-    onBlur
+    onBlur,
+    error,
 }) => {
     return (
         <div className={`field ${adicionalClass}`}>
@@ -32,6 +33,7 @@ const Input = ({
                 maxLength={maxlength}
                 onBlur={onBlur}
             />
+            {error ? <span className="error">{error}.</span> : null}
         </div>  
     );
 }

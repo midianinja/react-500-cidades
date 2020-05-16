@@ -13,7 +13,7 @@ import './styles.css';
 const Form = ({
   userInfo, onChangeUserInfo, setUserInfo,
   addressInfo, onChangeAddressInfo, onSubmit,
-  setLoading, loading, skills, setSkills,
+  setLoading, loading, skills, setSkills, errors
 }) => {
   return (
     <form className="register-form">
@@ -27,12 +27,14 @@ const Form = ({
           value={userInfo.biography}
           onChange={onChangeUserInfo}
         ></textarea>
+        {errors.biography ? <span className="error">{errors.biography}.</span> : null}
       </div>
       <div>
         <h3 className="heading-terciary">Qual a sua área de interesse?</h3>
         <SelectTags
           tags={skills}
           adicionalClass="tags-style"
+          error={errors.skills}
           handleChange={(tags) => setSkills(tags)}
         />
       </div>
@@ -47,6 +49,7 @@ const Form = ({
           inputClass="register-input"
           labelClass="register-label"
           labelName="E-mail"
+          error={errors.email}
           adicionalClass="common-input email"
           size="1000"
         />
@@ -55,6 +58,7 @@ const Form = ({
           value={phoneMask(userInfo.phone)}
           onChange={onChangeUserInfo}
           type="tel"
+          error={errors.phone}
           adicionalClass="common-input phone"
           inputClass="register-input"
           labelClass="register-label"
@@ -66,6 +70,7 @@ const Form = ({
           name="instagram"
           value={userInfo.instagram}
           onChange={onChangeUserInfo}
+          error={errors.instagram}
           inputClass="register-input insta"
           labelClass="register-label"
           adicionalClass="common-input insta"
@@ -75,6 +80,7 @@ const Form = ({
           name="facebook"
           value={userInfo.facebook}
           onChange={onChangeUserInfo}
+          error={errors.facebook}
           type="url"
           inputClass="register-input face"
           labelClass="register-label"
@@ -87,6 +93,7 @@ const Form = ({
           onChange={onChangeUserInfo}
           adicionalClass="common-input site"
           type="url"
+          error={errors.site_address}
           inputClass="register-input portfolio"
           labelClass="register-label"
           labelName="Site/portifolio"
@@ -98,6 +105,7 @@ const Form = ({
           value={userInfo.birth_date}
           onChange={onChangeUserInfo}
           type="date"
+          error={errors.birth_date}
           adicionalClass="common-input birth-date"
           inputClass="register-input birth-date"
           labelClass="register-label"
@@ -108,6 +116,7 @@ const Form = ({
           name="gender"
           value={userInfo.gender}
           onChange={onChangeUserInfo}
+          error={errors.gender}
           adicionalClass="common-input gender"
           selectClass="register-select gender"
           optionClass="register-option"
@@ -120,6 +129,7 @@ const Form = ({
           value={userInfo.sexual_orientation}
           onChange={onChangeUserInfo}
           selectClass="register-select sexual-orientation"
+          error={errors.sexual_orientation}
           adicionalClass="common-input sexual-orientation"
           optionClass="register-option"
           labelClass="register-label"
@@ -129,6 +139,7 @@ const Form = ({
           options={options.race}
           name="race"
           value={userInfo.race}
+          error={errors.race}
           adicionalClass="common-input race"
           onChange={onChangeUserInfo}
           selectClass="register-select race"
@@ -143,6 +154,7 @@ const Form = ({
           value={cepMask(addressInfo.zipcode)}
           onChange={onChangeAddressInfo}
           type="text"
+          error={errors.zipcode}
           inputClass="register-input zipcode"
           labelClass="register-label"
           adicionalClass="common-input zipcode"

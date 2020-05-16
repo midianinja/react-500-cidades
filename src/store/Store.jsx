@@ -18,7 +18,7 @@ const initialState = {
 
 export const reducer = (state, action) => {
   const cases = {
-    SHOW_TOAST: (oldState, data) => ({ ...oldState, toast: { show: true, msg: data.data } }),
+    SHOW_TOAST: (oldState, data) => ({ ...oldState, toast: { show: true, ...data.data } }),
     HIDE_TOAST: (oldState, data) => ({ ...oldState, toast: initialState.toast }),
     SET_ALL_USERS: (oldState, data) => ({ ...oldState, allusers: action.data }),
     SET_LOADING: (oldState, data) => ({ ...oldState, loading: action.data }),

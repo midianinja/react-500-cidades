@@ -30,6 +30,7 @@ const validateUser = (user) => {
     if(!user.sexual_orientation) errors.push({ type: 'sexual_orientation', error: 'Campo obrigatório' });
     if(!user.site_address) errors.push({ type: 'site_address', error: 'Campo obrigatório' });
     if(!user.skills.length) errors.push({ type: 'skills', error: 'Campo obrigatório' });
+    if(!user.addressInfo.zipcode) errors.push({ type: 'zipcode', error: 'Campo obrigatório' });
   
     return ({ valid: !errors.length, errors });
   } catch (err) {
@@ -82,14 +83,16 @@ const mapUserToApi = ({
 export const registerAction = async ({
   skills, event, userInfo,
   addressInfo, setLoading,
-  dispatch,
+  dispatch, history, setErrors,
 }) => {
   event.preventDefault();
   try {
     setLoading(true);
   
-    const userValidation = validateUser({ ...userInfo, skills });
-    if (!userValidation.valid) return;
+    const userValidation = validateUser({ ...userInfo, skills, addressInfo });
+    if (!userValidation.valid) {
+      throw new Error(JSON.stringify(userValidation.errors));
+    }
 
     const base64Cover = await getBase64(userInfo.cover_image.file);
     const base64Profile = await getBase64(userInfo.profile_image.file);
@@ -109,11 +112,28 @@ export const registerAction = async ({
         address: { ...addressInfo, user: registeredUser.data.createUser.id },
       }
     });
-    dispatch({ type: 'SHOW_TOAST', data: 'Cadastro efetuado com sucesso!'});
+    dispatch({
+      type: 'SHOW_TOAST',
+      data: {
+        msg: 'Cadastro efetuado com sucesso!'
+      },
+    });
+    history.push('/usuario/mapa')
     setLoading(false);
   } catch(err) {
+    const errors = JSON.parse(err.message)
+    const errorObj = {};
+    errors.forEach(err => errorObj[err.type] = err.error)
+    
+    setErrors(errorObj)
     setLoading(false);
-    console.error('err:', [err]);
+    dispatch({
+      type: 'SHOW_TOAST',
+      data: {
+        error: true,
+        msg: 'O formulário possui campos inválidos.',
+      },
+    });
   }
   
 }

@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import Routes from '../../routes';
+import React, { useContext, useState, useEffect } from 'react';
 import Menu from '../../components/Menu';
 import './styles.css';
 import ToggleButton from '../../components/ToggleButton';
@@ -8,8 +7,9 @@ import { FaSearch } from 'react-icons/fa';
 import Store from '../../store/Store'
 import NavigationBar from '../../components/NavigationBar';
 import ShowProfile from '../../components/ShowProfile'
+import { getUsers } from './list.controller'
 
-const renderList = (list, dispatch) => list.map(agent => (
+const renderList = (list, dispatch) => list.filter((usr) => usr.address).map(agent => (
     <div className="div-usercard" onClick={() => dispatch({ type: 'SHOW_PROFILE', data: agent.id })} key={agent.id} >
         <div className="userinfo" >
             <img
@@ -36,39 +36,43 @@ const renderList = (list, dispatch) => list.map(agent => (
 
 const UserList = () => {
     const { state, dispatch } = useContext(Store);
-
+    const [value, setVaue] = useState('');
+    const [users, setUsers] = useState(state.allusers);
+    console.log('value:', value);
+    useEffect(() => {
+        setUsers(state.allusers)
+    }, [state.allusers])
     return (
         <>
             <NavigationBar />
-            <Menu>
-                <Routes />
-            </Menu>
+            <Menu />
             <main className="container-usercard">
-                <div className='input-container'>
+                <form onSubmit={(e) => getUsers(e, value, setUsers)} className='input-container'>
                     <input
                         name='search'
                         type='text'
                         placeholder='Procurar...'
+                        onChange={({ target }) => setVaue(target.value)}
                         id='search'
                         className='input-container--search'
                     />
                     <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
-                </div>
-                <h1 className="title-search">Você procurou por <strong>{state.allusers.length} Agentes</strong> em <strong>São Paulo</strong> </h1>
+                </form>
+                <h1 className="title-search">Você procurou por <strong>{users.length} Agentes</strong> em <strong>São Paulo</strong> </h1>
                 <div className="infolist">
                     <p>Agente</p>
                     <p>Local</p>
                     <p>Tags</p>
                 </div>
                 <div className="container-list">
-                    {state.loading ? <p>Carregando...</p> : renderList(state.allusers, dispatch)}
+                    {state.loading ? <p>Carregando...</p> : renderList(users, dispatch)}
                 </div>
                 <div className="links-fixos">
                     <p>Tipo de Vizualização</p>
-                    <Link to="/users/mapa">
+                    <Link to="/usuario/mapa">
                         <ToggleButton className="btn-toggle">Mapa</ToggleButton>
                     </Link>
-                    <Link to="/users/lista-de-agentes">
+                    <Link to="/usuario/lista-de-agentes">
                         <ToggleButton className="btn-toggle--blue">Lista</ToggleButton>
                     </Link>
                 </div>

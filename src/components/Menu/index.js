@@ -7,16 +7,20 @@ import './styles.css';
 const Menu = ({ white, history }) => {
   const { state, dispatch } = useContext(Store);
 
-  if (!state.menu) return <img
-    className="toggle-icon"
-    open={state.menu}
-    src={white ? "/icons/menu_white.svg" : "/icons/menu.svg"}
-    onClick={() => dispatch({ type: 'TOGGLE_MENU', data: !state.menu })}
-  />
+  if (!state.menu) return (
+    <img
+      className="toggle-icon"
+      open={state.menu}
+      alt="Abrir menu"
+      src={white ? "/icons/menu_white.svg" : "/icons/menu.svg"}
+      onClick={() => dispatch({ type: 'TOGGLE_MENU', data: !state.menu })}
+    />
+  )
 
   return (
     <div className="wrapper">
       <img
+        alt="Fechar menu"
         className="toggle-icon"
         open={state.menu}
         src="/icons/close.svg"
@@ -54,10 +58,10 @@ const Menu = ({ white, history }) => {
                 onClick={(e) => {
                   e.preventDefault()
                   dispatch({ type: 'TOGGLE_MENU', data: !state.menu })
-                  history.push('/users/lista-de-agentes')
+                  history.push('/usuiario/lista-de-agentes')
                 }}
                 activeClassName="current"
-                to="/users/lista-de-agentes"
+                to="/usuiario/lista-de-agentes"
               >
                 Lista
                 </NavLink>
