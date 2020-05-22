@@ -20,8 +20,12 @@ const UserMap = () => {
   }
 
   const initMap = useCallback(() => {
+    const location = state.user ? state.user.address : {};
     mapRef.current = new window.google.maps.Map(document.getElementById('map'), {
-      center: { lat: -23.543095, lng: -46.627235 },
+      center: {
+        lat: location.latitude || -23.543095,
+        lng: location.longitude || -46.627235,
+      },
       zoom: 12,
       restriction: {
         latLngBounds: brazilBounds,
@@ -90,7 +94,7 @@ const UserMap = () => {
         mapRef.current.setZoom(17);
       }
     });
-  }, [state, brazilBounds])
+  }, [state, brazilBounds, dispatch])
 
   const loadMap = useCallback((url) => {
     const scripts = window.document.getElementsByTagName('script')[0]
@@ -108,7 +112,7 @@ const UserMap = () => {
 
   useEffect(() => {
     if (state.allusers.length) renderMap();
-  }, [state.allusers]);
+  }, [state.allusers, state.user, renderMap]);
 
   return (
     <>

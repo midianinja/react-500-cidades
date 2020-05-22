@@ -28,8 +28,8 @@ const ShowProfile = () => {
                     </div>
                 </header>
                 <section className="contact-info">
-                    <p><strong>Email</strong> {agent.email}</p>
-                    <p><strong>Celular</strong> {agent.phone}</p>
+                    {state.auth && state.user ? <p><strong>Email</strong> {agent.email}</p> : null}
+                    {state.auth && state.user ? <p><strong>Celular</strong> {agent.phone}</p> : null}
                     <p><strong>Localidade</strong> {agent.address.city} <span className="minor-text">{agent.address.state}</span></p>
                     <p><strong>Endereço</strong> {agent.address.street} {agent.address.complement} {agent.address.district} <span className="minor-text">{agent.address.zipcode}</span></p>
                     <h3 className="subtitle-profile">Tags</h3>

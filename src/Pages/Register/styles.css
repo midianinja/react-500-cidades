@@ -67,6 +67,7 @@
   }
 
 .register-text{
+    position: relative;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -114,8 +115,13 @@
 }
 .error {
     font-size: 0.7em;
+    font-weight: normal;
 }
 
+.error-register-name {
+    position: absolute;
+    top: 0;
+}
 
 /* .email {
     width: 80%;

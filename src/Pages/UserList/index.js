@@ -38,7 +38,6 @@ const UserList = () => {
     const { state, dispatch } = useContext(Store);
     const [value, setVaue] = useState('');
     const [users, setUsers] = useState(state.allusers);
-    console.log('value:', value);
     useEffect(() => {
         setUsers(state.allusers)
     }, [state.allusers])

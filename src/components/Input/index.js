@@ -33,7 +33,7 @@ const Input = ({
                 maxLength={maxlength}
                 onBlur={onBlur}
             />
-            {error ? <span className="error">{error}.</span> : null}
+            {error ? <span className="error">{error}</span> : null}
         </div>  
     );
 }

@@ -11,6 +11,7 @@ import Form from './components/Form';
 import Store from '../../store/Store';
 import Menu from '../../components/Menu';
 import NavigationBar from '../../components/NavigationBar';
+import RegisterModal from '../../components/ida/register/Register.modal';
 
 const getMapsProperty = (placeResults, id) => {
   const component = placeResults.address_components.find(i => i.types.includes(id));
@@ -26,6 +27,7 @@ const renderNameField = ({
       <>
         <h1 onClick={() => setEdit(true)} className="add-name">{userInfo.name || 'Seu Nome'}</h1>
         <FaPen className="icons-input" size={20} color="#888" onClick={() => setEdit(true)} />
+        {error ? <span className="error error-register-name">{error}</span> : null}
       </>
     );
   }
@@ -115,7 +117,6 @@ const Register = ({ history }) => {
   };
 
   const getAddress = async (zipcodeInput) => {
-    console.log('zipcodeInput:', zipcodeInput)
     try {
       const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcodeInput}&language=pt&key=${process.env.REACT_APP_MAP_KEY}`);
       const result = await zipcodeAddress.json();
@@ -219,6 +220,7 @@ const Register = ({ history }) => {
           skills={skills}
           setSkills={setSkills}
         />
+        <RegisterModal />
       </div>
     </>
   );

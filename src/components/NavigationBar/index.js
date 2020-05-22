@@ -1,28 +1,102 @@
-import React from 'react';
-import { NavLink } from "react-router-dom";
+import React, { useContext } from 'react';
+import { NavLink, withRouter } from "react-router-dom";
 import LogoImg from '../../assets/500cidades-logo-nav.png';
+import Store from '../../store/Store';
 import './styles.css';
+import Button from '../Button';
 
-const NavigationBar = ()  => {
+const renderAuthSide = (history, dispatch) => (
+    <ul className="auth-side">
+        <li>
+            <Button
+                children="Cancelar"
+                className="btn3D--red create-account"
+                onClick={() => history.push('/cadastre-se')}
+            >
+                Criar Conta
+            </Button >
+        </li>
+        <li>
+        <button
+            className="make-login"
+            onClick={() =>
+                dispatch({
+                    type: 'TOGGLE_LOGIN_MODAL',
+                    data: true,
+                })
+            }
+        >
+            Fazer Login
+        </button>
+        </li>
+        <div className="registration-field"> 
+        </div>
+    </ul>
+)
+
+const renderLoggedSide = (history, state, dispatch) => (
+    <ul className="logged-side">
+        <li>
+            <img
+                className="profile-img"
+                src={state.user.profile_image.mimified}
+                alt="Imagem de perfil"
+            />
+        </li>
+        <li>
+        <button
+            className="make-login"
+            onClick={() => {
+                history.push('/');
+                window.localStorage.setItem('500cidades@ida', '');
+                window.localStorage.setItem('500cidades@token', '');
+                dispatch({
+                    type: 'SET_AUTH',
+                    data: null,
+                });
+                dispatch({
+                    type: 'SET_USER',
+                    data: null,
+                });
+            }}
+        >
+            Sair
+        </button>
+        </li>
+        <div className="registration-field"> 
+        </div>
+    </ul>
+)
+
+const NavigationBar = ({ history })  => {
+    const { state, dispatch } = useContext(Store);
     return (
         <nav className="nav-container">
-            <img className="nav-img" src={LogoImg} alt="Logo 500 cidades" />
-            <ul>
-                <li>
-                <NavLink to="/">
-                    Sobre
-                </NavLink>
-                </li>
-                <li>
-                <NavLink to="/usuario/mapa">
-                    Mapa
-                </NavLink>
-                </li>
-                <div className="registration-field"> 
-                </div>
-            </ul>
+            <img
+                onClick={() => history.push('/')}
+                className="nav-img"
+                src={LogoImg}
+                alt="Logo 500 cidades"
+            />
+            <div className="header-container">
+                <ul className="no-auth-side">
+                    <li>
+                    <NavLink to="/">
+                        Sobre
+                    </NavLink>
+                    </li>
+                    <li>
+                    <NavLink to="/usuario/mapa">
+                        Mapa
+                    </NavLink>
+                    </li>
+                    <div className="registration-field"> 
+                    </div>
+                </ul>
+                {state.user ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, dispatch)}
+            </div>
         </nav>
     );
 }
 
-export default NavigationBar;
+export default withRouter(NavigationBar);

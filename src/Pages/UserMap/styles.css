@@ -4,12 +4,12 @@
 
 .map-input{
     position: absolute;
-    top: 8vh;
+    width: 600px;
     z-index: 56;
-    margin: 0 auto;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    top: 42px;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 .input-container{
@@ -66,7 +66,7 @@
 }
 
 .map-display{
-    height: 100vh;
+    height: calc(100vh - 50px);
     width: 100%;
 }
 
