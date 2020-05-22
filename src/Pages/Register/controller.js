@@ -91,6 +91,7 @@ export const registerAction = async ({
   
     const userValidation = validateUser({ ...userInfo, skills, addressInfo });
     if (!userValidation.valid) {
+      window.scrollTo(0, 0);
       throw new Error(JSON.stringify(userValidation.errors));
     }
 
@@ -112,14 +113,15 @@ export const registerAction = async ({
         address: { ...addressInfo, user: registeredUser.data.createUser.id },
       }
     });
-    dispatch({
-      type: 'SHOW_TOAST',
-      data: {
-        msg: 'Cadastro efetuado com sucesso!'
-      },
-    });
-    history.push('/usuario/mapa')
     setLoading(false);
+    dispatch({
+      type: 'SET_PRE_REGISTER_ID',
+      data: registeredUser.data.createUser.id,
+    });
+    dispatch({
+      type: 'TOGGLE_REGISTER_MODAL',
+      data: true,
+    });
   } catch(err) {
     const errors = JSON.parse(err.message)
     const errorObj = {};

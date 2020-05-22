@@ -6,14 +6,15 @@ const Store = React.createContext();
 
 const initialState = {
   toast: { show: false, msg: '' },
-  auth: {
-    name: 'Fulano',
-    sobrenome: 'Fulano',
-  },
+  auth: null,
+  user: null,
   allusers: [],
   loading: true,
   profile: false,
-  menu:false
+  menu:false,
+  preRegisterId: '',
+  loginModal: false,
+  registerModal: false,
 };
 
 export const reducer = (state, action) => {
@@ -25,9 +26,13 @@ export const reducer = (state, action) => {
     SHOW_PROFILE:(oldState, data) => ({ ...oldState, profile:action.data }),
     HIDE_PROFILE:(oldState, data) => ({ ...oldState, profile:initialState.profile }),
     TOGGLE_MENU:(oldState, data) => ({ ...oldState, menu:action.data }),
+    TOGGLE_LOGIN_MODAL:(oldState, data) => ({ ...oldState, loginModal: action.data }),
+    TOGGLE_REGISTER_MODAL:(oldState, data) => ({ ...oldState, registerModal: action.data }),
+    SET_PRE_REGISTER_ID:(oldState, data) => ({ ...oldState, preRegisterId: action.data }),
+    SET_USER:(oldState, data) => ({ ...oldState, user: action.data }),
+    SET_AUTH:(oldState, data) => ({ ...oldState, auth: action.data }),
   };
-  console.log(action)
-  return cases[action.type](state, action);
+  return cases[action.type] ? cases[action.type](state, action) : state;
 
 };
 

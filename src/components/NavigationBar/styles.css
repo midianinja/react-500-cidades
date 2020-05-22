@@ -1,33 +1,85 @@
-.nav-container{
+.nav-container {
     display: flex;
     width: 100%;
     top: 0;
     justify-content: space-between;
     align-items: center;
     background-color: var(--blue);
-    height: 80px;
+    height: 50px;
 }
 
-.nav-img{
-    height:70px;
-    margin-left: 80px;
+.nav-img {
+    height:30px;
+    cursor: pointer;
+    margin-left: 30px;
+}
+.logged-side .profile-img {
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
 }
 
-.nav-container ul{
-    margin-bottom: 0;
+.nav-container ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
     display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
 }
 
-.nav-container li{
-    margin-right:80px;
+.nav-container .no-auth-side li{
     cursor: pointer;
     font-weight: 700;
 }
 
-.nav-container a:hover{
+.nav-container ul li{
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.nav-container ul a:hover{
     text-decoration: none;
     color:var(--darker-blue);
+}
+
+.header-container {
+    display: flex;
+    height: 50px;
+    width: 400px;
+    justify-content: space-around;
+}
+
+.create-account {
+    background-color: #DF4545;
+    font-size: 16px;
+    padding: 0;
+    font-size: .8em;
+    height: 29px;
+    width: 120px;
+}
+
+ul.auth-side {
+    background-color: #3CBDB4;
+    padding: 0 20px;
+}
+ul.logged-side {
+    background-color: #3CBDB4;
+    padding: 0 20px;
+}
+
+.make-login {
+    width: 100px;
+    background-color: transparent;
+    margin: 0;
+    border: none;
+    color: #FFF;
+    padding: 0;
+    font-size: .8em;
+    color: var(--white);
+    font-weight: 400;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 @media (max-width:992px){
