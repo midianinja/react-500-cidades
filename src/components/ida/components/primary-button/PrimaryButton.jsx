@@ -56,6 +56,7 @@ function getHoverColor(key) {
 const PrimaryButton = styled.button`
   height: ${props => getSize(props.size)};
   padding-left: 30px;
+  border: none;
   padding-right: 30px;
   border-radius: ${props => getSize(props.size)};
   background-color: ${props => getColor(props.color)};

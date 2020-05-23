@@ -14,7 +14,7 @@ const initialState = {
   menu:false,
   preRegisterId: '',
   loginModal: false,
-  registerModal: false,
+  registerModal: true,
 };
 
 export const reducer = (state, action) => {

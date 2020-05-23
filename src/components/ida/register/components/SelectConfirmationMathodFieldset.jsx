@@ -18,13 +18,16 @@ const Label = styled.label`
   color: ${white};
   margin-bottom: 10px;
 `;
+const ButtonWrapper = styled.div`
+  display: flex;
+`;
 
 function SelectConfirmationMathodFieldset(confirmationMethod, setConfirmationMethod) {
   return (
     <Fragment>
       <Title>Agora vamos confirmar sua identidade</Title>
       <Label>Confirmar identidade com:</Label>
-      <div>
+      <ButtonWrapper>
         <MethodButton
           text='SMS'
           iconSrc='/icons/phone.svg'
@@ -37,7 +40,7 @@ function SelectConfirmationMathodFieldset(confirmationMethod, setConfirmationMet
           selected={confirmationMethod === 'email'}
           onClick={() => setConfirmationMethod('email')}
         />
-      </div>
+      </ButtonWrapper>
     </Fragment>
   );
 }

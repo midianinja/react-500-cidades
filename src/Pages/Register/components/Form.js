@@ -204,15 +204,13 @@ const Form = ({
         />
       </div>
       <div className="register-submit">
-        { loading ? null :
-          <Button
-            onClick={(e) => onSubmit(e)}
-            type="submit"
-            disabled={loading}
-            children="Criar conta"
-            className="btn3D--blue"
-          />
-        }
+        <Button
+          onClick={(e) => onSubmit(e)}
+          type="submit"
+          disabled={loading}
+          children={loading ? loading : "Criar conta"}
+          className="btn3D--blue"
+        />
         <Snackbar /* ref={} */ />
         <Link to="/">
           <Button

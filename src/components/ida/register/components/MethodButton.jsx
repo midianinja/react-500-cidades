@@ -7,6 +7,7 @@ const Button = styled.button`
   height: 90px;
   background-color: ${white};
   border-radius: 10px;
+  border: none;
   padding: 15px;
   vertical-align: top;
   opacity: ${(props) => {

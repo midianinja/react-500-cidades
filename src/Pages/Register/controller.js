@@ -87,26 +87,30 @@ export const registerAction = async ({
 }) => {
   event.preventDefault();
   try {
-    setLoading(true);
+    setLoading('validando usuário...');
   
     const userValidation = validateUser({ ...userInfo, skills, addressInfo });
     if (!userValidation.valid) {
       window.scrollTo(0, 0);
       throw new Error(JSON.stringify(userValidation.errors));
     }
+    setLoading('Tradando imagens...');
 
     const base64Cover = await getBase64(userInfo.cover_image.file);
     const base64Profile = await getBase64(userInfo.profile_image.file);
-
+    setLoading('Subindo foto de perfil...');
     const coverImage = await sendImageToApi({ base64: base64Cover });
+    setLoading('Subindo foto de capa...');
     const profileImage = await sendImageToApi({ base64: base64Profile });
     const mappedUser = await mapUserToApi({
       userInfo, skills,
       coverImage: coverImage.data.data.urls,
       profileImage: profileImage.data.data.urls,
     });
-
+    
+    setLoading('Salvando usuário...');
     const registeredUser = await sendUserToApi(mappedUser);
+    setLoading('Salvando Endereço...');
     await apollo.mutate({
       mutation: registerAddressMutation,
       variables: {
@@ -123,19 +127,31 @@ export const registerAction = async ({
       data: true,
     });
   } catch(err) {
-    const errors = JSON.parse(err.message)
-    const errorObj = {};
-    errors.forEach(err => errorObj[err.type] = err.error)
-    
-    setErrors(errorObj)
-    setLoading(false);
-    dispatch({
-      type: 'SHOW_TOAST',
-      data: {
-        error: true,
-        msg: 'O formulário possui campos inválidos.',
-      },
-    });
+    try {
+      const errors = JSON.parse(err.message)
+      const errorObj = {};
+      errors.forEach(err => errorObj[err.type] = err.error)
+      
+      setErrors(errorObj)
+      setLoading(false);
+      dispatch({
+        type: 'SHOW_TOAST',
+        data: {
+          error: true,
+          msg: 'O formulário possui campos inválidos.',
+        },
+      });
+    } catch (err) {
+      setLoading(false);
+      dispatch({
+        type: 'SHOW_TOAST',
+        data: {
+          error: true,
+          msg: 'Erro inesperado',
+        },
+      });
+      console.log('err:', err)
+    }
   }
   
 }
