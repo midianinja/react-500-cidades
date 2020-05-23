@@ -95,16 +95,11 @@ export const registerAction = async ({
       throw new Error(JSON.stringify(userValidation.errors));
     }
 
-    console.log('userInfo:', userInfo)
     const base64Cover = await getBase64(userInfo.cover_image.file);
-    console.log('base64Cover:', base64Cover)
     const base64Profile = await getBase64(userInfo.profile_image.file);
-    console.log('base64Profile:', base64Profile)
 
     const coverImage = await sendImageToApi({ base64: base64Cover });
-    console.log('coverImage:', coverImage)
     const profileImage = await sendImageToApi({ base64: base64Profile });
-    console.log('profileImage:', profileImage)
     const mappedUser = await mapUserToApi({
       userInfo, skills,
       coverImage: coverImage.data.data.urls,
@@ -128,7 +123,6 @@ export const registerAction = async ({
       data: true,
     });
   } catch(err) {
-    console.log('err:', err);
     const errors = JSON.parse(err.message)
     const errorObj = {};
     errors.forEach(err => errorObj[err.type] = err.error)
