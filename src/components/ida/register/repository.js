@@ -1,6 +1,5 @@
 import axios from 'axios';
 import apollo from '../../../service/apollo';
-import { createUserMutation } from './mutations';
 import { oneUserQuery } from './queries';
 
 export async function createIDA(username, password) {
@@ -8,16 +7,6 @@ export async function createIDA(username, password) {
     username,
     password,
   });
-}
-
-export async function createUserSOM(ida) {
-  console.log('ida:', ida)
-  // return apollo.mutate({
-  //   mutation: createUserMutation,
-  //   variables: {
-  //     user: { ida, likes: [] },
-  //   },
-  // });
 }
 
 export async function generatePhoneCode(ida, phone) {

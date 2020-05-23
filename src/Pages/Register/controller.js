@@ -123,6 +123,7 @@ export const registerAction = async ({
       data: true,
     });
   } catch(err) {
+    console.log('err:', err)
     const errors = JSON.parse(err.message)
     const errorObj = {};
     errors.forEach(err => errorObj[err.type] = err.error)
