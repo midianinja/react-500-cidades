@@ -100,7 +100,7 @@ function Register({ history }) {
   const { state, dispatch } = useContext(Store);
   const [ida, setIDA] = useState('');
   const [token, setToken] = useState('');
-  const [step, setStep] = useState('methods');
+  const [step, setStep] = useState('account');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
