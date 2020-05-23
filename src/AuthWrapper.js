@@ -42,7 +42,6 @@ const verifyAuth = async (state, dispatch) => {
       data: user.data.oneUser,
     });
   } catch (err) {
-    console.log('err:', err)
     window.localStorage.setItem('500cidades@ida', '');
     window.localStorage.setItem('500cidades@token', '');
   }

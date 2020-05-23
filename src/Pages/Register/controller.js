@@ -150,7 +150,6 @@ export const registerAction = async ({
           msg: 'Erro inesperado',
         },
       });
-      console.log('err:', err)
     }
   }
   

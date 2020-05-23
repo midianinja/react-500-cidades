@@ -79,8 +79,8 @@ export async function validatePhoneCodeSubmit({
     throw error;
   }
 
-  window.localStorage.setItem('som@ida', ida);
-  window.localStorage.setItem('som@token', token);
+  window.localStorage.setItem('500cidades@ida', ida);
+  window.localStorage.setItem('500cidades@token', token);
 
   let userIDAPromise;
   try {

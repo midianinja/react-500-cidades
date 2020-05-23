@@ -6,6 +6,7 @@ import Snackbar from './components/Snackbar';
 import LoginModal from './components/ida/login/Login.modal';
 import UserRoutes from './users'
 import AuthWrapper from './AuthWrapper'
+import ValidationEmailToken from './Pages/ValidationEmailToken/ValidationEmailToken';
 
 
 export default function Routes() {
@@ -20,6 +21,7 @@ export default function Routes() {
                 <Snackbar />
                 <LoginModal />
             </AuthWrapper>
+            <Route path="/ativacao/:ida" component={ValidationEmailToken} />
         </BrowserRouter>
     );
 }

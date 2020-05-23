@@ -31,8 +31,8 @@ const LoginModal = ({ history }) => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
-  const ida = window.localStorage.getItem('som@ida');
-  const token = window.localStorage.getItem('som@token');
+  const ida = window.localStorage.getItem('500cidades@ida');
+  const token = window.localStorage.getItem('500cidades@token');
 
   const closeModal = () => {
     dispatch({ type: 'CLOSE_LOGIN_MODAL' });
