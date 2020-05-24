@@ -209,13 +209,12 @@
 .org > p {
  margin: 0;
 }
-.org{
+.org {
     flex: 50% 1;
     background-color: var(--eggplant);
     display: flex;
     justify-content: space-around;
     padding: 20px 0;
-    height: 100%;
     align-items: center;
     flex-wrap: wrap;
 }
