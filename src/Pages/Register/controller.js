@@ -25,10 +25,9 @@ const validateUser = (user) => {
     if(!user.job) errors.push({ type: 'job', error: 'Campo obrigatório' });
     if(!user.name) errors.push({ type: 'name', error: 'Campo obrigatório' });
     if(!user.phone) errors.push({ type: 'phone', error: 'Telefone inválido' });
-    if(!user.profile_image) errors.push({ type: 'profile_image', error: 'Campo obrigatório' });
+    if(!user.profile_image) errors.push({ type: 'profile_image', error: 'Insira uma imagem de perfil' });
     if(!user.race) errors.push({ type: 'race', error: 'Campo obrigatório' });
     if(!user.sexual_orientation) errors.push({ type: 'sexual_orientation', error: 'Campo obrigatório' });
-    if(!user.site_address) errors.push({ type: 'site_address', error: 'Campo obrigatório' });
     if(!user.skills.length) errors.push({ type: 'skills', error: 'Campo obrigatório' });
     if(!user.addressInfo.zipcode) errors.push({ type: 'zipcode', error: 'Campo obrigatório' });
   
@@ -77,7 +76,50 @@ const mapUserToApi = ({
   sexual_orientation: userInfo.gender,
   race: userInfo.race
 
-})
+});
+
+const getValidationErrors = ({
+  err, setErrors, setLoading, dispatch,
+}) => {
+  const errors = JSON.parse(err.message)
+  const errorObj = {};
+  let msg = 'O formulário possui campos inválidos.';
+  errors.forEach(err => errorObj[err.type] = err.error)
+  if (errorObj.cover_image) msg = 'errorObj.cover_image';
+  if (errorObj.profile_image) msg = errorObj.profile_image;
+  
+  setErrors(errorObj)
+  setLoading(false);
+  dispatch({
+    type: 'SHOW_TOAST',
+    data: {
+      error: true,
+      msg: msg,
+    },
+  });
+};
+
+const getGraphqlErrors = ({
+  err, setErrors, setLoading, dispatch,
+}) => {
+  const messages = err.map(err => err.message);
+  const errObj = {};
+  messages.forEach(msg => {
+    if (msg.indexOf('email_1 dup key') !== -1) {
+      errObj.email = 'Email já cadastrado';
+    }
+  });
+  
+  setErrors(errObj)
+  setLoading(false);
+  dispatch({
+    type: 'SHOW_TOAST',
+    data: {
+      error: true,
+      msg: errObj.email ? errObj.email : '',
+    },
+  });
+}
 
 
 export const registerAction = async ({
@@ -128,19 +170,15 @@ export const registerAction = async ({
     });
   } catch(err) {
     try {
-      const errors = JSON.parse(err.message)
-      const errorObj = {};
-      errors.forEach(err => errorObj[err.type] = err.error)
-      
-      setErrors(errorObj)
-      setLoading(false);
-      dispatch({
-        type: 'SHOW_TOAST',
-        data: {
-          error: true,
-          msg: 'O formulário possui campos inválidos.',
-        },
-      });
+      if (err.graphQLErrors) {
+        return getGraphqlErrors({
+          err: err.graphQLErrors, setErrors, setLoading, dispatch,
+        });
+      } else {
+        getValidationErrors({
+          err, setErrors, setLoading, dispatch,
+        });
+      }
     } catch (err) {
       setLoading(false);
       dispatch({

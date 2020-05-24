@@ -17,8 +17,9 @@ import {
   Actions, Arrow,
 } from './login.modal.style';
 
-const registerAction = (dispatch) => {
-  dispatch({ type: 'SHOW_REGISTER_MODAL' });
+const registerAction = (dispatch, history) => {
+  dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
+  history.push('/cadastre-se');
 }
 
 const forgetPasswordAction = (dispatch) => {
@@ -35,7 +36,7 @@ const LoginModal = ({ history }) => {
   const token = window.localStorage.getItem('500cidades@token');
 
   const closeModal = () => {
-    dispatch({ type: 'CLOSE_LOGIN_MODAL' });
+    dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
   };
 
   useEffect(() => {
@@ -105,7 +106,7 @@ const LoginModal = ({ history }) => {
                   >
                     <Arrow src="/icons/arrow_forward_right.svg" />
                   </CircularButton>
-                  <LinkButton color="white" type="button" onClick={() => registerAction(dispatch)}>
+                  <LinkButton color="white" type="button" onClick={() => registerAction(dispatch, history)}>
                     Criar conta
                   </LinkButton>
                 </Fragment>

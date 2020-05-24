@@ -6,7 +6,6 @@
     background-repeat: no-repeat; 
     background-size: cover;
     background-position: -43rem 0;
-    height: 170vh;
 }
 
 .landing-top{
@@ -207,18 +206,18 @@
     align-content: center;
     flex-wrap: wrap;
 }
+.org > p {
+ margin: 0;
+}
 .org{
-    /* flex-grow: 1; */
     flex: 50% 1;
     background-color: var(--eggplant);
     display: flex;
-    justify-content: space-evenly;
-    padding: 1rem 2rem;
+    justify-content: space-around;
+    padding: 20px 0;
     height: 100%;
     align-items: center;
     flex-wrap: wrap;
-    min-width: 320px;
-    min-height: 14vh;
 }
 .org-logos{
     display: flex;

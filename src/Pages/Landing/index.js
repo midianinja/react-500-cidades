@@ -1,6 +1,5 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import Routes from '../../routes';
+import React, { useContext, useState } from 'react';
+import { Link, withRouter } from "react-router-dom";
 
 import Button from '../../components/Button';
 import Menu from '../../components/Menu';
@@ -15,11 +14,23 @@ import newsletterImg from '../../assets/newsletter.png';
 import logoNinjaImg from '../../assets/logo-midia-ninja.png';
 import logoCircleImg from '../../assets/logo-circle.png';
 import logoAmzImg from '../../assets/logo-amazonia-org.png';
+import { registerNewsLetter } from './landing.controller';
 
 import './styles.css';
+import Store from '../../store/Store';
+import SentEmailFieldset from '../../components/ida/register/components/SentEmailFieldset';
 
 
-const Landing = () => {
+const Landing = ({ history }) => {
+  const { state, dispatch } = useContext(Store);
+  const [email, setEmail] = useState('');
+  const hasSignup = () => {
+    if (state.auth && state.user) return history.push('/usuario/mapa');
+    dispatch({
+      type: 'TOGGLE_LOGIN_MODAL',
+      data: true,
+    });
+  }
     return (
       <div className="landing-container">
         <section className="landing">
@@ -42,7 +53,7 @@ const Landing = () => {
                 <Link to="/cadastre-se">
                   <Button className="btn3D--red">Quero!</Button>
                 </Link>
-                <Link href="#" alt="Já tenho cadastro" className="anchor-link">
+                <Link onClick={hasSignup} href="#" alt="Já tenho cadastro" className="anchor-link">
                   Já tenho cadastro.
                 </Link>
               </div>
@@ -65,7 +76,7 @@ const Landing = () => {
             <h2 className="heading-secondary">Mapa Ativista</h2>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" />
           </div>
-          <Button className="btn3D--blue">Navegue e descubra mais</Button>
+          <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
           <div className="steps">
             <div>
               <img className="steps-img" src={stepImg1} alt="Cadastre-se" />
@@ -86,7 +97,7 @@ const Landing = () => {
                 alt="Escreva sua história"
               />
               <p>
-                Conte sua história <span>(em breve)</span>
+                Conte sua história
               </p>
             </div>
           </div>
@@ -98,11 +109,11 @@ const Landing = () => {
             <div className="paragraph-about">
               <p>
                 O 500 cidades é um projeto organizado pela rede de coletivos
-                culturais Fora do Eixo e a rede de mídia livre Ninja e tem por
-                objetivo identificar pessoas, projetos e espaços espalhados pelo
-                Brasil para construir uma rede de territórios ativistas e
-                promover a criação de redes de confiança, empatia e
-                solidariedade, a partir de experiências e histórias de vida.
+                culturais que tem por objetivo identificar pessoas, projetos
+                e espaços espalhados pelo Brasil para construir uma rede de 
+                territórios ativistas e promover a criação de redes de confiança, 
+                empatia e solidariedade, a partir de experiências e histórias de 
+                vida.
               </p>
               <p>
                 Enquanto uma onda de intolerância e conservadorismo ganha força,
@@ -151,31 +162,36 @@ const Landing = () => {
                 inputClass="newsletter-email"
                 placeholder="Insira aqui seu e-mail"
                 labelClass="label-email"
+                value={email}
+                onChange={({ target }) => setEmail(target.value)}
               />
-              <Button className="newsletter-btn3D--blue">></Button>
+              <Button
+                onClick={() => registerNewsLetter(email, dispatch)}
+                className="newsletter-btn3D--blue"
+              >
+                >
+              </Button>
             </div>
           </div>
         </section>
         <section className="footer">
           <div className="org">
             <p>Quem constrói isso com a gente</p>
-            <div className="org-logos">
-              <img
-                className="org-logo"
-                src={logoNinjaImg}
-                alt="Logo Mídia Ninja"
-              />
-              <img
-                className="org-logo"
-                src={logoCircleImg}
-                alt="pesquisar....."
-              />
-              <img
-                className="org-logo"
-                src={logoAmzImg}
-                alt="Logo Amazônia.org"
-              />
-            </div>
+            <img
+              className="org-logo"
+              src={logoNinjaImg}
+              alt="Logo Mídia Ninja"
+            />
+            <img
+              className="org-logo"
+              src={logoCircleImg}
+              alt="pesquisar....."
+            />
+            <img
+              className="org-logo"
+              src={logoAmzImg}
+              alt="Logo Amazônia.org"
+            />
           </div>
           <div className="more-about">
             <a className="more-about-link" href="#sobre">
@@ -193,4 +209,4 @@ const Landing = () => {
     );
 }
 
-export default Landing;
+export default withRouter(Landing);

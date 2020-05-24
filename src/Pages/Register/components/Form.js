@@ -9,6 +9,7 @@ import Snackbar from '../../../components/Snackbar';
 import { phoneMask, cepMask } from '../../../components/Masks';
 import options from '../register.model';
 import './styles.css';
+import TextArea from '../../../components/TextArea/TextArea';
 
 const Form = ({
   userInfo, onChangeUserInfo, setUserInfo,
@@ -19,15 +20,15 @@ const Form = ({
     <form className="register-form">
       <div>
         <h3 className="heading-terciary">Escreva uma biografia</h3>
-        <textarea
+        <TextArea
           name="biography"
           placeholder="Digite aqui sua biografia"
-          maxLength="300"
+          maxLength="500"
           className="biography"
+          error={errors.biography}
           value={userInfo.biography}
           onChange={onChangeUserInfo}
-        ></textarea>
-        {errors.biography ? <span className="error">{errors.biography}.</span> : null}
+        />
       </div>
       <div>
         <h3 className="heading-terciary">Qual a sua área de interesse?</h3>
