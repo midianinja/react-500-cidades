@@ -1,15 +1,13 @@
 .div-usercard { 
     margin: 20px 0px;
-    align-items: center;
     min-width: 339px;
     min-height: 215px;
     max-width: 350px;
-    max-height: 210px;
     flex-direction: column;
     padding: 20px;
     box-shadow: 3px 3px 17px -2px lightgrey;
     border-radius: 12px;
-    display: grid;   
+    display: grid;
 }
 .container-usercard {
     display: flex;
