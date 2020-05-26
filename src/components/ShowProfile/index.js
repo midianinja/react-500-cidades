@@ -33,13 +33,11 @@ const ShowProfile = () => {
                     <p><strong>Localidade</strong> {agent.address.city} <span className="minor-text">{agent.address.state}</span></p>
                     <p><strong>Endereço</strong> {agent.address.street} {agent.address.complement} {agent.address.district} <span className="minor-text">{agent.address.zipcode}</span></p>
                     <h3 className="subtitle-profile">Tags</h3>
-                    {agent.skills.map((skill) => (
-                        <div>
-                            <h5 className="blue-pills">{skill}</h5>
-                            <h5 className="blue-pills">{skill}</h5>
-                        </div>
-                    ))}
-
+                    <div>
+                        {agent.skills.map((skill) => (
+                            <span className="blue-pills">{skill}</span>
+                        ))}
+                    </div>
                     <h3 className="title-biography">Sobre {agent.name}</h3>
                     <p className="text-biography">
                         {agent.biography}
