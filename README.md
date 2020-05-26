@@ -1,6 +1,6 @@
 # 500cidades
 
-![500cidades Logo](src/assets/500cidades-logo)
+![500cidades Logo](https://github.com/midianinja/react-500-cidades/blob/develop/src/assets/500cidades-logo.png)
 
 Ter voz e dar projeção a seus desejos. É por entender a importância disso que a Mídia Ninja e a Rede Fora do Eixo apresentam o projeto 500 cidades. Rodar por todo o país para visitar e conhecer estas iniciativas e estes milhares de brasileiros e brasileiras que com pequenas vitórias diárias são inspiração e referência para a construção de uma nova política e uma nova sociedade.
 
