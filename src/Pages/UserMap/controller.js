@@ -62,6 +62,7 @@ export const insertPins = ({ allusers, mapRef }) => {
   
   // eslint-disable-next-line no-undef
   // eslint-disable-next-line no-undef
+  window.MarkerClusterer.prototype.getDraggable = () => { return false; };
   var markerCluster = new window.MarkerClusterer(mapRef.current, markers,
     {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
   console.log('markerCluster:', markerCluster);
