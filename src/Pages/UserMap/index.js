@@ -1,101 +1,22 @@
 import React, { useEffect, useCallback, useRef, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ToggleButton from '../../components/ToggleButton';
-import pin from '../../assets/marcador-oportunidade.svg';
 import { FaSearch } from "react-icons/fa";
 import './styles.css';
 import Store from '../../store/Store';
 import NavigationBar from '../../components/NavigationBar';
 import ShowProfile from '../../components/ShowProfile';
+import { startMap, fetchAutocomplete, insertPins } from './controller';
 
 
 const UserMap = () => {
   const { state, dispatch } = useContext(Store);
   const [searchFocus, setSearchFocus] = useState(false);
+  const [autocomplete, setAutocomplete] = useState();
 
   const searchInputRef = useRef(null);
   const mapRef = useRef(null);
-  const brazilBounds = {
-    west: -73.9872354804, south: -33.7683777809, east: -34.7299934555, north: 5.24448639569
-  }
-
-  const initMap = useCallback(() => {
-    const location = state.user ? state.user.address : {};
-    mapRef.current = new window.google.maps.Map(document.getElementById('map'), {
-      center: {
-        lat: location.latitude || -23.543095,
-        lng: location.longitude || -46.627235,
-      },
-      zoom: 12,
-      restriction: {
-        latLngBounds: brazilBounds,
-        strictBounds: false
-      },
-      mapTypeControl: false,
-      streetViewControl: false
-    });
-
-    let infoWindow = new window.google.maps.InfoWindow();
-
-    state.allusers.map(agent => {
-      const marker = new window.google.maps.Marker({
-        position: { lat: agent.address.latitude, lng: agent.address.longitude },
-        icon: pin,
-        map: mapRef.current
-      });
-
-      return marker.addListener('click', () => {
-        const skill = agent.skills.map((skill, index) => `<div class='agent-skills-item' id=${index}>${skill}</div>`).join('');
-
-        infoWindow.setContent(`
-          <div class='info-window'>
-            <div class='agent-info'>
-              <div class='userinfo'>
-                <img
-                  class='user-info--img'
-                  alt="user-photo"
-                  src=${agent.profile_image.mimified}
-                >
-              </div>
-              <div>
-                <p class='agent-info--text1'>${agent.name}</p>
-                <p class='agent-info--text2'>${agent.address.city} / ${agent.address.state}</p>
-                <p class='agent-info--text3'>${agent.job}</p>
-              </div>
-            </div>
-            <div class='agent-skills'>${skill}</div>
-            <button class='btn-ver-mais' type="button" onclick="document.getElementById('${agent.id}').click()" class='agent-plus'>Ver Mais</button>
-          </div>`
-        )
-        return infoWindow.open(mapRef.current, marker)
-      })
-    });
-
-    const autocomplete = new window.google.maps.places.Autocomplete(searchInputRef.current);
-    autocomplete.bindTo('bounds', mapRef.current);
-    autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
-
-    autocomplete.addListener('place_changed', () => {
-      const place = autocomplete.getPlace();
-      if (!place.geometry) {
-        dispatch({
-          type: 'SHOW_TOAST',
-          data: {
-            error: true,
-            msg: "endereço não encontrado"
-          }
-        })
-        return;
-      }
-      if (place.geometry.viewport) {
-        mapRef.current.fitBounds(place.geometry.viewport);
-      } else {
-        mapRef.current.setCenter(place.geometry.location);
-        mapRef.current.setZoom(17);
-      }
-    });
-  }, [state, brazilBounds, dispatch])
-
+  
   const loadMap = useCallback((url) => {
     const scripts = window.document.getElementsByTagName('script')[0]
     const newScript = document.createElement('script')
@@ -103,16 +24,42 @@ const UserMap = () => {
     newScript.async = true
     newScript.defer = true
     scripts.parentNode.insertBefore(newScript, scripts)
-  }, [])
+  }, []);
+  
+  const loadMarkerCluster = useCallback((url) => {
+    const scripts = window.document.getElementsByTagName('script')[0]
+    const newScript = document.createElement('script')
+    newScript.src = url
+    newScript.async = true
+    newScript.defer = true
+    newScript.crossorigin = true
+    scripts.parentNode.insertBefore(newScript, scripts)
+  }, []);
 
   const renderMap = useCallback(() => {
     loadMap(`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_KEY}&libraries=places&region=BR&callback=initMap`);
-    window.initMap = initMap;
-  }, [initMap, loadMap]);
+    window.initMap = () => startMap({ state, mapRef, setAutocomplete, searchInputRef });
+  }, [loadMap, state]);
+  const renderPins = useCallback(() => {
+    loadMarkerCluster(`https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js`);
+    console.log('CARREGADO!!!!');
+  }, [loadMarkerCluster]);
+
 
   useEffect(() => {
-    if (state.allusers.length) renderMap();
-  }, [state.allusers, state.user, renderMap]);
+    if(!mapRef.current) renderMap();
+  }, [mapRef, renderMap]);
+  useEffect(() => {
+    if(!mapRef.current) renderPins();
+  }, [mapRef, renderPins]);
+
+  useEffect(() => {
+    if(state.allusers && mapRef.current) insertPins({ allusers: state.allusers, mapRef })
+  }, [state.allusers]);
+
+  useEffect(() => {
+    if (autocomplete) fetchAutocomplete({ autocomplete, searchInputRef, mapRef, dispatch });
+  }, [autocomplete, dispatch]);
 
   return (
     <>

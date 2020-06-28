@@ -2,13 +2,14 @@ import React from 'react';
 import './style.css';
 
 const TextArea = ({
-  value, onChange, error,
+  value, onChange, error, id,
   name, placeholder, maxLength
 }) => {
   return (
     <div className="text-area-container">
       <textarea
         name={name}
+        id={id}
         placeholder={placeholder}
         maxLength={maxLength}
         className="text-area"

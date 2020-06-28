@@ -13,7 +13,7 @@ const renderList = (list, dispatch) => list.filter((usr) => usr.address).map(age
     <div className="div-usercard" onClick={() => dispatch({ type: 'SHOW_PROFILE', data: agent.id })} key={agent.id} >
         <div className="userinfo" >
             <img
-                className="user-info--img"
+                className="user-info-img"
                 alt="Agente"
                 src={agent.profile_image.mimified}
             />
@@ -37,6 +37,7 @@ const renderList = (list, dispatch) => list.filter((usr) => usr.address).map(age
 const UserList = () => {
     const { state, dispatch } = useContext(Store);
     const [value, setVaue] = useState('');
+    const [wordFetch, setWordFetch] = useState('');
     const [users, setUsers] = useState(state.allusers);
     useEffect(() => {
         setUsers(state.allusers)
@@ -46,7 +47,10 @@ const UserList = () => {
             <NavigationBar />
             <Menu />
             <main className="container-usercard">
-                <form onSubmit={(e) => getUsers(e, value, setUsers)} className='input-container'>
+                <form
+                    onSubmit={(e) => getUsers(e, value, setUsers, setWordFetch)}
+                    className='input-container'
+                >
                     <input
                         name='search'
                         type='text'
@@ -57,7 +61,7 @@ const UserList = () => {
                     />
                     <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
                 </form>
-                <h1 className="title-search">Você procurou por <strong>{users.length} Agentes</strong> em <strong>São Paulo</strong> </h1>
+                {wordFetch ? <h1 className="title-search">Você procurou por <strong>{users.length} Agentes</strong> em <strong>{wordFetch}</strong> </h1> : null}
                 <div className="infolist">
                     <p>Agente</p>
                     <p>Local</p>

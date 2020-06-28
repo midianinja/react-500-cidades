@@ -37,10 +37,11 @@ const renderNameField = ({
       <div className="add-name">
         <Input
           name="name"
+          id="name"
           value={userInfo.name}
           onChange={onChangeUserInfo}
           type="text"
-          inputClass="name-input"
+          inputClass="register-name-input"
           error={error}
           autofocus={true}
           maxlength="33"
@@ -112,7 +113,7 @@ const Register = ({ history }) => {
   const onChangeUserInfo = (e) => {
     setUserInfo({
       ...userInfo,
-      [e.target.name]: e.target.value,
+      [e.target.id]: e.target.value,
     });
   };
 
@@ -184,8 +185,9 @@ const Register = ({ history }) => {
                   {renderNameField({ edit, setEdit, userInfo, onChangeUserInfo, error: errors.name })}
                 </div>
                 <Select
-                  options={options.job}
+                  options={options.job.sort()}
                   name="job"
+                  id="job"
                   value={userInfo.job || 'Profissão'}
                   error={errors.job}
                   onChange={onChangeUserInfo}
@@ -200,15 +202,17 @@ const Register = ({ history }) => {
         <Form
           errors={errors}
           userInfo={userInfo}
-          onChangeUserInfo={(e) => setUserInfo({
-            ...userInfo,
-            [e.target.name]: e.target.value,
-          })}
+          onChangeUserInfo={(e) => {
+            setUserInfo({
+              ...userInfo,
+              [e.target.id]: e.target.value,
+            })
+          }}
           setUserInfo={setUserInfo}
           addressInfo={addressInfo}
           onChangeAddressInfo={(e) => setAddressInfo({
             ...addressInfo,
-            [e.target.name]: e.target.value,
+            [e.target.id]: e.target.value,
           })}
           onSubmit={(event) => registerAction({
             event, userInfo, dispatch, history,
@@ -220,7 +224,7 @@ const Register = ({ history }) => {
           skills={skills}
           setSkills={setSkills}
         />
-        <RegisterModal />
+        <RegisterModal emailPreSet={userInfo.email} phonePreSet={userInfo.phone} />
       </div>
     </>
   );

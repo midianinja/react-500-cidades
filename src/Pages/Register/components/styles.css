@@ -13,6 +13,13 @@
   flex-wrap: wrap;
 }
 
+.register-name-input{
+  border-bottom: 1px solid #FFF;
+  min-width: 70px;
+  background-color: transparent;
+  border-radius: 0;
+}
+
 .register-input{
   border-radius: 10px;
   border:none;

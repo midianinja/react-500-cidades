@@ -18,7 +18,6 @@ import { registerNewsLetter } from './landing.controller';
 
 import './styles.css';
 import Store from '../../store/Store';
-import SentEmailFieldset from '../../components/ida/register/components/SentEmailFieldset';
 
 
 const Landing = ({ history }) => {
@@ -34,7 +33,6 @@ const Landing = ({ history }) => {
     return (
       <div className="landing-container">
         <section className="landing">
-          <Menu white/>
           <div className="landing-top">
             <div className="landing-logo">
               <img

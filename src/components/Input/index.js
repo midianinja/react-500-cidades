@@ -3,6 +3,7 @@ import './styles.css';
 
 const Input = ({
     name,
+    id,
     value,
     onChange,
     type,
@@ -26,7 +27,7 @@ const Input = ({
                 onChange={onChange} 
                 type={type} 
                 placeholder={placeholder} 
-                id={name} 
+                id={id} 
                 className={`input-field ${inputClass}`} 
                 autoFocus={autofocus}
                 style={style} 

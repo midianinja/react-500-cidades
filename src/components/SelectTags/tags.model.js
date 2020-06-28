@@ -13,6 +13,7 @@ export default [
   "Educação",
   "Esporte",
   "Feminismos",
+  "Fotografia",
   "Games",
   "Internacional",
   "Legalização das Drogas",

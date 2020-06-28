@@ -35,11 +35,12 @@
     margin: 1rem;
     justify-content: space-around;
 }
-.user-info--img {
+.user-info-img {
     border: none;
     border-radius: 100%;
     width: 57px;
     height: 57px;
+    object-fit: contain;
     margin-right: 20px;
 }
 .p-name {

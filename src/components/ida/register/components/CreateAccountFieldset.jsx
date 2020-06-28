@@ -35,7 +35,7 @@ function getColor(point) {
 
 function CreateAccountFieldset(
   username, setUsername, password, setPassword, parentError,
-) {
+  ) {
   const errorColor = `color: ${getColor(getPasswordPoint(password))};`;
   return (
     <Fragment>

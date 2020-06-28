@@ -10,6 +10,8 @@ import { phoneMask, cepMask } from '../../../components/Masks';
 import options from '../register.model';
 import './styles.css';
 import TextArea from '../../../components/TextArea/TextArea';
+import { formatDate } from '../../../utils/date.utils';
+import { extractNumbers } from '../../../utils/number.utils';
 
 const Form = ({
   userInfo, onChangeUserInfo, setUserInfo,
@@ -22,6 +24,7 @@ const Form = ({
         <h3 className="heading-terciary">Escreva uma biografia</h3>
         <TextArea
           name="biography"
+          id="biography"
           placeholder="Digite aqui sua biografia"
           maxLength="500"
           className="biography"
@@ -33,7 +36,7 @@ const Form = ({
       <div>
         <h3 className="heading-terciary">Qual a sua área de interesse?</h3>
         <SelectTags
-          tags={skills}
+          tags={skills.sort()}
           adicionalClass="tags-style"
           error={errors.skills}
           handleChange={(tags) => setSkills(tags)}
@@ -44,6 +47,7 @@ const Form = ({
       <div className="row">
         <Input
           name="email"
+          id="email"
           value={userInfo.email}
           onChange={onChangeUserInfo}
           type="email"
@@ -56,6 +60,7 @@ const Form = ({
         />
         <Input
           name="phone"
+          id="phone"
           value={phoneMask(userInfo.phone)}
           onChange={onChangeUserInfo}
           type="tel"
@@ -69,6 +74,7 @@ const Form = ({
       <div className="row">
         <Input
           name="instagram"
+          id="instagram"
           value={userInfo.instagram}
           onChange={onChangeUserInfo}
           error={errors.instagram}
@@ -79,6 +85,7 @@ const Form = ({
         />
         <Input
           name="facebook"
+          id="facebook"
           value={userInfo.facebook}
           onChange={onChangeUserInfo}
           error={errors.facebook}
@@ -90,6 +97,7 @@ const Form = ({
         />
         <Input
           name="site_address"
+          id="site_address"
           value={userInfo.site_address}
           onChange={onChangeUserInfo}
           adicionalClass="common-input site"
@@ -102,10 +110,12 @@ const Form = ({
       </div>
       <div className="row">
         <Input
-          name="birth_date"
-          value={userInfo.birth_date}
-          onChange={onChangeUserInfo}
-          type="date"
+          name="date"
+          id="birth_date"
+          value={formatDate(userInfo.birth_date)}
+          onChange={(e) => onChangeUserInfo({ target: { id: 'birth_date', value: extractNumbers(e.target.value) }})}
+          type="text"
+          placeholder="dd/MM/AAAA"
           error={errors.birth_date}
           adicionalClass="common-input birth-date"
           inputClass="register-input birth-date"
@@ -115,6 +125,7 @@ const Form = ({
         <Select
           options={options.gender}
           name="gender"
+          id="gender"
           value={userInfo.gender}
           onChange={onChangeUserInfo}
           error={errors.gender}
@@ -127,6 +138,7 @@ const Form = ({
         <Select
           options={options.sexual_orientation}
           name="sexual_orientation"
+          id="sexual_orientation"
           value={userInfo.sexual_orientation}
           onChange={onChangeUserInfo}
           selectClass="register-select sexual-orientation"
@@ -139,6 +151,7 @@ const Form = ({
         <Select
           options={options.race}
           name="race"
+          id="race"
           value={userInfo.race}
           error={errors.race}
           adicionalClass="common-input race"
@@ -152,6 +165,7 @@ const Form = ({
       <div className="row">
         <Input
           name="zipcode"
+          id="zipcode"
           value={cepMask(addressInfo.zipcode)}
           onChange={onChangeAddressInfo}
           type="text"
@@ -163,6 +177,7 @@ const Form = ({
         />
         <Input
           name="district"
+          id="district"
           value={addressInfo.district}
           onChange={onChangeAddressInfo}
           type="text"
@@ -173,6 +188,7 @@ const Form = ({
         />
         <Input
           name="city"
+          id="city"
           value={addressInfo.city}
           onChange={onChangeAddressInfo}
           type="text"
@@ -185,6 +201,7 @@ const Form = ({
       <div className="row last-row">
         <Input
           name="state"
+          id="state"
           value={addressInfo.state}
           onChange={onChangeAddressInfo}
           type="text"
@@ -195,6 +212,7 @@ const Form = ({
         />
         <Input
           name="country"
+          id="country"
           value={addressInfo.country}
           onChange={onChangeAddressInfo}
           type="text"

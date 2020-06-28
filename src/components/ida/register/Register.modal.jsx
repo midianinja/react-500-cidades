@@ -20,6 +20,7 @@ import {
 import { purple, black50, white50, white } from '../settings/colors';
 import Store from '../../../store/Store';
 import Loading from '../components/loading/Loading';
+import { useEffect } from 'react';
 
 const filterNumbers = (value) =>  value.replace(/\D/g, "");
 
@@ -96,7 +97,7 @@ export const MakeLogin = styled.a`
 `;
 
 
-function Register({ history }) {
+function Register({ history, emailPreSet, phonePreSet }) {
   const { state, dispatch } = useContext(Store);
   const [ida, setIDA] = useState('');
   const [token, setToken] = useState('');
@@ -109,6 +110,16 @@ function Register({ history }) {
   const [method, setMethod] = useState('');
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setEmail(emailPreSet);
+  }, [emailPreSet]);
+  useEffect(() => {
+    passwordValidation(password);
+  }, [password]);
+  useEffect(() => {
+    setPhone(phonePreSet);
+  }, [phonePreSet]);
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -129,9 +140,9 @@ function Register({ history }) {
     const point = getPasswordPoint(e.target.value);
     let message = '';
     if (point <= 0) message = '';
-    if (point < 60) message = 'Senha fraca';
-    if (point < 90) message = 'Senha razoável';
-    if (point >= 90) message = 'Senha forte';
+    else if (point < 60) message = 'Senha fraca';
+    else if (point < 90) message = 'Senha razoável';
+    else if (point >= 90) message = 'Senha forte';
 
     setError({ ...error, password: message });
   };
