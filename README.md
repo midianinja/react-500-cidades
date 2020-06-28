@@ -1,68 +1,73 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 500cidades
 
-## Available Scripts
+![500cidades Logo](https://github.com/midianinja/react-500-cidades/blob/develop/src/assets/500cidades-logo.png)
 
-In the project directory, you can run:
+Ter voz e dar projeção a seus desejos. É por entender a importância disso que a Mídia Ninja e a Rede Fora do Eixo apresentam o projeto 500 cidades. Rodar por todo o país para visitar e conhecer estas iniciativas e estes milhares de brasileiros e brasileiras que com pequenas vitórias diárias são inspiração e referência para a construção de uma nova política e uma nova sociedade.
 
-### `yarn start`
+## Índice
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. [O Projeto](#o-projeto)
+2. [Objetivos](#objetivos)
+3. [Público Alvo](#público-alvo)
+4. [Funcionalidades](#funcionalidades)
+5. [Projetos](#projetos)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## O Projeto
+O 500 cidades é um projeto organizado pela rede de coletivos culturais Fora do Eixo e a rede de mídia livre NINJA que pretende circular e visitar 500 cidades brasileiras.
 
-### `yarn test`
+## Objetivos
+Circular 500 cidades brasileiras, visando:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Apresentar tecnologias desenvolvidas pela rede Fora do Eixo e a Mídia Ninja para coletivos e cidadãos interessados.
 
-### `yarn build`
+* Identificar histórias de lutas, movimentos e heróis locais, patrimônio material e imaterial, paisagens e belezas naturais.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Construir uma agenda de mapeamento de pequenas vitórias e histórias inspiradoras de defesa dos direitos humanos, da diversidade cultural e ambiental, dos territórios e identidades e da inteligência e criatividade do povo brasileiro.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* Divulgar e dar visibilidade a estas histórias, lutas, movimentos e heróis locais como uma agenda positiva para o momento que estamos vivendo no país.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Construir uma rede de colaboração e circulação de conhecimento e tecnologias sociais a partir destes territórios.
 
-### `yarn eject`
+* Intercambiar ferramentas e metodologias para o trabalho colaborativo em rede;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Valorizar e difundir o trabalho das redes e projetos socioculturais como recursos para a inovação de políticas públicas e o fortalecimento da participação social.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Público Alvo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Artistas, produtores, comunicadores e midialivristas, militantes de movimentos sociais, ativistas de movimentos identitários (feministas, negros, LGBTs, PCDs, indígenas), gestores públicos, hackers, gamers, e interessados em geral nas tecnologias e frentes de trabalho desenvolvidas pelo Fora do Eixo e Mídia Ninja.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Estórias do Usuário
 
-## Learn More
+* Como Ativista eu gostaria de cadastrar meu perfil para poder me identificar
+* Como Ativista eu gostaria de personalizar meu perfil
+* Como Ativista eu gostaria de visualizar outros ativistas no mapa próximos a mim.
+* Como Ativista eu gostaria de buscar outros ativistas numa lista por estado ou cidade.
+* Como Ativista eu gostaria de visualizar o perfil de outros ativistas.
+<!-- * Como Ativista eu gostaria de visualizar as rotas, locais de hospedagem, custos e informações das cidades
+* Como Ativista eu gostaria de visualizar a agenda e eventos
+* Como Ativista eu gostaria de visualizar conteúdos sobre as cidades visitadas
+* Como Ativista eu gostaria de poder conhecer outros projetos e serviços-->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Funcionalidades
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Login/cadastro
+Perfil Personalizável: Capa do perfil, foto, tags de interesse e informações de perfil
+Mapa Ativista
+Networking
+Busca de usuários com exibição em lista
+Busca de usuários com exibição em mapa
 
-### Code Splitting
+| **Usuário** | **Funcionalidades** |
+| ------------ | ------------ |
+| **Ativistas** | - Disponibilizar próprio perfil </br> - Mini bio </br> - Visualizar outros ativistas no mapa </br> - Visualizar perfil outros ativistas no mapa </br> - Buscar ativistas por cidade ou estado </br> - Redes Sociais |
+| **Visitantes (não-cadastrados)** | - Visualizar o mapa com marcadores </br> - Visualizar lista de usuários  |
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+## Projetos
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Neste repositório estão vários links importantes referentes as fontes do projeto como um todo e, também, neste item os demais repositórios onde você pode encontrar nosso desenvolvimento.
 
-### Making a Progressive Web App
+500 cidades Graphql API - https://github.com/midianinja/graph-api-500-cidades
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Projetos Relacionados
+* IDA = https://github.com/midianinja/ida-auth-serverless
