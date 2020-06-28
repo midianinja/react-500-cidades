@@ -7,12 +7,14 @@ import Store from '../../store/Store';
 import NavigationBar from '../../components/NavigationBar';
 import ShowProfile from '../../components/ShowProfile';
 import { startMap, fetchAutocomplete, insertPins } from './controller';
+import SamePlaceListModal from '../../components/SamePlaceListModal/SamePlaceListModal';
 
 
 const UserMap = () => {
   const { state, dispatch } = useContext(Store);
   const [searchFocus, setSearchFocus] = useState(false);
   const [autocomplete, setAutocomplete] = useState();
+  const [samePlaceList, setSamePlaceList] = useState([]);
 
   const searchInputRef = useRef(null);
   const mapRef = useRef(null);
@@ -42,7 +44,6 @@ const UserMap = () => {
   }, [loadMap, state]);
   const renderPins = useCallback(() => {
     loadMarkerCluster(`https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js`);
-    console.log('CARREGADO!!!!');
   }, [loadMarkerCluster]);
 
 
@@ -54,7 +55,7 @@ const UserMap = () => {
   }, [mapRef, renderPins]);
 
   useEffect(() => {
-    if(state.allusers && mapRef.current) insertPins({ allusers: state.allusers, mapRef })
+    if(state.allusers && mapRef.current) insertPins({ allusers: state.allusers, mapRef, setSamePlaceList })
   }, [state.allusers]);
 
   useEffect(() => {
@@ -63,6 +64,14 @@ const UserMap = () => {
 
   return (
     <>
+      <SamePlaceListModal
+        users={samePlaceList}
+        openUser={(usr) => {
+          dispatch({ type: 'SHOW_PROFILE', data: usr.id });
+          setSamePlaceList([]);
+        }}
+        onClose={() => setSamePlaceList([])}
+      />
       <NavigationBar />
       <div className='map-container'>
         <div className='map-input'>

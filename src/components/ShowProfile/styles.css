@@ -35,8 +35,10 @@
     display: inline-block;
     width: 60px;
     height: 60px;
+    object-fit: contain;
     margin-right: 10px;
     border-radius: 100%;
+    background-color: rgba(210,210,210,.7);
 }
 .header-title {
     display: inline-block;

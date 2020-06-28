@@ -1,4 +1,3 @@
-import pin from '../../assets/marcador-oportunidade.svg';
 
 export const startMap = ({
   state, mapRef, setAutocomplete, searchInputRef,
@@ -7,7 +6,6 @@ export const startMap = ({
     west: -73.9872354804, south: -33.7683777809, east: -34.7299934555, north: 5.24448639569
   }
   const location = state.user ? state.user.address : {};
-  console.log('location:', location)
   mapRef.current = new window.google.maps.Map(document.getElementById('map'), {
     center: {
       lat: location.latitude || -23.543095,
@@ -24,16 +22,15 @@ export const startMap = ({
   setAutocomplete(new window.google.maps.places.Autocomplete(searchInputRef.current));
 };
 
-export const insertPins = ({ allusers, mapRef }) => {
+export const insertPins = ({ allusers, mapRef, setSamePlaceList }) => {
   const infoWindow = new window.google.maps.InfoWindow();
 
+  // window.google.maps.Marker.prototype.getDraggable = function () { return true };
   const markers = allusers.map(agent => {
     const marker = new window.google.maps.Marker({
       position: { lat: agent.address.latitude, lng: agent.address.longitude },
-      icon: pin,
-      map: mapRef.current
     });
-    return marker.addListener('click', () => {
+    marker.addListener('click', () => {
       const skill = agent.skills.map((skill, index) => `<div class='agent-skills-item' id=${index}>${skill}</div>`).join('');
 
       infoWindow.setContent(`
@@ -57,15 +54,32 @@ export const insertPins = ({ allusers, mapRef }) => {
         </div>`
       )
       return infoWindow.open(mapRef.current, marker)
-    })
+    });
+    return marker;
   });
   
-  // eslint-disable-next-line no-undef
-  // eslint-disable-next-line no-undef
-  window.MarkerClusterer.prototype.getDraggable = () => { return false; };
-  var markerCluster = new window.MarkerClusterer(mapRef.current, markers,
-    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-  console.log('markerCluster:', markerCluster);
+  var markerCluster = new window.MarkerClusterer(mapRef.current, markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  markerCluster.addListener('click', (e) => {
+    const localMarkers = e.getMarkers();
+    const positions = localMarkers.map((mk) => ({
+      lat: mk.position.lat(),
+      lng: mk.position.lng(),
+    }));
+
+    const firstPosition = JSON.stringify(positions[0]);
+    const sameLocation = !positions.find(p => (JSON.stringify(p) !== firstPosition ? true : false))
+    if (sameLocation) {
+      const allusersPositions = allusers.map((usr) => ({
+        position: JSON.stringify({
+          lat: usr.address.latitude,
+          lng: usr.address.longitude,
+        }),
+        user: usr,
+      }));
+      const userIdInThisPosition = allusersPositions.filter((usr) => (usr.position === firstPosition));
+      setSamePlaceList(userIdInThisPosition.map((usr) => usr.user));
+    }
+  })
 }
 
 export const fetchAutocomplete = ({ autocomplete, mapRef, dispatch }) => {
