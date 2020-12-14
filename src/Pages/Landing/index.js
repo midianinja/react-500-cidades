@@ -62,10 +62,7 @@ const Landing = ({ history }) => {
               Um mergulho no Brasil de verdade
             </h2>
             <p className="paragraph--landing-bottom">
-              Com o projeto 500 Cidades viajamos pelo Brasil para colocar no
-              mapa pessoas e projetos que criam uma ponte entre a arte e a
-              cultura, e transformam seus espaços de alguma forma, na beleza das
-              pequenas atitudes e nas vitórias diárias.
+            Vamos visitar e conhecer 500 cidades por todo o Brasil para colocar em nosso mapa ativista pessoas, projetos e espaços que transformam seu cotidiano e territórios e são inspiração para (r)evoluções cotidianas em suas comunidades.
             </p>
           </div>
         </section>
@@ -106,39 +103,22 @@ const Landing = ({ history }) => {
             <h2 className="heading-secondary--about">500 cidades</h2>
             <div className="paragraph-about">
               <p>
-                O 500 cidades é um projeto organizado pela rede de coletivos
-                culturais que tem por objetivo identificar pessoas, projetos
-                e espaços espalhados pelo Brasil para construir uma rede de 
-                territórios ativistas e promover a criação de redes de confiança, 
-                empatia e solidariedade, a partir de experiências e histórias de 
-                vida.
+              O 500 cidades tem por objetivo identificar pessoas, projetos e espaços espalhados pelo Brasil.  Descentralizar a cena e fomentar a voz da quebrada.  Construir uma teia de territórios ativistas e promover a criação de redes de confiança, afeto  e solidariedade, a partir das experiências e histórias de vida. Nutrir a construção de trocas sociais e ampliar o diálogo entre as manifestações plurais de um Brasil profundo e diverso.
               </p>
               <p>
-                Enquanto uma onda de intolerância e conservadorismo ganha força,
-                milhares de experiências e práticas colaborativas de superação
-                pessoal e coletiva emergem transformando todo o país num grande
-                laboratório de uma nova cidadania no século XXI. Participar da
-                vida social e política é uma das principais atitudes que
-                caracterizam o brasileiro do século XXI, principalmente depois
-                das jornadas de junho de 2013.
+              Segundo especialistas estamos diante da maior crise humanitária do último século, diante da qual o mundo todo se vira para questões fundamentais.
               </p>
               <p>
-                Segundo especialistas estamos diante da maior crise humanitária
-                do último século. Não bastasse tudo isso, o Brasil tem neste
-                momento um presidente incapaz de lidar com os desafios que temos
-                pela frente. Estes dois fatores dão a dimensão da EMERGÊNCIA
-                deste chamado a participação.
+              Não bastasse tudo isso, o Brasil tem neste momento um governo incapaz de lidar com os desafios que temos pela frente.
               </p>
               <p>
-                Temos que aproveitar este momento para se abrir ainda mais e
-                ampliar as conexões entre as pessoas dispostas a construir em
-                seus territórios esta rede de confiança. Debaixo pra cima, a
-                partir de cada local, chegou a hora de semearmos um novo projeto
-                de sociedade. Mais justo e igualitário. Que empodere e dê
-                visibilidade a toda potência de um Brasil profundo e que precisa
-                emergir.
+              Estes dois fatores dão a dimensão da EMERGÊNCIA deste chamado a participação. Na medida em que observamos a necessidade de abarcar as iniciativas que vão surgindo no Brasil profundo, na medida em que as demandas sociais se destacam podemos notar uma eclosão de  projetos com foco nas diferentes carências sociais, dando voz a quem antes era silenciado por falta de espaços de articulação.
               </p>
-              <p>Venha fazer parte desta história...</p>
+              <p>A proposta é identificar e conectar pessoas que fazem a diferença em todos os cantos do país! Iniciativas culturais, de educação e solidariedade, música e empreendedorismo solidário, soberania alimentar e desenvolvimento sustentável e muito mais.</p>
+              <p>Sabe quantos km existe do Oiapoque ao Chuí? 5.648 km!
+É muito chão né? É Brasil que não acaba mais.
+E assim que essa pandemia acabar vamos rodar por todo o país para dar voz às iniciativas que visam um mundo melhor e mais plural, amplificando as vozes das pequenas e grandes cidades.</p>
+            <p>São incontáveis narrativas, ações, iniciativas e trabalhos que queremos encontrar neste Brasil Profundo. Faça parte dessa aventura incrível e vem com a gente!</p>
             </div>
             {/* </Container> */}
           </div>
@@ -167,7 +147,6 @@ const Landing = ({ history }) => {
                 onClick={() => registerNewsLetter(email, dispatch)}
                 className="newsletter-btn3D--blue"
               >
-                >
               </Button>
             </div>
           </div>
