@@ -1,57 +1,69 @@
 import React, { useEffect, useContext } from 'react';
 import Store from './store/Store';
-import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import apollo from './service/apollo';
 import { oneUserQuery } from './queries/queries';
+import idaLib from './service/ida.lib';
 
-const verifyAuth = async (state, dispatch) => {
+const verifyAuth = async (auth, dispatch, history) => {
+  if (!auth) return;
   try {
-    if (state.auth && state.user) return;
-    
-    const ida = window.localStorage.getItem('500cidades@ida');
-    const token = window.localStorage.getItem('500cidades@token');
-
-    if (!ida || !token) {}
-    
-    
-    const verification = await Axios.post(
-      `${process.env.REACT_APP_IDA_AUTH_API_URI}/validate-token`,
-      { token },
-      {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-        },
-      },
-    );
     const user = await apollo.query({
       query: oneUserQuery,
       variables: {
         user: {
-          ida_id: verification.data.ida,
+          ida_id: auth.ida,
         },
       },
     });
-
     dispatch({
       type: 'SET_AUTH',
-      data: verification.data,
+      data: auth,
     });
+    if (!user.data.oneUser) {
+      history.push('/cadastre-se');
+      return;
+    }
+
     dispatch({
       type: 'SET_USER',
       data: user.data.oneUser,
     });
   } catch (err) {
-    window.localStorage.setItem('500cidades@ida', '');
-    window.localStorage.setItem('500cidades@token', '');
+    console.log('🚀 ~ file: AuthWrapper.js ~ line 41 ~ verifyAuth ~ err', err);
   }
 }
 
+/**
+ * open iniIda signin pop and resolve possible errors if
+ */
+const initIda = async (
+  dispatch, history,
+) => {
+  console.log('initIda');
+  // const query = `?${router.asPath.split('?')[1 || '']}`;
+  const ida = await idaLib({
+    onAuthChange: (auth) => {
+      verifyAuth(auth, dispatch, history);
+    },
+  });
+  dispatch({
+    type: 'SET_IDA',
+    data: ida,
+  })
+
+  // if (parsedQuery.logout === 'true') await ida.logout();
+};
+
 function AuthWrapper({ children }) {
   const { state, dispatch } = useContext(Store);
+  const history = useHistory();
   useEffect(() => {
-    verifyAuth(state, dispatch)
-  })
+    initIda(dispatch, history);
+   }, []);
+  // useEffect(() => {
+  //   verifyAuth(state, dispatch)
+  // })
   return (
     <div>
       {children}

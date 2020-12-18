@@ -18,10 +18,12 @@ import { registerNewsLetter } from './landing.controller';
 
 import './styles.css';
 import Store from '../../store/Store';
+import { openIDASignin } from '../../service/ida.lib';
 
 
 const Landing = ({ history }) => {
   const { state, dispatch } = useContext(Store);
+  console.log('🚀 ~ file: index.js ~ line 26 ~ Landing ~ state', state);
   const [email, setEmail] = useState('');
   const hasSignup = () => {
     if (state.auth && state.user) return history.push('/usuario/mapa');
@@ -48,10 +50,8 @@ const Landing = ({ history }) => {
                 <span className="heading-primary--white">no mapa</span>
               </h1>
               <div className="landing-top-links">
-                <Link to="/cadastre-se">
-                  <Button className="btn3D--red">Quero!</Button>
-                </Link>
-                <Link onClick={hasSignup} href="#" alt="Já tenho cadastro" className="anchor-link">
+                <Button onClick={() => openIDASignin(state.ida)} className="btn3D--red">Quero!</Button>
+                <Link onClick={() => openIDASignin(state.ida)} href="#" alt="Já tenho cadastro" className="anchor-link">
                   Já tenho cadastro.
                 </Link>
               </div>

@@ -160,14 +160,7 @@ export const registerAction = async ({
       }
     });
     setLoading(false);
-    dispatch({
-      type: 'SET_PRE_REGISTER_ID',
-      data: registeredUser.data.createUser.id,
-    });
-    dispatch({
-      type: 'TOGGLE_REGISTER_MODAL',
-      data: true,
-    });
+    history.push('/usuario/mapa')
   } catch(err) {
     try {
       if (err.graphQLErrors) {

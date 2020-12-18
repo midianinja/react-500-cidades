@@ -224,7 +224,6 @@ const Register = ({ history }) => {
           skills={skills}
           setSkills={setSkills}
         />
-        <RegisterModal emailPreSet={userInfo.email} phonePreSet={userInfo.phone} />
       </div>
     </>
   );

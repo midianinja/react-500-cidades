@@ -15,9 +15,11 @@ const initialState = {
   preRegisterId: '',
   loginModal: false,
   registerModal: false,
+  ida: null,
 };
 
 export const reducer = (state, action) => {
+console.log('🚀 ~ file: Store.jsx ~ line 22 ~ reducer ~ action', action);
   const cases = {
     SHOW_TOAST: (oldState, data) => ({ ...oldState, toast: { show: true, ...data.data } }),
     HIDE_TOAST: (oldState, data) => ({ ...oldState, toast: initialState.toast }),
@@ -29,9 +31,15 @@ export const reducer = (state, action) => {
     TOGGLE_LOGIN_MODAL:(oldState, data) => ({ ...oldState, loginModal: action.data }),
     TOGGLE_REGISTER_MODAL:(oldState, data) => ({ ...oldState, registerModal: action.data }),
     SET_PRE_REGISTER_ID:(oldState, data) => ({ ...oldState, preRegisterId: action.data }),
-    SET_USER:(oldState, data) => ({ ...oldState, user: action.data }),
-    SET_AUTH:(oldState, data) => ({ ...oldState, auth: action.data }),
+    SET_USER: (oldState, data) => ({ ...oldState, user: action.data }),
+    SET_AUTH: (oldState, data) => ({ ...oldState, auth: action.data }),
+    SET_IDA: (oldState, data) => {
+    console.log('🚀 ~ file: Store.jsx ~ line 37 ~ reducer ~ data', action);
+    console.log('🚀 ~ file: Store.jsx ~ line 39 ~ reducer ~ ({ ...oldState, ida: action.data })', ({ ...oldState, ida: action.data }));
+      return ({ ...oldState, ida: action.data })
+    },
   };
+  console.log('🚀 ~ file: Store.jsx ~ line 39 ~ reducer ~ cases[action.type]', cases[action.type]);
   return cases[action.type] ? cases[action.type](state, action) : state;
 
 };

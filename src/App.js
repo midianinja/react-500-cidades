@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Routes from './routes';
 import { BrowserRouter } from 'react-router-dom';
 import './global.css';
-import { StoreProvider } from './store/Store';
+import Store, { StoreProvider } from './store/Store';
 
 function App() {
   return (
