@@ -75,7 +75,7 @@ export default {
         "Agronomia",
         "Alimentos",
         "Animação",
-        "Aquicultura",
+        "Agricultura",
         "Arqueologia",
         "Arquitetura e Urbanismo",
         "Arquivologia",
