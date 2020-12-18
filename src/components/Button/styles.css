@@ -45,3 +45,44 @@
         width: 22%;  
     }
 }
+/* :root{
+    --blue: #4ACAC1;
+    --darker-blue: #3FACA4;
+    --red: #DF4545;
+    --darker-red: #B42E2E;
+    --white: #f0f0f5;
+} */
+
+
+.btn3D {
+    display: inline-block;
+    font-weight: 700;
+    transition: transform .3s ease; 
+    position: relative;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+    border-radius: .6rem;
+    max-width: 70%;
+}
+
+.btn3D:hover {
+    filter: brightness(0.9);
+    transition: all 0.1s ease-in;
+}
+
+.btn3D:focus{
+    outline: none;
+}
+
+.btn3D:active {
+    transform: translateY(4px);
+    border-bottom-width: 2px;
+    box-shadow: none;
+}
+
+@media (max-width: 992px){
+    .btn3D {
+        max-width: 70%;  
+    }
+} 
