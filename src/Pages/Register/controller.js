@@ -132,22 +132,31 @@ export const registerAction = async ({
     setLoading('validando usuário...');
   
     const userValidation = validateUser({ ...userInfo, skills, addressInfo });
+    console.log('userValidation', userValidation);
     if (!userValidation.valid) {
       window.scrollTo(0, 0);
       throw new Error(JSON.stringify(userValidation.errors));
     }
-    setLoading('Tradando imagens...');
+    setLoading('Tratando imagens...');
+    let urlImageCover = {};
+    let urlImageProfile = {};
 
-    const base64Cover = await getBase64(userInfo.cover_image.file);
-    const base64Profile = await getBase64(userInfo.profile_image.file);
-    setLoading('Subindo foto de perfil...');
-    const coverImage = await sendImageToApi({ base64: base64Cover });
-    setLoading('Subindo foto de capa...');
-    const profileImage = await sendImageToApi({ base64: base64Profile });
+    if (userInfo.cover_image.file) {
+      setLoading('Subindo foto de capa...');
+      const base64Cover = await getBase64(userInfo.cover_image.file);
+      const coverImage = await sendImageToApi({ base64: base64Cover });
+      urlImageCover = coverImage.data.data.urls;
+    }
+    if (userInfo.profile_image.file) {
+      setLoading('Subindo foto de perfil...');
+      const base64Profile = await getBase64(userInfo.profile_image.file);
+      const profileImage = await sendImageToApi({ base64: base64Profile });
+      urlImageProfile = profileImage.data.data.urls
+    }
     const mappedUser = await mapUserToApi({
       userInfo, skills,
-      coverImage: coverImage.data.data.urls,
-      profileImage: profileImage.data.data.urls,
+      coverImage: urlImageCover,
+      profileImage: urlImageProfile,
     });
     
     setLoading('Salvando usuário...');
@@ -162,6 +171,7 @@ export const registerAction = async ({
     setLoading(false);
     history.push('/usuario/mapa')
   } catch(err) {
+    console.log('Erro inesperado 1 catch', [err]);
     try {
       if (err.graphQLErrors) {
         return getGraphqlErrors({
@@ -173,6 +183,7 @@ export const registerAction = async ({
         });
       }
     } catch (err) {
+      console.log('Erro inesperado', [err]);
       setLoading(false);
       dispatch({
         type: 'SHOW_TOAST',

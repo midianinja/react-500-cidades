@@ -222,8 +222,17 @@
     display: flex;
     justify-content: space-between;
     flex: 1;  
-    margin: 0 .5rem
+    margin: 0 .5rem;
 }
+.ninja-logo{
+    width: 100%;
+    max-width: 60px;
+}
+.resystem-logo{
+    width: 100%;
+    max-width: 160px;
+}
+
 .more-about{
     /* flex-grow: 1; */
     background-color: var(--brown);
