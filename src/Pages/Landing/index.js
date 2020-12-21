@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { Link, withRouter } from "react-router-dom";
 
 import Button from '../../components/Button';
-import Menu from '../../components/Menu';
 import Input from '../../components/Input';
 
 import logoImg from '../../assets/500cidades-logo.png';
@@ -11,9 +10,10 @@ import stepImg1 from '../../assets/passos-cadastro.png';
 import stepImg2 from '../../assets/passos-cidade-mapa.png';
 import stepImg3 from '../../assets/passos-historia.png';
 import newsletterImg from '../../assets/newsletter.png';
-import logoNinjaImg from '../../assets/logo-midia-ninja.png';
-import logoCircleImg from '../../assets/logo-circle.png';
-import logoAmzImg from '../../assets/logo-amazonia-org.png';
+import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
+import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
+// import logoCircleImg from '../../assets/logo-circle.png';
+// import logoAmzImg from '../../assets/logo-amazonia-org.png';
 import { registerNewsLetter } from './landing.controller';
 
 import './styles.css';
@@ -155,20 +155,25 @@ E assim que essa pandemia acabar vamos rodar por todo o país para dar voz às i
           <div className="org">
             <p>Quem constrói isso com a gente</p>
             <img
-              className="org-logo"
+              className="org-logos ninja-logo"
               src={logoNinjaImg}
               alt="Logo Mídia Ninja"
             />
             <img
+              className="org-logos resystem-logo"
+              src={logoReSystemImg}
+              alt="Logo Re System"
+            />
+            {/* <img
               className="org-logo"
               src={logoCircleImg}
               alt="pesquisar....."
-            />
-            <img
+            /> */}
+            {/* <img
               className="org-logo"
               src={logoAmzImg}
               alt="Logo Amazônia.org"
-            />
+            /> */}
           </div>
           <div className="more-about">
             <a className="more-about-link" href="#sobre">
@@ -177,9 +182,9 @@ E assim que essa pandemia acabar vamos rodar por todo o país para dar voz às i
             <a className="more-about-link" href="#politica">
               Política de privacidade
             </a>
-            <a className="more-about-link" href="#termos">
+            {/* <a className="more-about-link" href="#termos">
               Termos de uso
-            </a>
+            </a> */}
           </div>
         </section>
       </div>
