@@ -31,7 +31,7 @@ export const Container = styled.div`
 export const UserContainer = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 60px 1fr 50px;
+  grid-template-columns: 25% 1fr 20%;
   margin: 10px 0;
   justify-content: space-between;
   align-items: center;
@@ -39,10 +39,10 @@ export const UserContainer = styled.div`
 
 export const UserPhoto = styled.img`
   width: 50px;
-  max-height: 50px;
+  height: 50px;
   border-radius: 50%;
-  margin-right: 5px;
-  object-fit: contain;
+  margin-right: 1rem;
+  object-fit: cover;
   background-color: rgba(210,210,210,.7);
 `;
 
