@@ -20,7 +20,7 @@ const ShowProfile = () => {
                 />
                 <header className="header-profile" style={{ backgroundImage: `url(${agent.cover_image.mimified})` }}>
                     <div className="show-profile-wrapper">
-                        <img className="image-profile" src={agent.profile_image.mimified} alt="Por do Sol"></img>
+                        <img className="image-profile" src={agent.profile_image.mimified} alt="Foto de perfil do Agente"></img>
                         <div className="header-title">
                             <h2 className="user-name">{agent.name}</h2>
                             <h5 className="user-profession">{agent.job}</h5>
