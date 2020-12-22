@@ -30,7 +30,6 @@ body {
     -webkit-font-smoothing: antialiased;
     position: relative;
     margin: 0 auto;
-    overflow-x: hidden;
 }
 
 button {
