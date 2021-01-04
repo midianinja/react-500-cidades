@@ -8,15 +8,6 @@ import Button from '../Button';
 const renderAuthSide = (history, dispatch) => (
     <ul className="auth-side">
         <li>
-            <Button
-                children="Cancelar"
-                className="btn3D--red create-account"
-                onClick={() => history.push('/cadastre-se')}
-            >
-                Criar Conta
-            </Button >
-        </li>
-        <li>
         <button
             className="make-login"
             onClick={() =>
@@ -26,8 +17,17 @@ const renderAuthSide = (history, dispatch) => (
                 })
             }
         >
-            Fazer Login
+            Já tenho cadastro
         </button>
+        </li>
+        <li>
+            <Button
+                children="Cancelar"
+                className="btn3D--red create-account"
+                onClick={() => history.push('/cadastre-se')}
+            >
+                Quero conhecer!
+            </Button >
         </li>
         <div className="registration-field"> 
         </div>
@@ -72,27 +72,27 @@ const NavigationBar = ({ history })  => {
     const { state, dispatch } = useContext(Store);
     return (
         <nav className="nav-container">
-            <img
-                onClick={() => history.push('/')}
-                className="nav-img"
-                src={LogoImg}
-                alt="Logo 500 cidades"
-            />
             <div className="header-container">
                 <ul className="no-auth-side">
-                    <li>
-                    <NavLink to="/">
-                        Sobre
-                    </NavLink>
-                    </li>
                     <li>
                     <NavLink to="/usuario/mapa">
                         Mapa
                     </NavLink>
                     </li>
+                    <li>
+                    <NavLink to="/About">
+                        Sobre o projeto
+                    </NavLink>
+                    </li>
                     <div className="registration-field"> 
                     </div>
                 </ul>
+                <img
+                        onClick={() => history.push('/')}
+                        className="nav-img"
+                        src={LogoImg}
+                        alt="Logo 500 cidades"
+                />
                 {state.user ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, dispatch)}
             </div>
         </nav>
