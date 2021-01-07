@@ -5,7 +5,6 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 import logoImg from '../../assets/500cidades-logo.png';
-import path500cidadesImg from '../../assets/500cidades-asset-tracejado-vetor.svg';
 
 // import mapImg from '../../assets/mapa-ativista.png';
 import stepImg1 from '../../assets/passos-cadastro.png';
@@ -19,8 +18,10 @@ import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
 import { registerNewsLetter } from './landing.controller';
 
 import './styles.css';
+import './iphones-styles.css';
 import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
+import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 
 
 const Landing = ({ history }) => {
@@ -34,6 +35,7 @@ const Landing = ({ history }) => {
       data: true,
     });
   }
+  const playerProps = { playing: true };
     return (
       <div className="landing-container">
         <section className="landing">
@@ -69,6 +71,9 @@ const Landing = ({ history }) => {
             </p>
           </div>
         </section>
+        <section>
+        <ReponsiveVideoPlayer {...playerProps} />
+        </section>
         <section className="activist-map">
           <div style={{ textAlign: "left" }}>
             {/* <h2 className="heading-secondary">Mapa Ativista</h2>
@@ -100,9 +105,8 @@ const Landing = ({ history }) => {
             </div>
           </div>
         </section>
-        <section className="about">
+        {/* <section className="about">
           <div>
-            {/* <Container> */}
             <h2 className="heading-secondary--about">500 cidades</h2>
             <div className="paragraph-about">
               <p>
@@ -123,12 +127,27 @@ const Landing = ({ history }) => {
                 E assim que essa pandemia acabar vamos rodar por todo o país para dar voz às iniciativas que visam um mundo melhor e mais plural, amplificando as vozes das pequenas e grandes cidades.</p>
             <p>São incontáveis narrativas, ações, iniciativas e trabalhos que queremos encontrar neste Brasil Profundo. Faça parte dessa aventura incrível e vem com a gente!</p>
             </div>
-            {/* </Container> */}
-            {/* <img
-            src={path500cidadesImg}
-            alt="Newsletter"
-          /> */}
           </div>
+        </section> */}
+        <section className="pathway">
+            <div className="pathImg"></div>
+              <div className="show-phrase"> 
+                <p>Vamos percorrer<br/>
+                  <span>500 cidades</span>
+                </p>
+              </div>
+              <div className="show-phrase">
+                <p>Em um total de <br/>
+                  <span>3203 km</span>
+                </p>
+              </div>
+              <div className="show-phrase">
+                <p>E conheceremos mais de<br/>
+                  <span>20000</span><br/>
+                  pessoas com vontade de<br/>
+                  botar a mão na massa
+                </p>
+              </div>
         </section>
         <section className="newsletter">
           <img
