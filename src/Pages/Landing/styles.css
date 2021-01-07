@@ -55,7 +55,37 @@
     color: var(--red);
     text-decoration: none;
 }
-
+.btn3D--white{
+    display: flex;
+    align-items: center;
+    width: 220px;
+    max-width: 100%;
+    background-color: var(--white);
+    padding: 1rem;
+    border: none;
+    -moz-box-shadow: 0 2.8px 0 var(--light-gray);
+    -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
+    box-shadow: 0 2.8px 0 var(--light-gray);
+    border-radius: .3rem;
+    color: #1D1D1D;
+}
+.btn3D--white::before{
+    content: url("../../assets/icons/logoida-color.svg");
+    height: 2rem;
+    width: 3rem;
+    padding: 0 0.5rem;
+}
+.btn3D--white:active{
+    -moz-box-shadow: 0 2.8px 0 var(--light-gray);
+    -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
+    box-shadow: 0 2.8px 0 var(--light-gray);
+}
+.btn3D--whit:visited{
+    background-color: var(--white);
+    -moz-box-shadow: 0 2.8px 0 var(--light-gray);
+    -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
+    box-shadow: 0 2.8px 0 var(--light-gray);
+}
 .btn3D--red{
     width:fit-content;
     background-color: var(--red);
@@ -242,7 +272,6 @@
     justify-content: space-evenly;
     align-items: flex-start;
     flex: 50% 1;
-    min-width: 320px;
     min-height: 14vh;
     padding: 1rem 2rem;
 }

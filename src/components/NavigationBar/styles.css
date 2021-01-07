@@ -4,14 +4,14 @@
     top: 0;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--blue);
+    background-color: var(--eggplant);
     height: 50px;
 }
 
 .nav-img {
-    height:30px;
+    height: 100%;
     cursor: pointer;
-    margin-left: 30px;
+    padding: .5rem;
 }
 .logged-side .profile-img {
     height: 30px;
@@ -25,7 +25,7 @@
     list-style: none;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
 }
 
@@ -37,6 +37,7 @@
 .nav-container ul li{
     cursor: pointer;
     font-weight: 700;
+    padding: 0 10px;
 }
 
 .nav-container ul a:hover{
@@ -47,38 +48,39 @@
 .header-container {
     display: flex;
     height: 50px;
-    width: 400px;
-    justify-content: space-around;
+    width: 100vw;
+    justify-content: space-between;
 }
 
 .create-account {
     background-color: #DF4545;
-    font-size: 16px;
     padding: 0;
     font-size: .8em;
-    height: 29px;
-    width: 120px;
+    height: 30px;
+    width: 100%;
+    max-width: 200px;
 }
 
-ul.auth-side {
+/* ul.auth-side {
     background-color: #3CBDB4;
     padding: 0 20px;
 }
 ul.logged-side {
     background-color: #3CBDB4;
     padding: 0 20px;
-}
+} */
 
 .make-login {
-    width: 100px;
+    width: 100%;
+    max-width: 180px;
     background-color: transparent;
     margin: 0;
-    border: none;
-    color: #FFF;
-    padding: 0;
+    border: 2px solid var(--white);
+    border-radius: 5px;
+    padding: .5em;
     font-size: .8em;
     color: var(--white);
-    font-weight: 400;
+    font-weight: 700;
     font-family: 'Roboto Condensed', sans-serif;
 }
 

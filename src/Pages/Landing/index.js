@@ -5,7 +5,9 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 import logoImg from '../../assets/500cidades-logo.png';
-import mapImg from '../../assets/mapa-ativista.png';
+import path500cidadesImg from '../../assets/500cidades-asset-tracejado-vetor.svg';
+
+// import mapImg from '../../assets/mapa-ativista.png';
 import stepImg1 from '../../assets/passos-cadastro.png';
 import stepImg2 from '../../assets/passos-cidade-mapa.png';
 import stepImg3 from '../../assets/passos-historia.png';
@@ -50,7 +52,8 @@ const Landing = ({ history }) => {
                 <span className="heading-primary--white">no mapa</span>
               </h1>
               <div className="landing-top-links">
-                <Button onClick={() => openIDASignin(state.ida)} className="btn3D--red">Quero!</Button>
+                {/* <Button onClick={() => openIDASignin(state.ida)} className="btn3D--red">Quero!</Button> */}
+                <Button onClick={() => openIDASignin(state.ida)} className="btn3D--white">Cadastre-se</Button>
                 <Link onClick={() => openIDASignin(state.ida)} href="#" alt="Já tenho cadastro" className="anchor-link">
                   Já tenho cadastro.
                 </Link>
@@ -68,8 +71,8 @@ const Landing = ({ history }) => {
         </section>
         <section className="activist-map">
           <div style={{ textAlign: "left" }}>
-            <h2 className="heading-secondary">Mapa Ativista</h2>
-            <img className="map-img" src={mapImg} alt="Mapa Ativista" />
+            {/* <h2 className="heading-secondary">Mapa Ativista</h2>
+            <img className="map-img" src={mapImg} alt="Mapa Ativista" /> */}
           </div>
           <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
           <div className="steps">
@@ -115,12 +118,16 @@ const Landing = ({ history }) => {
               Estes dois fatores dão a dimensão da EMERGÊNCIA deste chamado a participação. Na medida em que observamos a necessidade de abarcar as iniciativas que vão surgindo no Brasil profundo, na medida em que as demandas sociais se destacam podemos notar uma eclosão de  projetos com foco nas diferentes carências sociais, dando voz a quem antes era silenciado por falta de espaços de articulação.
               </p>
               <p>A proposta é identificar e conectar pessoas que fazem a diferença em todos os cantos do país! Iniciativas culturais, de educação e solidariedade, música e empreendedorismo solidário, soberania alimentar e desenvolvimento sustentável e muito mais.</p>
-              <p>Sabe quantos km existe do Oiapoque ao Chuí? 5.648 km!
-É muito chão né? É Brasil que não acaba mais.
-E assim que essa pandemia acabar vamos rodar por todo o país para dar voz às iniciativas que visam um mundo melhor e mais plural, amplificando as vozes das pequenas e grandes cidades.</p>
+              <p>Sabe quantos km existe do Oiapoque ao Chuí? 5.648 km!<br/>
+                É muito chão né? É Brasil que não acaba mais. <br/>
+                E assim que essa pandemia acabar vamos rodar por todo o país para dar voz às iniciativas que visam um mundo melhor e mais plural, amplificando as vozes das pequenas e grandes cidades.</p>
             <p>São incontáveis narrativas, ações, iniciativas e trabalhos que queremos encontrar neste Brasil Profundo. Faça parte dessa aventura incrível e vem com a gente!</p>
             </div>
             {/* </Container> */}
+            {/* <img
+            src={path500cidadesImg}
+            alt="Newsletter"
+          /> */}
           </div>
         </section>
         <section className="newsletter">
@@ -176,15 +183,9 @@ E assim que essa pandemia acabar vamos rodar por todo o país para dar voz às i
             /> */}
           </div>
           <div className="more-about">
-            <a className="more-about-link" href="#sobre">
-              Sobre
-            </a>
-            <a className="more-about-link" href="#politica">
-              Política de privacidade
-            </a>
-            {/* <a className="more-about-link" href="#termos">
-              Termos de uso
-            </a> */}
+            <Link className="more-about-link" to="/sobre">Sobre</Link>
+            <Link className="more-about-link" to="/politica-de-privacidade">Política de privacidade</Link>
+            <Link className="more-about-link" to="/termos-de-uso">Termos de uso</Link>
           </div>
         </section>
       </div>
