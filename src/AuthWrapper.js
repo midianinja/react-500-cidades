@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import Store from './store/Store';
 import { useHistory } from 'react-router-dom';
 import apollo from './service/apollo';
-import { oneUserQuery } from './queries/queries';
+import { allUsersQuery, oneUserQuery } from './queries/queries';
 import idaLib from './service/ida.lib';
 
 const verifyAuth = async (auth, dispatch, history) => {
@@ -60,10 +60,23 @@ function AuthWrapper({ children }) {
   const history = useHistory();
   useEffect(() => {
     initIda(dispatch, history);
+      apollo.query({
+        query: allUsersQuery,
+        variables: {
+            user: {}
+        }
+    }).then(result => {
+        console.log('aqui result', result);
+        dispatch({
+            type: 'SET_ALL_USERS',
+            data: result.data.allUsers.filter(el => Object.values(el).some(x => x == null) === false),
+        });
+        dispatch({
+            type: 'SET_LOADING',
+            data: false,
+        })
+    })
    }, []);
-  // useEffect(() => {
-  //   verifyAuth(state, dispatch)
-  // })
   return (
     <div>
       {children}

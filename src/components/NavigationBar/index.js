@@ -4,18 +4,21 @@ import LogoImg from '../../assets/500cidades-logo-nav.png';
 import Store from '../../store/Store';
 import './styles.css';
 import Button from '../Button';
+import { openIDASignin } from '../../service/ida.lib';
 
-const renderAuthSide = (history, dispatch) => (
+const renderAuthSide = (history, state) => (
     <ul className="auth-side">
         <li>
         <button
             className="make-login"
-            onClick={() =>
-                dispatch({
-                    type: 'TOGGLE_LOGIN_MODAL',
-                    data: true,
-                })
-            }
+            // onClick={() =>
+            //     dispatch({
+            //         type: 'TOGGLE_LOGIN_MODAL',
+            //         data: true,
+            //     })
+            
+            //}
+            onClick={() => openIDASignin(state.ida)} 
         >
             Já tenho cadastro
         </button>
@@ -93,7 +96,7 @@ const NavigationBar = ({ history })  => {
                         src={LogoImg}
                         alt="Logo 500 cidades"
                 />
-                {state.user ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, dispatch)}
+                {state.user ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, state)}
             </div>
         </nav>
     );
