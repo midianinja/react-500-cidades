@@ -39,7 +39,7 @@ const renderLoggedSide = (history, state, dispatch) => (
         <li>
             <img
                 className="profile-img"
-                src={state.user.profile_image.mimified}
+                src={'state.user.profile_image.mimified'}
                 alt="Imagem de perfil"
             />
         </li>
@@ -87,13 +87,7 @@ const NavigationBar = ({ history })  => {
                     <div className="registration-field"> 
                     </div>
                 </ul>
-                <img
-                        onClick={() => history.push('/')}
-                        className="nav-img"
-                        src={LogoImg}
-                        alt="Logo 500 cidades"
-                />
-                {state.user ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, dispatch)}
+                {state.auth ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, dispatch)}
             </div>
         </nav>
     );

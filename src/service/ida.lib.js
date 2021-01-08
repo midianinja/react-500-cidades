@@ -7,7 +7,6 @@ const idaConfiguration = {
 
 export default ({ onAuthChange }) => new Promise(async (res, rej) => {
   const localIda = await ida();
-  console.log('ida', ida());
   await localIda.initializeApp({
     ...idaConfiguration,
     onAuthChange,
@@ -18,7 +17,6 @@ export default ({ onAuthChange }) => new Promise(async (res, rej) => {
 
 
 export const openIDASignin = async (ida) => {
-  console.log('ida', ida);
   try {
     await ida.signinWithPopup();
   } catch (err) {

@@ -6,6 +6,7 @@ import { oneUserQuery } from './queries/queries';
 import idaLib from './service/ida.lib';
 
 const verifyAuth = async (auth, dispatch, history) => {
+console.log('🚀 ~ file: AuthWrapper.js ~ line 9 ~ verifyAuth ~ auth', auth);
   if (!auth) return;
   try {
     const user = await apollo.query({
@@ -16,6 +17,7 @@ const verifyAuth = async (auth, dispatch, history) => {
         },
       },
     });
+    console.log('🚀 ~ file: AuthWrapper.js ~ line 19 ~ verifyAuth ~ user', user);
     dispatch({
       type: 'SET_AUTH',
       data: auth,
