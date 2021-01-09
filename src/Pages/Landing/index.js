@@ -35,6 +35,7 @@ const iWant = (history, state) => {
   history.push('/usuario/mapa')
 }
 
+import Map from '../../components/Map/Map';
 
 const Landing = ({ history }) => {
   const { state, dispatch } = useContext(Store);
@@ -81,6 +82,7 @@ const Landing = ({ history }) => {
           <div style={{ textAlign: "left" }}>
             {/* <h2 className="heading-secondary">Mapa Ativista</h2>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" /> */}
+            <Map></Map>
           </div>
           <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
           <div className="steps">
