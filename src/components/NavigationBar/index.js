@@ -11,13 +11,6 @@ const renderAuthSide = (history, state) => (
         <li>
         <button
             className="make-login"
-            // onClick={() =>
-            //     dispatch({
-            //         type: 'TOGGLE_LOGIN_MODAL',
-            //         data: true,
-            //     })
-            
-            //}
             onClick={() => openIDASignin(state.ida)} 
         >
             Já tenho cadastro
@@ -27,7 +20,7 @@ const renderAuthSide = (history, state) => (
             <Button
                 children="Cancelar"
                 className="btn3D--red create-account"
-                onClick={() => history.push('/cadastre-se')}
+                onClick={() => openIDASignin(state.ida)} 
             >
                 Quero conhecer!
             </Button >

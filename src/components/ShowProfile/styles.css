@@ -89,6 +89,7 @@ background-color: rgba(0, 0, 0, .8);
 z-index: 60;
 }
 .svg {
+    cursor: pointer;
     position: absolute;
     top: 5px;
     right: 5px;

@@ -58,8 +58,9 @@ const sendUserToApi = (user) => {
 }
 
 const mapUserToApi = ({
-  userInfo, coverImage, profileImage, skills,
+  userInfo, coverImage, profileImage, skills, auth,
 }) => ({
+  ida_id: auth.ida,
   name: userInfo.name,
   profile_image: profileImage,
   cover_image: coverImage,
@@ -123,16 +124,16 @@ const getGraphqlErrors = ({
 
 
 export const registerAction = async ({
-  skills, event, userInfo,
+  skills, event, userInfo, auth,
   addressInfo, setLoading,
   dispatch, history, setErrors,
 }) => {
+  console.log('auth: ', auth);
   event.preventDefault();
   try {
     setLoading('validando usuário...');
   
-    const userValidation = validateUser({ ...userInfo, skills, addressInfo });
-    console.log('userValidation', userValidation);
+    const userValidation = validateUser({ ...userInfo, skills, addressInfo, auth });
     if (!userValidation.valid) {
       window.scrollTo(0, 0);
       throw new Error(JSON.stringify(userValidation.errors));
@@ -157,7 +158,9 @@ export const registerAction = async ({
       userInfo, skills,
       coverImage: urlImageCover,
       profileImage: urlImageProfile,
+      auth,
     });
+    console.log('🚀 ~ file: controller.js ~ line 163 ~ mappedUser', mappedUser);
     
     setLoading('Salvando usuário...');
     const registeredUser = await sendUserToApi(mappedUser);

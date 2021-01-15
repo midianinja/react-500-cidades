@@ -16,13 +16,12 @@ import './styles.css';
 import './iphones-styles.css';
 import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
+import Map from '../../components/Map/Map';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 import Slider from '../../components/Slider/Slider';
 
-
 const Landing = ({ history }) => {
   const { state, dispatch } = useContext(Store);
-  console.log('🚀 ~ file: index.js ~ line 26 ~ Landing ~ state', state);
   const [email, setEmail] = useState('');
   const playerProps = { playing: true };
 
@@ -60,16 +59,13 @@ const Landing = ({ history }) => {
             </p>
           </div>
         </section>
-        <section>
-          <Slider/>
-        </section>
         <section className="activist-map">
           <div style={{ textAlign: "left" }}>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" />
-          </div>
-          <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
+        </div>
+        <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
         </section>
-
+        
         <section>
         <ReponsiveVideoPlayer {...playerProps} />
         </section>

@@ -6,9 +6,9 @@ import { allUsersQuery, oneUserQuery } from './queries/queries';
 import idaLib from './service/ida.lib';
 
 const verifyAuth = async (auth, dispatch, history) => {
-console.log('🚀 ~ file: AuthWrapper.js ~ line 9 ~ verifyAuth ~ auth', auth);
   if (!auth) return;
   try {
+  console.log('🚀 ~ file: AuthWrapper.js ~ line 11 ~ verifyAuth ~ auth', auth);
     const user = await apollo.query({
       query: oneUserQuery,
       variables: {
@@ -17,11 +17,11 @@ console.log('🚀 ~ file: AuthWrapper.js ~ line 9 ~ verifyAuth ~ auth', auth);
         },
       },
     });
-    console.log('🚀 ~ file: AuthWrapper.js ~ line 19 ~ verifyAuth ~ user', user);
     dispatch({
       type: 'SET_AUTH',
       data: auth,
     });
+    console.log('🚀 ~ file: AuthWrapper.js ~ line 25 ~ verifyAuth ~ user', user);
     if (!user.data.oneUser) {
       history.push('/cadastre-se');
       return;
@@ -42,7 +42,6 @@ console.log('🚀 ~ file: AuthWrapper.js ~ line 9 ~ verifyAuth ~ auth', auth);
 const initIda = async (
   dispatch, history,
 ) => {
-  console.log('initIda');
   // const query = `?${router.asPath.split('?')[1 || '']}`;
   const ida = await idaLib({
     onAuthChange: (auth) => {
@@ -68,7 +67,6 @@ function AuthWrapper({ children }) {
             user: {}
         }
     }).then(result => {
-        console.log('aqui result', result);
         dispatch({
             type: 'SET_ALL_USERS',
             data: result.data.allUsers.filter(el => Object.values(el).some(x => x == null) === false),
