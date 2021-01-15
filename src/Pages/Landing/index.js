@@ -11,12 +11,13 @@ import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
 import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
 
 import { registerNewsLetter } from './landing.controller';
-import mapImg from '../../assets/500cidades-mapa-820x485px.png';
+import mapImg from '../../assets/500cidades-mapa-1054-623px.png';
 import './styles.css';
 import './iphones-styles.css';
 import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
+import Slider from '../../components/Slider/Slider';
 
 
 const Landing = ({ history }) => {
@@ -67,21 +68,17 @@ const Landing = ({ history }) => {
           </div>
         </section>
         <section>
-          {/* <GenericCarousel>
-            <SlideOne />
-            <SlideTwo />
-            <SlideThree />
-        </GenericCarousel> */}
+          <Slider/>
         </section>
-        <section>
-        <ReponsiveVideoPlayer {...playerProps} />
-        </section>
-
         <section className="activist-map">
           <div style={{ textAlign: "left" }}>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" />
           </div>
           <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
+        </section>
+
+        <section>
+        <ReponsiveVideoPlayer {...playerProps} />
         </section>
         <section className="pathway">
           <div className="pathImg"></div>
