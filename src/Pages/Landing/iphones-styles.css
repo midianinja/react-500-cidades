@@ -194,7 +194,7 @@
         max-width: 355px;
     }
     
-    .pathway {
+    /* .pathway {
         position: relative;
         display: flex;
         flex-direction: column;
@@ -232,7 +232,7 @@
         font-weight: bold;
         font-size: 3rem;
         line-height: 48px;
-    }
+    } */
     .newsletter{
         background-color: var(--red);
         display: flex;

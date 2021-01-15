@@ -145,15 +145,18 @@
 }
 .activist-map{
     min-height:100vh;
-    margin-top: 3rem;
+    margin: 3rem 0;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .map-img{
     width: 70vw;
-    max-width: 674px;
+    max-width: 100vw;
+    border-radius: 10px;
+    margin: 1rem 0;
 }
 .steps{
     display: flex;
@@ -190,9 +193,10 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: flex-end;
     width: 100%;
-    height: 100vh;
+    height: 70vh;
     background-color: var(--blue);
 }
 
@@ -436,32 +440,16 @@
 
     .pathway {
         flex-direction: row;
-        align-items: baseline;
+        align-items: center;
         justify-content: space-around;
         height: 40vh;
     }
     
     .pathImg{
-        top: -34px;
+        top: -43px;
+        height: 44.8vh;
     }
     
-    .show-phrase p{
-        color: var(--eggplant);
-        word-wrap: break-word;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 20px;
-        line-height: 20px;
-        padding: 1rem;
-        text-align: center;
-    }
-    .show-phrase span{
-        color: var(--white);
-        font-style: normal;
-        font-weight: bold;
-        font-size: 3rem;
-        line-height: 48px;
-    }
 }
 
 @media (min-width:992px){
@@ -487,11 +475,38 @@
     .paragraph--landing-bottom {
         font-size: 1rem;
     }
+    .pathway {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 40vh;
+    }
+    .pathImg{
+        top: -43px;
+        height: 44.8vh;
+    }
+
     .navegue {
         width: 40%;
     }
 }
 @media (min-width:1440px){
+    .paragraph--landing-bottom {
+        width: 25vw;
+    }
+    .pathway {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 40vh;
+        height: 38vh;
+    }
+    
+    .pathImg{
+        top: -77px;
+        height: 47.3vh;
+    }
+
       .navegue {
         width: 25%;
     }  

@@ -12,10 +12,10 @@ const validateUser = (user) => {
   try {
     // if(user.biography.length < 20) errors.push({ type: 'biography', error: 'Biografia inválida' });
     
-    // if(
-    //   !user.birth_date
-    //   || new Date(`${user.birth_date.slice(-4)}-${user.birth_date.slice(2, -4)}-${user.birth_date.slice(0, 2)}`).toString() === 'Invalid Date'
-    // ) errors.push({ type: 'birth_date', error: 'Data de nascimento inválida' });
+    if(
+      !user.birth_date
+      || new Date(`${user.birth_date.slice(-4)}-${user.birth_date.slice(2, -4)}-${user.birth_date.slice(0, 2)}`).toString() === 'Invalid Date'
+    ) errors.push({ type: 'birth_date', error: 'Data de nascimento inválida' });
   
     // if(!user.cover_image) errors.push({ type: 'cover_image', error: 'Insira uma imagem de fundo' });
     if(!regexEmail.test(user.email)) errors.push({ type: 'email', error: 'E-mail inválido' });
