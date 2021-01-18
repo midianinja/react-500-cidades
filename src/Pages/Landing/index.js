@@ -18,6 +18,7 @@ import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 import Slider from '../../components/Slider/Slider';
+import SimpleCard from '../../components/SimpleCard/SimpleCard';
 
 
 const Landing = ({ history }) => {
@@ -33,6 +34,30 @@ const Landing = ({ history }) => {
   }
   const playerProps = { playing: true };
 
+  const cardData = {
+    dataEvent1:{
+        img:'../../assets/imgCard1.png',
+        description:'Imagem da praia em Fortaleza - CE',
+        dateEvent:'30 jul',
+        titleEvent:'Reunião Aberta Mídia Ninja em Fortaleza',
+        placeEvent:'Fortaleza, CE',
+    },
+    dataEvent2:{
+        img:'../../assets/imgCard1.png',
+        description:'Imagem da praia em Fortaleza - CE',
+        dateEvent:'2 ago',
+        titleEvent:'Reunião Aberta Mídia Ninja em Fortaleza',
+        placeEvent:'Fortaleza, CE',
+    },
+    dataEvent3:{
+        img:'../../assets/imgCard1.png',
+        description:'Imagem da praia em Fortaleza - CE',
+        dateEvent:'5 ago',
+        titleEvent:'Reunião Aberta Mídia Ninja em Fortaleza',
+        placeEvent:'Fortaleza, CE',
+    },
+};
+const dataCardEvent =JSON.stringify(cardData);
     return (
       <div className="landing-container">
         <section className="landing">
@@ -67,8 +92,12 @@ const Landing = ({ history }) => {
             </p>
           </div>
         </section>
-        <section>
-          <Slider/>
+        <section className="event-calendar">
+            <p>Primeira rota lançada!</p>
+            <h2>República do Nordeste</h2>
+            <Slider>
+              <SimpleCard dataEvents={dataCardEvent}></SimpleCard>
+            </Slider>
         </section>
         <section className="activist-map">
           <div style={{ textAlign: "left" }}>
