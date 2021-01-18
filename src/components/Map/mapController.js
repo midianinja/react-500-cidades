@@ -2,7 +2,6 @@
 export const startMap = ({
   state, mapRef, setAutocomplete, searchInputRef, showMore,
 }) => {
-  console.log('mapaaaaa', mapRef.current);
   const brazilBounds = {
     west: -73.9872354804, south: -33.7683777809, east: -34.7299934555, north: 5.24448639569
   }

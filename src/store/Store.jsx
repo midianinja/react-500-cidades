@@ -16,6 +16,7 @@ const initialState = {
   loginModal: false,
   registerModal: false,
   ida: null,
+  loadedMap: null,
 };
 
 export const reducer = (state, action) => {
@@ -33,6 +34,7 @@ export const reducer = (state, action) => {
     SET_USER: (oldState, data) => ({ ...oldState, user: action.data }),
     SET_AUTH: (oldState, data) => ({ ...oldState, auth: action.data }),
     SET_IDA: (oldState, data) => ({ ...oldState, ida: action.data }),
+    LOAD_MAP: (oldState, data) => ({ ...oldState, loadedMap: action.data }),
   };
   return cases[action.type] ? cases[action.type](state, action) : state;
 

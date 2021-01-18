@@ -128,7 +128,6 @@ export const registerAction = async ({
   addressInfo, setLoading,
   dispatch, history, setErrors,
 }) => {
-  console.log('auth: ', auth);
   event.preventDefault();
   try {
     setLoading('validando usuário...');
@@ -160,7 +159,6 @@ export const registerAction = async ({
       profileImage: urlImageProfile,
       auth,
     });
-    console.log('🚀 ~ file: controller.js ~ line 163 ~ mappedUser', mappedUser);
     
     setLoading('Salvando usuário...');
     const registeredUser = await sendUserToApi(mappedUser);
@@ -174,7 +172,6 @@ export const registerAction = async ({
     setLoading(false);
     history.push('/usuario/mapa')
   } catch(err) {
-    console.log('Erro inesperado 1 catch', [err]);
     try {
       if (err.graphQLErrors) {
         return getGraphqlErrors({

@@ -43,8 +43,14 @@ const Map = ({ children, showMore, showInput, location }) => {
   }, []);
 
   const renderMap = useCallback(() => {
-    loadMap(`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_KEY}&libraries=places&region=BR&callback=initMap`);
-    window.initMap = () => startMap({ state, mapRef, showMore, setAutocomplete, searchInputRef });
+    if(!state.loadedMap) {
+      loadMap(`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_KEY}&libraries=places&region=BR&callback=initMap`);
+      window.initMap = () => {startMap({ state, mapRef, showMore, setAutocomplete, searchInputRef })};
+      dispatch({
+        type: 'LOAD_MAP',
+        data: true
+      });
+    }
   }, [loadMap, state]);
   const renderPins = useCallback(() => {
     loadMarkerCluster(`https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js`);
@@ -63,7 +69,7 @@ const Map = ({ children, showMore, showInput, location }) => {
 
   useEffect(() => {
     if(state.allusers && mapRef.current) insertPins({ allusers: state.allusers, mapRef})
-  }, [state.allusers, location.pathname]);
+  }, [state.allusers]);
 
 
   return (

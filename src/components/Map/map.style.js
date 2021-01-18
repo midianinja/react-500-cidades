@@ -20,7 +20,7 @@ export const InputContainer = styled.div`
   margin: auto;
   left: 0;
   right: 0;
-  top: 100px;
+  top: 120px;
 `;
 
 export const Input = styled.input`

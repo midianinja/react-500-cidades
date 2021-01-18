@@ -8,7 +8,6 @@ import idaLib from './service/ida.lib';
 const verifyAuth = async (auth, dispatch, history) => {
   if (!auth) return;
   try {
-  console.log('🚀 ~ file: AuthWrapper.js ~ line 11 ~ verifyAuth ~ auth', auth);
     const user = await apollo.query({
       query: oneUserQuery,
       variables: {
@@ -21,7 +20,6 @@ const verifyAuth = async (auth, dispatch, history) => {
       type: 'SET_AUTH',
       data: auth,
     });
-    console.log('🚀 ~ file: AuthWrapper.js ~ line 25 ~ verifyAuth ~ user', user);
     if (!user.data.oneUser) {
       history.push('/cadastre-se');
       return;
@@ -32,7 +30,6 @@ const verifyAuth = async (auth, dispatch, history) => {
       data: user.data.oneUser,
     });
   } catch (err) {
-    console.log('🚀 ~ file: AuthWrapper.js ~ line 41 ~ verifyAuth ~ err', err);
   }
 }
 

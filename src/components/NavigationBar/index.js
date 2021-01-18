@@ -89,7 +89,7 @@ const NavigationBar = ({ history })  => {
                         src={LogoImg}
                         alt="Logo 500 cidades"
                 />
-                {state.user ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, state)}
+                {state.auth ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, state)}
             </div>
         </nav>
     );

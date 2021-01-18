@@ -57,7 +57,6 @@ const renderNameField = ({
 const Register = ({ history }) => {
   const [edit, setEdit] = useState(false);
   const { dispatch, state } = useContext(Store);
-  console.log('🚀 ~ file: index.js ~ line 60 ~ Register ~ state', state);
   const [loading, setLoading] = useState(false);
   const [skills, setSkills] = useState([]);
   const [userInfo, setUserInfo] = useState({
@@ -149,6 +148,10 @@ const Register = ({ history }) => {
       getAddress(myZipcode);
     }
   }, [addressInfo.zipcode])
+  useEffect(() => {
+    if (!state.auth) history.push('/');
+    if (state.user) history.push('/usuario/mapa');
+  }, [state.user, state.auth])
 
   return (
     <>
