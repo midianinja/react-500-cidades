@@ -30,7 +30,6 @@ const verifyAuth = async (auth, dispatch, history) => {
       data: user.data.oneUser,
     });
   } catch (err) {
-    console.log('🚀 ~ file: AuthWrapper.js ~ line 41 ~ verifyAuth ~ err', err);
   }
 }
 
@@ -40,7 +39,6 @@ const verifyAuth = async (auth, dispatch, history) => {
 const initIda = async (
   dispatch, history,
 ) => {
-  console.log('initIda');
   // const query = `?${router.asPath.split('?')[1 || '']}`;
   const ida = await idaLib({
     onAuthChange: (auth) => {
@@ -66,7 +64,6 @@ function AuthWrapper({ children }) {
             user: {}
         }
     }).then(result => {
-        console.log('aqui result', result);
         dispatch({
             type: 'SET_ALL_USERS',
             data: result.data.allUsers.filter(el => Object.values(el).some(x => x == null) === false),

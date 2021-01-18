@@ -58,8 +58,9 @@ const sendUserToApi = (user) => {
 }
 
 const mapUserToApi = ({
-  userInfo, coverImage, profileImage, skills,
+  userInfo, coverImage, profileImage, skills, auth,
 }) => ({
+  ida_id: auth.ida,
   name: userInfo.name,
   profile_image: profileImage,
   cover_image: coverImage,
@@ -123,7 +124,7 @@ const getGraphqlErrors = ({
 
 
 export const registerAction = async ({
-  skills, event, userInfo,
+  skills, event, userInfo, auth,
   addressInfo, setLoading,
   dispatch, history, setErrors,
 }) => {
@@ -131,8 +132,7 @@ export const registerAction = async ({
   try {
     setLoading('validando usuário...');
   
-    const userValidation = validateUser({ ...userInfo, skills, addressInfo });
-    console.log('userValidation', userValidation);
+    const userValidation = validateUser({ ...userInfo, skills, addressInfo, auth });
     if (!userValidation.valid) {
       window.scrollTo(0, 0);
       throw new Error(JSON.stringify(userValidation.errors));
@@ -157,6 +157,7 @@ export const registerAction = async ({
       userInfo, skills,
       coverImage: urlImageCover,
       profileImage: urlImageProfile,
+      auth,
     });
     
     setLoading('Salvando usuário...');
@@ -171,7 +172,6 @@ export const registerAction = async ({
     setLoading(false);
     history.push('/usuario/mapa')
   } catch(err) {
-    console.log('Erro inesperado 1 catch', [err]);
     try {
       if (err.graphQLErrors) {
         return getGraphqlErrors({

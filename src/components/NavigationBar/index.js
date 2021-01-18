@@ -11,13 +11,6 @@ const renderAuthSide = (history, state) => (
         <li>
         <button
             className="make-login"
-            // onClick={() =>
-            //     dispatch({
-            //         type: 'TOGGLE_LOGIN_MODAL',
-            //         data: true,
-            //     })
-            
-            //}
             onClick={() => openIDASignin(state.ida)} 
         >
             Já tenho cadastro
@@ -27,7 +20,7 @@ const renderAuthSide = (history, state) => (
             <Button
                 children="Cancelar"
                 className="btn3D--red create-account"
-                onClick={() => history.push('/cadastre-se')}
+                onClick={() => openIDASignin(state.ida)} 
             >
                 Quero conhecer!
             </Button >
@@ -42,7 +35,7 @@ const renderLoggedSide = (history, state, dispatch) => (
         <li>
             <img
                 className="profile-img"
-                src={state.user.profile_image.mimified}
+                src={'state.user.profile_image.mimified'}
                 alt="Imagem de perfil"
             />
         </li>
@@ -96,7 +89,7 @@ const NavigationBar = ({ history })  => {
                         src={LogoImg}
                         alt="Logo 500 cidades"
                 />
-                {state.user ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, state)}
+                {state.auth ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, state)}
             </div>
         </nav>
     );

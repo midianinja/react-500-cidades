@@ -1,4 +1,5 @@
 const ida = async() => (await import('@resystem/ida-js-sdk'));
+// import ida from '../../node_modules'
 
 const idaConfiguration = {
   appId: process.env.REACT_APP_IDA_APP_ID,
@@ -7,18 +8,16 @@ const idaConfiguration = {
 
 export default ({ onAuthChange }) => new Promise(async (res, rej) => {
   const localIda = await ida();
-  console.log('ida', ida());
   await localIda.initializeApp({
     ...idaConfiguration,
     onAuthChange,
     onLoad: (payload) => res(payload),
-    onOpen: (data) => console.log('IDA ABERTO!!!!!!!!!!!!!!!!', data)
+    onOpen: (data) => ''
   });
 });
 
 
 export const openIDASignin = async (ida) => {
-  console.log('ida', ida);
   try {
     await ida.signinWithPopup();
   } catch (err) {

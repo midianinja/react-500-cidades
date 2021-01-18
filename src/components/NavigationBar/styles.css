@@ -85,7 +85,10 @@ ul.logged-side {
 }
 
 @media (max-width:992px){
-    .nav-container {
+    .nav-container .no-auth-side {
+      visibility: hidden;
+    } 
+    .create-account {
       display: none;
     } 
   }

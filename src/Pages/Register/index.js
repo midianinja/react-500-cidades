@@ -56,7 +56,7 @@ const renderNameField = ({
 
 const Register = ({ history }) => {
   const [edit, setEdit] = useState(false);
-  const { dispatch } = useContext(Store);
+  const { dispatch, state } = useContext(Store);
   const [loading, setLoading] = useState(false);
   const [skills, setSkills] = useState([]);
   const [userInfo, setUserInfo] = useState({
@@ -68,8 +68,8 @@ const Register = ({ history }) => {
     skills: [],
     email: '',
     phone: '',
-    instagram: '',
-    facebook: '',
+    instagram: 'https://instagram.com/',
+    facebook: 'https://facebook.com/',
     site_address: '',
     birth_date: '',
     gender: '',
@@ -148,6 +148,10 @@ const Register = ({ history }) => {
       getAddress(myZipcode);
     }
   }, [addressInfo.zipcode])
+  useEffect(() => {
+    if (!state.auth) history.push('/');
+    if (state.user) history.push('/usuario/mapa');
+  }, [state.user, state.auth])
 
   return (
     <>
@@ -217,7 +221,7 @@ const Register = ({ history }) => {
           onSubmit={(event) => registerAction({
             event, userInfo, dispatch, history,
             addressInfo, setLoading, skills,
-            setErrors,
+            setErrors, auth: state.auth
           })}
           setLoading={setLoading}
           loading={loading}

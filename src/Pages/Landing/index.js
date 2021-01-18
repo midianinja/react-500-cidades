@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, withRouter } from "react-router-dom";
 
 import Button from '../../components/Button';
@@ -9,30 +9,42 @@ import logoImg from '../../assets/500cidades-logo.png';
 import newsletterImg from '../../assets/newsletter.png';
 import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
 import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
-
+import stepImg1 from '../../assets/passos-cadastro.png';
+import stepImg2 from '../../assets/passos-cidade-mapa.png';
+import stepImg3 from '../../assets/passos-historia.png';
 import { registerNewsLetter } from './landing.controller';
 import mapImg from '../../assets/500cidades-mapa-1054-623px.png';
 import './styles.css';
 import './iphones-styles.css';
 import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
+import Map from '../../components/Map/Map';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 import Slider from '../../components/Slider/Slider';
 import SimpleCard from '../../components/SimpleCard/SimpleCard';
 
+const iWant = (history, state) => {
+  if (!state.auth) {
+    openIDASignin(state.ida);
+    return;
+  }
+  if (!state.user) {
+    history.push('/cadastre-se')
+    return;
+  }
+  history.push('/usuario/mapa')
+}
+
 
 const Landing = ({ history }) => {
   const { state, dispatch } = useContext(Store);
-  console.log('🚀 ~ file: index.js ~ line 26 ~ Landing ~ state', state);
   const [email, setEmail] = useState('');
-  const hasSignup = () => {
-    if (state.auth && state.user) return history.push('/usuario/mapa');
-    dispatch({
-      type: 'TOGGLE_LOGIN_MODAL',
-      data: true,
-    });
-  }
   const playerProps = { playing: true };
+  useEffect( () => {
+    if (state.user) history.push('/usuario/mapa');
+    if (state.auth) history.push('/cadastre-se');
+  }, [state.auth, state.user]);
+
 
   const cardData = {
     dataEvent1:{
@@ -92,6 +104,7 @@ const dataCardEvent =JSON.stringify(cardData);
             </p>
           </div>
         </section>
+<<<<<<< HEAD
         <section className="event-calendar">
             <p>Primeira rota lançada!</p>
             <h2>República do Nordeste</h2>
@@ -99,15 +112,43 @@ const dataCardEvent =JSON.stringify(cardData);
               <SimpleCard dataEvents={dataCardEvent}></SimpleCard>
             </Slider>
         </section>
+=======
+>>>>>>> 0acc27e272483f7e7acdd5a5dcfaa4881c5205d2
         <section className="activist-map">
           <div style={{ textAlign: "left" }}>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" />
-          </div>
-          <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
+        </div>
+        <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
         </section>
-
+        
         <section>
-        <ReponsiveVideoPlayer {...playerProps} />
+          <ReponsiveVideoPlayer /* {...playerProps} */ />
+        </section>
+        <section className="activist-map">
+          <div className="steps">
+            <div>
+              <img className="steps-img" src={stepImg1} alt="Cadastre-se" />
+              <p>Cadastre-se</p>
+            </div>
+            <div>
+              <img
+                className="steps-img"
+                src={stepImg2}
+                alt="Coloque sua cidade"
+              />
+              <p>Coloque sua cidade no mapa</p>
+            </div>
+            <div>
+              <img
+                className="steps-img"
+                src={stepImg3}
+                alt="Escreva sua história"
+              />
+              <p>
+                Conte sua história
+              </p>
+            </div>
+          </div>
         </section>
         <section className="pathway">
           <div className="pathImg"></div>
