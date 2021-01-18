@@ -15,6 +15,7 @@
     align-items: flex-start;
     margin-top: 25px;
     padding-left: 1rem;
+    border: 1px solid var(--red);
 }
 
 .logo-img {
@@ -50,11 +51,12 @@
     padding: 0.8rem;
     font-size: 1rem;
     text-decoration:none;
+    cursor: pointer;
 }
 
 .anchor-link:hover {
     color: var(--red);
-    text-decoration: none;
+    text-decoration: underline;
 }
 .btn3D--white{
     display: flex;

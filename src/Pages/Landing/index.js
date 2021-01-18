@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Link, withRouter } from "react-router-dom";
 
 import Button from '../../components/Button';
@@ -69,6 +69,20 @@ const Landing = ({ history }) => {
         placeEvent:'Fortaleza, CE',
     },
 };
+
+const stringShuffle = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto',];
+const [newString, setNewString] = useState("");
+
+const shuffle = useCallback(() => {
+    const index = Math.floor(Math.random() * stringShuffle.length);
+    setNewString(stringShuffle[index]);
+}, []);
+
+useEffect(() => {
+    const intervalID = setInterval(shuffle, 1000);
+    return () => clearInterval(intervalID);
+}, [shuffle])
+
 const dataCardEvent =JSON.stringify(cardData);
     return (
       <div className="landing-container">
@@ -84,13 +98,13 @@ const dataCardEvent =JSON.stringify(cardData);
             <div className="landing-title">
               <h1 className="heading-primary">
                 <span className="heading-primary--white">Coloque</span>
-                <span className="heading-primary--green">sua quebrada</span>
+                <span className="heading-primary--green">{newString}</span>
                 <span className="heading-primary--white">no mapa</span>
               </h1>
               <div className="landing-top-links">
                 <Button onClick={() => openIDASignin(state.ida)} className="btn3D--white">Cadastre-se</Button>
                 <Link onClick={() => openIDASignin(state.ida)} href="#" alt="Já tenho cadastro" className="anchor-link">
-                  Já tenho cadastro.
+                  Já tenho cadastro
                 </Link>
               </div>
             </div>
@@ -104,7 +118,6 @@ const dataCardEvent =JSON.stringify(cardData);
             </p>
           </div>
         </section>
-<<<<<<< HEAD
         <section className="event-calendar">
             <p>Primeira rota lançada!</p>
             <h2>República do Nordeste</h2>
@@ -112,8 +125,6 @@ const dataCardEvent =JSON.stringify(cardData);
               <SimpleCard dataEvents={dataCardEvent}></SimpleCard>
             </Slider>
         </section>
-=======
->>>>>>> 0acc27e272483f7e7acdd5a5dcfaa4881c5205d2
         <section className="activist-map">
           <div style={{ textAlign: "left" }}>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" />
@@ -122,10 +133,10 @@ const dataCardEvent =JSON.stringify(cardData);
         </section>
         
         <section>
-          <ReponsiveVideoPlayer /* {...playerProps} */ />
+          <ReponsiveVideoPlayer {...playerProps} />
         </section>
         <section className="activist-map">
-          <div className="steps">
+          {/* <div className="steps">
             <div>
               <img className="steps-img" src={stepImg1} alt="Cadastre-se" />
               <p>Cadastre-se</p>
@@ -148,7 +159,7 @@ const dataCardEvent =JSON.stringify(cardData);
                 Conte sua história
               </p>
             </div>
-          </div>
+          </div> */}
         </section>
         <section className="pathway">
           <div className="pathImg"></div>
