@@ -31,6 +31,7 @@
     display: flex;
     flex-direction: column;
     font-size: 2rem;
+    font-weight: 700;
 }
 .heading-primary--white{
     color: var(--white);
@@ -131,7 +132,30 @@
     border: none;
     padding: .5rem 1.5rem;
 }
-
+.event-calendar{
+    font-family: Roboto;
+    font-style: normal;
+    line-height: 36px;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    width: 70%;
+    height: 60vh;
+    margin: 2.5rem auto;
+}
+.event-calendar p{
+    font-weight: normal;
+    font-size: 18px;
+}
+.event-calendar h2 {
+    font-weight: bold;
+    font-size: 27px;
+}
 .navegue {
     margin: 2rem 3rem;
     width: 70%;
@@ -481,8 +505,8 @@
         height: 40vh;
     }
     .pathImg{
-        top: -43px;
-        height: 44.8vh;
+        top: -14px;
+        height: 41.5vh;
     }
 
     .navegue {
@@ -497,13 +521,12 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
-        height: 40vh;
-        height: 38vh;
+        height: 55vh;
     }
     
     .pathImg{
-        top: -77px;
-        height: 47.3vh;
+        top: -18px;
+        height: 57vh;
     }
 
       .navegue {

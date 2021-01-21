@@ -9,18 +9,4 @@ export const SliderWrapper = styled.div`
     margin: 2.5rem auto;
 `;
 
-export const Title = styled.div`
-    font-family: Roboto;
-    font-style: normal;
-    line-height: 36px;
-
-    p{
-        font-weight: normal;
-        font-size: 18px;
-    }
-    h2 {
-        font-weight: bold;
-        font-size: 27px;
-    }
-`;
 
