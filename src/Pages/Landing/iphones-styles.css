@@ -6,32 +6,21 @@
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .landing{
-        display: flex;
-        flex-wrap: wrap;
-        background-image: url("../../assets/mergulho-500cidades-mobile.png");
-        background-color: var(--brown);
-        background-repeat: no-repeat; 
-        background-size: cover;
-        background-position: -534px 0;
-    }
-    
-    .landing-top{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        margin-top: 25px;
-        padding-left: 1rem;
+        background-position: 65% 50%;
+        height: 200vh;
     }
     
     .logo-img {
         max-width: 80%;
+        margin-left: 2rem;
     }
     
+    .landing-top{
+        margin-top: 0;
+    }
+
     .landing-title{
-        margin: -2.3rem 0 0 0;
-        padding: 1.5rem;
-        font-size: 20px;
+        margin: -2.8rem 0 0 0;
     }
     
     .heading-primary{
@@ -120,15 +109,12 @@
     .heading-secondary--landing-bottom {
         font-size: 47px;
         padding: 0 1rem 0 2rem;
-        word-spacing: 2vw;
-        margin-top: 7rem;
-        width: 320px;
     }
     
     .paragraph--landing-bottom{
         padding: 0 2rem;
         line-height: 1.6rem;
-        word-spacing: 2vw;
+        width: 21rem;
     }
     
     .btn3D--blue{
@@ -151,8 +137,7 @@
         box-shadow: 0px 2.5px 0 var(--darker-blue);
     }
     .activist-map{
-        min-height:100vh;
-        margin-top: 3rem;
+        margin: 1.5rem 0;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -194,45 +179,14 @@
         max-width: 355px;
     }
     
-    /* .pathway {
-        position: relative;
-        display: flex;
-        flex-direction: column;
+    .pathway {
         justify-content: flex-end;
         width: 100%;
         height: 100vh;
-        background-color: var(--blue);
     }
-    
     .pathImg{
-        position: absolute;
-        top: -44px;
-        left: 0;
-        width: 100%;
-        height: 55vh;
-        background: url('../../assets/500cidades-asset-tracejado-vetor.svg') no-repeat;
-        background-size: cover;
-        background-position:center top;
-        background-attachment: scroll;
+        top: -10px;
     }
-    
-    .show-phrase p{
-        color: var(--eggplant);
-        word-wrap: break-word;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 20px;
-        line-height: 20px;
-        padding: 1rem;
-        text-align: center;
-    }
-    .show-phrase span{
-        color: var(--white);
-        font-style: normal;
-        font-weight: bold;
-        font-size: 3rem;
-        line-height: 48px;
-    } */
     .newsletter{
         background-color: var(--red);
         display: flex;
@@ -292,7 +246,7 @@
         background-color: var(--eggplant);
         display: flex;
         justify-content: space-around;
-        padding: 20px 0;
+        padding: 1.5rem;
         align-items: center;
         flex-wrap: wrap;
     }
@@ -383,6 +337,7 @@
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
+
 }
 
 /* Portrait */
@@ -391,8 +346,8 @@
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
-}
 
+  }
 /* Landscape */
 @media only screen 
   and (min-device-width: 320px) 

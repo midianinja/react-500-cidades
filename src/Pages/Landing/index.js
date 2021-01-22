@@ -9,35 +9,24 @@ import logoImg from '../../assets/500cidades-logo.png';
 import newsletterImg from '../../assets/newsletter.png';
 import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
 import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
-import stepImg1 from '../../assets/passos-cadastro.png';
-import stepImg2 from '../../assets/passos-cidade-mapa.png';
-import stepImg3 from '../../assets/passos-historia.png';
 import { registerNewsLetter } from './landing.controller';
 import mapImg from '../../assets/500cidades-mapa-1054-623px.png';
 import './styles.css';
 import './iphones-styles.css';
 import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
-import Map from '../../components/Map/Map';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 import Slider from '../../components/Slider/Slider';
-import SimpleCard from '../../components/SimpleCard/SimpleCard';
+import CardUsers from '../../components/CardUsers/CardUsers';
 
-const iWant = (history, state) => {
-  if (!state.auth) {
-    openIDASignin(state.ida);
-    return;
-  }
-  if (!state.user) {
-    history.push('/cadastre-se')
-    return;
-  }
-  history.push('/usuario/mapa')
+const cloneObject = ( obj ) => {
+  return JSON.parse(JSON.stringify(obj));
 }
 
 
 const Landing = ({ history }) => {
   const { state, dispatch } = useContext(Store);
+  console.log('log do state', state);
   const [email, setEmail] = useState('');
   const playerProps = { playing: true };
   useEffect( () => {
@@ -45,30 +34,11 @@ const Landing = ({ history }) => {
     if (state.auth) history.push('/cadastre-se');
   }, [state.auth, state.user]);
 
+  const [ allUsers, setAllUsers ] = useState([]);
 
-  const cardData = {
-    dataEvent1:{
-        img:'../../assets/imgCard1.png',
-        description:'Imagem da praia em Fortaleza - CE',
-        dateEvent:'30 jul',
-        titleEvent:'Reunião Aberta Mídia Ninja em Fortaleza',
-        placeEvent:'Fortaleza, CE',
-    },
-    dataEvent2:{
-        img:'../../assets/imgCard1.png',
-        description:'Imagem da praia em Fortaleza - CE',
-        dateEvent:'2 ago',
-        titleEvent:'Reunião Aberta Mídia Ninja em Fortaleza',
-        placeEvent:'Fortaleza, CE',
-    },
-    dataEvent3:{
-        img:'../../assets/imgCard1.png',
-        description:'Imagem da praia em Fortaleza - CE',
-        dateEvent:'5 ago',
-        titleEvent:'Reunião Aberta Mídia Ninja em Fortaleza',
-        placeEvent:'Fortaleza, CE',
-    },
-};
+  useEffect(() => {
+    console.log('aaaaaquiiii', cloneObject(state).allUsers);
+}, [state]);
 
 const stringShuffle = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto',];
 const [newString, setNewString] = useState("");
@@ -83,18 +53,15 @@ useEffect(() => {
     return () => clearInterval(intervalID);
 }, [shuffle])
 
-const dataCardEvent =JSON.stringify(cardData);
     return (
       <div className="landing-container">
         <section className="landing">
           <div className="landing-top">
-            <div className="landing-logo">
               <img
                 className="logo-img"
                 src={logoImg}
                 alt="Logotipo 500 Cidades"
               />
-            </div>
             <div className="landing-title">
               <h1 className="heading-primary">
                 <span className="heading-primary--white">Coloque</span>
@@ -118,48 +85,28 @@ const dataCardEvent =JSON.stringify(cardData);
             </p>
           </div>
         </section>
-        <section className="event-calendar">
-            <p>Primeira rota lançada!</p>
-            <h2>República do Nordeste</h2>
-            <Slider>
-              <SimpleCard dataEvents={dataCardEvent}></SimpleCard>
-            </Slider>
-        </section>
         <section className="activist-map">
           <div style={{ textAlign: "left" }}>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" />
         </div>
         <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
         </section>
-        
+        <section className="case-users">
+          <div className="case-container">
+          <h2>Pequenas vitórias de gente como a gente</h2>
+            <Slider items={allUsers.map((user) => (
+                  <CardUsers user={{
+                      imgProfile: user.profile_image.mimified,
+                      userName: user.name,
+                      userJob: user.job, 
+                      userBio: user.biography
+                  }}/>
+            ))}>
+            </Slider>
+          </div>
+        </section>
         <section>
           <ReponsiveVideoPlayer {...playerProps} />
-        </section>
-        <section className="activist-map">
-          {/* <div className="steps">
-            <div>
-              <img className="steps-img" src={stepImg1} alt="Cadastre-se" />
-              <p>Cadastre-se</p>
-            </div>
-            <div>
-              <img
-                className="steps-img"
-                src={stepImg2}
-                alt="Coloque sua cidade"
-              />
-              <p>Coloque sua cidade no mapa</p>
-            </div>
-            <div>
-              <img
-                className="steps-img"
-                src={stepImg3}
-                alt="Escreva sua história"
-              />
-              <p>
-                Conte sua história
-              </p>
-            </div>
-          </div> */}
         </section>
         <section className="pathway">
           <div className="pathImg"></div>

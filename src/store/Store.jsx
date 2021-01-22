@@ -20,10 +20,12 @@ const initialState = {
 };
 
 export const reducer = (state, action) => {
+  
+  const myState = JSON.parse(JSON.stringify(state));
   const cases = {
     SHOW_TOAST: (oldState, data) => ({ ...oldState, toast: { show: true, ...data.data } }),
     HIDE_TOAST: (oldState, data) => ({ ...oldState, toast: initialState.toast }),
-    SET_ALL_USERS: (oldState, data) => ({ ...oldState, allusers: action.data }),
+    SET_ALL_USERS: (oldState, data) => ({ ...oldState, allusers: action.data || [] }),
     SET_LOADING: (oldState, data) => ({ ...oldState, loading: action.data }),
     SHOW_PROFILE:(oldState, data) => ({ ...oldState, profile:action.data }),
     HIDE_PROFILE:(oldState, data) => ({ ...oldState, profile:initialState.profile }),
@@ -36,8 +38,11 @@ export const reducer = (state, action) => {
     SET_IDA: (oldState, data) => ({ ...oldState, ida: action.data }),
     LOAD_MAP: (oldState, data) => ({ ...oldState, loadedMap: action.data }),
   };
-  return cases[action.type] ? cases[action.type](state, action) : state;
-
+  console.log(myState);
+  console.log('action ', action);
+  const itWorks = cases[action.type] ? cases[action.type](myState, action) : state;
+  console.log('mostraaaa', itWorks.allusers);
+  return itWorks;
 };
 
 export const StoreProvider = ({ children }) => {
