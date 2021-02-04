@@ -3,9 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-
 import logoImg from '../../assets/500cidades-logo.png';
-
 import newsletterImg from '../../assets/newsletter.png';
 import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
 import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
@@ -83,13 +81,18 @@ const Landing = ({ history }) => {
           <div style={{ textAlign: "left" }}>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" />
         </div>
-        <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
+          <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
         </section>
-        
-        <section>
+        <section className="activist-map">
           <ReponsiveVideoPlayer /* {...playerProps} */ />
         </section>
         <section className="activist-map">
+          <div style={{ textAlign: "left" }}>
+            {/* <h2 className="heading-secondary">Mapa Ativista</h2>
+            <img className="map-img" src={mapImg} alt="Mapa Ativista" /> */}
+            <Map />
+          </div>
+          <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
           <div className="steps">
             <div>
               <img className="steps-img" src={stepImg1} alt="Cadastre-se" />

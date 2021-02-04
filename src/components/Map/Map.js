@@ -69,7 +69,7 @@ const Map = ({ children, showMore, showInput, location }) => {
 
   useEffect(() => {
     if(state.allusers && mapRef.current) insertPins({ allusers: state.allusers, mapRef})
-  }, [state.allusers]);
+  }, [state.allusers, location.pathname]);
 
 
   return (

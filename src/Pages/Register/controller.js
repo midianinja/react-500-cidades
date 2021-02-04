@@ -128,6 +128,7 @@ export const registerAction = async ({
   addressInfo, setLoading,
   dispatch, history, setErrors,
 }) => {
+  console.log('auth: ', auth);
   event.preventDefault();
   try {
     setLoading('validando usuário...');
