@@ -13,7 +13,7 @@ import stepImg1 from '../../assets/passos-cadastro.png';
 import stepImg2 from '../../assets/passos-cidade-mapa.png';
 import stepImg3 from '../../assets/passos-historia.png';
 import { registerNewsLetter } from './landing.controller';
-import mapImg from '../../assets/500cidades-mapa-1054-623px.png';
+import mapImg from '../../assets/mapa-ativista.png';
 import './styles.css';
 import './iphones-styles.css';
 import Store from '../../store/Store';
@@ -21,6 +21,7 @@ import { openIDASignin } from '../../service/ida.lib';
 import Map from '../../components/Map/Map';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 import Slider from '../../components/Slider/Slider';
+import SimpleCard from '../../components/SimpleCard/SimpleCard';
 
 const iWant = (history, state) => {
   if (!state.auth) {
@@ -34,9 +35,14 @@ const iWant = (history, state) => {
   history.push('/usuario/mapa')
 }
 
+const renderSimpleCards = (users) => {
+  return users.map(( user ) => (<SimpleCard key={user.id} profileImage={user.profile_image.mimified} nameUser={user.name} job={user.job} bioUser={user.biograph} />))
+}
 
 const Landing = ({ history }) => {
   const { state, dispatch } = useContext(Store);
+
+  console.log(state);
   const [email, setEmail] = useState('');
   const playerProps = { playing: true };
   useEffect( () => {
@@ -65,14 +71,14 @@ const Landing = ({ history }) => {
               <div className="landing-top-links">
                 <Button onClick={() => openIDASignin(state.ida)} className="btn3D--white">Cadastre-se</Button>
                 <Link onClick={() => openIDASignin(state.ida)} href="#" alt="Já tenho cadastro" className="anchor-link">
-                  Já tenho cadastro.
+                  Já tenho cadastro
                 </Link>
               </div>
             </div>
           </div>
           <div className="landing-bottom">
             <h2 className="heading-secondary--landing-bottom">
-              Um mergulho no Brasil de verdade
+              Um <br /> mergulho no <br />Brasil<br />de verdade
             </h2>
             <p className="paragraph--landing-bottom">
             Vamos visitar e conhecer 500 cidades por todo o Brasil para colocar em nosso mapa ativista pessoas, projetos e espaços que transformam seu cotidiano e territórios e são inspiração para (r)evoluções cotidianas em suas comunidades.
@@ -83,38 +89,22 @@ const Landing = ({ history }) => {
           <div style={{ textAlign: "left" }}>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" />
         </div>
-        <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra mais</Button>
+        <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra</Button>
         </section>
         
         <section>
           <ReponsiveVideoPlayer /* {...playerProps} */ />
         </section>
-        <section className="activist-map">
-          <div className="steps">
-            <div>
-              <img className="steps-img" src={stepImg1} alt="Cadastre-se" />
-              <p>Cadastre-se</p>
+
+        <section className="carousel">
+            <div className="carousel-container">
+            <h3 className="carousel-title">Pequenas vitórias de gente como a gente</h3>
+              <Slider>
+                  { state.allusers ? renderSimpleCards(state.allusers.slice(0, 10)) : null }
+              </Slider>
             </div>
-            <div>
-              <img
-                className="steps-img"
-                src={stepImg2}
-                alt="Coloque sua cidade"
-              />
-              <p>Coloque sua cidade no mapa</p>
-            </div>
-            <div>
-              <img
-                className="steps-img"
-                src={stepImg3}
-                alt="Escreva sua história"
-              />
-              <p>
-                Conte sua história
-              </p>
-            </div>
-          </div>
         </section>
+        
         <section className="pathway">
           <div className="pathImg"></div>
               <div className="show-phrase"> 

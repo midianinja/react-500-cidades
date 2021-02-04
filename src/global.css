@@ -15,6 +15,7 @@
     --red: #DF4545;
     --darker-red: #B42E2E;
     --gray-02: #BFBFBF;
+    --gray-ice: #F2F2F2;
     --white: #fff;
     --brown: #3B2737; 
     --eggplant: #4B3046;
@@ -22,6 +23,7 @@
     --light-gray: #e0e0e0;
     --lighter-gray: #e5e5e5;
     --gray: #888;
+    --gray-subtitles: #8F8E94;
 }
 
 body {
@@ -36,7 +38,7 @@ button {
   position: relative;
   cursor: pointer;
   font-weight: bold;
-  margin:10px;
+  margin: 10px 0;
   font-family: 'Roboto Condensed', sans-serif;
 }
 

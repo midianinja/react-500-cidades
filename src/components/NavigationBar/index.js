@@ -84,10 +84,10 @@ const NavigationBar = ({ history })  => {
                     </div>
                 </ul>
                 <img
-                        onClick={() => history.push('/')}
-                        className="nav-img"
-                        src={LogoImg}
-                        alt="Logo 500 cidades"
+                    onClick={() => history.push('/')}
+                    className="nav-img"
+                    src={LogoImg}
+                    alt="Logo 500 cidades"
                 />
                 {state.auth ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, state)}
             </div>

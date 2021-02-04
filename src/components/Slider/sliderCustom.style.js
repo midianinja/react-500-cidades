@@ -1,26 +1,40 @@
 import styled from 'styled-components';
 
 export const SliderWrapper = styled.div`
+    position:relative;
     display: flex;
+    align-items: center;
     flex-direction: column;
-    align-items: flex-start;
-    width: 70%;
-    height: 40vh;
-    margin: 2.5rem auto;
+    width: 100%;
+    height: 100%;
 `;
 
-export const Title = styled.div`
-    font-family: Roboto;
-    font-style: normal;
-    line-height: 36px;
-
-    p{
-        font-weight: normal;
-        font-size: 18px;
-    }
-    h2 {
-        font-weight: bold;
-        font-size: 27px;
+export const Item = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    ::-webkit-scrollbar {
+    display: none;
     }
 `;
 
+export const MoveOnWrapper = styled.div`
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid yellow;
+    width: 30%;
+    height: 40px;
+`;
+
+export const Dot = styled.div`
+    width: 16px;
+    height: 16px;
+    border-radius: 60px;
+    border: 1px solid red;
+    :active {
+        background: red;
+    }
+`;
