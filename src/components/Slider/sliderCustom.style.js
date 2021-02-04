@@ -6,7 +6,7 @@ export const SliderWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    height: 95%;
 `;
 
 export const Item = styled.div`

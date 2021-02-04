@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const Card = styled.div`
     display: flex;
     flex-direction: column;
-    width: 260px;
-    height: 60vh;
+    width: 298px;
+    height: 576px;
     text-align: center;
-    border: 1px solid rebeccapurple;
-    margin: 0 1rem .5rem 0;
+    /* border: 1px solid rebeccapurple; */
+    margin: 0 45px .5rem 0;
     img {
         width: 256px;
         height: 256px;

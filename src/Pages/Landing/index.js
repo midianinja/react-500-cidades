@@ -86,7 +86,7 @@ const Landing = ({ history }) => {
           </div>
         </section>
         <section className="activist-map">
-          <div style={{ textAlign: "left" }}>
+          <div>
             <img className="map-img" src={mapImg} alt="Mapa Ativista" />
         </div>
         <Button onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra</Button>
