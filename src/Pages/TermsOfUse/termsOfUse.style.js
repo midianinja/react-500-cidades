@@ -3,7 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.section`
     background-color: var(--off-white);
     height: auto;
-    min-height: 100vh;
+    height: 100vh;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    overflow-x: auto;
+    z-index: 99;
 `;
 
 export const Wrapper = styled.article`

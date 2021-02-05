@@ -128,7 +128,6 @@ export const registerAction = async ({
   addressInfo, setLoading,
   dispatch, history, setErrors,
 }) => {
-  console.log('auth: ', auth);
   event.preventDefault();
   try {
     setLoading('validando usuário...');
@@ -171,7 +170,7 @@ export const registerAction = async ({
       }
     });
     setLoading(false);
-    history.push('/usuario/mapa')
+    history.push('/?sla-nois')
   } catch(err) {
     try {
       if (err.graphQLErrors) {

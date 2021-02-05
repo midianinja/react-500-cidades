@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import styled from 'styled-components';
 import Menu from '../../components/Menu';
 import './styles.css';
 import ToggleButton from '../../components/ToggleButton';
@@ -8,6 +9,16 @@ import Store from '../../store/Store'
 import NavigationBar from '../../components/NavigationBar';
 import ShowProfile from '../../components/ShowProfile'
 import { getUsers } from './list.controller'
+
+const Wrapper = styled.section`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: white;
+    height: 100vh;
+    overflow-x: auto;
+`;
 
 const renderList = (list, dispatch) => list.filter((usr) => usr.address).map(agent => (
     <div className="div-usercard" onClick={() => dispatch({ type: 'SHOW_PROFILE', data: agent.id })} key={agent.id} >
@@ -42,8 +53,9 @@ const UserList = () => {
     useEffect(() => {
         setUsers(state.allusers)
     }, [state.allusers])
+    if (!state.modals.list) return null;
     return (
-        <>
+        <Wrapper>
             <NavigationBar />
             <Menu />
             <main className="container-usercard">
@@ -72,16 +84,16 @@ const UserList = () => {
                 </div>
                 <div className="links-fixos">
                     <p>Tipo de Vizualização</p>
-                    <Link to="/usuario/mapa">
+                    <Link to="/" onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
                         <ToggleButton className="btn-toggle">Mapa</ToggleButton>
                     </Link>
-                    <Link to="/usuario/lista-de-agentes">
+                    <Link to="/?page=lista" onClick={() => dispatch({ type: 'OPEN_MODAL', modal: 'llist' })}>
                         <ToggleButton className="btn-toggle--blue">Lista</ToggleButton>
                     </Link>
                 </div>
             </main>
             <ShowProfile />
-        </>
+        </Wrapper>
     )
 
 }

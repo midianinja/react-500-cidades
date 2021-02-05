@@ -5,7 +5,12 @@ import aboutImage from '../../assets/mergulho-500cidades-mobile.png';
 export const Container = styled.section`
     background-color: var(--off-white);
     height: auto;
-    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-x: auto;
+    z-index: 99;
 `;
 
 export const BannerImg = styled.div`

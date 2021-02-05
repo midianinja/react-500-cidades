@@ -24,7 +24,8 @@ function ValidationEmailToken(props) {
 
       dispatch({ type: 'SET_AUTH', auth: null });
       dispatch({ type: 'SET_USER', user: null });
-      history.push('/');
+      dispatch({ type: 'OPEN_MODAL', modal: 'landing' });
+      history.push('/?page=landing');
       dispatch({
         type: 'SHOW_TOAST',
         data: {
@@ -36,7 +37,8 @@ function ValidationEmailToken(props) {
     } else {
       window.localStorage.setItem('500cidades@ida', response.data.ida);
       window.localStorage.setItem('500cidades@token', response.data.sessionToken);
-      history.push('/usuario/mapa');
+      history.push('/');
+      dispatch({ type: 'CLOSE_MODAL' });
       dispatch({
         type: 'SHOW_TOAST',
         data: {

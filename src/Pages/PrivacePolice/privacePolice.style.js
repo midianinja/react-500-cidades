@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
     background-color: var(--off-white);
-    height: auto;
+    height: 100vh;
+    overflow-x: auto;
     min-height: 100vh;
 `;
 

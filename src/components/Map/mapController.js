@@ -22,7 +22,7 @@ export const startMap = ({
   if (showMore) setAutocomplete(new window.google.maps.places.Autocomplete(searchInputRef.current));
 };
 
-export const insertPins = ({ allusers, mapRef}) => {
+export const insertPins = ({ allusers, mapRef, setSamePlaceList }) => {
   if(!window.google) return;
 
   const infoWindow = new window.google.maps.InfoWindow();
@@ -68,7 +68,20 @@ export const insertPins = ({ allusers, mapRef}) => {
       lat: mk.position.lat(),
       lng: mk.position.lng(),
     }));
-  })
+    const firstPosition = JSON.stringify(positions[0]);
+    const sameLocation = !positions.find(p => (JSON.stringify(p) !== firstPosition ? true : false))
+    if (sameLocation) {
+      const allusersPositions = allusers.map((usr) => ({
+        position: JSON.stringify({
+          lat: usr.address.latitude,
+          lng: usr.address.longitude,
+        }),
+        user: usr,
+      }));
+      const userIdInThisPosition = allusersPositions.filter((usr) => (usr.position === firstPosition));
+      setSamePlaceList(userIdInThisPosition.map((usr) => usr.user));
+    }
+  });
 };
 
 export const fetchAutocomplete = ({ autocomplete, mapRef, dispatch }) => {
