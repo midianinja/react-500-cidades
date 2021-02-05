@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 
+
 export const Card = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 298px;
     height: 576px;
     text-align: center;
     /* border: 1px solid rebeccapurple; */
     margin: 0 45px .5rem 0;
+    padding: .5rem 2rem;
     img {
-        width: 256px;
-        height: 256px;
+        width: 180px;
+        height: 180px;
         border-radius: 8px;
         border: none;
     }
@@ -27,6 +30,11 @@ export const Card = styled.div`
         color: var(--gray-subtitles);
     }
     p{
-        backgound-image:url('../../assets/quote.png');
+        background-image:url('../../../assets/quote.png');
+        background-size:contain;
+        padding:2rem 1rem;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        max-width: 70vw
     }
 `;

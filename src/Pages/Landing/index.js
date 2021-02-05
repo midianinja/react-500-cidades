@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { Link, withRouter } from "react-router-dom";
 
 import Button from '../../components/Button';
@@ -50,22 +50,33 @@ const Landing = ({ history }) => {
     if (state.auth) history.push('/cadastre-se');
   }, [state.auth, state.user]);
 
+  const placesChange = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto',];
+  const [newString, setNewString] = useState("");
+  
+  const shuffle = useCallback(() => {
+      const stringShuffle = Math.floor(Math.random() * placesChange.length);
+      setNewString(placesChange[stringShuffle]);
+  }, []);
+  
+  useEffect(() => {
+      const intervalID = setInterval(shuffle, 1500);
+      return () => clearInterval(intervalID);
+  }, [shuffle])
+
 
     return (
       <div className="landing-container">
         <section className="landing">
           <div className="landing-top">
-            <div className="landing-logo">
               <img
                 className="logo-img"
                 src={logoImg}
                 alt="Logotipo 500 Cidades"
               />
-            </div>
             <div className="landing-title">
               <h1 className="heading-primary">
                 <span className="heading-primary--white">Coloque</span>
-                <span className="heading-primary--green">sua quebrada</span>
+                <span className="heading-primary--green">{newString}</span>
                 <span className="heading-primary--white">no mapa</span>
               </h1>
               <div className="landing-top-links">

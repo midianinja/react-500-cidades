@@ -5,9 +5,6 @@ const Slider = ({ children }) => {
     const target = React.createRef();
     const [ count, setCount ] = useState(0);
     const [ moveProgress, setMoveProgress] = useState(0);
-    console.log('qual seu valor', moveProgress);
-    console.log('count qual seu valor', count);
-    console.log('children qual seu valor', children);
     const MoveListener = () => {
         if (!target.current) {
           return;
@@ -16,11 +13,16 @@ const Slider = ({ children }) => {
         const element = target.current;
         const windowScroll = element.scrollLeft; 
         const totalWidth = element.scrollWidth - element.clientWidth; 
+        console.log('element', element);
+        console.log('windowscroll', windowScroll);
+        console.log('total', totalWidth);
         if (windowScroll === 0) {
+          setCount(0);
           return setMoveProgress(0);
         }
       
         if (windowScroll > totalWidth) {
+          setCount(100);
           return setMoveProgress(100);
         }
       
@@ -28,14 +30,17 @@ const Slider = ({ children }) => {
       }
       useEffect(() => {
         if (window && target.current) {
-            target.current.addEventListener('touchmove', MoveListener);
+          target.current.removeEventListener('touchmove', MoveListener);
+        } else {
+          target.current.addEventListener('touchmove', MoveListener);
         }
       });
 
         const renderDots = () => {
             const selectedDotValue = (moveProgress * count) / 100;
+            console.log('calc scroll', selectedDotValue)
             return children.map( index => (
-              <Dot key={index} active={selectedDotValue >= index && selectedDotValue <= index + 1}/>
+              <Dot key={index} active={selectedDotValue <= index + 1}/>
             ));
         }
         if (!children) {
@@ -55,3 +60,4 @@ const Slider = ({ children }) => {
 }
 
 export default Slider;
+
