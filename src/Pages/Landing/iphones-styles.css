@@ -9,15 +9,6 @@
         background-position: 45% -50px;
     }
     
-    .landing-top{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        margin-top: 25px;
-        padding-left: 1rem;
-    }
-    
     .logo-img {
         max-width: 70%;
         margin-left: 2rem;
@@ -30,24 +21,17 @@
     }
     
     .heading-primary{
-        display: flex;
-        flex-direction: column;
         font-size: 2rem;
     }
-    .heading-primary--white{
-        color: var(--white);
-    }
-    .heading-primary--green{
-        color: var(--green);
-    }
-    
-    .landing-top-links {
-        display: flex;
-        flex-direction: column;
-    }
     .heading-secondary--landing-bottom {
-      width: 75vw;
-  }
+        width: 75vw;
+    }
+    .pathway {
+      height: 100vh;
+    }
+    .pathImg {
+        top: -15px;
+    }
     .navegue {
         margin: 2rem 3rem;
         width: 70%;
@@ -103,6 +87,10 @@
         max-width: 70%;
         margin-left: 3rem;
     }
+    .landing-title {
+      margin-top: -3rem;
+      margin-bottom: 5rem;
+  }
 }
 
 /* Portrait */
@@ -111,6 +99,9 @@
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
+    .paragraph--landing-bottom{
+      width: 80%;
+  }
 }
 
 /* Landscape */
@@ -119,7 +110,13 @@
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
-
+    .logo-img {
+      max-width: 50%;
+      margin-left: 3rem;
+  }
+    .paragraph--landing-bottom{
+      width: 50%;
+  }
 }
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */

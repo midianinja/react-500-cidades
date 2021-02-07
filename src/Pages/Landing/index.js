@@ -9,16 +9,12 @@ import logoImg from '../../assets/500cidades-logo.png';
 import newsletterImg from '../../assets/newsletter.png';
 import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
 import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
-import stepImg1 from '../../assets/passos-cadastro.png';
-import stepImg2 from '../../assets/passos-cidade-mapa.png';
-import stepImg3 from '../../assets/passos-historia.png';
 import { registerNewsLetter } from './landing.controller';
 import mapImg from '../../assets/mapa-ativista.png';
 import './styles.css';
 import './iphones-styles.css';
 import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
-import Map from '../../components/Map/Map';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 import Slider from '../../components/Slider/Slider';
 import SimpleCard from '../../components/SimpleCard/SimpleCard';
@@ -36,13 +32,12 @@ const iWant = (history, state) => {
 }
 
 const renderSimpleCards = (users) => {
-  return users.map(( user ) => (<SimpleCard key={user.id} profileImage={user.profile_image.mimified} nameUser={user.name} job={user.job} bioUser={user.biograph} />))
+  return users.map(( user ) => (<SimpleCard key={`${user.id}-simplecard`} profileImage={user.profile_image.mimified} nameUser={user.name} job={user.job} bioUser={user.biograph} />))
 }
 
 const Landing = ({ history }) => {
   const { state, dispatch } = useContext(Store);
 
-  console.log(state);
   const [email, setEmail] = useState('');
   const playerProps = { playing: true };
   useEffect( () => {
@@ -109,7 +104,7 @@ const Landing = ({ history }) => {
 
         <section className="carousel">
             <div className="carousel-container">
-            <h3 className="carousel-title">Pequenas vitórias de gente como a gente</h3>
+            <h3 className="carousel-title">Ativistas no mapa</h3>
               <Slider>
                   { state.allusers ? renderSimpleCards(state.allusers.slice(0, 10)) : null }
               </Slider>

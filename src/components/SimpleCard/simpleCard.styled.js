@@ -5,12 +5,24 @@ export const Card = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 298px;
-    height: 576px;
+    height: 435px;
     text-align: center;
-    /* border: 1px solid rebeccapurple; */
-    margin: 0 45px .5rem 0;
-    padding: .5rem 2rem;
+    flex: 0 0 ${props => props.theme.main}px;
+    @media (min-width: 576px) {
+        flex: 0 0 50%;
+    }
+    @media (min-width: 768px) {
+        flex: 0 0 33.3%;
+    }
+    @media (min-width: 992px) {
+        flex: 0 0 25%;
+    }
+    @media (min-width: 1024px) {
+        flex: 0 0 20%;
+    }
+    @media only screen (min-width: 1025px) and (max-width:1920px) {
+        flex: 0 0 20%;
+    }
     img {
         width: 180px;
         height: 180px;
@@ -37,4 +49,11 @@ export const Card = styled.div`
         text-overflow: ellipsis;
         max-width: 70vw
     }
+
 `;
+
+Card.defaultProps = {
+    theme: {
+      main: `${window.innerWidth}`
+    }
+  }
