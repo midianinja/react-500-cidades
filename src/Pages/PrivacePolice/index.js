@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     Title,
     Wrapper,
@@ -8,10 +8,13 @@ import {
   import NavigationBar from '../../components/NavigationBar';
   import Button from '../../components/Button';
 import { withRouter } from 'react-router-dom';
+import Store from '../../store/Store';
 
-const PrivacePolice = ({history}) => {
-        return (
-            <Container>
+const PrivacePolice = ({ history }) => {
+    const { state } = useContext(Store);
+    if (!state.modals.privacy) return null;
+    return (
+        <Container>
             <NavigationBar />
             <Menu />
             <Wrapper>
@@ -35,11 +38,11 @@ const PrivacePolice = ({history}) => {
 
                 <p>A Mídia NINJA acredita ser fundamental que seu direito à privacidade na internet seja respeitado e nós fazemos tudo o que está ao nosso alcance para assegurá-lo.</p>
                 <div>
-                <Button onClick={() => history.push('/')} className="btn3D--blue">Voltar</Button>
+                <Button onClick={() => history.goBack('/map')} className="btn3D--blue">Voltar</Button>
                 </div>
                     
             </Wrapper>
-            </Container>
-        );
+        </Container>
+    );
 }
 export default withRouter(PrivacePolice);

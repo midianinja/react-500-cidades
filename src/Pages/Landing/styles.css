@@ -7,6 +7,15 @@
     background-size: cover;
     background-position: -534px 0;
 }
+.landing-container {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    left: 0;
+    height: 100vh;
+    overflow-x: auto;
+    background-color: white;
+};
 
 .landing-top{
     display: flex;

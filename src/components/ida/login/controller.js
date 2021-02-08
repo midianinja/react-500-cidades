@@ -93,7 +93,7 @@ export async function login(
       type: 'TOGGLE_LOGIN_MODAL',
       data: false,
     });
-    history.push('/usuario/mapa')
+    history.push('/')
   } catch (err) {
     setLoading(false);
     throw err;

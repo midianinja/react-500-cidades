@@ -43,7 +43,7 @@ const renderLoggedSide = (history, state, dispatch) => (
         <button
             className="make-login"
             onClick={() => {
-                history.push('/');
+                history.push('/landing/?page=landing');
                 window.localStorage.setItem('500cidades@ida', '');
                 window.localStorage.setItem('500cidades@token', '');
                 dispatch({
@@ -53,6 +53,10 @@ const renderLoggedSide = (history, state, dispatch) => (
                 dispatch({
                     type: 'SET_USER',
                     data: null,
+                });
+                dispatch({
+                    type: 'OPEN_MODAL',
+                    modal: 'Landing',
                 });
             }}
         >
@@ -71,12 +75,12 @@ const NavigationBar = ({ history })  => {
             <div className="header-container">
                 <ul className="no-auth-side">
                     <li>
-                    <NavLink to="/usuario/mapa">
+                    <NavLink onClick={() => dispatch({ type: 'CLOSE_MODAL' })} to="/?">
                         Mapa
                     </NavLink>
                     </li>
                     <li>
-                    <NavLink to="/About">
+                    <NavLink  onClick={() => dispatch({ type: 'OPEN_MODAL', modal: 'about' })} to="/?page=about">
                         Sobre o projeto
                     </NavLink>
                     </li>
@@ -84,10 +88,13 @@ const NavigationBar = ({ history })  => {
                     </div>
                 </ul>
                 <img
-                        onClick={() => history.push('/')}
-                        className="nav-img"
-                        src={LogoImg}
-                        alt="Logo 500 cidades"
+                    onClick={() => {
+                        history.push('/mapa/?page=landing');
+                        dispatch({ type: 'OPEN_MODAL', modal: 'landing'})
+                    }}
+                    className="nav-img"
+                    src={LogoImg}
+                    alt="Logo 500 cidades"
                 />
                 {state.auth ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, state)}
             </div>

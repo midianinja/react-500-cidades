@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FaPen, FaSave } from "react-icons/fa";
+import styled from 'styled-components';
 import options from './register.model';
 import Input from '../../components/Input';
 import InputFile from '../../components/InputFile';
@@ -11,7 +12,17 @@ import Form from './components/Form';
 import Store from '../../store/Store';
 import Menu from '../../components/Menu';
 import NavigationBar from '../../components/NavigationBar';
-import RegisterModal from '../../components/ida/register/Register.modal';
+
+const RegisterContainer = styled.section`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-x: auto;
+  z-index: 99;
+  background-color: white;
+  width:100vw;
+`;
 
 const getMapsProperty = (placeResults, id) => {
   const component = placeResults.address_components.find(i => i.types.includes(id));
@@ -55,8 +66,8 @@ const renderNameField = ({
 }
 
 const Register = ({ history }) => {
-  const [edit, setEdit] = useState(false);
   const { dispatch, state } = useContext(Store);
+  const [edit, setEdit] = useState(false);
   const [loading, setLoading] = useState(false);
   const [skills, setSkills] = useState([]);
   const [userInfo, setUserInfo] = useState({
@@ -141,7 +152,7 @@ const Register = ({ history }) => {
       return console.error(error);
     }
   }
-
+  
   useEffect(() => {
     const myZipcode = addressInfo.zipcode.replace(/-/g, "");
     if (myZipcode.length === 8) {
@@ -149,12 +160,21 @@ const Register = ({ history }) => {
     }
   }, [addressInfo.zipcode])
   useEffect(() => {
-    if (!state.auth) history.push('/');
-    if (state.user) history.push('/usuario/mapa');
+    if (state.modals.register) {
+      if (!state.auth) {
+        history.push('/mapa/?page=landing');
+        dispatch({ type: 'OPEN_MODAL', modal: 'landing'})
+      }
+      if (state.user) {
+        history.push('/');
+        dispatch({ type: 'CLOSE_MODAL' })
+      }
+    }
   }, [state.user, state.auth])
-
+  if (!state.modals.register) return null;
+  
   return (
-    <>
+    <RegisterContainer>
       <NavigationBar />
       <div className="register-container">
         <Menu />
@@ -230,7 +250,7 @@ const Register = ({ history }) => {
           setSkills={setSkills}
         />
       </div>
-    </>
+    </RegisterContainer>
   );
 }
 

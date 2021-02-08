@@ -10,24 +10,24 @@ import LoginModal from './components/ida/login/Login.modal';
 import UserRoutes from './users'
 import AuthWrapper from './AuthWrapper'
 import ValidationEmailToken from './Pages/ValidationEmailToken/ValidationEmailToken';
+import UserList from './Pages/UserList';
+import UserMap from './Pages/UserMap';
 
 
 export default function Routes() {
     return (
         <BrowserRouter>
             <AuthWrapper>
-                <Switch>
-                    <Route path="/" exact component={Landing} />
-                    <Route path="/cadastre-se" component={Register} />
-                    <Route path="/sobre" component={About} />
-                    <Route path="/politica-de-privacidade" component={PrivacePolice} />
-                    <Route path="/termos-de-uso" component={TermsOfUse} />
-                    <UserRoutes />
-                </Switch>
+                <Route path="*" exact component={UserMap} />
                 <Snackbar />
                 <LoginModal />
+                <About />
+                <PrivacePolice />
+                <Register />
+                <TermsOfUse />
+                <Landing />
+                <UserList />
             </AuthWrapper>
-            <Route path="/ativacao/:ida" component={ValidationEmailToken} />
         </BrowserRouter>
     );
 }

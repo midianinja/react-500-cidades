@@ -34,7 +34,8 @@ const Menu = ({ white, history }) => {
                 onClick={(e) => {
                   e.preventDefault()
                   dispatch({ type: 'TOGGLE_MENU', data: !state.menu })
-                  history.push('/')
+                  history.push('/landing/?page=landing');
+                  dispatch({ type: 'OPEN_MODAL', modal: 'landing'});
                 }}
                 activeClassName="current" to="/">
                 Home
@@ -45,7 +46,8 @@ const Menu = ({ white, history }) => {
                 onClick={(e) => {
                   e.preventDefault()
                   dispatch({ type: 'TOGGLE_MENU', data: !state.menu })
-                  history.push('/cadastre-se')
+                  history.push('/?page=cadastre-se');
+                  dispatch({ type: 'OPEN_MODAL', modal: 'register' })
                 }}
                 activeClassName="current"
                 to="/cadastre-se"
@@ -57,11 +59,12 @@ const Menu = ({ white, history }) => {
               <NavLink
                 onClick={(e) => {
                   e.preventDefault()
-                  dispatch({ type: 'TOGGLE_MENU', data: !state.menu })
-                  history.push('/usuiario/lista-de-agentes')
+                  dispatch({ type: 'TOGGLE_MENU', data: !state.menu });
+                  history.push('/?page=lista')
+                  dispatch({ type: 'OPEN_MOMDAL', modal: 'list' });
                 }}
                 activeClassName="current"
-                to="/usuiario/lista-de-agentes"
+                to="/?page=lista"
               >
                 Lista
                 </NavLink>

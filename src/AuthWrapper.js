@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import queryString from 'query-string';
 import Store from './store/Store';
 import { useHistory } from 'react-router-dom';
 import apollo from './service/apollo';
@@ -21,7 +22,11 @@ const verifyAuth = async (auth, dispatch, history) => {
       data: auth,
     });
     if (!user.data.oneUser) {
-      history.push('/cadastre-se');
+      history.push('/?page=cadastre-se');
+      dispatch({
+        type: 'OPEN_MODAL',
+        modal: 'register'
+      });
       return;
     }
 
@@ -74,6 +79,21 @@ function AuthWrapper({ children }) {
         })
     })
    }, []);
+   useEffect(() => {
+    const parsed = queryString.parse(history.location.search);
+    if (parsed.page) {
+      if (parsed.page === 'landing') dispatch({ type: 'OPEN_MODAL', modal: 'landing' });
+      if (parsed.page === 'cadastre-se') dispatch({ type: 'OPEN_MODAL', modal: 'register' })
+      if (parsed.page === '') dispatch({ type: 'CLOSE_MODAL' })
+      if (parsed.page === 'map') dispatch({ type: 'CLOSE_MODAL' })
+      if (parsed.page === 'politica') dispatch({ type: 'OPEN_MODAL', modal: 'privacy' })
+      if (parsed.page === 'termos') dispatch({ type: 'OPEN_MODAL', modal: 'terms' })
+      if (parsed.page === 'lista') dispatch({ type: 'OPEN_MODAL', modal: 'list' })
+      if (parsed.page === 'sobre') dispatch({ type: 'OPEN_MODAL', modal: 'about' })
+    } else {
+      dispatch({ type: 'CLOSE_MODAL' });
+    }
+   }, [history.location])
   return (
     <div>
       {children}
