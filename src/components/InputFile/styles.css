@@ -11,7 +11,7 @@
 }
 .iconcamera{
     font-size: 28px;
-    color: var(--gray);
+    color: rgba(255, 255, 255, 0.7);
 }
 .iconcameraopacity{
     opacity: 0.6;

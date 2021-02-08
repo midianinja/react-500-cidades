@@ -26,7 +26,7 @@ const renderNameField = ({
     return (
       <>
         <h1 onClick={() => setEdit(true)} className="add-name">{userInfo.name || 'Seu Nome'}</h1>
-        <FaPen className="icons-input" size={20} color="#888" onClick={() => setEdit(true)} />
+        <FaPen className="icons-input" size={20} color="#ffffff" onClick={() => setEdit(true)} />
         {error ? <span className="error error-register-name">{error}</span> : null}
       </>
     );
@@ -49,7 +49,7 @@ const renderNameField = ({
           onBlur={() => setEdit(false)}
         />
       </div>
-      <FaSave className="icons-input" size={20} color="#888" onClick={() => setEdit(false)} />
+      <FaSave className="icons-input" size={20} color="#ffffff" onClick={() => setEdit(false)} />
     </>
   );
 }
@@ -171,6 +171,7 @@ const Register = ({ history }) => {
                 })}
                 inputClass="cover-image"
               />
+
               <div className="add-photo" style={{ backgroundImage: `url(${userInfo.profile_image.url})` }}>
                 <InputFile
                   borderRadius="100%"

@@ -38,7 +38,7 @@
     object-fit: cover;
     margin-right: 10px;
     border-radius: 100%;
-    background-color: rgba(210,210,210,.7);
+    background-color: rgba(210, 210, 210, 0.7);
 }
 .header-title {
     display: inline-block;
