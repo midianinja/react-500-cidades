@@ -229,7 +229,7 @@
     font-weight: 700;
     font-size: 28px;
     line-height: 33px;
-    margin: 3rem auto;
+    margin: 3rem 1rem;
     width: 80%;
 }
 .pathway {
@@ -393,7 +393,7 @@
         font-size: 1.75rem;
     }
 }
-
+*/
 
 @media (min-width: 576px){
     .landing {
@@ -415,16 +415,18 @@
         word-spacing: unset;
         width: 43vw;
     }
-    .steps{
-        flex-direction: row;
+    .carousel-container{
+        width: 90%;
+        margin: 0 0 0 auto;
     }
+
     .btn3D--blue{
         font-size: 1.4rem;
     }
     .navegue {
         width: 60%;
     }
-} */
+} 
 
 @media (min-width: 768px){
  .landing{

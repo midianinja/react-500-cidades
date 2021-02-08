@@ -7,6 +7,7 @@ export const Card = styled.div`
     align-items: center;
     height: 435px;
     text-align: center;
+    padding: 1rem;
     flex: 0 0 ${props => props.theme.main}px;
     @media (min-width: 576px) {
         flex: 0 0 50%;
@@ -42,12 +43,32 @@ export const Card = styled.div`
         color: var(--gray-subtitles);
     }
     p{
-        background-image:url('../../../assets/quote.png');
-        background-size:contain;
-        padding:2rem 1rem;
-        overflow:hidden;
+        background: url(../../../assets/quote.png), no-repeat;
+        background-size: contain;
+        background-position: left top;
+        padding: 2rem 1rem;
+        display: -webkit-box;
+        max-width: 70vw;
+        height: 230px;
+        margin: 0 auto;
+        line-height: 1.6;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 70vw
+    }
+    p::after {
+        content: "…";
+        float: right;
+        position: relative;
+        top: -18px;
+        left: 100%;
+        width: 3em;
+        margin-left: -3em;
+        padding-right: 5px;
+        text-align: right;
+        background: white;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
     }
 
 `;
