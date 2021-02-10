@@ -6,6 +6,14 @@ import './styles.css';
 import Button from '../Button';
 import { openIDASignin } from '../../service/ida.lib';
 
+const defaultProfileImage = "https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/500-cities/images/500cidades-asset-avatar-2.png";
+
+const getProfileImage = (user) => {
+console.log('🚀 ~ file: index.js ~ line 12 ~ getProfileImage ~ user', user);
+    if(!user || !user.profile_image) return defaultProfileImage;
+    return user.profile_image.mimified || defaultProfileImage;
+}
+
 const renderAuthSide = (history, state) => (
     <ul className="auth-side">
         <li>
@@ -35,7 +43,7 @@ const renderLoggedSide = (history, state, dispatch) => (
         <li>
             <img
                 className="profile-img"
-                src={'state.user.profile_image.mimified'}
+                src={getProfileImage(state.user)}
                 alt="Imagem de perfil"
             />
         </li>
