@@ -11,12 +11,14 @@ import {
   Container
 } from './map.style';
 import { withRouter } from 'react-router-dom';
+import SamePlaceListModal from '../SamePlaceListModal/SamePlaceListModal';
 
 
 const Map = ({ children, showMore, showInput, location }) => {
   const { state, dispatch } = useContext(Store);
   const [loadedMap, setLoadedMap] = useState(null)
   const [autocomplete, setAutocomplete] = useState();
+  const [samePlaceList, setSamePlaceList] = useState([]);
 
 
   const mapRef = useRef(null);
@@ -59,7 +61,6 @@ const Map = ({ children, showMore, showInput, location }) => {
     if (showMore && autocomplete) fetchAutocomplete({ autocomplete, searchInputRef, mapRef, dispatch });
   }, [autocomplete, dispatch]);
 
-
   useEffect(() => {
     if(!loadedMap) renderMap();
   }, [mapRef, renderMap]);
@@ -68,8 +69,8 @@ const Map = ({ children, showMore, showInput, location }) => {
   }, [mapRef, renderPins]);
 
   useEffect(() => {
-    if(state.allusers && mapRef.current) insertPins({ allusers: state.allusers, mapRef})
-  }, [state.allusers]);
+    if(state.allusers && mapRef.current) insertPins({ allusers: state.allusers, mapRef, setSamePlaceList })
+  }, [state.allusers, location.pathname]);
 
 
   return (
@@ -95,6 +96,14 @@ const Map = ({ children, showMore, showInput, location }) => {
         <MapComponent id='map-component' ref={mapRef}>
           {children}
         </MapComponent>
+        <SamePlaceListModal
+          users={samePlaceList}
+          openUser={(usr) => {
+            dispatch({ type: 'SHOW_PROFILE', data: usr.id });
+            setSamePlaceList([]);
+          }}
+          onClose={() => setSamePlaceList([])}
+      />
       </Container>
    </>
   )

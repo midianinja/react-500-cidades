@@ -170,7 +170,7 @@ export const registerAction = async ({
       }
     });
     setLoading(false);
-    history.push('/usuario/mapa')
+    history.push('/?sla-nois')
   } catch(err) {
     try {
       if (err.graphQLErrors) {
