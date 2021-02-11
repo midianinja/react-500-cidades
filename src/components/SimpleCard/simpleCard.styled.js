@@ -1,13 +1,15 @@
 import styled from 'styled-components';
+import quote from  '../../assets/quote.png';
 
 
 export const Card = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 435px;
+    height: 100%;
     text-align: center;
     padding: 1rem;
+    width:480px;
     flex: 0 0 ${props => props.theme.main}px;
     @media (min-width: 576px) {
         flex: 0 0 50%;
@@ -42,34 +44,37 @@ export const Card = styled.div`
     small {
         color: var(--gray-subtitles);
     }
-    p{
-        background: url(../../../assets/quote.png), no-repeat;
-        background-size: contain;
+    div{
+        background: url('${quote}') no-repeat;
+        background-size: auto;
         background-position: left top;
-        padding: 2rem 1rem;
-        display: -webkit-box;
-        max-width: 70vw;
-        height: 230px;
-        margin: 0 auto;
-        line-height: 1.6;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        height: 200px;
+        p{
+            padding: 2rem 0 0 0;
+            display: -webkit-box;
+            max-width: 70vw;
+            margin: 0 auto;
+            line-height: 1.6;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        p::after {
+            content: "…";
+            float: right;
+            position: relative;
+            top: -18px;
+            left: 100%;
+            width: 3em;
+            margin-left: -3em;
+            padding-right: 5px;
+            text-align: right;
+            background: white;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+        }
     }
-    p::after {
-        content: "…";
-        float: right;
-        position: relative;
-        top: -18px;
-        left: 100%;
-        width: 3em;
-        margin-left: -3em;
-        padding-right: 5px;
-        text-align: right;
-        background: white;
-        background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
-    }
+    
 
 `;
 

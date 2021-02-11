@@ -16,7 +16,7 @@ export const Item = styled.div`
     flex-direction: row;
     width:100%;
     height: 100%;
-    overflow-x:visible;
+    overflow-x: visible;
     @media (min-width: 576px){
         overflow-x: auto;
         ::-webkit-scrollbar {
@@ -29,11 +29,8 @@ export const MoveOnWrapper = styled.div`
     display:flex;
     justify-content: space-around;
     align-items: center;
-    width: 70%;
+    width: 50%;
     height: 40px;
-    @media (min-width: 576px)  {
-        display: none;
-    }
 `;
 
 export const Dot = styled.button`
@@ -46,8 +43,5 @@ export const Dot = styled.button`
     :active {
         background: var(--blue);
         transform: scale(1.6);
-    }
-    @media (min-width: 576px)  {
-        display: none;
     }
 `;

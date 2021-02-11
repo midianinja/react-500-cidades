@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { createRef } from 'react';
 import { SliderWrapper, Item, MoveOnWrapper, Dot, } from './sliderCustom.style';
 
 const Slider = ({ children }) => {
-    const target = React.createRef();
-
+    const target = createRef();
+    const refScroll = createRef();
     const [x, setX] = useState(0);
     const [itemSelected, setItemSelected] = useState(0);
     const moveLeft = () => {
@@ -26,11 +27,11 @@ const Slider = ({ children }) => {
           return;
         }
       
-        const element = target.current;
-        const windowScroll = element.scrollLeft; 
-        const totalWidth = element.scrollWidth - element.clientWidth; 
+
+        const windowScroll = refScroll.current.scrollLeft;
+        const totalWidth = refScroll.current.scrollRight; 
         
-        console.log('element', element);
+  
         console.log('windowscroll', windowScroll);
         console.log('total', totalWidth);
 
@@ -44,25 +45,23 @@ const Slider = ({ children }) => {
           setCount(100);
           return setMoveProgress(100);
         }
-        console.log('element', element);
-        console.log('windowscroll', windowScroll);
-        console.log('total', totalWidth);
+
         setMoveProgress((windowScroll / totalWidth) * 100);
       }
-      useEffect(() => {
-        if (window && target.current) {
-          target.current.removeEventListener('mousemove', moveListener);
+      // useEffect(() => {
+      //   if (window && target.current) {
+      //     target.current.removeEventListener('mousemove', moveListener);
 
-        } else {
-          target.current.addEventListener('mousemove', moveListener);
-        }
-      });
+      //   } else {
+      //     target.current.addEventListener('mousemove', moveListener);
+      //   }
+      // });
 
 
 
     return (
       <SliderWrapper>
-          <Item ref={target} style={{transform: `translateX(${x}%)` }}>
+          <Item ref={target} style={{transform: `translateX(${x}px)` }}>
               { children }
           </Item>
           <MoveOnWrapper>
