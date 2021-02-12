@@ -9,7 +9,11 @@ const Button = ({
     disabled,
 }) => {
     return (
-        <button disabled={disabled} type={type} className={`btn3D ${className}`} onClick={onClick}>
+        <button
+            disabled={disabled}
+            type={type}
+            className={`btn3D ${className}`}
+            onClick={onClick}>
             {children}
         </button>
     );
