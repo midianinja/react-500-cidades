@@ -152,7 +152,10 @@ export const GoToMap = styled.button`
 
 export const VideoSection = styled.section`
   width: 100vw;
-  height: 50vh;
+  height: 80vh;
+  @media (max-width: 768px) {
+    height: 50vh;
+  }
 `;
 
 export const CarouselSection = styled.section`
