@@ -245,12 +245,14 @@ export const LinksWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  flex: 50% 1;
   min-height: 14vh;
+  flex: 50% 1;
   padding: 1rem 2rem;
   @media (max-width: 768px) {
+    flex: none;
     height: auto;
     flex-direction: column;
+    width: 100vw;
   }
 `;
 
