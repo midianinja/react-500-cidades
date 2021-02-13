@@ -59,11 +59,8 @@ export const insertPins = ({ allusers, mapRef, setSamePlaceList }) => {
   });
   
   var markerCluster = new window.MarkerClusterer(mapRef.current, markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-  console.log('🚀 ~ file: controller.js ~ line 62 ~ insertPins ~ markerCluster', markerCluster);
   markerCluster.addListener('click', (e) => {
-    console.log('🚀 ~ file: controller.js ~ line 63 ~ markerCluster.addListener ~ e', e);
     const localMarkers = e.getMarkers();
-    console.log('🚀 ~ file: controller.js ~ line 64 ~ markerCluster.addListener ~ localMarkers', localMarkers);
     const positions = localMarkers.map((mk) => ({
       lat: mk.position.lat(),
       lng: mk.position.lng(),
