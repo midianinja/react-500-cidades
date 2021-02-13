@@ -178,7 +178,7 @@ const Landing = ({ history }) => {
           />
         </div>
         <div className="more-about">
-          <Link className="more-about-link" to="/sobre">Sobre</Link>
+          <Link className="more-about-link" to="/?page=about">Sobre</Link>
           <Link className="more-about-link" to="/politica-de-privacidade">Política de privacidade</Link>
           <Link className="more-about-link" to="/termos-de-uso">Termos de uso</Link>
         </div>
