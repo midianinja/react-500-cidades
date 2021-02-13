@@ -1,4 +1,35 @@
-import React, { useContext, useEffect, useState, useCallback } from 'react';import { withRouter } from "react-router-dom";import queryString from "query-string";import logoImg from '../../assets/500cidades-logo.png';import logoNinjaImg from '../../assets/ninja-logo-branco.svg';import logoReSystemImg from '../../assets/resystem-logo-branco.svg';import Store from '../../store/Store';import { openIDASignin } from '../../service/ida.lib';import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";import Slider from '../../components/Slider/Slider';import {  Wrapper, Apresentation, CallActionWrapper,  CallActionContainer,CommonText,  TextWithFocus, BigLogo, RegisterButton,  HaveRegisterLink, ShortTextWrapper,  ShortTextTitle, ShortText, MapSection,  MapImage, GoToMap, VideoSection, CarouselTitle,  CarouselSection, PathWaySection, PahtImage,  PhraseWrapper, Phrase, PhraseWhite,  Footer, NinjaBrand, ReBrand,  LinksWrapper, FooterLink,} from './landing.style';const placesChange = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto'];
+import React, { useContext, useEffect, useState, useCallback } from 'react';
+import { withRouter } from "react-router-dom";
+import queryString from "query-string";
+import logoImg from '../../assets/500cidades-logo.png';
+import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
+import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
+import Store from '../../store/Store';
+import { openIDASignin } from '../../service/ida.lib';
+import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
+import Slider from '../../components/Slider/Slider';
+import {
+  Wrapper, Apresentation, CallActionWrapper,
+  CallActionContainer,CommonText,
+  TextWithFocus, BigLogo, RegisterButton,
+  HaveRegisterLink, ShortTextWrapper,
+  ShortTextTitle, ShortText, MapSection,
+  MapImage, GoToMap, VideoSection, CarouselTitle,
+  CarouselSection, PathWaySection, PahtImage,
+  PhraseWrapper, Phrase, PhraseWhite,
+  Footer, NinjaBrand, ReBrand,
+  LinksWrapper, FooterLink,
+} from './landing.style';
+
+const placesChange = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto'];
+
+
+const getUsersToCarousel = (users) => {
+  const arr = users.filter((usr) => {
+    return (usr.biography.length > 200)
+  });
+  return arr.slice(0, 20);
+}
 
 const Landing = ({ history }) => {
   const { state, dispatch } = useContext(Store);
@@ -42,34 +73,34 @@ const Landing = ({ history }) => {
               <CommonText>Coloque</CommonText>
               <TextWithFocus>{newString}</TextWithFocus>
               <CommonText>no mapa</CommonText>
-                <RegisterButton onClick={() => openIDASignin(state.ida)} className="btn3D--white">Quero!</RegisterButton>
-                <HaveRegisterLink onClick={() => openIDASignin(state.ida)} alt="Já tenho cadastro" className="anchor-HaveRegisterLink">
+                <RegisterButton onClick={() => openIDASignin(state.ida)} >Quero!</RegisterButton>
+                <HaveRegisterLink onClick={() => openIDASignin(state.ida)} alt="Já tenho cadastro">
                   Já tenho cadastro
                 </HaveRegisterLink>
             </CallActionContainer>
           </CallActionWrapper>
-          <ShortTextWrapper className="landing-bottom">
-            <ShortTextTitle className="heading-secondary--landing-bottom">
+          <ShortTextWrapper>
+            <ShortTextTitle>
               Um  mergulho no Brasil de verdade
             </ShortTextTitle>
-            <ShortText className="paragraph--landing-bottom">
+            <ShortText>
               Vamos visitar e conhecer 500 cidades por todo o Brasil para colocar em nosso mapa ativista pessoas, projetos e espaços que transformam seu cotidiano e territórios e são inspiração para (r)evoluções cotidianas em suas comunidades.
             </ShortText>
           </ShortTextWrapper>
         </Apresentation>
-        <MapSection className="activist-map">
+        <MapSection >
           <MapImage src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/brasil-map.svg" alt="Mapa Ativista" />
-          <GoToMap onClick={() => history.push('/usuario/mapa')} className="btn3D--blue">Navegue e descubra</GoToMap>
+          <GoToMap onClick={() => history.push('/usuario/mapa')} >Navegue e descubra</GoToMap>
         </MapSection>
         <VideoSection>
           <ReponsiveVideoPlayer />
         </VideoSection>
-        <CarouselSection className="carousel">
-          <CarouselTitle className="carousel-title">Ativistas no mapa</CarouselTitle>
-          <Slider  users={state.allusers ? state.allusers.slice(0, 20) : null} />
+        <CarouselSection>
+          <CarouselTitle>Ativistas no mapa</CarouselTitle>
+          <Slider  users={getUsersToCarousel(state.allusers)} />
         </CarouselSection>
         <PathWaySection>
-          <PahtImage className="pathImg" />
+          <PahtImage />
           <PhraseWrapper> 
             <Phrase>Vamos percorrer<br/>
               <PhraseWhite>500 cidades</PhraseWhite>
@@ -93,9 +124,13 @@ const Landing = ({ history }) => {
             src={logoNinjaImg}
             alt="Logo Mídia Ninja"
           />
-          <ReBrand
-            src={logoReSystemImg}
-            alt="Logo Re System"
+          <NinjaBrand
+            src={'https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/fora-do-eixo.svg'}
+            alt="Logo Fora do eixo"
+          />
+          <NinjaBrand
+            src={'https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/342amazonia.svg'}
+            alt="Logo 342 Amazonia"
           />
           <ReBrand
             src={logoReSystemImg}

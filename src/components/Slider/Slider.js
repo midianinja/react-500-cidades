@@ -11,7 +11,7 @@ const renderSimpleCards = (users, active) => users.map(( user, index ) => (
     profileImage={user.profile_image.mimified}
     nameUser={user.name}
     job={user.job}
-    bioUser={user.biograph}
+    bioUser={user.biography}
     />
   )
 );

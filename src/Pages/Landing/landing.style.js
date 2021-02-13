@@ -15,16 +15,26 @@ export const Apresentation = styled.section`
   background-color: var(--brown);
   background-repeat: no-repeat; 
   background-size: 100% 100%;
+  position: relative;
   background-position: top center;
-  min-height: 130vh;
+  height: 170vh;
   width: 100vw;
-  height: 100%;
   padding-top: 120px;
-`;
+  
+  @media (max-width: 768px) {
+    padding-top: 0;
+    background-image: url("https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/mergulho-500cidades-mobile.png");
+    background-size: 140% 100%;
+  }
+  `;
 
 export const CallActionWrapper = styled.div`
   display: flex;
   justify-content: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const CallActionContainer = styled.div`
@@ -33,7 +43,9 @@ export const CallActionContainer = styled.div`
   width: 200px;
   flex-direction: column;
   padding-bottom: 70px;
-  margin-left: -50px;
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 `;
 
 export const CommonText = styled.span`
@@ -53,6 +65,9 @@ export const TextWithFocus = styled.span`
 
 export const BigLogo = styled.img`
   width: 450px;
+  @media (max-width: 768px) {
+    width: 250px;
+  }
 `;
 
 export const RegisterButton = styled.button`
@@ -71,28 +86,40 @@ export const HaveRegisterLink = styled.a`
 `;
 
 export const ShortTextWrapper = styled.div`
-  /* align-content: center; */
-  /* flex-wrap: wrap; */
   color: var(--white);
   margin-top: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  `;
+  @media (max-width: 768px) {
+    margin: 0;
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+  }
+`;
 
 export const ShortTextTitle = styled.h2`
   margin-left: 300px;
   font-size: 1.6em;
   word-spacing: normal;
   width: 300px;
-  `;
+  @media (max-width: 768px) {
+    margin: 0;
+    padding: 0 20px;
+  }
+`;
 
 export const ShortText = styled.p`
   margin-left: 300px;
   font-size: 1.2em;
   word-spacing: normal;
   width: 300px;
+  @media (max-width: 768px) {
+    margin: 0;
+    padding: 0 20px;
+  }
 `;
 
 export const MapSection = styled.section`
@@ -102,9 +129,16 @@ export const MapSection = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    margin: 0;
+    padding: 20px 0;
+  }
 `;
 
-export const MapImage = styled.img``;
+export const MapImage = styled.img`
+  width: 80vw;
+  border-radius: 7px;
+`;
 
 export const GoToMap = styled.button`
   color: var(--white);
@@ -118,6 +152,7 @@ export const GoToMap = styled.button`
 
 export const VideoSection = styled.section`
   width: 100vw;
+  height: 50vh;
 `;
 
 export const CarouselSection = styled.section`
@@ -141,6 +176,11 @@ export const PathWaySection = styled.section`
   width: 100%;
   height: 47vh;
   background-color: var(--blue);
+  @media (max-width: 768px) {
+    height: auto;
+    flex-direction: column;
+    padding: 100px 0;
+  }
 `;
 
 export const PahtImage = styled.div`
@@ -187,12 +227,12 @@ export const Footer = styled.footer`
 
 export const NinjaBrand = styled.img`
   width: 50px;
-  margin: 8px;
+  margin: 20px;
 `;
 
 export const ReBrand = styled.img`
   width: 160px;
-  margin: 8px;
+  margin: 20px;
 `;
 
 export const LinksWrapper = styled.div`
@@ -205,6 +245,10 @@ export const LinksWrapper = styled.div`
   flex: 50% 1;
   min-height: 14vh;
   padding: 1rem 2rem;
+  @media (max-width: 768px) {
+    height: auto;
+    flex-direction: column;
+  }
 `;
 
 export const FooterLink = styled.a`
@@ -215,6 +259,9 @@ export const FooterLink = styled.a`
   :hover {
     color: var(--white);
     text-decoration: underline;
+  }
+  @media (max-width: 768px) {
+    padding: 20px 0;
   }
 `;
 
