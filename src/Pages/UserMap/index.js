@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useRef, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ToggleButton from '../../components/ToggleButton';
 import { FaSearch } from "react-icons/fa";
 import './styles.css';
@@ -13,8 +13,11 @@ import MapComponent from '../../components/Map/Map';
 
 const UserMap = () => {
   const { state, dispatch } = useContext(Store);
+  const history = useHistory();
   const [samePlaceList, setSamePlaceList] = useState([]);
-
+  useEffect(() => {
+    if (!state.auth) history.push('/?page=landing');
+  }, [state.auth]);
   return (
     <>
       <SamePlaceListModal
