@@ -5,24 +5,27 @@ export const SliderWrapper = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 100%;
-    height: 80%;
-    overflow-x: hidden;
-
+    overflow-x: auto;
+    height: 500px;
+    @media (min-width: 576px){
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    
 `;
 
 export const Item = styled.div`
-    display: flex;
-    flex-direction: row;
-    width:100%;
-    height: 100%;
-    overflow-x: visible;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: absolute;
+    left: 0;
     @media (min-width: 576px){
-        overflow-x: auto;
         ::-webkit-scrollbar {
             display: none;
             }
     }
+    ${props => props.customStyle}
 `;
 
 export const MoveOnWrapper = styled.div`
@@ -31,14 +34,20 @@ export const MoveOnWrapper = styled.div`
     align-items: center;
     width: 50%;
     height: 40px;
+    position: sticky;
+    left: 200px;
+    top: 100%;
+    @media (max-width: 768px){
+        display: none;
+    }
 `;
 
 export const Dot = styled.button`
-    width:10px;
-    height:10px;
-    border-radius: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
     cursor: pointer;
-    background: var(--light-gray);
+    background: var(--darker-green);
     border: none;
     :active {
         background: var(--blue);

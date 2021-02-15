@@ -2,5 +2,9 @@ import styled from "styled-components";
 
 export const VideoWrapper = styled.div`
   position: relative;
-  padding-top: 56.25%;
+`;
+
+export const Frame = styled.iframe`
+  width: 100vw;
+  height: 90vh;
 `;

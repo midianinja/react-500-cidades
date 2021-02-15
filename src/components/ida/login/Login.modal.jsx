@@ -19,7 +19,7 @@ import {
 
 const registerAction = (dispatch, history) => {
   dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
-  history.push('/cadastre-se');
+  // history.push('/?page=cadastre-se');
 }
 
 const forgetPasswordAction = (dispatch) => {

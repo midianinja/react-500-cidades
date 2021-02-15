@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
       Title,
       Wrapper,
@@ -8,8 +8,11 @@ import {
     import NavigationBar from '../../components/NavigationBar';
     import Button from '../../components/Button';
 import { withRouter } from 'react-router-dom';
+import Store from '../../store/Store';
 
 const About = ({history}) => {
+    const { state } = useContext(Store);
+    if (!state.modals.terms) return null;
       return (
           <Container>
           <NavigationBar />

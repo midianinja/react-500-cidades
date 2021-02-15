@@ -3,6 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Store = React.createContext();
+const initialModals = {
+  about: false,
+  privacy: false,
+  register: false,
+  list: false,
+  terms: false,
+  landing: false,
+};
 
 const initialState = {
   toast: { show: false, msg: '' },
@@ -17,6 +25,21 @@ const initialState = {
   registerModal: false,
   ida: null,
   loadedMap: null,
+  modals: initialModals,
+};
+
+const openModal = (state, action) => {
+  const stateCopy = { ...state };
+  const modals = { ...initialModals };
+  modals[action.modal] = true;
+  stateCopy.modals = modals;
+  return stateCopy;
+};
+
+const closeModal = (state, action) => {
+  const stateCopy = { ...state };
+  stateCopy.modals = { ...initialModals };
+  return stateCopy;
 };
 
 export const reducer = (state, action) => {
@@ -35,6 +58,8 @@ export const reducer = (state, action) => {
     SET_AUTH: (oldState, data) => ({ ...oldState, auth: action.data }),
     SET_IDA: (oldState, data) => ({ ...oldState, ida: action.data }),
     LOAD_MAP: (oldState, data) => ({ ...oldState, loadedMap: action.data }),
+    OPEN_MODAL: openModal,
+    CLOSE_MODAL: closeModal,
   };
   return cases[action.type] ? cases[action.type](state, action) : state;
 

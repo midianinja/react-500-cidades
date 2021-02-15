@@ -3,29 +3,11 @@ import quote from  '../../assets/quote.png';
 
 
 export const Card = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
+    display: inline-block;
     text-align: center;
-    padding: 1rem;
-    width:480px;
-    flex: 0 0 ${props => props.theme.main}px;
-    @media (min-width: 576px) {
-        flex: 0 0 50%;
-    }
-    @media (min-width: 768px) {
-        flex: 0 0 33.3%;
-    }
-    @media (min-width: 992px) {
-        flex: 0 0 25%;
-    }
-    @media (min-width: 1024px) {
-        flex: 0 0 20%;
-    }
-    @media only screen (min-width: 1025px) and (max-width:1920px) {
-        flex: 0 0 20%;
-    }
+    padding: 0 10px;
+    width: 300px;
+    /* background-color: ${props => props.active ? 'green' : 'transparent'}; */
     img {
         width: 180px;
         height: 180px;
@@ -79,7 +61,5 @@ export const Card = styled.div`
 `;
 
 Card.defaultProps = {
-    theme: {
-      main: `${window.innerWidth}`
-    }
+   
   }

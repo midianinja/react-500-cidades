@@ -28,10 +28,10 @@ const UserMap = () => {
       <NavigationBar />
       <div className='map-container'>
         <div className="map-toggles">
-          <Link to="/usuario/mapa">
+          <Link to="/" onClick={() => dispatch({ type: 'CLOSE_MODAL', modal: 'llist' })}>
             <ToggleButton className="btn-toggle-map--blue">Mapa</ToggleButton>
           </Link>
-          <Link to="/usuario/lista-de-agentes">
+          <Link to="/?page=lista" onClick={() => dispatch({ type: 'OPEN_MODAL', modal: 'llist' })}>
             <ToggleButton className="btn-toggle-map">Lista</ToggleButton>
           </Link>
         </div>

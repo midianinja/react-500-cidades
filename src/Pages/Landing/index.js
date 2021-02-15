@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { Link, withRouter } from "react-router-dom";
+import queryString from "query-string";
 
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-
 import logoImg from '../../assets/500cidades-logo.png';
-
 import newsletterImg from '../../assets/newsletter.png';
 import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
 import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
@@ -37,17 +36,8 @@ const renderSimpleCards = (users) => {
 
 const Landing = ({ history }) => {
   const { state, dispatch } = useContext(Store);
-
-  const [email, setEmail] = useState('');
-  const playerProps = { playing: true };
-  useEffect( () => {
-    if (state.user) history.push('/usuario/mapa');
-    if (state.auth) history.push('/cadastre-se');
-  }, [state.auth, state.user]);
-
   const placesChange = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto',];
   const [newString, setNewString] = useState("");
-  
   const shuffle = useCallback(() => {
       const stringShuffle = Math.floor(Math.random() * placesChange.length);
       setNewString(placesChange[stringShuffle]);
@@ -56,8 +46,24 @@ const Landing = ({ history }) => {
   useEffect(() => {
       const intervalID = setInterval(shuffle, 1500);
       return () => clearInterval(intervalID);
-  }, [shuffle])
+  }, [shuffle]);
 
+  const [email, setEmail] = useState('');
+  const parsed = queryString.parse(history.location.search);
+  const playerProps = { playing: true };
+  useEffect( () => {
+    if (state.modals.landing) {
+      if (state.user) {
+        history.push('/');
+        dispatch({ type: 'CLOSE_MODAL' })
+      }
+      if (state.auth && !state.user) {
+        dispatch({ type: 'OPEN_MODAL', modal: 'register' })
+        history.push('/?page=cadastre-se');
+      }
+    }
+  }, [state.auth, state.user]);
+  if (!state.modals.landing || parsed.page !== 'landing') return null;
 
     return (
       <div className="landing-container">
@@ -133,54 +139,23 @@ const Landing = ({ history }) => {
         </section>
         <section className="newsletter">
           <img
-            className="newsletter-img"
-            src={newsletterImg}
-            alt="Newsletter"
+            className="org-logos ninja-logo"
+            src={logoNinjaImg}
+            alt="Logo Mídia Ninja"
           />
-          <div className="newsletter-text">
-            <h3 className="heading-terciary--newsletter">
-              Saiba tudo que está rolando no 500 cidades
-            </h3>
-            <p>Assine nossa newsletter</p>
-            <div className="newsletter-subscription">
-              <Input
-                type="e-mail"
-                inputClass="newsletter-email"
-                placeholder="Insira aqui seu e-mail"
-                labelClass="label-email"
-                value={email}
-                onChange={({ target }) => setEmail(target.value)}
-              />
-              <Button
-                onClick={() => registerNewsLetter(email, dispatch)}
-                className="newsletter-btn3D--blue"
-              >
-              </Button>
-            </div>
-          </div>
-        </section>
-        <section className="footer">
-          <div className="org">
-            <p>Quem constrói isso com a gente</p>
-            <img
-              className="org-logos ninja-logo"
-              src={logoNinjaImg}
-              alt="Logo Mídia Ninja"
-            />
-            <img
-              className="org-logos resystem-logo"
-              src={logoReSystemImg}
-              alt="Logo Re System"
-            />
-          </div>
-          <div className="more-about">
-            <Link className="more-about-link" to="/sobre">Sobre</Link>
-            <Link className="more-about-link" to="/politica-de-privacidade">Política de privacidade</Link>
-            <Link className="more-about-link" to="/termos-de-uso">Termos de uso</Link>
-          </div>
-        </section>
-      </div>
-    );
+          <img
+            className="org-logos resystem-logo"
+            src={logoReSystemImg}
+            alt="Logo Re System"
+          />
+        <div className="more-about">
+          <Link className="more-about-link" to="/sobre">Sobre</Link>
+          <Link className="more-about-link" to="/politica-de-privacidade">Política de privacidade</Link>
+          <Link className="more-about-link" to="/termos-de-uso">Termos de uso</Link>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export default withRouter(Landing);
