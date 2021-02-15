@@ -38,10 +38,13 @@ export const MoveOnWrapper = styled.div`
     height: 40px;
     position: sticky;
     left: 50%;
-    top: 100%;
+    top: 100%;   
     @media (max-width: 768px){
         display: none;
     }
+    @media (max-width: 992px){
+        width: 35%;
+    } 
 `;
 
 export const Dot = styled.button`
