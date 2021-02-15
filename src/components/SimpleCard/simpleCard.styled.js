@@ -31,6 +31,7 @@ export const Card = styled.div`
         background-size: auto;
         background-position: left top;
         height: 200px;
+        white-space: normal;
         p{
             padding: 2rem 0 0 0;
             display: -webkit-box;

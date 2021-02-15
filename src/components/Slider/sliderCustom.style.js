@@ -7,6 +7,8 @@ export const SliderWrapper = styled.div`
     flex-direction: column;
     overflow-x: auto;
     height: 500px;
+    width: 90%;
+    margin:0 auto;
     @media (min-width: 576px){
         ::-webkit-scrollbar {
             display: none;
@@ -32,10 +34,10 @@ export const MoveOnWrapper = styled.div`
     display:flex;
     justify-content: space-around;
     align-items: center;
-    width: 50%;
+    width: 15%;
     height: 40px;
     position: sticky;
-    left: 200px;
+    left: 50%;
     top: 100%;
     @media (max-width: 768px){
         display: none;
