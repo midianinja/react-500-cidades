@@ -4,6 +4,7 @@ import queryString from "query-string";
 import logoImg from '../../assets/500cidades-logo.png';
 import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
 import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
+import MapImg from '../../assets/mapa-ativista.png';
 import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
@@ -73,7 +74,7 @@ const Landing = ({ history }) => {
               <CommonText>Coloque</CommonText>
               <TextWithFocus>{newString}</TextWithFocus>
               <CommonText>no mapa</CommonText>
-                <RegisterButton onClick={() => openIDASignin(state.ida)} >Quero!</RegisterButton>
+                <RegisterButton onClick={() => openIDASignin(state.ida)} >Cadastre-se</RegisterButton>
                 <HaveRegisterLink onClick={() => openIDASignin(state.ida)} alt="Já tenho cadastro">
                   Já tenho cadastro
                 </HaveRegisterLink>
@@ -89,7 +90,7 @@ const Landing = ({ history }) => {
           </ShortTextWrapper>
         </Apresentation>
         <MapSection >
-          <MapImage src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/brasil-map.svg" alt="Mapa Ativista" />
+          <MapImage src={MapImg} alt="Mapa Ativista" />
           <GoToMap onClick={() => history.push('/usuario/mapa')} >Navegue e descubra</GoToMap>
         </MapSection>
         <VideoSection>
@@ -124,14 +125,14 @@ const Landing = ({ history }) => {
             src={logoNinjaImg}
             alt="Logo Mídia Ninja"
           />
-          <NinjaBrand
+          {/* <NinjaBrand
             src={'https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/fora-do-eixo.svg'}
             alt="Logo Fora do eixo"
           />
           <NinjaBrand
             src={'https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/342amazonia.svg'}
             alt="Logo 342 Amazonia"
-          />
+          /> */}
           <ReBrand
             src={logoReSystemImg}
             alt="Logo Re System"

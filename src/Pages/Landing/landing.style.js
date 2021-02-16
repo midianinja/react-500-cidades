@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import logoIDA from '../../assets/icons/logoida-color.svg';
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -11,78 +12,125 @@ export const Wrapper = styled.div`
 `;
 
 export const Apresentation = styled.section`
-  background-image: url("https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/mergulho-500cidades-desktop.png");
+  background-image: url("https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/mergulho-500cidades-mobile.png");
   background-color: var(--brown);
   background-repeat: no-repeat; 
-  background-size: 100% 100%;
-  position: relative;
-  background-position: top center;
-  height: 170vh;
-  width: 100vw;
-  padding-top: 120px;
-  
-  @media (max-width: 768px) {
+  background-size: cover;
+  background-position: -534px 0%;
+  min-height: 130vh;
+  height: 100%;
+  @media (min-width:576px){
+    background-position: -433px 0%;
+  }
+  @media (min-width: 768px) {
     padding-top: 0;
-    background-image: url("https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/mergulho-500cidades-mobile.png");
-    background-size: 140% 100%;
+    background-image: url("https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/mergulho-500cidades-desktop.png");
+    background-position: -260px 0%;
+    min-height: 150vh;
+  }
+  @media (min-width: 992px) {
+    background-position: 0px 0%;
+    min-height: 170vh;
   }
   `;
 
 export const CallActionWrapper = styled.div`
   display: flex;
   justify-content: center;
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding-top: 7rem;
   }
 `;
 
 export const CallActionContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 200px;
+  width: 280px;
   flex-direction: column;
   padding-bottom: 70px;
-  @media (max-width: 768px) {
-    margin-left: 0;
+  margin-left: 0;
+  @media (min-width: 768px) {
+    padding-top: 7rem;
+    padding-bottom: 0px;
+    width: 50%; 
+  }
+  @media (min-width: 992px) {
+    width: 30%; 
   }
 `;
 
 export const CommonText = styled.span`
   display: block;
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 2em;
   color: #FFF;
-
+  @media (min-width: 768px) {
+    font-size: 3em;
+  }
 `;
 
 export const TextWithFocus = styled.span`
   display: block;
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 2em;
   color: var(--green);
+  @media (min-width: 768px) {
+    font-size: 3em;
+  }
 `;
 
 export const BigLogo = styled.img`
-  width: 450px;
-  @media (max-width: 768px) {
-    width: 250px;
+  width: 250px;
+  @media (min-width: 768px) {
+    width: 400px;
+  }
+  @media (min-width: 992px){
+    width: 450px;
   }
 `;
 
 export const RegisterButton = styled.button`
-  display: block;
-  background-color: #DF4545;
-  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  max-width: 100%;
+  background-color: var(--white);
+  padding: 1rem;
+  font-size: 1.5em;
+  margin: 20px 0 10px 0;
   border: none;
-  border-radius: 7px;
-  color: #FFF;
-  font-size: 1em;
+  -moz-box-shadow: 0 2.8px 0 var(--light-gray);
+  -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
+  box-shadow: 0 2.8px 0 var(--light-gray);
+  border-radius: .3rem;
+  color: #1D1D1D;
+  &:before{
+      content: url('${logoIDA}');
+      height: 20px;
+      width: 25px;
+      padding: 0 .5rem 0 0;
+  }
+  &:active{
+    -moz-box-shadow: 0 2.8px 0 var(--light-gray);
+    -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
+    box-shadow: 0 2.8px 0 var(--light-gray);
+}
+  &:visited{
+    background-color: var(--white);
+    -moz-box-shadow: 0 2.8px 0 var(--light-gray);
+    -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
+    box-shadow: 0 2.8px 0 var(--light-gray);
+}
 `;
 
 export const HaveRegisterLink = styled.a`
   color: var(--white);
-  font-size: .7em;
+  font-size: 1em;
 `;
 
 export const ShortTextWrapper = styled.div`
@@ -92,33 +140,44 @@ export const ShortTextWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @media (max-width: 768px) {
+  margin: 0;
+  position: relative;
+  bottom: -70px;
+  width: 100%;
+  @media (min-width: 768px) {
     margin: 0;
-    position: absolute;
-    bottom: 40px;
+    bottom: -340px;
+    width: 100%;
+  }
+  @media (min-width: 992px) {
+    margin: 0;
+    bottom: -440px;
     width: 100%;
   }
 `;
 
 export const ShortTextTitle = styled.h2`
   margin-left: 300px;
-  font-size: 1.6em;
+  font-size: 3em;
   word-spacing: normal;
   width: 300px;
-  @media (max-width: 768px) {
-    margin: 0;
-    padding: 0 20px;
+  margin: 0;
+  padding: 0 20px;
+  @media (min-width: 768px) {
+    width: 270px;
+    padding: 0 8px;
   }
 `;
 
 export const ShortText = styled.p`
-  margin-left: 300px;
   font-size: 1.2em;
   word-spacing: normal;
-  width: 300px;
-  @media (max-width: 768px) {
-    margin: 0;
-    padding: 0 20px;
+  width: 260px;
+  margin: 0;
+  padding: 0;
+  @media (min-width: 768px) {
+    width: 270px;
+    padding: 0 8px;
   }
 `;
 

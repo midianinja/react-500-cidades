@@ -1,3 +1,15 @@
+.landing{
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url("../../assets/mergulho-500cidades-mobile.png");
+    background-color: var(--brown);
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: -534px 0%;
+    min-height: 130vh;
+    height: 100%;
+}
+
 .landing-top{
     display: flex;
     flex-direction: column;
