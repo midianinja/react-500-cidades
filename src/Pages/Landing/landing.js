@@ -6,8 +6,10 @@ import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
 import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
 import MapImg from '../../assets/mapa-ativista.png';
 import newsletterImg from '../../assets/newsletter.png';
+import Input from '../../components/Input';
 import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
+import { registerNewsLetter } from './landing.controller';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 import Slider from '../../components/Slider/Slider';
 import {
@@ -20,7 +22,8 @@ import {
   CarouselSection, PathWaySection, PahtImage,
   PhraseWrapper, Phrase, PhraseWhite,
   Footer, NinjaBrand, ReBrand,
-  LinksWrapper, FooterLink, NewsLetter, HeadingNews, TextNews, NewsLetterImg
+  LinksWrapper, FooterLink, NewsLetter, HeadingNews, 
+  TextNews, NewsLetterImg, NewsSubscription, ButtonNews, NewsLetterContainer, TextWhoOrgs, OrgsContainer
 } from './landing.style';
 
 const placesChange = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto'];
@@ -124,11 +127,28 @@ const Landing = ({ history }) => {
           </PhraseWrapper>
         </PathWaySection>
         <NewsLetter>
-            <HeadingNews>Saiba tudo que está rolando no 500 cidades</HeadingNews>
-            <TextNews>Assine nossa newsletter</TextNews>
-            <NewsLetterImg src={newsletterImg} alt="Newsletter"/>
+          <NewsLetterImg src={newsletterImg} alt="Newsletter"/>
+            <NewsLetterContainer>
+              <HeadingNews>Saiba tudo que está rolando no 500 cidades</HeadingNews>
+              <TextNews>Assine nossa newsletter</TextNews>
+              <NewsSubscription>
+                <Input
+                  type="e-mail"
+                  placeholder="Insira aqui seu e-mail"
+                  labelClass="label-email"
+                  value={email}
+                  onChange={({ target }) => setEmail(target.value)}
+                />
+                <ButtonNews
+                  onClick={() => registerNewsLetter(email, dispatch)}
+                  className="newsletter-btn3D--blue"
+                />
+              </NewsSubscription>
+            </NewsLetterContainer>
         </NewsLetter>
         <Footer>
+          <OrgsContainer>
+          <TextWhoOrgs>Quem constrói isso com a gente</TextWhoOrgs>
           <NinjaBrand
             src={logoNinjaImg}
             alt="Logo Mídia Ninja"
@@ -137,6 +157,7 @@ const Landing = ({ history }) => {
             src={logoReSystemImg}
             alt="Logo Re System"
           />
+          </OrgsContainer>
         <LinksWrapper>
           <FooterLink to="/sobre">Sobre</FooterLink>
           <FooterLink to="/politica-de-privacidade">Política de privacidade</FooterLink>

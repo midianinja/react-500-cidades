@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import logoIDA from '../../assets/icons/logoida-color.svg';
+import ArrowRight from '../../assets/icons/keyboard_arrow_right_24px.svg'
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -307,6 +308,71 @@ export const PhraseWhite = styled.span`
   font-size: 3rem;
   line-height: 48px;
 `;
+export const NewsLetter = styled.section`
+  background-color: var(--red);
+  display: flex;
+  padding: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: var(--white);
+  align-items: center;
+`;
+export const NewsLetterContainer = styled.div`
+  disĺay:flex;
+  flex-direction:column;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 80vw;
+  @media (min-width: 768px) {
+    max-width: 50vw;
+  }
+`;
+export const HeadingNews = styled.h3`
+  font-size: 2rem;
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+`;
+export const TextNews = styled.p`
+  font-size: 1rem;
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
+`;
+export const NewsLetterImg = styled.img`
+  padding: 2rem;
+  width: 85vw;
+  max-width: 316px;
+`;
+export const NewsSubscription = styled.div`
+  width: max-content;
+  display: flex;
+  margin-top: 3rem;
+  input{
+    background:rgba(255, 255, 255, .3);
+    font-weight: 700;
+    color:var(--white);
+    border: none;
+    padding: .5rem;
+    border-radius:.3rem 0 0 .3rem;
+  }
+`;
+export const ButtonNews = styled.button`
+  color: var(--white);
+  background-color: var(--blue);
+  box-shadow: none;
+  border: none;
+  padding: .1rem 1rem;
+  border-radius: 0 .3rem .3rem 0;
+  margin:0;
+  &::before{
+    content: url('${ArrowRight}');
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+  }
+`;
 
 export const Footer = styled.footer`
   background-color: var(--eggplant);
@@ -316,7 +382,23 @@ export const Footer = styled.footer`
   color: var(--white);
   align-items: center;
 `;
-
+export const OrgsContainer = styled.div`
+  flex: 50% 1;
+  background-color: var(--eggplant);
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 10px;
+  align-items: center;
+  flex-wrap: wrap;
+`; 
+export const TextWhoOrgs = styled.p`
+  color: var(--white);
+  margin: 0;
+  font-size: 1em;
+  align-self: center;
+  width: fit-content;
+  margin:0 auto;
+`;
 export const NinjaBrand = styled.img`
   width: 50px;
   margin: 20px;
@@ -328,46 +410,23 @@ export const ReBrand = styled.img`
 `;
 
 export const LinksWrapper = styled.div`
-  /* flex-grow: 1; */
   background-color: var(--brown);
   text-align:left;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
-  min-height: 14vh;
+  align-items: flex-start;
   flex: 50% 1;
+  min-height: 14vh;
   padding: 1rem 2rem;
-  @media (max-width: 768px) {
-    flex: none;
-    height: auto;
-    flex-direction: column;
-    width: 100vw;
+  @media (min-width: 768px) {
+    // flex: none;
+    // height: auto;
+    // flex-direction: column;
+    // width: 100vw;
   }
 `;
-export const NewsLetter = styled.section`
-  background-color: var(--red);
-  display: flex;
-  padding: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  color: var(--white);
-  align-items: center;
-`;
-export const HeadingNews = styled.h3`
-  font-size: 6.5vw;
-  @media (max-width: 768px) {
-    font-size: 1.75vw;
-  }
-`;
-export const TextNews = styled.p`
-  max-width: 393px;
-  padding: 0 1rem;
-`;
-export const NewsLetterImg = styled.img`
-  padding: 2rem;
-  width: 85vw;
-  max-width: 316px;
-`;
+
 export const FooterLink = styled.a`
   text-decoration: none;
   color: var(--white);
