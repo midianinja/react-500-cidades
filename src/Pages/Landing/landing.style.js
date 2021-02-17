@@ -16,21 +16,18 @@ export const Apresentation = styled.section`
   background-color: var(--brown);
   background-repeat: no-repeat; 
   background-size: cover;
-  background-position: -534px 0%;
-  min-height: 130vh;
+  background-position: 75% 60%;
+  min-height: 115vh;
   height: 100%;
-  @media (min-width:576px){
-    background-position: -433px 0%;
-  }
   @media (min-width: 768px) {
     padding-top: 0;
     background-image: url("https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/mergulho-500cidades-desktop.png");
-    background-position: -260px 0%;
+    background-position: 64% 60%;
     min-height: 150vh;
   }
   @media (min-width: 992px) {
     background-position: 0px 0%;
-    min-height: 170vh;
+    min-height: 150vh;
   }
   `;
 
@@ -108,7 +105,7 @@ export const RegisterButton = styled.button`
   -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
   box-shadow: 0 2.8px 0 var(--light-gray);
   border-radius: .3rem;
-  color: #1D1D1D;
+  color: var(--brown);
   &:before{
       content: url('${logoIDA}');
       height: 20px;
@@ -130,19 +127,35 @@ export const RegisterButton = styled.button`
 
 export const HaveRegisterLink = styled.a`
   color: var(--white);
+  padding: .8rem 0;
   font-size: 1em;
+  text-decoration: underline;
+  cursor:pointer;
+  &:active {
+    color: var(--white);
+    padding: 0.8rem;
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+  &:visited {
+      color: var(--white);
+      text-decoration: underline;
+  }
+  &:hover {
+      color: var(--red);
+      text-decoration: none;
+  }
 `;
 
 export const ShortTextWrapper = styled.div`
   color: var(--white);
-  margin-top: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: 0;
   position: relative;
-  bottom: -70px;
+  bottom: -50px;
   width: 100%;
   @media (min-width: 768px) {
     margin: 0;
@@ -150,21 +163,21 @@ export const ShortTextWrapper = styled.div`
     width: 100%;
   }
   @media (min-width: 992px) {
-    margin: 0;
     bottom: -440px;
-    width: 100%;
+  }
+  @media (min-width: 1024px) {
+    bottom: -470px;
   }
 `;
 
 export const ShortTextTitle = styled.h2`
-  margin-left: 300px;
   font-size: 3em;
   word-spacing: normal;
   width: 300px;
   margin: 0;
-  padding: 0 20px;
+  padding: 0 .6em;
   @media (min-width: 768px) {
-    width: 270px;
+    width: 340px;
     padding: 0 8px;
   }
 `;
@@ -172,31 +185,47 @@ export const ShortTextTitle = styled.h2`
 export const ShortText = styled.p`
   font-size: 1.2em;
   word-spacing: normal;
-  width: 260px;
+  width: 300px;
   margin: 0;
-  padding: 0;
+  padding: 0 1.6em;
   @media (min-width: 768px) {
-    width: 270px;
+    width: 340px;
     padding: 0 8px;
   }
 `;
 
 export const MapSection = styled.section`
-  padding: 100px 0;
-  width: 100vw;
+  height: 100%;
+  max-height: 30vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  @media (max-width: 768px) {
-    margin: 0;
-    padding: 20px 0;
+  margin-bottom: 3em;
+  @media (min-width: 768px) {
+    max-height: 40vh;
   }
+  // @media (min-width: 992px) {
+  //   max-height: 100vh;
+  // }
+`;
+
+export const MapContainer = styled.div`
+  position: relative;
+  display:block;
+  bottom: 20px;
+  left: 0;
+  width: 80%;
+  height: 100%;
 `;
 
 export const MapImage = styled.img`
-  width: 80vw;
-  border-radius: 7px;
+  position:absolute;
+  top:-40px;
+  width: 100%;
+  border-radius: 8px;
+
 `;
 
 export const GoToMap = styled.button`
@@ -220,12 +249,13 @@ export const VideoSection = styled.section`
 export const CarouselSection = styled.section`
   width: 100vw;
   background-color: #F2F2F2;
+  color: var(--brown);
   padding: 50px 0;
 `;
 
 export const CarouselTitle = styled.h2`
   font-size: 1.3em;
-  color: #3B2737;
+  color: var(--brown);
   margin-bottom: 40px;
   padding-left: 100px;
 `;
@@ -260,7 +290,7 @@ export const PahtImage = styled.div`
 export const PhraseWrapper = styled.div``;
 
 export const Phrase = styled.p`
-  color: var(--eggplant);
+  color: var(--brown);
   word-wrap: break-word;
   font-style: normal;
   font-weight: normal;
@@ -314,7 +344,30 @@ export const LinksWrapper = styled.div`
     width: 100vw;
   }
 `;
-
+export const NewsLetter = styled.section`
+  background-color: var(--red);
+  display: flex;
+  padding: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: var(--white);
+  align-items: center;
+`;
+export const HeadingNews = styled.h3`
+  font-size: 6.5vw;
+  @media (max-width: 768px) {
+    font-size: 1.75vw;
+  }
+`;
+export const TextNews = styled.p`
+  max-width: 393px;
+  padding: 0 1rem;
+`;
+export const NewsLetterImg = styled.img`
+  padding: 2rem;
+  width: 85vw;
+  max-width: 316px;
+`;
 export const FooterLink = styled.a`
   text-decoration: none;
   color: var(--white);

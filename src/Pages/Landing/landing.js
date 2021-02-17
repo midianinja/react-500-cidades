@@ -5,6 +5,7 @@ import logoImg from '../../assets/500cidades-logo.png';
 import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
 import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
 import MapImg from '../../assets/mapa-ativista.png';
+import newsletterImg from '../../assets/newsletter.png';
 import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
@@ -14,12 +15,12 @@ import {
   CallActionContainer,CommonText,
   TextWithFocus, BigLogo, RegisterButton,
   HaveRegisterLink, ShortTextWrapper,
-  ShortTextTitle, ShortText, MapSection,
+  ShortTextTitle, ShortText, MapSection, MapContainer,
   MapImage, GoToMap, VideoSection, CarouselTitle,
   CarouselSection, PathWaySection, PahtImage,
   PhraseWrapper, Phrase, PhraseWhite,
   Footer, NinjaBrand, ReBrand,
-  LinksWrapper, FooterLink,
+  LinksWrapper, FooterLink, NewsLetter, HeadingNews, TextNews, NewsLetterImg
 } from './landing.style';
 
 const placesChange = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto'];
@@ -90,7 +91,9 @@ const Landing = ({ history }) => {
           </ShortTextWrapper>
         </Apresentation>
         <MapSection >
-          <MapImage src={MapImg} alt="Mapa Ativista" />
+          <MapContainer>
+            <MapImage src={MapImg} alt="Mapa Ativista" />
+          </MapContainer>
           <GoToMap onClick={() => history.push('/usuario/mapa')} >Navegue e descubra</GoToMap>
         </MapSection>
         <VideoSection>
@@ -120,19 +123,16 @@ const Landing = ({ history }) => {
             </Phrase>
           </PhraseWrapper>
         </PathWaySection>
+        <NewsLetter>
+            <HeadingNews>Saiba tudo que está rolando no 500 cidades</HeadingNews>
+            <TextNews>Assine nossa newsletter</TextNews>
+            <NewsLetterImg src={newsletterImg} alt="Newsletter"/>
+        </NewsLetter>
         <Footer>
           <NinjaBrand
             src={logoNinjaImg}
             alt="Logo Mídia Ninja"
           />
-          {/* <NinjaBrand
-            src={'https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/fora-do-eixo.svg'}
-            alt="Logo Fora do eixo"
-          />
-          <NinjaBrand
-            src={'https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/342amazonia.svg'}
-            alt="Logo 342 Amazonia"
-          /> */}
           <ReBrand
             src={logoReSystemImg}
             alt="Logo Re System"
