@@ -288,7 +288,8 @@ export const PahtImage = styled.div`
   background-attachment: scroll;
 `;
 
-export const PhraseWrapper = styled.div``;
+export const PhraseWrapper = styled.div`
+`;
 
 export const Phrase = styled.p`
   color: var(--brown);
@@ -375,12 +376,12 @@ export const ButtonNews = styled.button`
 `;
 
 export const Footer = styled.footer`
-  background-color: var(--eggplant);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   color: var(--white);
-  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  align-content: center;
+  flex-wrap: wrap;
 `;
 export const OrgsContainer = styled.div`
   flex: 50% 1;
