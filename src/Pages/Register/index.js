@@ -128,7 +128,7 @@ const Register = ({ history }) => {
         dispatch({ type: 'CLOSE_MODAL' })
       }
     }
-  }, [state.user, state.auth]);
+  }, [state.user, state.auth, state.modals]);
   if (!state.modals.register) return null;
   
   return (
