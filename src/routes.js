@@ -12,6 +12,7 @@ import AuthWrapper from './AuthWrapper'
 import ValidationEmailToken from './Pages/ValidationEmailToken/ValidationEmailToken';
 import UserList from './Pages/UserList';
 import UserMap from './Pages/UserMap';
+import Edit from './Pages/Edit';
 
 
 export default function Routes() {
@@ -27,6 +28,7 @@ export default function Routes() {
                 <TermsOfUse />
                 <Landing />
                 <UserList />
+                <Edit />
             </AuthWrapper>
         </BrowserRouter>
     );

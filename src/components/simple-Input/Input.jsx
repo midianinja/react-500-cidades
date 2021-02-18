@@ -5,11 +5,12 @@ const SimpleInput = ({
   name, value, onChange,
   type, placeholder, id,
   autofocus, maxlength,
-  onBlur, customStyle,
+  onBlur, customStyle, error,
 }) => {
     return(
       <Input
         name={name} 
+        error={error} 
         value={value} 
         onChange={onChange} 
         type={type} 

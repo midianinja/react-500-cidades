@@ -1,0 +1,158 @@
+.register-form{
+  display: flex;
+  flex-direction: column;
+  margin: auto 11vw;
+}
+
+.heading-terciary{
+  font-size: 22px;
+}
+
+.add-details{
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.register-name-input{
+  border-bottom: 1px solid #FFF;
+  min-width: 70px;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.register-input{
+  border-radius: 10px;
+  border:none;
+  background-color: var(--gray-ice);
+  padding: .5rem;
+}
+
+@media(max-width: 768px) {
+  .register-input {
+      width: 100%;
+      margin: 0;
+  }
+  .register-select {
+      width: 100%;
+  }
+}
+
+.register-label{
+   color:  #2E1F2B;
+}
+
+.register-select{
+  cursor:pointer;
+  background-color: var(--gray-ice);
+  padding: .5rem;
+}
+.register-option{
+  background-color: var(--gray-ice);
+}
+
+.btn3D--transparent{
+  color: var(--blue);
+  background-color: transparent;
+  border: 1px solid var(--blue);
+  padding: .5rem 1.5rem;
+}
+
+.register-submit{
+  text-align: center;
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+  margin: 0 0 20px;
+}
+
+.input-group-wrapper {
+  width: 100%;
+}
+
+.common-input {
+  width: 100%;
+  padding: 10px 0;
+  color:  #2E1F2B;
+}
+
+.tags-style {
+  margin-bottom: 20px;
+}
+
+@media(max-width: 768px) {
+  .register-submit {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .last-row {
+    justify-content: flex-start;
+  }
+  
+  .common-input.email {
+    width: 65%;
+  }
+  
+  .common-input.phone {
+    width: 30%;
+  }
+  .common-input.name {
+    display: none;
+  }
+  .common-input.job {
+    display: none;
+  }
+
+  .common-input.insta  {
+    width: 32%;
+  }
+  .common-input.face {
+    width: 32%;
+  }
+  .common-input.site {
+    width: 32%;
+  }
+  
+  .common-input.birth-date {
+    width: 24%;
+  }
+  .common-input.gender {
+    width: 24%;
+  }
+  .common-input.sexual-orientation {
+    width: 24%;
+  }
+  .common-input.race {
+    width: 24%;
+  }
+ 
+  .common-input.zipcode {
+    width: 32%;
+  }
+  .common-input.neighborhood {
+    width: 32%;
+  }
+  .common-input.city {
+    width: 32%;
+  }
+  
+  .common-input.state {
+    width: 32%;
+    margin-right: 15px;
+  }
+  .common-input.country {
+    width: 32%;
+  }
+}

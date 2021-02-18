@@ -77,6 +77,7 @@ const mapUserToApi = ({
   genre: userInfo.gender,
   sexual_orientation: userInfo.sexual_orientation,
   race: userInfo.race
+
 });
 
 const getValidationErrors = ({
