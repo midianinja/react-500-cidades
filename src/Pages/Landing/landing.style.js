@@ -18,17 +18,32 @@ export const Apresentation = styled.section`
   background-repeat: no-repeat; 
   background-size: cover;
   background-position: 75% 60%;
-  min-height: 115vh;
+  min-height: 130vh;
   height: 100%;
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    min-height: 240vh;
+    background-position: 68% 60%;
+  }
+  @media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    min-height: 170vh;
+  }
+  @media (min-width:576px) {
+    min-height: 130vh;
+  }
   @media (min-width: 768px) {
     padding-top: 0;
     background-image: url("https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/mergulho-500cidades-desktop.png");
     background-position: 64% 60%;
-    min-height: 150vh;
+    min-height: 170vh;
   }
   @media (min-width: 992px) {
     background-position: 0px 0%;
-    min-height: 150vh;
   }
   `;
 
@@ -92,38 +107,36 @@ export const BigLogo = styled.img`
 `;
 
 export const RegisterButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--brown);
+  background-color: var(--white);
+  font-family: "Roboto Medium", sans-serif;
+  font-size:1.25rem;
+  text-decoration: none;
+  margin: 1em 0;
+  padding: 0.5rem;
+  border: none;
   width: 200px;
   max-width: 100%;
-  background-color: var(--white);
-  padding: 1rem;
-  font-size: 1.5em;
-  margin: 20px 0 10px 0;
-  border: none;
-  -moz-box-shadow: 0 2.8px 0 var(--light-gray);
-  -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
-  box-shadow: 0 2.8px 0 var(--light-gray);
-  border-radius: .3rem;
-  color: var(--brown);
-  &:before{
-      content: url('${logoIDA}');
-      height: 20px;
-      width: 25px;
-      padding: 0 .5rem 0 0;
+  border-radius: 0.5rem;
+  position: relative;
+  top: 0;
+  transition: all 300ms ease-in-out;
+  box-shadow: 0 0.4em var(--light-gray), 0 0.6em rgba(0, 0, 0, 0.4);
+  &:hover {
+    top: 0.2em;
+    box-shadow: 0 0.2em var(--light-gray), 0 0.4em rgba(0, 0, 0, 0.4);
   }
-  &:active{
-    -moz-box-shadow: 0 2.8px 0 var(--light-gray);
-    -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
-    box-shadow: 0 2.8px 0 var(--light-gray);
-}
-  &:visited{
-    background-color: var(--white);
-    -moz-box-shadow: 0 2.8px 0 var(--light-gray);
-    -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
-    box-shadow: 0 2.8px 0 var(--light-gray);
-}
+  &:active {
+    top: 0.6em;
+    box-shadow: 0 0.1em rgba(0, 0, 0, 0.4);
+  }
+  &::before{
+    content: url('${logoIDA}');
+    display: inline-block;
+    width: 20px;
+    padding-right: .5em;
+    vertical-align: middle;
+  }
 `;
 
 export const HaveRegisterLink = styled.a`
@@ -158,6 +171,12 @@ export const ShortTextWrapper = styled.div`
   position: relative;
   bottom: -50px;
   width: 100%;
+  @media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    bottom: -120px;
+  }
   @media (min-width: 768px) {
     margin: 0;
     bottom: -340px;
@@ -196,29 +215,21 @@ export const ShortText = styled.p`
 `;
 
 export const MapSection = styled.section`
-  height: 100%;
-  max-height: 30vh;
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 3em;
-  @media (min-width: 768px) {
-    max-height: 40vh;
-  }
-  // @media (min-width: 992px) {
-  //   max-height: 100vh;
-  // }
 `;
 
 export const MapContainer = styled.div`
   position: relative;
-  display:block;
   bottom: 20px;
   left: 0;
-  width: 80%;
-  height: 100%;
+  width: 100%;
+  height: 16vh;
+  border: 1px solid red;
 `;
 
 export const MapImage = styled.img`
@@ -232,11 +243,26 @@ export const MapImage = styled.img`
 export const GoToMap = styled.button`
   color: var(--white);
   background-color: var(--blue);
-  box-shadow: none;
+  font-family: "Roboto Medium", sans-serif;
+  text-decoration: none;
+  width: 200px;
+  max-width: 100%;
+  margin: 1rem;
+  padding: 0.5rem;
   border: none;
-  font-size: 1.5em;
-  padding: 10px 15px;
-  border-radius: 7px;
+  border-radius: 0.5rem;
+  position: relative;
+  top: 0;
+  transition: all 300ms ease-in-out;
+  box-shadow: 0 0.4em var(--darker-blue), 0 0.6em rgba(0, 0, 0, 0.4);
+  &:hover {
+    top: 0.2em;
+    box-shadow: 0 0.2em var(--darker-blue), 0 0.4em rgba(0, 0, 0, 0.4);
+  }
+  &:active {
+    top: 0.6em;
+    box-shadow: 0 0.1em rgba(0, 0, 0, 0.4);
+  }
 `;
 
 export const VideoSection = styled.section`

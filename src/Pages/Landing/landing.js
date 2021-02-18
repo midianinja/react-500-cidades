@@ -159,9 +159,8 @@ const Landing = ({ history }) => {
           />
           </OrgsContainer>
         <LinksWrapper>
-          <FooterLink to="/sobre">Sobre</FooterLink>
-          <FooterLink to="/politica-de-privacidade">Política de privacidade</FooterLink>
-          <FooterLink to="/termos-de-uso">Termos de uso</FooterLink>
+          <FooterLink onClick={ () => dispatch({ type: 'OPEN_MODAL', modal: 'about' })} to="/?page=sobre">Sobre</FooterLink>
+          <FooterLink onClick={ () => dispatch({ type: 'OPEN_MODAL', modal: 'privacy' })} to="/?page=politica">Política de privacidade e Termos de uso</FooterLink>
         </LinksWrapper>
       </Footer>
     </Wrapper>
