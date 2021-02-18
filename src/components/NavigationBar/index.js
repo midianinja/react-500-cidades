@@ -35,7 +35,7 @@ const renderLoggedSide = (history, state, dispatch) => (
         <li>
             <img
                 className="profile-img"
-                src={'state.user.profile_image.mimified'}
+                src={state.user ? state.user.profile_image.mimified : ''}
                 alt="Imagem de perfil"
             />
         </li>
@@ -70,6 +70,7 @@ const renderLoggedSide = (history, state, dispatch) => (
 
 const NavigationBar = ({ history })  => {
     const { state, dispatch } = useContext(Store);
+    console.log('🚀 ~ file: index.js ~ line 73 ~ NavigationBar ~ state', state);
     return (
         <nav className="nav-container">
             <div className="header-container">

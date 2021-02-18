@@ -23,7 +23,7 @@
 .register-input{
   border-radius: 10px;
   border:none;
-  background-color: var(--lighter-gray);
+  background-color: var(--gray-ice);
   padding: .5rem;
 }
 
@@ -38,16 +38,16 @@
 }
 
 .register-label{
-   color: var(--gray-02);
+   color:  #2E1F2B;
 }
 
 .register-select{
   cursor:pointer;
-  background-color: var(--lighter-gray);
+  background-color: var(--gray-ice);
   padding: .5rem;
 }
 .register-option{
-  background-color: var(--lighter-gray);
+  background-color: var(--gray-ice);
 }
 
 .btn3D--transparent{
@@ -74,10 +74,21 @@
 .common-input {
   width: 100%;
   padding: 10px 0;
+  color:  #2E1F2B;
 }
 
 .tags-style {
   margin-bottom: 20px;
+}
+
+@media(max-width: 768px) {
+  .register-submit {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media (min-width: 769px) {
@@ -96,6 +107,12 @@
   
   .common-input.phone {
     width: 30%;
+  }
+  .common-input.name {
+    display: none;
+  }
+  .common-input.job {
+    display: none;
   }
 
   .common-input.insta  {
@@ -138,6 +155,4 @@
   .common-input.country {
     width: 32%;
   }
-
-  
 }

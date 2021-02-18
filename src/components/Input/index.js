@@ -17,9 +17,10 @@ const Input = ({
     adicionalClass,
     onBlur,
     error,
+    customStyle,
 }) => {
     return (
-        <div className={`field ${adicionalClass}`}>
+        <div customStyle={customStyle} className={`field ${adicionalClass}`}>
             <label htmlFor={name} className={`label-field ${labelClass}`}>{labelName}</label>
             <input 
                 name={name} 

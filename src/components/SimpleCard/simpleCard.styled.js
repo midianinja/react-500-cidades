@@ -7,12 +7,6 @@ export const Card = styled.div`
     padding: 0 10px;
     width: 300px;
     /* background-color: ${props => props.active ? 'green' : 'transparent'}; */
-    img {
-        width: 180px;
-        height: 180px;
-        border-radius: 8px;
-        border: none;
-    }
     h3 {
         color: var(--brown);
         font-style: normal;
@@ -40,6 +34,13 @@ export const Card = styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
     }
+`;
+
+export const Img = styled.img`
+    width: 180px;
+    height: 180px;
+    border-radius: 8px;
+    border: none;
 `;
 
 Card.defaultProps = {

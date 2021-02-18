@@ -32,8 +32,10 @@ const getUsersToCarousel = (users) => {
 }
 
 const Landing = ({ history }) => {
+  const parsed = queryString.parse(history.location.search);
   const { state, dispatch } = useContext(Store);
   const [newString, setNewString] = useState(placesChange[0]);
+  const [email, setEmail] = useState('');
 
   const shuffle = useCallback(() => {
     const stringShuffle = Math.floor(Math.random() * placesChange.length);
@@ -45,8 +47,6 @@ const Landing = ({ history }) => {
       return () => clearInterval(intervalID);
   }, [shuffle]);
 
-  const [email, setEmail] = useState('');
-  const parsed = queryString.parse(history.location.search);
   useEffect( () => {
     if (state.modals.landing) {
       if (state.user) {
@@ -137,9 +137,9 @@ const Landing = ({ history }) => {
             alt="Logo Re System"
           />
         <LinksWrapper>
-          <FooterLink to="/sobre">Sobre</FooterLink>
-          <FooterLink to="/politica-de-privacidade">Política de privacidade</FooterLink>
-          <FooterLink to="/termos-de-uso">Termos de uso</FooterLink>
+          <FooterLink onClick={() => dispatch({type: 'OPEN_MODAL', modal: 'about' })} to="/?page=sobre">Sobre</FooterLink>
+          <FooterLink onClick={() => dispatch({type: 'OPEN_MODAL', modal: 'terms' })} to="/page=termos">Política de privacidade</FooterLink>
+          <FooterLink onClick={() => dispatch({type: 'OPEN_MODAL', modal: 'politica' })} to="/page=politica">Termos de uso</FooterLink>
         </LinksWrapper>
       </Footer>
     </Wrapper>
