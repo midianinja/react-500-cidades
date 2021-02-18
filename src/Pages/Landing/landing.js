@@ -19,11 +19,12 @@ import {
   HaveRegisterLink, ShortTextWrapper,
   ShortTextTitle, ShortText, MapSection, MapContainer,
   MapImage, GoToMap, VideoSection, CarouselTitle,
-  CarouselSection, PathWaySection, PahtImage,
+  CarouselSection, CarouselContainer, PathWaySection, PahtImage,
   PhraseWrapper, Phrase, PhraseWhite,
   Footer, NinjaBrand, ReBrand,
   LinksWrapper, FooterLink, NewsLetter, HeadingNews, 
-  TextNews, NewsLetterImg, NewsSubscription, ButtonNews, NewsLetterContainer, TextWhoOrgs, OrgsContainer
+  TextNews, NewsLetterImg, NewsSubscription, ButtonNews, 
+  NewsLetterContainer, TextWhoOrgs, OrgsContainer
 } from './landing.style';
 
 const placesChange = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto'];
@@ -103,8 +104,10 @@ const Landing = ({ history }) => {
           <ReponsiveVideoPlayer />
         </VideoSection>
         <CarouselSection>
-          <CarouselTitle>Ativistas no mapa</CarouselTitle>
-          <Slider  users={getUsersToCarousel(state.allusers)} />
+          <CarouselContainer>
+            <CarouselTitle>Ativistas no mapa</CarouselTitle>
+            <Slider  users={getUsersToCarousel(state.allusers)} />
+          </CarouselContainer>
         </CarouselSection>
         <PathWaySection>
           <PahtImage />

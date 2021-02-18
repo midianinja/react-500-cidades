@@ -48,7 +48,7 @@ export const Dot = styled.button`
     height: 15px;
     border-radius: 100%;
     cursor: pointer;
-    background: var(--darker-green);
+    background: var(--gray);
     border: none;
     margin: 0 .5em;
     &:hover{

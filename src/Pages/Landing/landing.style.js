@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
 export const Apresentation = styled.section`
   background-image: url("https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/mergulho-500cidades-mobile.png");
   background-color: var(--brown);
+  background-attachment: scroll;
   background-repeat: no-repeat; 
   background-size: cover;
   background-position: 75% 60%;
@@ -24,9 +25,16 @@ export const Apresentation = styled.section`
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    min-height: 240vh;
+    min-height: 250vh;
     background-position: 68% 60%;
   }
+  @media only screen 
+  and (min-device-width: 360px) 
+  and (max-device-width: 640px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    min-height: 200vh;
+    background-position: 68% 60%;
+  } 
   @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 812px) 
@@ -124,14 +132,14 @@ export const RegisterButton = styled.button`
   position: relative;
   top: 0;
   transition: all 300ms ease-in-out;
-  box-shadow: 0 0.4em var(--light-gray), 0 0.6em rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0.4em var(--light-gray), 0 0.6em ;
   &:hover {
     top: 0.2em;
-    box-shadow: 0 0.2em var(--light-gray), 0 0.4em rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.2em var(--light-gray), 0 0.4em;
   }
   &:active {
     top: 0.6em;
-    box-shadow: 0 0.1em rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.1em;
   }
   &::before{
     content: url('${logoIDA}');
@@ -175,6 +183,13 @@ export const ShortTextWrapper = styled.div`
   top: 8%;
   bottom: -5%;
   width: 100%;
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    top: 5%;
+    bottom: -20%;
+  }
   @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 812px) 
@@ -260,10 +275,10 @@ export const GoToMap = styled.button`
   position: relative;
   top: 0;
   transition: all 300ms ease-in-out;
-  box-shadow: 0 0.4em var(--darker-blue), 0 0.6em rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0.4em var(--darker-blue), 0 0.6em;
   &:hover {
     top: 0.2em;
-    box-shadow: 0 0.2em var(--darker-blue), 0 0.4em rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.2em var(--darker-blue), 0 0.4em;
   }
   &:active {
     top: 0.6em;
@@ -286,11 +301,17 @@ export const CarouselSection = styled.section`
   padding: 50px 0;
 `;
 
+export const CarouselContainer = styled.section`
+  width: 90%;
+  color: var(--brown);
+  margin:0 auto;
+`;
+
 export const CarouselTitle = styled.h2`
-  font-size: 1.3em;
+  font-size: 2.6em;
   color: var(--brown);
   margin-bottom: 40px;
-  padding-left: 100px;
+  padding-left: 30px;
 `;
 
 export const PathWaySection = styled.section`
