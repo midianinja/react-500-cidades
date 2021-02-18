@@ -15,4 +15,10 @@
     color: var(--light-gray);
     opacity: 1;
 }
+.label-field {
+    font-size: 0.8em;
+    color:  #2E1F2B;
+    display: inline-block;
+    margin-bottom: 5px;
+}
 

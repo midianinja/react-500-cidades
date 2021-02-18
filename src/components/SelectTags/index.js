@@ -46,7 +46,7 @@ const SelectTags = ({
 
     return (
         <div className={`tags-field ${adicionalClass}`}>
-            <label>Palavras Chave</label>
+            <label className={'label-input'} >Palavras Chave</label>
             <input 
                 value={value} 
                 onChange={({ target }) => setValue(target.value)} 

@@ -9,7 +9,6 @@ const SimpleCard = (props) => {
         main: `${window.innerWidth}`
       };
     return(
-        // <Card style={{ flex: ` 0 0 ${window.innerWidth}px` }} >
         <Card theme={theme} active={props.active} >
             <ProfileImg src={props.profileImage} alt="Foto de perfil do Agente"/>
             <UserName>{props.nameUser}</UserName>

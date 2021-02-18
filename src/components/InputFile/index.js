@@ -1,24 +1,26 @@
 import React from 'react';
 import { FaCamera } from "react-icons/fa";
 import Input from '../Input';
+import { Wrapper, Icon, Label } from './InputFile.style';
 
-import './styles.css';
-
-const InputFile = (props) => {
+const InputFile = ({
+    customStyle, value, borderRadius, name, id, onChange, label
+}) => {
     return (
-        <div className={`wrapper-input ${props.inputClass}` } style={{ backgroundImage: `url(${props.value.file})`, borderRadius: props.borderRadius || 0 }}>
+        <Wrapper customStyle={customStyle} bgImage={value.file} borderRadius={borderRadius}>
             <Input
-                name={props.name}
-                id={props.id}
+                name={name}
+                id={id}
                 style={{ display: 'none' }}
-                onChange={props.onChange}
+                onChange={onChange}
                 accept="image/*"
                 type="file"
             />
-            <label htmlFor={props.id}>
-                <FaCamera className={props.value.file ? 'iconcameraopacity': 'iconcamera' } />
-            </label>
-        </div>
+            <Label htmlFor={id}>
+                {label ? label : ''}
+                <Icon src={'https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/cam-icon.svg'} />
+            </Label>
+        </Wrapper>
     );
 
 };

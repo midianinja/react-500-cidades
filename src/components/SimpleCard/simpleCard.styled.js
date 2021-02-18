@@ -46,6 +46,13 @@ export const UserBio = styled.p`
     text-overflow: ellipsis;
 `;
 
+export const Img = styled.img`
+    width: 180px;
+    height: 180px;
+    border-radius: 8px;
+    border: none;
+`;
+
 Card.defaultProps = {
    
   }
