@@ -337,8 +337,11 @@ export const PahtImage = styled.div`
   height: 49vh;
   background: url('https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/500cidades-asset-tracejado-vetor.svg') no-repeat;
   background-size: cover;
-  background-position:center top;
+  background-position:-15px 0%;
   background-attachment: scroll;
+  @media (min-width:768px) {
+    background-position:56px 0%;
+  }
 `;
 
 export const PhraseWrapper = styled.div`
@@ -473,12 +476,6 @@ export const LinksWrapper = styled.div`
   flex: 50% 1;
   min-height: 14vh;
   padding: 1rem 2rem;
-  @media (min-width: 768px) {
-    // flex: none;
-    // height: auto;
-    // flex-direction: column;
-    // width: 100vw;
-  }
 `;
 
 export const FooterLink = styled.a`
