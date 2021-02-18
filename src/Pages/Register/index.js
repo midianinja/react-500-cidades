@@ -1,68 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { FaPen, FaSave } from "react-icons/fa";
-import styled from 'styled-components';
 import options from './register.model';
-import Input from '../../components/Input';
+import Input from '../../components/simple-Input/Input';
 import InputFile from '../../components/InputFile';
-import Select from '../../components/Select';
-import './styles.css';
 import { registerAction } from './controller';
 import { withRouter } from 'react-router-dom';
-import Form from './components/Form';
+import Form from './components/form/form';
 import Store from '../../store/Store';
 import Menu from '../../components/Menu';
 import NavigationBar from '../../components/NavigationBar';
+import {
+  CoverSize, MainFields, AddPhotoButton,
+  CoverWrapper, Cover, RegisterContainer,
+  RegisterWrapper, customInputStyle, Wrapperinputs,
+  AddPhotoButtonMobile, ProfileImageConteiner,
+} from './register.style';
+import JobInput from './components/job-input/jobInput';
 
-const RegisterContainer = styled.section`
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  overflow-x: auto;
-  z-index: 99;
-  background-color: white;
-  width:100vw;
-`;
+
 
 const getMapsProperty = (placeResults, id) => {
   const component = placeResults.address_components.find(i => i.types.includes(id));
   return component ? component.long_name : '';
-}
-
-const renderNameField = ({
-  edit, setEdit, userInfo, onChangeUserInfo,
-  error,
-}) => {
-  if (!edit) {
-    return (
-      <>
-        <h1 onClick={() => setEdit(true)} className="add-name">{userInfo.name || 'Seu Nome'}</h1>
-        <FaPen className="icons-input" size={20} color="#888" onClick={() => setEdit(true)} />
-        {error ? <span className="error error-register-name">{error}</span> : null}
-      </>
-    );
-  }
-
-  return (
-    <>
-      <div className="add-name">
-        <Input
-          name="name"
-          id="name"
-          value={userInfo.name}
-          onChange={onChangeUserInfo}
-          type="text"
-          inputClass="register-name-input"
-          error={error}
-          autofocus={true}
-          maxlength="33"
-          style={{ "width": userInfo.name.length + 'ch' }}
-          onBlur={() => setEdit(false)}
-        />
-      </div>
-      <FaSave className="icons-input" size={20} color="#888" onClick={() => setEdit(false)} />
-    </>
-  );
 }
 
 const Register = ({ history }) => {
@@ -127,7 +85,7 @@ const Register = ({ history }) => {
       [e.target.id]: e.target.value,
     });
   };
-
+  
   const getAddress = async (zipcodeInput) => {
     try {
       const zipcodeAddress = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcodeInput}&language=pt&key=${process.env.REACT_APP_MAP_KEY}`);
@@ -170,59 +128,72 @@ const Register = ({ history }) => {
         dispatch({ type: 'CLOSE_MODAL' })
       }
     }
-  }, [state.user, state.auth])
+  }, [state.user, state.auth]);
   if (!state.modals.register) return null;
   
   return (
-    <RegisterContainer>
+    <RegisterWrapper>
       <NavigationBar />
-      <div className="register-container">
+      <RegisterContainer>
         <Menu />
-        <section className="register-cover">
-          <div className={!userInfo.cover_image ? "cover-photo gradient" : "cover-photo"} style={{ backgroundImage: `url(${userInfo.cover_image.url})` }}>
-            <div className={!userInfo.cover_image ? "cover-wrapper" : "cover-wrapper photo-gradient"}>
+        <CoverWrapper cover_image={userInfo.cover_image.url}>
+          <Cover>
+            <Wrapperinputs>
               <InputFile
                 id="cover_image"
                 name="cover_image"
+                label="Alterar Capa"
                 value={userInfo.cover_image}
                 onChange={(e) => setUserInfo({
                   ...userInfo,
                   cover_image: { file: e.target.files[0], url: URL.createObjectURL(e.target.files[0]) },
                 })}
-                inputClass="cover-image"
+                customStyle={'position: absolute; top: 20px; right: 20px;'}
               />
-              <div className="add-photo" style={{ backgroundImage: `url(${userInfo.profile_image.url})` }}>
-                <InputFile
-                  borderRadius="100%"
-                  id="profile_image"
-                  name="profile_image"
-                  value={userInfo.profile_image}
-                  onChange={(e) => setUserInfo({
-                    ...userInfo,
-                    profile_image: { file: e.target.files[0], url: URL.createObjectURL(e.target.files[0]) },
-                  })}
-                  inputClass="profile-image"
-                />
-              </div>
-              <div className="register-text">
-                <div className="register-edit-text">
-                  {renderNameField({ edit, setEdit, userInfo, onChangeUserInfo, error: errors.name })}
-                </div>
-                <Select
+              <ProfileImageConteiner>
+                <AddPhotoButton style={{ backgroundImage: `url(${userInfo.profile_image.url})` }}>
+                  <InputFile
+                    borderRadius="100%"
+                    id="profile_image"
+                    name="profile_image"
+                    value={userInfo.profile_image}
+                    onChange={(e) => setUserInfo({
+                      ...userInfo,
+                      profile_image: { file: e.target.files[0], url: URL.createObjectURL(e.target.files[0]) },
+                    })}
+                  />
+                </AddPhotoButton>
+                <AddPhotoButtonMobile htmlFor="profile_image">
+                  Alterar Foto
+                </AddPhotoButtonMobile>
+              </ProfileImageConteiner>
+              <MainFields>
+                <Input
+                  customStyle={customInputStyle}
+                  name="name"
+                  placeholder="Digite seu nome aqui"
+                  id="name"
+                  value={userInfo.name}
+                  onChange={onChangeUserInfo}
+                  type="text"
+                  inputClass="register-name-input"
+                  error={errors.name}
+                  maxlength="33"
+                  style={{ "width": userInfo.name.length + 'ch' }}
+                  onBlur={() => setEdit(false)}
+                  />
+                <JobInput
                   options={options.job.sort()}
                   name="job"
-                  id="job"
-                  value={userInfo.job || 'Profissão'}
+                  value={userInfo.job || 'Selecione sua profissão'}
                   error={errors.job}
                   onChange={onChangeUserInfo}
-                  selectClass="job-select"
-                  optionClass="job-option"
-                  defaultName="Profissão"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+                  />
+              </MainFields>
+              <CoverSize>Tamanho: 4:1</CoverSize>
+            </Wrapperinputs>
+          </Cover>
+        </CoverWrapper>
         <Form
           errors={errors}
           userInfo={userInfo}
@@ -245,11 +216,12 @@ const Register = ({ history }) => {
           })}
           setLoading={setLoading}
           loading={loading}
+          optionsJob={options}
           skills={skills}
           setSkills={setSkills}
         />
-      </div>
-    </RegisterContainer>
+      </RegisterContainer>
+    </RegisterWrapper>
   );
 }
 

@@ -16,19 +16,6 @@ import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 import Slider from '../../components/Slider/Slider';
-import SimpleCard from '../../components/SimpleCard/SimpleCard';
-
-const iWant = (history, state) => {
-  if (!state.auth) {
-    openIDASignin(state.ida);
-    return;
-  }
-  if (!state.user) {
-    history.push('/cadastre-se')
-    return;
-  }
-  history.push('/usuario/mapa')
-}
 
 const renderSimpleCards = (users) => {
   return users.map(( user ) => (<SimpleCard key={`${user.id}-simplecard`} profileImage={user.profile_image.mimified} nameUser={user.name} job={user.job} bioUser={user.biograph} />))

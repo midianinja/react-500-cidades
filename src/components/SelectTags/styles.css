@@ -22,6 +22,10 @@
     padding: 5px 10px;
     cursor: pointer;
 }
+.label-input {
+    font-size: 0.75em;
+    color: #BFBFBF;
+}
 .close-icon {
     padding-left: 5px;
 }
@@ -51,7 +55,7 @@
     padding: 5px 10px;
     border-radius: 10px;
     border: none;
-    background-color: var(--lighter-gray);
+    background-color: var(--gray-ice);
     padding: .5rem;
     margin-bottom: 5px;
     min-width: 250px;
