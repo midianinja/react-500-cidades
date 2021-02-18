@@ -33,8 +33,8 @@ export const Apresentation = styled.section`
   and (-webkit-min-device-pixel-ratio: 3) { 
     min-height: 170vh;
   }
-  @media (min-width:576px) {
-    min-height: 130vh;
+  @media (min-width:460px) {
+    min-height: 150vh;
   }
   @media (min-width: 768px) {
     padding-top: 0;
@@ -43,7 +43,10 @@ export const Apresentation = styled.section`
     min-height: 170vh;
   }
   @media (min-width: 992px) {
-    background-position: 0px 0%;
+    background-position: 64% 70%;
+  }
+  @media (min-width: 1024px) {
+    background-position: 55% 35%;
   }
   `;
 
@@ -67,12 +70,12 @@ export const CallActionContainer = styled.div`
   padding-bottom: 70px;
   margin-left: 0;
   @media (min-width: 768px) {
-    padding-top: 7rem;
+    padding-top: 9rem;
     padding-bottom: 0px;
     width: 50%; 
   }
   @media (min-width: 992px) {
-    width: 30%; 
+    width: 40%; 
   }
 `;
 
@@ -169,24 +172,27 @@ export const ShortTextWrapper = styled.div`
   flex-direction: column;
   margin: 0;
   position: relative;
-  bottom: -50px;
+  top: 8%;
+  bottom: -5%;
   width: 100%;
   @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 812px) 
   and (-webkit-min-device-pixel-ratio: 3) { 
-    bottom: -120px;
+    bottom: -20%;
   }
   @media (min-width: 768px) {
     margin: 0;
-    bottom: -340px;
+    top:25%;
+    bottom: -20%;
     width: 100%;
   }
   @media (min-width: 992px) {
     bottom: -440px;
   }
   @media (min-width: 1024px) {
-    bottom: -470px;
+    top: 25%;
+    bottom: -20%;
   }
 `;
 
@@ -216,36 +222,36 @@ export const ShortText = styled.p`
 
 export const MapSection = styled.section`
   width: 100%;
-  height: 100vh;
+  height:auto;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 40px;
+  @media (min-width: 768px) {
+    min-height: 60vh;
+  }
 `;
 
 export const MapContainer = styled.div`
+  width: 90%;
   position: relative;
-  bottom: 20px;
-  left: 0;
-  width: 100%;
-  height: 16vh;
-  border: 1px solid red;
+  top: -50px;
 `;
 
 export const MapImage = styled.img`
-  position:absolute;
-  top:-40px;
   width: 100%;
   border-radius: 8px;
-
 `;
 
 export const GoToMap = styled.button`
   color: var(--white);
   background-color: var(--blue);
   font-family: "Roboto Medium", sans-serif;
+  font-size:1.25em;
   text-decoration: none;
-  width: 200px;
+  width: 260px;
   max-width: 100%;
   margin: 1rem;
   padding: 0.5rem;
