@@ -47,14 +47,18 @@ export const BannerImg = styled.div`
     }
 `;
 
-export const IconBack = styled.div`
+export const IconBack = styled.button`
     @media (max-width:576px) {
-        display:block;
-        width: 30px;
-        height:30px;
-        background: url(${iconBack}) no-repeat;
+        display: block;
+        position: absolute;
+        top: 60px;
+        left: 25px;
+        width: 60px;
+        height: 60px;
         background-position: center center;
         padding: 10px;
+        background: url(${iconBack}) no-repeat;
+
     }
 `;
 
@@ -194,6 +198,33 @@ export const Logo500Img = styled.img`
     width:100%;
     max-width: 30%;
 `;
+
+export const SocialMedia = styled.div`
+    display:flex;
+    justify-content:space-evenly;
+    width:fit-content;
+`;
+
+export const Facebook = styled.div`
+    width:90px;
+    height:90px;
+`;
+
+export const Twitter = styled.div`
+    width:90px;
+    height:90px;
+`;
+
+export const Instagram = styled.div`
+    width:90px;
+    height:90px;
+`;
+
+export const Snapchat = styled.div`
+    width:90px;
+    height:90px;
+`;
+
 
 export const ButtonBack = styled.button`
   color: var(--white);

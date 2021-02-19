@@ -12,7 +12,12 @@ import {
     FooterAbout, 
     Photo,
     Logo500Img,
-    WrapperTextImg
+    WrapperTextImg,
+    SocialMedia,
+    Facebook,
+    Twitter,
+    Instagram,
+    Snapchat,
 } from './about.style';
 import Menu from '../../components/Menu';
 import NavigationBar from '../../components/NavigationBar';
@@ -87,12 +92,12 @@ const About = ({ history }) => {
 
             <FooterAbout>
                     <Logo500Img src={Logo500Cidades} alt="Logo 500 Cidades"/>
-                    {/* <SocialMedia>
+                    <SocialMedia>
                         <Facebook></Facebook>
-                        <Twetter></Twetter>
-                        <Insta></Insta>
+                        <Twitter></Twitter>
+                        <Instagram></Instagram>
                         <Snapchat></Snapchat>
-                    </SocialMedia> */}
+                    </SocialMedia>
                     <ButtonBack onClick={() => {
                         history.goBack();
                         dispatch({ type: 'CLOSE_MODAL' })
