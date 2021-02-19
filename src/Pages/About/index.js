@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import {
     BannerImg,
     Wrapper,
-    Container,
-    DivImages,
+    ContainerAbout,
+    ButtonBack,
     ImgLogo, 
     TitleBanner
 } from './about.style';
@@ -25,7 +25,7 @@ const About = ({ history }) => {
     const { state, dispatch } = useContext(Store)
     if (!state.modals.about) return null;
     return (
-        <Container>
+        <ContainerAbout>
             <NavigationBar />
             <Menu />
             <BannerImg>
@@ -47,22 +47,20 @@ const About = ({ history }) => {
                     Estes dois fatores dão a dimensão da EMERGÊNCIA deste chamado a participação. Na medida em que observamos a necessidade de abarcar as iniciativas que vão surgindo no Brasil profundo, na medida em que as demandas sociais se destacam podemos notar uma eclosão de  projetos com foco nas diferentes carências sociais, dando voz a quem antes era silenciado por falta de espaços de articulação.
                     </p>
                 <p>A proposta é identificar e conectar pessoas que fazem a diferença em todos os cantos do país! Iniciativas culturais, de educação e solidariedade, música e empreendedorismo solidário, soberania alimentar e desenvolvimento sustentável e muito mais.</p>
-                <DivImages>
-                <p>Sabe quantos km existe do Oiapoque ao Chuí? 5.648 km!<br />
-                        É muito chão né? É Brasil que não acaba mais. <br />
-                        E assim que essa pandemia acabar vamos rodar por todo o país para dar voz às iniciativas que visam um mundo melhor e mais plural, amplificando as vozes das pequenas e grandes cidades.</p>
-                <img src={Img3} alt="Foto de um homem registrando paisagens em fotos com o celular "/>
-                <p>São incontáveis narrativas, ações, iniciativas e trabalhos que queremos encontrar neste Brasil Profundo. Faça parte dessa aventura incrível e vem com a gente!</p>
-                <img src={Img5} alt="Foto de pessoas viajando de carro e passando por montanhas"/>
-                </DivImages>
+                    <p>Sabe quantos km existe do Oiapoque ao Chuí? 5.648 km!<br />
+                            É muito chão né? É Brasil que não acaba mais. <br />
+                            E assim que essa pandemia acabar vamos rodar por todo o país para dar voz às iniciativas que visam um mundo melhor e mais plural, amplificando as vozes das pequenas e grandes cidades.</p>
+                    <img src={Img3} alt="Foto de um homem registrando paisagens em fotos com o celular "/>
+                    <p>São incontáveis narrativas, ações, iniciativas e trabalhos que queremos encontrar neste Brasil Profundo. Faça parte dessa aventura incrível e vem com a gente!</p>
+                    <img src={Img5} alt="Foto de pessoas viajando de carro e passando por montanhas"/>
                 <div>
-                    <Button onClick={() => {
+                    <ButtonBack onClick={() => {
                         history.goBack();
                         dispatch({ type: 'CLOSE_MODAL' })
-                        }} className="btn3D--blue">Voltar</Button>
+                        }} className="btn3D--blue">Voltar</ButtonBack>
                 </div>
             </Wrapper>
-        </Container>
+        </ContainerAbout>
     );
 }
 export default withRouter(About);
