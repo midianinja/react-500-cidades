@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import logoImg from '../../assets/500cidades-logo.png';
 import aboutImage from '../../assets/500cidades-header-sobre.png';
 import aboutImageMobile from '../../assets/500cidades-header-sobre-mobile.png';
+import iconBack from '../../assets/icons/keyboard_arrow_right_24px.svg'
 
 export const ContainerAbout = styled.section`
     background-color: var(--off-white);
@@ -43,6 +44,17 @@ export const BannerImg = styled.div`
     }
     @media (min-width:1400px) {
         background-position: 100% 22%;
+    }
+`;
+
+export const IconBack = styled.div`
+    @media (max-width:576px) {
+        display:block;
+        width: 30px;
+        height:30px;
+        background: url(${iconBack}) no-repeat;
+        background-position: center center;
+        padding: 10px;
     }
 `;
 
@@ -121,34 +133,66 @@ export const TitleBanner = styled.h3`
 export const Wrapper = styled.article`
     height: auto;
     min-height: 100vh;
-    width: 80%;
-    padding: 3.5rem 0;
-    margin: 0 auto;
+    padding: 3.5rem 2.5rem;
     background-color: var(--white);
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1em;
-    line-height: 20px;
-    color: var(--brown);
     z-index:59;
-    img{
-        width:100%;
-        margin:20px auto;
-    }
     @media (min-width: 576px){  
         padding: 2rem 3.5rem; 
         width: 100%;
     }
     @media (min-width: 992px){
-        height: auto;
-        min-height: 100vh;
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
-        padding: 5rem 9rem;
+        padding: 5rem 4rem;
         border-radius: 0 0 10px 10px;
         box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
     }
+`;
+export const UsualText = styled.p`
+    margin:20px 0;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 1.8em;
+    color: var(--brown);
+`;
+export const WrapperTextImg = styled.div`
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    @media (min-width: 992px){
+        justify-content:center;
+        flex-direction: row;
+    }
+`;
+export const TextImage = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    @media (min-width:992px) {
+        width:50%;
+    }
+`;
+export const Photo = styled.img`
+    width:100%;
+    align-self:center;
+    @media (min-width:992px) {
+        width:50%;
+        padding:20px;
+    }
+`;
+export const FooterAbout = styled.footer`
+    margin-top:2.5rem;
+    display: flex;
+    align-items:center;
+    height:100%;
+    flex-direction:column;
+`;
+
+export const Logo500Img = styled.img`
+    width:100%;
+    max-width: 30%;
 `;
 
 export const ButtonBack = styled.button`
@@ -157,7 +201,8 @@ export const ButtonBack = styled.button`
   font-family: "Roboto Medium", sans-serif;
   font-size:1.25em;
   text-decoration: none;
-  width: 260px;
+  width: 200px;
+  height:60px;
   max-width: 100%;
   margin: 1rem;
   padding: 0.5rem;
@@ -176,4 +221,5 @@ export const ButtonBack = styled.button`
     box-shadow: 0 0.1em ;
   }
 `;
+
 

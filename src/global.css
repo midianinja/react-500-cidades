@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
 * {
-    color: #2E1F2B;
+    color: var(--brown);
     margin:0;
     padding: 0;
     outline: 0;
