@@ -10,8 +10,8 @@
     position: relative;
 }
 .subtitle-profile{
-    font-size: 18px;
-    color: var(--brown); 
+    font-size: 0.75em;
+    color: #cecece; 
     margin-top: 30px;
 }
 
@@ -21,7 +21,7 @@
     padding: 24px;
     display: flex;
     align-items: center;
-    background-color: rgba(0,0,0, 0.4);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%,  rgba(0, 0, 0, 0.5) 50%);
 }
 
 .header-profile {
@@ -45,19 +45,21 @@
 }
 .user.name{
     font-weight: bold;
-    font-size: 28px;
+    font-size: 1.25em;
     line-height: 36px;
 }
 .user-profession {
     font-size: 24px;
     line-height: 13px;
 }
+.tags-label {
+    color:#cecece
+}
 .contact-info{
     padding: 3rem;
 }
 .contact-info p, .text-biography {
-    font-size: 16px;
-    color: var(--brown); 
+    font-size: 1em;
 }
 .minor-text {
     font-size: 14px;
@@ -67,16 +69,16 @@
     border-radius: 60px;
     color: var(--white);
     background-color: var(--blue);
-    padding: 8px 20px;
-    margin: .5rem;
+    padding: 4px 10px;
+    margin-left: 4px;
+    margin-top: 8px;
     display: inline-block;
-    font-size: 0.8em;
+    font-size: 0.81em;
 }
 .title-biography {
     margin-top: 30px;
-    color: var(--blue);
     font-weight: bold;
-    font-size: 28px;
+    font-size: 1.5em;
     line-height: 1.6;
 }
 .wrapper {
@@ -91,8 +93,8 @@ z-index: 60;
 .svg {
     cursor: pointer;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 18px;
+    right: 18px;
     border-radius: 100%;
     box-shadow: 1px 1px 5px 1px;
     background-color: rgba(0, 0, 0,.3)

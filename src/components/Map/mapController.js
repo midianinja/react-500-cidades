@@ -28,7 +28,7 @@ export const insertPins = ({ allusers, mapRef, setSamePlaceList }) => {
   const infoWindow = new window.google.maps.InfoWindow();
 
   // window.google.maps.Marker.prototype.getDraggable = function () { return true };
-  const markers = allusers.map(agent => {
+  const markers = allusers.filter(usr => usr.address).map(agent => {
     const marker = new window.google.maps.Marker({
       position: { lat: agent.address.latitude, lng: agent.address.longitude },
     });
@@ -71,7 +71,7 @@ export const insertPins = ({ allusers, mapRef, setSamePlaceList }) => {
     const firstPosition = JSON.stringify(positions[0]);
     const sameLocation = !positions.find(p => (JSON.stringify(p) !== firstPosition ? true : false))
     if (sameLocation) {
-      const allusersPositions = allusers.map((usr) => ({
+      const allusersPositions = allusers.filter(usr => usr.address).map((usr) => ({
         position: JSON.stringify({
           lat: usr.address.latitude,
           lng: usr.address.longitude,

@@ -23,7 +23,7 @@ const ShowProfile = () => {
                         <img className="image-profile" src={agent.profile_image.mimified} alt="Foto de perfil do Agente"></img>
                         <div className="header-title">
                             <h2 className="user-name">{agent.name}</h2>
-                            <h5 className="user-profession">{agent.job}</h5>
+                            {/* <h5 className="user-profession">{agent.job}</h5> */}
                         </div>
                     </div>
                 </header>
@@ -32,7 +32,7 @@ const ShowProfile = () => {
                     {state.auth && state.user ? <p><strong>Celular</strong> {agent.phone}</p> : null}
                     <p><strong>Localidade</strong> {agent.address.city} <span className="minor-text">{agent.address.state}</span></p>
                     <p><strong>Endereço</strong> {agent.address.street} {agent.address.complement} {agent.address.district} <span className="minor-text">{agent.address.zipcode}</span></p>
-                    <h3 className="subtitle-profile">Tags</h3>
+                    <h3 className="subtitle-profile">T A G S</h3>
                     <div>
                         {agent.skills.map((skill) => (
                             <span className="blue-pills">{skill}</span>

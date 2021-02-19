@@ -1,11 +1,8 @@
 .div-usercard { 
-    margin: 20px 0px;
-    min-width: 339px;
-    min-height: 215px;
+    margin: 8px 0px;
     max-width: 350px;
     flex-direction: column;
     padding: 20px;
-    box-shadow: 3px 3px 17px -2px lightgrey;
     border-radius: 12px;
     display: grid;
 }
@@ -15,7 +12,6 @@
     flex-direction: column;
     justify-content: center;
     max-width:100%;
-    width: 768px;
     padding: 0 20px;
 }
 .container-list {
@@ -23,7 +19,6 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 0px 20px;
 }
 
 .userinfo {
@@ -89,6 +84,14 @@ main .skills {
 .links-fixos p, .infolist {
     display: none;
 }
+.infolist-wrapper {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    align-items: unset;
+    justify-content: space-around;
+    color: var(--gray);
+}
 .input-container{
     width: 28vw;
     max-width: 600px;
@@ -112,7 +115,7 @@ main .skills {
 
 @media (min-width: 560px){
     .div-usercard {
-        max-width: none;
+        max-width: 800px;
         min-height: unset;
         width: 100%;
         display: flex;

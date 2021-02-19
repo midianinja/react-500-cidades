@@ -19,36 +19,36 @@ export const Apresentation = styled.section`
   background-repeat: no-repeat; 
   background-size: cover;
   background-position: 75% 60%;
-  min-height: 130vh;
-  height: 100%;
+  height: 130vh;
+  position: relative;
   @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    min-height: 250vh;
+    height: 250vh;
     background-position: 68% 60%;
   }
   @media only screen 
   and (min-device-width: 360px) 
   and (max-device-width: 640px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    min-height: 200vh;
+    height: 200vh;
     background-position: 68% 60%;
   } 
   @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 812px) 
   and (-webkit-min-device-pixel-ratio: 3) { 
-    min-height: 170vh;
+    height: 170vh;
   }
   @media (min-width:460px) {
-    min-height: 150vh;
+    height: 150vh;
   }
   @media (min-width: 768px) {
     padding-top: 0;
     background-image: url("https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/mergulho-500cidades-desktop.png");
     background-position: 64% 60%;
-    min-height: 170vh;
+    height: 170vh;
   }
   @media (min-width: 992px) {
     background-position: 64% 70%;
@@ -200,13 +200,9 @@ export const ShortTextWrapper = styled.div`
     top:25%;
     bottom: -20%;
     width: 100%;
-  }
-  @media (min-width: 992px) {
-    bottom: -440px;
-  }
-  @media (min-width: 1024px) {
-    top: 25%;
-    bottom: -20%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 `;
 
@@ -227,6 +223,7 @@ export const ShortText = styled.p`
   font-size: 1.2em;
   word-spacing: normal;
   width: 300px;
+  color: #FFF;
   margin: 0;
   padding: 0 1.6em;
   color: var(--white);
@@ -408,6 +405,7 @@ export const NewsSubscription = styled.div`
   width: max-content;
   display: flex;
   margin-top: 3rem;
+  height: 30px;
   input{
     background:rgba(255, 255, 255, .3);
     font-weight: 700;
@@ -424,7 +422,9 @@ export const ButtonNews = styled.button`
   border: none;
   padding: .1rem 1rem;
   border-radius: 0 .3rem .3rem 0;
-  margin: 5px 0 0 0;
+  height: 30px;
+  margin: 0;
+  margin-top: 5px;
   &::before{
     content: url('${ArrowRight}');
     display: inline-block;

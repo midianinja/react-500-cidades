@@ -71,7 +71,7 @@ function AuthWrapper({ children }) {
     }).then(result => {
         dispatch({
             type: 'SET_ALL_USERS',
-            data: result.data.allUsers.filter(el => Object.values(el).some(x => x == null) === false),
+            data: result.data.allUsers,
         });
         dispatch({
             type: 'SET_LOADING',

@@ -1,12 +1,10 @@
 .div-usercard { 
-    margin: 20px 0px;
-    min-width: 339px;
+    margin: 8px 0px;
     min-height: 215px;
-    max-width: 350px;
     flex-direction: column;
     padding: 20px;
-    box-shadow: 3px 3px 17px -2px lightgrey;
     border-radius: 12px;
+    background: #f2f2f2;
     display: grid;
 }
 .container-usercard {
@@ -15,7 +13,6 @@
     flex-direction: column;
     justify-content: center;
     max-width:100%;
-    width: 768px;
     padding: 0 20px;
 }
 .container-list {
@@ -23,7 +20,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 0px 20px;
+    align-items: center;
 }
 
 .userinfo {
@@ -76,6 +73,9 @@
 main .skills {
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+    max-width: 450px;
 }
 
 .links-fixos{
@@ -101,6 +101,7 @@ main .skills {
     box-shadow: 3px 3px 17px -2px lightgrey;
     border-radius: 30px;
     height: 54px;
+    margin-top: 20px;
     padding: .2rem 1.2rem .2rem 3rem;
     width: -webkit-fill-available;
 }
@@ -112,9 +113,9 @@ main .skills {
 
 @media (min-width: 560px){
     .div-usercard {
-        max-width: none;
         min-height: unset;
         width: 100%;
+        max-width: 800px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;

@@ -29,6 +29,9 @@ export const Input = styled.input`
   padding: .2rem 1.2rem .2rem 3rem;
   width: -webkit-fill-available;
   opacity: .7;
+  :focus {
+    opacity: 1;
+  }
 `;
 
 export const Icon = styled.span`

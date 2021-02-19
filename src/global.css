@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
 * {
-    color: var(--brown);
     margin:0;
     padding: 0;
     outline: 0;
@@ -28,6 +27,7 @@
 }
 
 body {
+    color: #2E1F2B;
     font: 400 16px Roboto, sans-serif;
     background: var(--white);
     -webkit-font-smoothing: antialiased;
