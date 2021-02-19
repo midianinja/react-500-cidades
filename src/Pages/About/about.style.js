@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import logoImg from '../../assets/500cidades-logo.png';
 import aboutImage from '../../assets/500cidades-header-sobre.png';
 import aboutImageMobile from '../../assets/500cidades-header-sobre-mobile.png';
-import iconBack from '../../assets/icons/keyboard_arrow_right_24px.svg'
+import iconBack from '../../assets/icons/arrow_back_ios_24px.svg';
+import socialIcons from '../../assets/icons/social-media-icons-png-wwwimgkidcom-the-image-kid-5498.png';
 
 export const ContainerAbout = styled.section`
     background-color: var(--off-white);
@@ -48,9 +49,14 @@ export const BannerImg = styled.div`
 `;
 
 export const IconBack = styled.button`
+    display:none;
     @media (max-width:576px) {
+        display:block;
+        position:absolute;
+        top:60px;
+        left:25px;
         color: var(--white);
-        background-color: var(--blue);
+        background-color: transparent;
         box-shadow: none;
         border: none;
         padding: .1rem 1rem;
@@ -197,11 +203,17 @@ export const FooterAbout = styled.footer`
     align-items:center;
     height:100%;
     flex-direction:column;
+    @media (min-width:768px) {
+        flex-direction:row;
+    }
 `;
 
 export const Logo500Img = styled.img`
     width:100%;
     max-width: 30%;
+    @media (min-width:768px) {
+        max-width: 20%;
+    }
 `;
 
 export const SocialMedia = styled.div`
@@ -211,23 +223,35 @@ export const SocialMedia = styled.div`
 `;
 
 export const Facebook = styled.div`
-    width:90px;
-    height:90px;
+    background:url(${socialIcons}) no-repeat;
+    background-size: cover;
+    background-position: 7% 26%;
+    width: 48px;
+    height: 80px;
 `;
 
 export const Twitter = styled.div`
-    width:90px;
-    height:90px;
+    background:url(${socialIcons}) no-repeat;
+    background-size: cover;
+    background-position: 36% 26%;
+    width: 48px;
+    height: 80px;
 `;
 
 export const Instagram = styled.div`
-    width:90px;
-    height:90px;
+    background:url(${socialIcons}) no-repeat;
+    background-size: cover;
+    background-position: 64% 26%;
+    width: 48px;
+    height: 80px;
 `;
 
 export const Snapchat = styled.div`
-    width:90px;
-    height:90px;
+    background:url(${socialIcons}) no-repeat;
+    background-size: cover;
+    background-position: 93% 26%;
+    width: 48px;
+    height: 80px;
 `;
 
 
