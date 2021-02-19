@@ -70,6 +70,7 @@ query
       }
       skills
       address{
+        id
         city
         country
         place_id

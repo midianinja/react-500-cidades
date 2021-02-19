@@ -170,7 +170,8 @@ export const registerAction = async ({
       }
     });
     setLoading(false);
-    history.push('/?sla-nois')
+    history.push('/');
+    dispatch({ type: 'CLOSE_MODAL' });
   } catch(err) {
     try {
       if (err.graphQLErrors) {

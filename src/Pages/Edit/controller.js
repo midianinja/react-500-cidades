@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { getBase64 } from "../../utils/file.utils";
 import apollo from "../../service/apollo";
-import { registerUserMutation, registerAddressMutation } from "./mutations";
+import { registerUserMutation, updateAddressMutation, updateUserMutation } from "./mutations";
 import { strToDateDDMMYYYY } from "../../utils/date.utils";
 
 const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -51,10 +51,10 @@ const sendImageToApi = ({ base64 }) => {
   );
 }
 
-const sendUserToApi = (user) => {
+const sendUserToApi = (user, loggedUser) => {
   return apollo.mutate({
-    mutation: registerUserMutation,
-    variables: { user: user }
+    mutation: updateUserMutation,
+    variables: { user: user, user_id: loggedUser.id }
   });
 }
 
@@ -63,8 +63,6 @@ const mapUserToApi = ({
 }) => ({
   ida_id: auth.ida,
   name: userInfo.name,
-  profile_image: profileImage,
-  cover_image: coverImage,
   biography: userInfo.biography,
   skills: skills,
   email: userInfo.email,
@@ -126,7 +124,7 @@ const getGraphqlErrors = ({
 
 export const registerAction = async ({
   skills, event, userInfo, auth,
-  addressInfo, setLoading,
+  addressInfo, setLoading, user,
   dispatch, history, setErrors,
 }) => {
   event.preventDefault();
@@ -152,7 +150,7 @@ export const registerAction = async ({
       setLoading('Subindo foto de perfil...');
       const base64Profile = await getBase64(userInfo.profile_image.file);
       const profileImage = await sendImageToApi({ base64: base64Profile });
-      urlImageProfile = profileImage.data.data.urls
+      urlImageProfile = profileImage.data.data.urls;
     }
     const mappedUser = await mapUserToApi({
       userInfo, skills,
@@ -160,20 +158,29 @@ export const registerAction = async ({
       profileImage: urlImageProfile,
       auth,
     });
+
+    if (urlImageCover.mimified) mappedUser.cover_image = urlImageCover;
+    if (urlImageProfile.mimified) mappedUser.profile_image = urlImageProfile;
     
     setLoading('Salvando usuário...');
-    const registeredUser = await sendUserToApi(mappedUser);
+    const registeredUser = await sendUserToApi(mappedUser, user);
+    console.log('🚀 ~ file: controller.js ~ line 167 ~ registeredUser', registeredUser);
+    console.log('🚀 ~ file: controller.js ~ line 170 ~ user', user);
     setLoading('Salvando Endereço...');
-    await apollo.mutate({
-      mutation: registerAddressMutation,
+    const updatedAddress = await apollo.mutate({
+      mutation: updateAddressMutation,
       variables: {
-        address: { ...addressInfo, user: registeredUser.data.createUser.id },
+        address: { ...addressInfo, user: user.id },
+        address_id: user.address.id
       }
     });
+    console.log('🚀 ~ file: controller.js ~ line 175 ~ updatedAddress', updatedAddress);
     setLoading(false);
-    history.push('/?sla-nois')
+    history.push('/')
+    dispatch({ type: 'CLOSE_MODAL' })
   } catch(err) {
     try {
+    console.log('🚀 ~ file: controller.js ~ line 181 ~ err', err);
       if (err.graphQLErrors) {
         return getGraphqlErrors({
           err: err.graphQLErrors, setErrors, setLoading, dispatch,

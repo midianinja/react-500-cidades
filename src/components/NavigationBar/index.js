@@ -37,6 +37,13 @@ const renderLoggedSide = (history, state, dispatch) => (
                 className="profile-img"
                 src={state.user ? state.user.profile_image.mimified : ''}
                 alt="Imagem de perfil"
+                onClick={() => {
+                    history.push('/landing/?page=editar');
+                    dispatch({
+                        type: 'OPEN_MODAL',
+                        modal: 'edit',
+                    });
+                }}
             />
         </li>
         <li>
@@ -44,8 +51,7 @@ const renderLoggedSide = (history, state, dispatch) => (
             className="make-login"
             onClick={() => {
                 history.push('/landing/?page=landing');
-                window.localStorage.setItem('500cidades@ida', '');
-                window.localStorage.setItem('500cidades@token', '');
+                state.ida.logout()
                 dispatch({
                     type: 'SET_AUTH',
                     data: null,

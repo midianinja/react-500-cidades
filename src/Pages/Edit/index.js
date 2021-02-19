@@ -239,7 +239,7 @@ const Edit = ({ history }) => {
           onSubmit={(event) => registerAction({
             event, userInfo, dispatch, history,
             addressInfo, setLoading, skills,
-            setErrors, auth: state.auth
+            setErrors, auth: state.auth, user: state.user
           })}
           setLoading={setLoading}
           loading={loading}

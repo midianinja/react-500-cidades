@@ -268,7 +268,7 @@ const Form = ({
             onClick={(e) => onSubmit(e)}
             type="submit"
             disabled={loading}
-            children={loading ? loading : "Criar conta"}
+            children={loading ? loading : "Salvar"}
           />
           <Snackbar />
         </div>

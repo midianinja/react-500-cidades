@@ -121,11 +121,11 @@ const Register = ({ history }) => {
     if (state.modals.register) {
       if (!state.auth) {
         history.push('/mapa/?page=landing');
-        dispatch({ type: 'OPEN_MODAL', modal: 'landing'})
+        dispatch({ type: 'OPEN_MODAL', modal: 'landing'});
       }
       if (state.user) {
-        history.push('/mapa/?page=editar');
-        dispatch({ type: 'OPEN_MODAL', modal: 'edit'})
+        history.push('/');
+        dispatch({ type: 'CLOSE_MODAL'});
       }
     }
   }, [state.user, state.auth, state.modals]);
