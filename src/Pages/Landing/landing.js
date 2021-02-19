@@ -34,6 +34,7 @@ const getUsersToCarousel = (users) => {
   const arr = users.filter((usr) => {
     return (usr.biography.length > 200)
   });
+  console.log(users);
   return arr.slice(0, 20);
 }
 
@@ -144,7 +145,6 @@ const Landing = ({ history }) => {
                 />
                 <ButtonNews
                   onClick={() => registerNewsLetter(email, dispatch)}
-                  className="newsletter-btn3D--blue"
                 />
               </NewsSubscription>
             </NewsLetterContainer>

@@ -49,18 +49,23 @@ export const BannerImg = styled.div`
 
 export const IconBack = styled.button`
     @media (max-width:576px) {
-        display: block;
-        position: absolute;
-        top: 60px;
-        left: 25px;
-        width: 60px;
-        height: 60px;
-        background-position: center center;
-        padding: 10px;
-        background: url(${iconBack}) no-repeat;
-
+        color: var(--white);
+        background-color: var(--blue);
+        box-shadow: none;
+        border: none;
+        padding: .1rem 1rem;
+        border-radius: 0 .3rem .3rem 0;
+        margin: 5px 0 0 0;
+        &::before{
+          content: url('${iconBack}');
+          display: inline-block;
+          padding-right: 3px;
+          vertical-align: middle;
+          font-weight: 900;
+        }
     }
 `;
+
 
 export const ImgLogo = styled.div`
     background: url(${logoImg}) no-repeat;

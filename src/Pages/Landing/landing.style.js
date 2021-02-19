@@ -173,7 +173,6 @@ export const HaveRegisterLink = styled.a`
 `;
 
 export const ShortTextWrapper = styled.div`
-  color: var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -217,6 +216,7 @@ export const ShortTextTitle = styled.h2`
   width: 300px;
   margin: 0;
   padding: 0 .6em;
+  color: var(--white);
   @media (min-width: 768px) {
     width: 340px;
     padding: 0 8px;
@@ -229,6 +229,7 @@ export const ShortText = styled.p`
   width: 300px;
   margin: 0;
   padding: 0 1.6em;
+  color: var(--white);
   @media (min-width: 768px) {
     width: 340px;
     padding: 0 8px;
@@ -386,12 +387,14 @@ export const NewsLetterContainer = styled.div`
 `;
 export const HeadingNews = styled.h3`
   font-size: 2rem;
+  color: var(--white);
   @media (min-width: 768px) {
     font-size: 2rem;
   }
 `;
 export const TextNews = styled.p`
   font-size: 1rem;
+  color: var(--white);
   @media (min-width: 768px) {
     font-size: 1.4rem;
   }
@@ -421,7 +424,7 @@ export const ButtonNews = styled.button`
   border: none;
   padding: .1rem 1rem;
   border-radius: 0 .3rem .3rem 0;
-  margin:0;
+  margin: 5px 0 0 0;
   &::before{
     content: url('${ArrowRight}');
     display: inline-block;
