@@ -75,9 +75,10 @@ const UserList = () => {
                 </form>
                 {wordFetch ? <h1 className="title-search">Você procurou por <strong>{users.length} Agentes</strong> em <strong>{wordFetch}</strong> </h1> : null}
                 <div className="infolist">
-                    <p>Agente</p>
-                    <p>Local</p>
-                    <p>Tags</p>
+                    <div className="infolist-wrapper">
+                        <p>Agente</p>
+                        <p>Tags</p>
+                    </div>
                 </div>
                 <div className="container-list">
                     {state.loading ? <p>Carregando...</p> : renderList(users, dispatch)}

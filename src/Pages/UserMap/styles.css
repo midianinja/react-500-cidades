@@ -32,20 +32,20 @@
 .input-container--icon{
     position: absolute;
     left: 15px;
-    top: 17px;
+    top: 35px;
 }
 
 .map-toggles{
     z-index: 59;
     position: absolute;
     top: 5px;
-    right: 15px;
+    right: 30px;
     border: none;
 }
 .btn-toggle-map{
     background-color: var(--white);
     border: none;
-    padding: .5rem 1.5rem .5rem 2rem;
+    padding: 5px 40px;
     border-radius: .6rem;
     transform: translate(-33px, 0px);
 }
@@ -54,7 +54,7 @@
     color: var(--white);
     background-color: var(--blue);
     border: none;
-    padding: 0.5rem 1.5rem;
+    padding: 5px 40px;
     border-radius: .6rem;
     z-index: 59;
 }
@@ -63,6 +63,9 @@
     background-color: transparent;
     font-size: 14px;
     color: var(--blue);
+    text-align: left;
+    width: 100%;
+    text-decoration: underline;
 }
 
 .map-display{
@@ -112,13 +115,13 @@ margin: 10px !important;
   
 .agent-info--text1 {
     margin-bottom: 2px;
-    font-size: 16px;
+    font-size: 1.25em;;
     font-weight: 700;
 }
   
 .agent-info--text2 {
     margin-bottom: 2px;
-    font-size: 14px;
+    font-size: 0.87em;
     color: var(--gray);
 }
   

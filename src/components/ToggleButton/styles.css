@@ -3,7 +3,7 @@
     filter: brightness(0.9);
     background-color: var(--white);
     border: none;
-    padding: .5rem 1.5rem;
+    padding: 5px 40px;
     border-radius: 6px 0px 0px 6px;
     transform: translate(26px, 0px);
 }
@@ -21,7 +21,7 @@
     color: var(--white);
     background-color: var(--blue);
     border: none;
-    padding: 0.5rem 1.5rem;
+    padding: 5px 40px;
     border-radius: .6rem;
 }
 
@@ -29,12 +29,12 @@
     color: var(--white);
     background-color: var(--blue);
     border: none;
-    padding: 0.5rem 1.5rem;
+    padding: 5px 40px;
     border-radius: .6rem;
 }
 
 .search-icon{
-    width: 52%;
+    width: 51%;
     display: flex;
     justify-content: space-around;
     flex-direction: row-reverse;

@@ -19,8 +19,6 @@ const Map = ({ children, showMore, showInput, location }) => {
   const [loadedMap, setLoadedMap] = useState(null)
   const [autocomplete, setAutocomplete] = useState();
   const [samePlaceList, setSamePlaceList] = useState([]);
-
-
   const mapRef = useRef(null);
   const searchInputRef = useRef(null);
   
@@ -85,6 +83,7 @@ const Map = ({ children, showMore, showInput, location }) => {
                 type='text'
                 placeholder='Procurar...'
                 id='search'
+
                 // className={`input-container--search ${searchFocus ? 'input-active' : ''}`}
                 // onFocus={() => setSearchFocus(true)}
                 // onBlur={() => setSearchFocus(false)}

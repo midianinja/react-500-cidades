@@ -162,11 +162,7 @@ export const registerAction = async ({
     if (urlImageCover.mimified) mappedUser.cover_image = urlImageCover;
     if (urlImageProfile.mimified) mappedUser.profile_image = urlImageProfile;
     
-    setLoading('Salvando usuário...');
     const registeredUser = await sendUserToApi(mappedUser, user);
-    console.log('🚀 ~ file: controller.js ~ line 167 ~ registeredUser', registeredUser);
-    console.log('🚀 ~ file: controller.js ~ line 170 ~ user', user);
-    setLoading('Salvando Endereço...');
     const updatedAddress = await apollo.mutate({
       mutation: updateAddressMutation,
       variables: {
@@ -174,13 +170,11 @@ export const registerAction = async ({
         address_id: user.address.id
       }
     });
-    console.log('🚀 ~ file: controller.js ~ line 175 ~ updatedAddress', updatedAddress);
     setLoading(false);
     history.push('/')
     dispatch({ type: 'CLOSE_MODAL' })
   } catch(err) {
     try {
-    console.log('🚀 ~ file: controller.js ~ line 181 ~ err', err);
       if (err.graphQLErrors) {
         return getGraphqlErrors({
           err: err.graphQLErrors, setErrors, setLoading, dispatch,
