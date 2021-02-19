@@ -13,6 +13,8 @@ query
       id
       name
       job
+      birth_date
+      sexual_orientation
       phone
       email
       biography
@@ -25,7 +27,10 @@ query
       skills
       address{
         city
+        country
+        place_id
         state
+        geometry
         street
         complement
         district
@@ -49,14 +54,28 @@ query
       job
       phone
       email
+      instagram
+      sexual_orientation
+      facebook
+      site_address
+      birth_date
+      genre
+      race
       biography
+      cover_image  {
+        mimified
+      }
       profile_image  {
         mimified
       }
       skills
       address{
+        id
         city
+        country
+        place_id
         state
+        geometry
         street
         complement
         district

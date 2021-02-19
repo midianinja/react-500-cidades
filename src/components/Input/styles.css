@@ -1,6 +1,9 @@
-.field{
+.field {
     display:flex;
     flex-direction: column;
+}
+.input-field.error {
+    border: 1px solid red;
 }
 .input-field{
     border-radius: 10px;
@@ -9,6 +12,7 @@
 
 .error {
     color: var(--red);
+    font-size: .69em
 }
 
 ::placeholder {

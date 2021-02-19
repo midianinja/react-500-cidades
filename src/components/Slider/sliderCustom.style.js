@@ -30,15 +30,16 @@ export const Item = styled.div`
 
 export const MoveOnWrapper = styled.div`
     display:flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 100%;
     height: 40px;
     position: sticky;
-    left: 200px;
+    left: 0;
     top: 100%;
     @media (max-width: 768px){
         display: none;
+        width: 10%;
     }
 `;
 
@@ -47,10 +48,17 @@ export const Dot = styled.button`
     height: 15px;
     border-radius: 100%;
     cursor: pointer;
-    background: var(--darker-green);
+    background: var(--gray);
     border: none;
-    :active {
+    margin: 0 .5em;
+    &:hover{
         background: var(--blue);
+        transition: all 300ms;
+        transform: scale(1.6);
+    }
+    &:active {
+        background: var(--blue);
+        transition: all 300ms;
         transform: scale(1.6);
     }
 `;

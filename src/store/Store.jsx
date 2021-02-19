@@ -10,6 +10,7 @@ const initialModals = {
   list: false,
   terms: false,
   landing: false,
+  edit: false,
 };
 
 const initialState = {

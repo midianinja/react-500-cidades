@@ -15,6 +15,7 @@ import {
   AddPhotoButtonMobile, ProfileImageConteiner,
 } from './register.style';
 import JobInput from './components/job-input/jobInput';
+import { dateToStrDDMMYYYY } from '../../utils/date.utils';
 
 
 
@@ -23,7 +24,7 @@ const getMapsProperty = (placeResults, id) => {
   return component ? component.long_name : '';
 }
 
-const Register = ({ history }) => {
+const Edit = ({ history }) => {
   const { dispatch, state } = useContext(Store);
   const [edit, setEdit] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -110,7 +111,6 @@ const Register = ({ history }) => {
       return console.error(error);
     }
   }
-  
   useEffect(() => {
     const myZipcode = addressInfo.zipcode.replace(/-/g, "");
     if (myZipcode.length === 8) {
@@ -118,18 +118,50 @@ const Register = ({ history }) => {
     }
   }, [addressInfo.zipcode])
   useEffect(() => {
-    if (state.modals.register) {
+    if (state.user) {
+      setUserInfo({
+        name: state.user.name || '',
+        job: state.user.job || '',
+        profile_image: { url: state.user.profile_image.mimified || ''},
+        cover_image: { url: state.user.cover_image.mimified || ''},
+        biography: state.user.biography,
+        skills: state.user.skills,
+        email: state.user.email || '',
+        phone: state.user.phone || '',
+        instagram: state.user.instagram || 'https://instagram.com/',
+        facebook: state.user.facebook || 'https://facebook.com/',
+        site_address: state.user.site_address || '',
+        birth_date: dateToStrDDMMYYYY(new Date(+state.user.birth_date)) || '',
+        gender: state.user.genre,
+        sexual_orientation: state.user.sexual_orientation || '',
+        race: state.user.race,
+      });
+      setSkills(state.user.skills);
+      setAddressInfo({
+        street: state.user.address.street || '',
+        number: '',
+        complement: state.user.address.complement || '',
+        district: state.user.address.district || '',
+        city: state.user.address.city || '',
+        zipcode: state.user.address.zipcode || '',
+        state: state.user.address.state || '',
+        country: state.user.address.country || '',
+        place_id: state.user.address.place_id || '',
+        geometry: state.user.address.geometry || {},
+        latitude: state.user.address.latitude,
+        longitude: state.user.address.longitude
+      })
+    }
+  }, [state.user])
+  useEffect(() => {
+    if (state.modals.edit) {
       if (!state.auth) {
         history.push('/mapa/?page=landing');
-        dispatch({ type: 'OPEN_MODAL', modal: 'landing'});
-      }
-      if (state.user) {
-        history.push('/');
-        dispatch({ type: 'CLOSE_MODAL'});
+        dispatch({ type: 'OPEN_MODAL', modal: 'landing'})
       }
     }
-  }, [state.user, state.auth, state.modals]);
-  if (!state.modals.register) return null;
+  }, [state.user, state.auth, state.modals, history]);
+  if (!state.modals.edit) return null;
   
   return (
     <RegisterWrapper>
@@ -197,12 +229,7 @@ const Register = ({ history }) => {
         <Form
           errors={errors}
           userInfo={userInfo}
-          onChangeUserInfo={(e) => {
-            setUserInfo({
-              ...userInfo,
-              [e.target.id]: e.target.value,
-            })
-          }}
+          onChangeUserInfo={onChangeUserInfo}
           setUserInfo={setUserInfo}
           addressInfo={addressInfo}
           onChangeAddressInfo={(e) => setAddressInfo({
@@ -212,7 +239,7 @@ const Register = ({ history }) => {
           onSubmit={(event) => registerAction({
             event, userInfo, dispatch, history,
             addressInfo, setLoading, skills,
-            setErrors, auth: state.auth
+            setErrors, auth: state.auth, user: state.user
           })}
           setLoading={setLoading}
           loading={loading}
@@ -225,4 +252,4 @@ const Register = ({ history }) => {
   );
 }
 
-export default withRouter(Register);
+export default withRouter(Edit);

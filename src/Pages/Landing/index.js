@@ -16,6 +16,7 @@ import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 import Slider from '../../components/Slider/Slider';
+import SimpleCard from '../../components/SimpleCard/SimpleCard';
 
 const renderSimpleCards = (users) => {
   return users.map(( user ) => (<SimpleCard key={`${user.id}-simplecard`} profileImage={user.profile_image.mimified} nameUser={user.name} job={user.job} bioUser={user.biograph} />))
@@ -126,23 +127,54 @@ const Landing = ({ history }) => {
         </section>
         <section className="newsletter">
           <img
-            className="org-logos ninja-logo"
-            src={logoNinjaImg}
-            alt="Logo Mídia Ninja"
+            className="newsletter-img"
+            src={newsletterImg}
+            alt="Newsletter"
           />
-          <img
-            className="org-logos resystem-logo"
-            src={logoReSystemImg}
-            alt="Logo Re System"
-          />
-        <div className="more-about">
-          <Link className="more-about-link" to="/?page=about">Sobre</Link>
-          <Link className="more-about-link" to="/politica-de-privacidade">Política de privacidade</Link>
-          <Link className="more-about-link" to="/termos-de-uso">Termos de uso</Link>
-        </div>
-      </section>
-    </div>
-  );
+          <div className="newsletter-text">
+            <h3 className="heading-terciary--newsletter">
+              Saiba tudo que está rolando no 500 cidades
+            </h3>
+            <p>Assine nossa newsletter</p>
+            <div className="newsletter-subscription">
+              <Input
+                type="e-mail"
+                inputClass="newsletter-email"
+                placeholder="Insira aqui seu e-mail"
+                labelClass="label-email"
+                value={email}
+                onChange={({ target }) => setEmail(target.value)}
+              />
+              <Button
+                onClick={() => registerNewsLetter(email, dispatch)}
+                className="newsletter-btn3D--blue"
+              >
+              </Button>
+            </div>
+          </div>
+        </section>
+        <section className="footer">
+          <div className="org">
+            <p>Quem constrói isso com a gente</p>
+            <img
+              className="org-logos ninja-logo"
+              src={logoNinjaImg}
+              alt="Logo Mídia Ninja"
+            />
+            <img
+              className="org-logos resystem-logo"
+              src={logoReSystemImg}
+              alt="Logo Re System"
+            />
+          </div>
+          <div className="more-about">
+            <Link className="more-about-link" to="/sobre">Sobre</Link>
+            <Link className="more-about-link" to="/politica-de-privacidade">Política de privacidade</Link>
+            <Link className="more-about-link" to="/termos-de-uso">Termos de uso</Link>
+          </div>
+        </section>
+      </div>
+    );
 }
 
 export default withRouter(Landing);

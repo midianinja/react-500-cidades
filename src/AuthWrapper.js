@@ -90,6 +90,7 @@ function AuthWrapper({ children }) {
       if (parsed.page === 'termos') dispatch({ type: 'OPEN_MODAL', modal: 'terms' })
       if (parsed.page === 'lista') dispatch({ type: 'OPEN_MODAL', modal: 'list' })
       if (parsed.page === 'sobre') dispatch({ type: 'OPEN_MODAL', modal: 'about' })
+      if (parsed.page === 'editar') dispatch({ type: 'OPEN_MODAL', modal: 'edit' })
     } else {
       dispatch({ type: 'CLOSE_MODAL' });
     }

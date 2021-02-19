@@ -1,3 +1,15 @@
+.landing{
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url("../../assets/mergulho-500cidades-mobile.png");
+    background-color: var(--brown);
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: -534px 0%;
+    min-height: 130vh;
+    height: 100%;
+}
+
 .landing-top{
     display: flex;
     flex-direction: column;
@@ -83,7 +95,7 @@
     -webkit-box-shadow: 0 2.8px 0 var(--light-gray);
     box-shadow: 0 2.8px 0 var(--light-gray);
 }
-.btn3D--whit:visited{
+.btn3D--white:visited{
     background-color: var(--white);
     -moz-box-shadow: 0 2.8px 0 var(--light-gray);
     -webkit-box-shadow: 0 2.8px 0 var(--light-gray);

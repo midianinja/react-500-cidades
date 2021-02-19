@@ -1,9 +1,9 @@
 /**
  *
- * extractNumbers - that function transform an simple string to date format 'DD/MM/YYYY'
+ * formatDate - that function transform an simple string "DDMMYYYY" to date format "DD/MM/YYYY"
  *
  * @function extractNumbers
- * @param  {string} date it's string to be formatted
+ * @param  {string} date it's string "DDMMYYYY" to be formatted
  * @returns {string} it's formatted string
  */
 export const formatDate = (date) => {
@@ -15,4 +15,39 @@ export const formatDate = (date) => {
     myDate = `${myDate.substring(0, 5)}/${myDate.substring(5, myDate.length)}`;
   }
   return myDate.substring(0, 10);
+};
+
+/**
+ *
+ * strToDateDDMMYYYY - that function transform an simple string "DDMMYYYY" to date js class
+ *
+ * @function extractNumbers
+ * @param  {string} date it's string "DDMMYYYY" to be formatted
+ * @returns {string} it's formatted string
+ */
+export const strToDateDDMMYYYY = (date) => {
+  const day = date.slice(0, 2);
+  const month = date.slice(2, 4);
+  const year = date.slice(4, 8);
+  const dateClass = new Date(`${month}/${day}/${year}`);
+  return dateClass;
+};
+
+/**
+ *
+ * DateToString - that function transform an Date class to string "DDMMYYYY"
+ *
+ * @function extractNumbers
+ * @param  {string} date it's string "DDMMYYYY" to be formatted
+ * @returns {string} it's formatted string
+ */
+export const dateToStrDDMMYYYY = (date) => {
+  let myDate = date;
+  if (!myDate) return '';
+  if (myDate.toString() ===  'Invalid Date') return '';
+  const day = myDate.getDate();
+  const month = myDate.getMonth() < 9 ? (`0${myDate.getMonth() +1 }`) : (myDate.getMonth() + 1);
+  const year = myDate.getFullYear();
+  const dateClass = `${day}${month}${year}`;
+  return dateClass;
 };
