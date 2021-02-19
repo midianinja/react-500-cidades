@@ -4,8 +4,12 @@ import queryString from "query-string";
 import logoImg from '../../assets/500cidades-logo.png';
 import logoNinjaImg from '../../assets/ninja-logo-branco.svg';
 import logoReSystemImg from '../../assets/resystem-logo-branco.svg';
+import MapImg from '../../assets/mapa-ativista.png';
+import newsletterImg from '../../assets/newsletter.png';
+import Input from '../../components/Input';
 import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
+import { registerNewsLetter } from './landing.controller';
 import ReponsiveVideoPlayer from "../../components/ResponsiveVideoPlayer/ReponsiveVideoPlayer";
 import Slider from '../../components/Slider/Slider';
 import {
@@ -13,12 +17,14 @@ import {
   CallActionContainer,CommonText,
   TextWithFocus, BigLogo, RegisterButton,
   HaveRegisterLink, ShortTextWrapper,
-  ShortTextTitle, ShortText, MapSection,
+  ShortTextTitle, ShortText, MapSection, MapContainer,
   MapImage, GoToMap, VideoSection, CarouselTitle,
-  CarouselSection, PathWaySection, PahtImage,
+  CarouselSection, CarouselContainer, PathWaySection, PahtImage,
   PhraseWrapper, Phrase, PhraseWhite,
   Footer, NinjaBrand, ReBrand,
-  LinksWrapper, FooterLink,
+  LinksWrapper, FooterLink, NewsLetter, HeadingNews, 
+  TextNews, NewsLetterImg, NewsSubscription, ButtonNews, 
+  NewsLetterContainer, TextWhoOrgs, OrgsContainer
 } from './landing.style';
 
 const placesChange = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto'];
@@ -73,7 +79,7 @@ const Landing = ({ history }) => {
               <CommonText>Coloque</CommonText>
               <TextWithFocus>{newString}</TextWithFocus>
               <CommonText>no mapa</CommonText>
-                <RegisterButton onClick={() => openIDASignin(state.ida)} >Quero!</RegisterButton>
+                <RegisterButton onClick={() => openIDASignin(state.ida)} >Cadastre-se</RegisterButton>
                 <HaveRegisterLink onClick={() => openIDASignin(state.ida)} alt="Já tenho cadastro">
                   Já tenho cadastro
                 </HaveRegisterLink>
@@ -89,15 +95,19 @@ const Landing = ({ history }) => {
           </ShortTextWrapper>
         </Apresentation>
         <MapSection >
-          <MapImage src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/brasil-map.svg" alt="Mapa Ativista" />
+          <MapContainer>
+            <MapImage src={MapImg} alt="Mapa Ativista" />
+          </MapContainer>
           <GoToMap onClick={() => history.push('/usuario/mapa')} >Navegue e descubra</GoToMap>
         </MapSection>
         <VideoSection>
           <ReponsiveVideoPlayer />
         </VideoSection>
         <CarouselSection>
-          <CarouselTitle>Ativistas no mapa</CarouselTitle>
-          <Slider  users={getUsersToCarousel(state.allusers)} />
+          <CarouselContainer>
+            <CarouselTitle>Ativistas no mapa</CarouselTitle>
+            <Slider  users={getUsersToCarousel(state.allusers)} />
+          </CarouselContainer>
         </CarouselSection>
         <PathWaySection>
           <PahtImage />
@@ -119,27 +129,41 @@ const Landing = ({ history }) => {
             </Phrase>
           </PhraseWrapper>
         </PathWaySection>
+        <NewsLetter>
+          <NewsLetterImg src={newsletterImg} alt="Newsletter"/>
+            <NewsLetterContainer>
+              <HeadingNews>Saiba tudo que está rolando no 500 cidades</HeadingNews>
+              <TextNews>Assine nossa newsletter</TextNews>
+              <NewsSubscription>
+                <Input
+                  type="e-mail"
+                  placeholder="Insira aqui seu e-mail"
+                  labelClass="label-email"
+                  value={email}
+                  onChange={({ target }) => setEmail(target.value)}
+                />
+                <ButtonNews
+                  onClick={() => registerNewsLetter(email, dispatch)}
+                  className="newsletter-btn3D--blue"
+                />
+              </NewsSubscription>
+            </NewsLetterContainer>
+        </NewsLetter>
         <Footer>
+          <OrgsContainer>
+          <TextWhoOrgs>Quem constrói isso com a gente</TextWhoOrgs>
           <NinjaBrand
             src={logoNinjaImg}
             alt="Logo Mídia Ninja"
-          />
-          <NinjaBrand
-            src={'https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/fora-do-eixo.svg'}
-            alt="Logo Fora do eixo"
-          />
-          <NinjaBrand
-            src={'https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/342amazonia.svg'}
-            alt="Logo 342 Amazonia"
           />
           <ReBrand
             src={logoReSystemImg}
             alt="Logo Re System"
           />
+          </OrgsContainer>
         <LinksWrapper>
-          <FooterLink onClick={() => dispatch({type: 'OPEN_MODAL', modal: 'about' })} to="/?page=sobre">Sobre</FooterLink>
-          <FooterLink onClick={() => dispatch({type: 'OPEN_MODAL', modal: 'terms' })} to="/page=termos">Política de privacidade</FooterLink>
-          <FooterLink onClick={() => dispatch({type: 'OPEN_MODAL', modal: 'politica' })} to="/page=politica">Termos de uso</FooterLink>
+          <FooterLink onClick={ () => dispatch({ type: 'OPEN_MODAL', modal: 'about' })} to="/?page=sobre">Sobre</FooterLink>
+          <FooterLink onClick={ () => dispatch({ type: 'OPEN_MODAL', modal: 'privacy' })} to="/?page=politica">Política de privacidade e Termos de uso</FooterLink>
         </LinksWrapper>
       </Footer>
     </Wrapper>
