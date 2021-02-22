@@ -173,12 +173,32 @@ export const HaveRegisterLink = styled.a`
 `;
 
 export const ShortTextWrapper = styled.div`
-  color: var(--white);
-  position: absolute;
-  bottom: 70px;
-  height: 500px;
-  @media(min-width: 700px) {
-    display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  position: relative;
+  top: 8%;
+  bottom: -5%;
+  width: 100%;
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    top: 5%;
+    bottom: -20%;
+  }
+  @media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    bottom: -20%;
+  }
+  @media (min-width: 768px) {
+    margin: 0;
+    top:25%;
+    bottom: -20%;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -192,7 +212,7 @@ export const ShortTextTitle = styled.h2`
   width: 300px;
   margin: 0;
   padding: 0 .6em;
-  color: #FFF;
+  color: var(--white);
   @media (min-width: 768px) {
     width: 340px;
     padding: 0 8px;
@@ -206,6 +226,7 @@ export const ShortText = styled.p`
   color: #FFF;
   margin: 0;
   padding: 0 1.6em;
+  color: var(--white);
   @media (min-width: 768px) {
     width: 340px;
     padding: 0 8px;
@@ -363,12 +384,14 @@ export const NewsLetterContainer = styled.div`
 `;
 export const HeadingNews = styled.h3`
   font-size: 2rem;
+  color: var(--white);
   @media (min-width: 768px) {
     font-size: 2rem;
   }
 `;
 export const TextNews = styled.p`
   font-size: 1rem;
+  color: var(--white);
   @media (min-width: 768px) {
     font-size: 1.4rem;
   }
