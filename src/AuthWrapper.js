@@ -87,7 +87,6 @@ function AuthWrapper({ children }) {
       if (parsed.page === '') dispatch({ type: 'CLOSE_MODAL' })
       if (parsed.page === 'map') dispatch({ type: 'CLOSE_MODAL' })
       if (parsed.page === 'politica') dispatch({ type: 'OPEN_MODAL', modal: 'privacy' })
-      if (parsed.page === 'termos') dispatch({ type: 'OPEN_MODAL', modal: 'terms' })
       if (parsed.page === 'lista') dispatch({ type: 'OPEN_MODAL', modal: 'list' })
       if (parsed.page === 'sobre') dispatch({ type: 'OPEN_MODAL', modal: 'about' })
       if (parsed.page === 'editar') dispatch({ type: 'OPEN_MODAL', modal: 'edit' })

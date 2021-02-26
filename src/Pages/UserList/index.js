@@ -6,7 +6,7 @@ import ToggleButton from '../../components/ToggleButton';
 import { Link } from "react-router-dom";
 import { FaSearch } from 'react-icons/fa';
 import Store from '../../store/Store'
-import NavigationBar from '../../components/NavigationBar';
+import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import ShowProfile from '../../components/ShowProfile'
 import { getUsers } from './list.controller'
 

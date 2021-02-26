@@ -8,7 +8,6 @@ const initialModals = {
   privacy: false,
   register: false,
   list: false,
-  terms: false,
   landing: false,
   edit: false,
 };

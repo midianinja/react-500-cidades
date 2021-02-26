@@ -38,9 +38,9 @@ body {
 button {
   position: relative;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
   margin: 10px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Medium', sans-serif;
 }
 
 button:focus {

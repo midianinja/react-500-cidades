@@ -20,7 +20,7 @@ import {
     Snapchat,
 } from './about.style';
 import Menu from '../../components/Menu';
-import NavigationBar from '../../components/NavigationBar';
+import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import logoImg from '../../assets/500cidades-logo.png';
 import { withRouter } from 'react-router-dom';
 import Store from '../../store/Store';
@@ -38,7 +38,6 @@ const About = ({ history }) => {
     return (
         <ContainerAbout>
             <NavigationBar />
-            <Menu />
             <BannerImg>
                 <IconBack onClick={() => {
                         history.goBack();

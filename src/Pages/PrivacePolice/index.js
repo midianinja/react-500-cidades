@@ -18,7 +18,7 @@ import {
   } from './privacePolice.style';
   import Menu from '../../components/Menu';
   import Logo500Cidades from '../../assets/500cidades-logo.png';
-  import NavigationBar from '../../components/NavigationBar';
+  import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import { withRouter } from 'react-router-dom';
 import Store from '../../store/Store';
 import { useState } from 'react/cjs/react.development';

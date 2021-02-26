@@ -41,6 +41,7 @@ nav a {
   top: 10px;
   position: absolute;
   z-index: 60;
+  color: var(--white);
 }
 @media (min-width:768px){
   .toggle-icon{

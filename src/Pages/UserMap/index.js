@@ -4,11 +4,13 @@ import ToggleButton from '../../components/ToggleButton';
 import { FaSearch } from "react-icons/fa";
 import './styles.css';
 import Store from '../../store/Store';
-import NavigationBar from '../../components/NavigationBar';
+import NavigationBar from '../../components/NavigationBar/NavigationBar';
+import Menu from '../../components/Menu';
 import ShowProfile from '../../components/ShowProfile';
 import { startMap, fetchAutocomplete, insertPins } from './controller';
 import SamePlaceListModal from '../../components/SamePlaceListModal/SamePlaceListModal';
 import MapComponent from '../../components/Map/Map';
+
 
 
 const UserMap = () => {
@@ -29,6 +31,7 @@ const UserMap = () => {
         onClose={() => setSamePlaceList([])}
       />
       <NavigationBar />
+      <Menu />
       <div className='map-container'>
         <div className="map-toggles">
           <Link to="/" onClick={() => dispatch({ type: 'CLOSE_MODAL', modal: 'llist' })}>
