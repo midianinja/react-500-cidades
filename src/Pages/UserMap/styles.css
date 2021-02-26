@@ -28,7 +28,18 @@
 .input-container--search.input-active {
     opacity: 1;
 }
+.input-container--search::placeholder {
+    color: rgb(136, 136, 136);
+    opacity: 1; /* Firefox */
+}
 
+.input-container--search:-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: rgb(136, 136, 136);
+}
+
+.input-container--search::-ms-input-placeholder { /* Microsoft Edge */
+color: rgb(136, 136, 136);
+}
 .input-container--icon{
     position: absolute;
     left: 15px;
