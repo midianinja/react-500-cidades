@@ -20,6 +20,36 @@ const Wrapper = styled.section`
     overflow-x: auto;
 `;
 
+const ContainerTopList = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+    padding: 0 20px;
+    // display:flex;
+    // flex-direction:column;
+    // align-items: center;
+    // width:100vw;
+    // margin: 0 auto;
+    @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+`;
+
+const InputContainer = styled.form`
+    width: 100%;
+    max-width: 50vw;
+    position: relative;
+    @media (min-width: 768px) {
+        order: 1;
+        padding: 0px;
+        margin: 10px 0px 40px 23px;
+    }
+`;
+
 const renderList = (list, dispatch) => list.filter((usr) => usr.address).map(agent => (
     <div className="div-usercard" onClick={() => dispatch({ type: 'SHOW_PROFILE', data: agent.id })} key={agent.id} >
         <div className="userinfo" >
@@ -58,11 +88,17 @@ const UserList = () => {
         <Wrapper>
             <NavigationBar />
             <Menu />
-            <main className="container-usercard">
-                <form
-                    onSubmit={(e) => getUsers(e, value, setUsers, setWordFetch)}
-                    className='input-container'
-                >
+            <ContainerTopList>
+                <div className="links-fixos">
+                    <p>Tipo de Vizualização</p>
+                    <Link to="/" onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
+                        <ToggleButton className="btn-toggle">Mapa</ToggleButton>
+                    </Link>
+                    <Link to="/?page=lista" onClick={() => dispatch({ type: 'OPEN_MODAL', modal: 'llist' })}>
+                        <ToggleButton className="btn-toggle--blue">Lista</ToggleButton>
+                    </Link>
+                </div>
+                <InputContainer onSubmit={(e) => getUsers(e, value, setUsers, setWordFetch)}>
                     <input
                         name='search'
                         type='text'
@@ -72,25 +108,18 @@ const UserList = () => {
                         className='input-container--search'
                     />
                     <span className='input-container--icon'><FaSearch size={20} color="#888" /></span>
-                </form>
+                </InputContainer>
                 {wordFetch ? <h1 className="title-search">Você procurou por <strong>{users.length} Agentes</strong> em <strong>{wordFetch}</strong> </h1> : null}
+            </ContainerTopList>
+            <main className="container-usercard">
                 <div className="infolist">
                     <div className="infolist-wrapper">
-                        <p>Agente</p>
-                        <p>Tags</p>
+                        <div><p>Agente</p></div>
+                        <div><p>Tags</p></div>
                     </div>
                 </div>
                 <div className="container-list">
                     {state.loading ? <p>Carregando...</p> : renderList(users, dispatch)}
-                </div>
-                <div className="links-fixos">
-                    <p>Tipo de Vizualização</p>
-                    <Link to="/" onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
-                        <ToggleButton className="btn-toggle">Mapa</ToggleButton>
-                    </Link>
-                    <Link to="/?page=lista" onClick={() => dispatch({ type: 'OPEN_MODAL', modal: 'llist' })}>
-                        <ToggleButton className="btn-toggle--blue">Lista</ToggleButton>
-                    </Link>
                 </div>
             </main>
             <ShowProfile />
