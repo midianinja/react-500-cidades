@@ -5,33 +5,34 @@ import Store from '../../store/Store';
 import { openIDASignin } from '../../service/ida.lib';
 import {
     NavContainer, HeaderContainer, SignInButton, CreateAccountButton,
+    NavLinkList, ListItemAlwaysDisplayed, ListItemSometimesHide,
     RegistrationField, UserProfileImage, SignOutButton, BrandImage,
   } from './navigationBar.styled';
 
   const renderAuthSide = (history, state) => (
-    <ul>
-        <li>
+    <NavLinkList>
+        <ListItemAlwaysDisplayed>
         <SignInButton
             onClick={() => openIDASignin(state.ida)} 
         >
             Já tenho cadastro
         </SignInButton>
-        </li>
-        <li>
+        </ListItemAlwaysDisplayed>
+        <ListItemAlwaysDisplayed>
             <CreateAccountButton
                 children="Cancelar"
                 onClick={() => openIDASignin(state.ida)} 
             >
                 Quero conhecer!
             </CreateAccountButton>
-        </li>
+        </ListItemAlwaysDisplayed>
         <RegistrationField /> 
-    </ul>
+    </NavLinkList>
 )
 
 const renderLoggedSide = (history, state, dispatch) => (
-    <ul>
-        <li>
+    <NavLinkList>
+        <ListItemAlwaysDisplayed>
             <UserProfileImage
                 src={state.user ? state.user.profile_image.mimified : ''}
                 alt="Imagem de perfil"
@@ -43,8 +44,8 @@ const renderLoggedSide = (history, state, dispatch) => (
                     });
                 }}
             />
-        </li>
-        <li>
+        </ListItemAlwaysDisplayed>
+        <ListItemAlwaysDisplayed>
         <SignOutButton
             onClick={() => {
                 history.push('/landing/?page=landing');
@@ -65,9 +66,9 @@ const renderLoggedSide = (history, state, dispatch) => (
         >
             Sair
         </SignOutButton>
-        </li>
+        </ListItemAlwaysDisplayed>
         <RegistrationField /> 
-    </ul>
+    </NavLinkList>
 )
 
 const NavigationBar = ({ history })  => {
@@ -75,19 +76,19 @@ const NavigationBar = ({ history })  => {
     return (
         <NavContainer>
             <HeaderContainer>
-                <ul>
-                    <li>
+                <NavLinkList>
+                    <ListItemSometimesHide>
                     <NavLink onClick={() => dispatch({ type: 'CLOSE_MODAL' })} to="/?">
                         Mapa
                     </NavLink>
-                    </li>
-                    <li>
+                    </ListItemSometimesHide>
+                    <ListItemSometimesHide>
                     <NavLink  onClick={() => dispatch({ type: 'OPEN_MODAL', modal: 'about' })} to="/?page=about">
                         Sobre o projeto
                     </NavLink>
-                    </li>
+                    </ListItemSometimesHide>
                 <RegistrationField />
-                </ul>
+                </NavLinkList>
                 <BrandImage
                     onClick={() => {
                         history.push('/mapa/?page=landing');

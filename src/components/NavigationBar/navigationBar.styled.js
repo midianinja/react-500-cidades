@@ -8,24 +8,6 @@ export const NavContainer = styled.nav`
     align-items: center;
     background-color: var(--eggplant);
     height: 50px;
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-    li {
-        cursor: pointer;
-        font-weight: 700;
-        padding: 0 10px;        
-    }
-    // @media (max-width:992px){
-    //       visibility: hidden;
-    //       display: none;
-    // }
 `;
 
 export const HeaderContainer = styled.div`
@@ -33,6 +15,31 @@ export const HeaderContainer = styled.div`
     height: 50px;
     width: 100vw;
     justify-content: space-between;
+`;
+
+export const NavLinkList = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+`;
+
+export const ListItemSometimesHide = styled.li`
+        cursor: pointer;
+        font-weight: 700;
+        padding: 0 5px;        
+        @media (max-width:992px){
+            display: none;
+        }
+`;
+
+export const ListItemAlwaysDisplayed = styled.li`
+        cursor: pointer;
+        font-weight: 700;
+        padding: 0 5px;        
 `;
 
 export const BrandImage = styled.img`
