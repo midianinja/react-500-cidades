@@ -4,7 +4,6 @@ import Landing from './Pages/Landing/landing';
 import Register from './Pages/Register';
 import About from './Pages/About';
 import PrivacePolice from './Pages/PrivacePolice';
-import TermsOfUse from './Pages/TermsOfUse';
 import Snackbar from './components/Snackbar';
 import LoginModal from './components/ida/login/Login.modal';
 import UserRoutes from './users'
@@ -25,7 +24,6 @@ export default function Routes() {
                 <About />
                 <PrivacePolice />
                 <Register />
-                <TermsOfUse />
                 <Landing />
                 <UserList />
                 <Edit />

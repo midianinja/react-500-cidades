@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import Form from './components/form/form';
 import Store from '../../store/Store';
 import Menu from '../../components/Menu';
-import NavigationBar from '../../components/NavigationBar';
+import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import {
   CoverSize, MainFields, AddPhotoButton,
   CoverWrapper, Cover, RegisterContainer,
@@ -134,8 +134,8 @@ const Register = ({ history }) => {
   return (
     <RegisterWrapper>
       <NavigationBar />
+      <Menu />
       <RegisterContainer>
-        <Menu />
         <CoverWrapper cover_image={userInfo.cover_image.url}>
           <Cover>
             <Wrapperinputs>

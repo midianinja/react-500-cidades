@@ -2,39 +2,38 @@ import React, { useContext } from 'react';
 import { NavLink, withRouter } from "react-router-dom";
 import LogoImg from '../../assets/500cidades-logo-nav.png';
 import Store from '../../store/Store';
-import './styles.css';
-import Button from '../Button';
 import { openIDASignin } from '../../service/ida.lib';
+import {
+    NavContainer, HeaderContainer, SignInButton, CreateAccountButton,
+    NavLinkList, ListItemAlwaysDisplayed, ListItemSometimesHide,
+    RegistrationField, UserProfileImage, SignOutButton, BrandImage,
+  } from './navigationBar.styled';
 
-const renderAuthSide = (history, state) => (
-    <ul className="auth-side">
-        <li>
-        <button
-            className="make-login"
+  const renderAuthSide = (history, state) => (
+    <NavLinkList>
+        <ListItemAlwaysDisplayed>
+        <SignInButton
             onClick={() => openIDASignin(state.ida)} 
         >
             Já tenho cadastro
-        </button>
-        </li>
-        <li>
-            <Button
+        </SignInButton>
+        </ListItemAlwaysDisplayed>
+        <ListItemAlwaysDisplayed>
+            <CreateAccountButton
                 children="Cancelar"
-                className="btn3D--red create-account"
                 onClick={() => openIDASignin(state.ida)} 
             >
                 Quero conhecer!
-            </Button >
-        </li>
-        <div className="registration-field"> 
-        </div>
-    </ul>
+            </CreateAccountButton>
+        </ListItemAlwaysDisplayed>
+        <RegistrationField /> 
+    </NavLinkList>
 )
 
 const renderLoggedSide = (history, state, dispatch) => (
-    <ul className="logged-side">
-        <li>
-            <img
-                className="profile-img"
+    <NavLinkList>
+        <ListItemAlwaysDisplayed>
+            <UserProfileImage
                 src={state.user ? state.user.profile_image.mimified : ''}
                 alt="Imagem de perfil"
                 onClick={() => {
@@ -45,10 +44,9 @@ const renderLoggedSide = (history, state, dispatch) => (
                     });
                 }}
             />
-        </li>
-        <li>
-        <button
-            className="make-login"
+        </ListItemAlwaysDisplayed>
+        <ListItemAlwaysDisplayed>
+        <SignOutButton
             onClick={() => {
                 history.push('/landing/?page=landing');
                 state.ida.logout()
@@ -67,44 +65,41 @@ const renderLoggedSide = (history, state, dispatch) => (
             }}
         >
             Sair
-        </button>
-        </li>
-        <div className="registration-field"> 
-        </div>
-    </ul>
+        </SignOutButton>
+        </ListItemAlwaysDisplayed>
+        <RegistrationField /> 
+    </NavLinkList>
 )
 
 const NavigationBar = ({ history })  => {
     const { state, dispatch } = useContext(Store);
     return (
-        <nav className="nav-container">
-            <div className="header-container">
-                <ul className="no-auth-side">
-                    <li>
+        <NavContainer>
+            <HeaderContainer>
+                <NavLinkList>
+                    <ListItemSometimesHide>
                     <NavLink onClick={() => dispatch({ type: 'CLOSE_MODAL' })} to="/?">
                         Mapa
                     </NavLink>
-                    </li>
-                    <li>
+                    </ListItemSometimesHide>
+                    <ListItemSometimesHide>
                     <NavLink  onClick={() => dispatch({ type: 'OPEN_MODAL', modal: 'about' })} to="/?page=about">
                         Sobre o projeto
                     </NavLink>
-                    </li>
-                    <div className="registration-field"> 
-                    </div>
-                </ul>
-                <img
+                    </ListItemSometimesHide>
+                <RegistrationField />
+                </NavLinkList>
+                <BrandImage
                     onClick={() => {
                         history.push('/mapa/?page=landing');
                         dispatch({ type: 'OPEN_MODAL', modal: 'landing'})
                     }}
-                    className="nav-img"
                     src={LogoImg}
                     alt="Logo 500 cidades"
                 />
                 {state.auth ? renderLoggedSide(history, state, dispatch) : renderAuthSide(history, state)}
-            </div>
-        </nav>
+            </HeaderContainer>
+        </NavContainer>
     );
 }
 

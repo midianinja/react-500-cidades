@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback, useRef, useContext, useState, Children } from 'react';
 import { FaSearch } from "react-icons/fa";
-import './styles.css';
 import Store from '../../store/Store';
 import { startMap, insertPins, fetchAutocomplete } from './mapController';
 import {
