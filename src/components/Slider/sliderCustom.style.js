@@ -6,7 +6,8 @@ export const SliderWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     overflow-x: auto;
-    height: 500px;
+    overflow-y: hidden;
+    height: 600px;
     @media (min-width: 576px){
         ::-webkit-scrollbar {
             display: none;

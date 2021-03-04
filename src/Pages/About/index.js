@@ -14,7 +14,7 @@ import {
     Logo500Img,
     WrapperTextImg,
     SocialMedia,
-    Facebook,
+    SocialIcon,
     Twitter,
     Instagram,
     Snapchat,
@@ -90,12 +90,11 @@ const About = ({ history }) => {
                 </WrapperTextImg>
 
             <FooterAbout>
-                    <Logo500Img src={Logo500Cidades} alt="Logo 500 Cidades"/>
                     <SocialMedia>
-                        <Facebook></Facebook>
-                        <Twitter></Twitter>
-                        <Instagram></Instagram>
-                        <Snapchat></Snapchat>
+                        <Logo500Img src={Logo500Cidades} alt="Logo 500 Cidades"/>
+                        <SocialIcon src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/004-facebook.svg" />
+                        <SocialIcon src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/002-twitter.svg" />
+                        <SocialIcon src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/001-instagram.svg" />
                     </SocialMedia>
                     <ButtonBack onClick={() => {
                         history.goBack();

@@ -97,16 +97,6 @@ export const CommonText = styled.span`
   }
 `;
 
-export const TextWithFocus = styled.span`
-  display: block;
-  font-weight: bold;
-  font-size: 2em;
-  color: var(--green);
-  @media (min-width: 768px) {
-    font-size: 3em;
-  }
-`;
-
 export const BigLogo = styled.img`
   width: 250px;
   @media (min-width: 768px) {

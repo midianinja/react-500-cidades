@@ -22,6 +22,7 @@ import {
 import { withRouter } from 'react-router-dom';
 import Store from '../../store/Store';
 import { useState } from 'react/cjs/react.development';
+import { SocialIcon } from '../About/about.style';
 
 const PrivacePolice = ({ history }) => {
     const { state, dispatch } = useContext(Store);
@@ -377,17 +378,22 @@ Entre em contato conosco pelo e-mail <a href="mailto:servicosdeculturadigital@gm
 
 
                 <FooterAbout>
-                    <Logo500Img src={Logo500Cidades} alt="Logo 500 Cidades"/>
+                    <ButtonBack
+                        cus
+                        onClick={() => {
+                            history.goBack();
+                            dispatch({ type: 'CLOSE_MODAL' })
+                        }}
+                        className="btn3D--blue"
+                    >
+                        Voltar
+                    </ButtonBack>
                     <SocialMedia>
-                        <Facebook></Facebook>
-                        <Twitter></Twitter>
-                        <Instagram></Instagram>
-                        <Snapchat></Snapchat>
+                        <Logo500Img src={Logo500Cidades} alt="Logo 500 Cidades"/>
+                        <SocialIcon src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/004-facebook.svg" />
+                        <SocialIcon src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/002-twitter.svg" />
+                        <SocialIcon src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/001-instagram.svg" />
                     </SocialMedia>
-                    <ButtonBack onClick={() => {
-                        history.goBack();
-                        dispatch({ type: 'CLOSE_MODAL' })
-                        }} className="btn3D--blue">Voltar</ButtonBack>
             </FooterAbout>          
             </Wrapper>
         </Container>

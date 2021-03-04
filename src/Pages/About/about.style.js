@@ -198,22 +198,19 @@ export const Photo = styled.img`
     }
 `;
 export const FooterAbout = styled.footer`
-    margin-top:2.5rem;
+    margin-top: 2.5rem;
     display: flex;
-    align-items:center;
-    height:100%;
-    flex-direction:column;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
     @media (min-width:768px) {
         flex-direction:row;
     }
 `;
 
 export const Logo500Img = styled.img`
-    width:100%;
-    max-width: 30%;
-    @media (min-width:768px) {
-        max-width: 20%;
-    }
+    width: 150px;
 `;
 
 export const SocialMedia = styled.div`
@@ -222,12 +219,10 @@ export const SocialMedia = styled.div`
     width:fit-content;
 `;
 
-export const Facebook = styled.div`
-    background:url(${socialIcons}) no-repeat;
-    background-size: cover;
-    background-position: 7% 26%;
+export const SocialIcon = styled.img`
     width: 48px;
-    height: 80px;
+    margin: 0 10px;
+    ${props => props.customStyle}
 `;
 
 export const Twitter = styled.div`
@@ -261,8 +256,7 @@ export const ButtonBack = styled.button`
   font-family: "Roboto Medium", sans-serif;
   font-size:1.25em;
   text-decoration: none;
-  width: 200px;
-  height:60px;
+  width: 150px;
   max-width: 100%;
   margin: 1rem;
   padding: 0.5rem;

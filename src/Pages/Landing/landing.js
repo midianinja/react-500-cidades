@@ -26,13 +26,13 @@ import {
   TextNews, NewsLetterImg, NewsSubscription, ButtonNews, 
   NewsLetterContainer, TextWhoOrgs, OrgsContainer
 } from './landing.style';
+import DynamicText from '../../components/dynamicText/dynamicText';
 
-const placesChange = ['sua quebrada', 'seu role', 'seu trampo', 'sua vida', 'sua comunidade', 'seu projeto'];
 
 
 const getUsersToCarousel = (users) => {
   const arr = users.filter((usr) => {
-    return (usr.biography.length > 200)
+    return (usr.biography.length > 200 && usr.profile_image.mimified)
   });
   console.log(users);
   return arr.slice(0, 20);
@@ -41,19 +41,9 @@ const getUsersToCarousel = (users) => {
 const Landing = ({ history }) => {
   const parsed = queryString.parse(history.location.search);
   const { state, dispatch } = useContext(Store);
-  const [newString, setNewString] = useState(placesChange[0]);
   const [email, setEmail] = useState('');
 
-  const shuffle = useCallback(() => {
-    const stringShuffle = Math.floor(Math.random() * placesChange.length);
-    setNewString(placesChange[stringShuffle]);
-  }, []);
   
-  useEffect(() => {
-      const intervalID = setInterval(shuffle, 1500);
-      return () => clearInterval(intervalID);
-  }, [shuffle]);
-
   useEffect( () => {
     if (state.modals.landing) {
       if (state.user) {
@@ -78,7 +68,7 @@ const Landing = ({ history }) => {
             />
             <CallActionContainer>
               <CommonText>Coloque</CommonText>
-              <TextWithFocus>{newString}</TextWithFocus>
+              <DynamicText />
               <CommonText>no mapa</CommonText>
                 <RegisterButton onClick={() => openIDASignin(state.ida)} >Cadastre-se</RegisterButton>
                 <HaveRegisterLink onClick={() => openIDASignin(state.ida)} alt="Já tenho cadastro">

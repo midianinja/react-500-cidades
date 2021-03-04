@@ -6,6 +6,7 @@ export const Card = styled.div`
     text-align: center;
     padding: 0 10px;
     width: 300px;
+    vertical-align: top;
     /* background-color: ${props => props.active ? 'green' : 'transparent'}; */
 `;
 

@@ -16,6 +16,8 @@ query
       birth_date
       sexual_orientation
       phone
+      facebook
+      instagram
       email
       biography
       cover_image  {
