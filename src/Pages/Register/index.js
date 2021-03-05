@@ -25,6 +25,7 @@ const getMapsProperty = (placeResults, id) => {
 
 const Register = ({ history }) => {
   const { dispatch, state } = useContext(Store);
+  console.log('🚀 ~ file: index.js ~ line 28 ~ Register ~ state', state);
   const [edit, setEdit] = useState(false);
   const [loading, setLoading] = useState(false);
   const [skills, setSkills] = useState([]);
