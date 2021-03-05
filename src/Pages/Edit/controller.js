@@ -125,9 +125,9 @@ const getGraphqlErrors = ({
 export const registerAction = async ({
   skills, event, userInfo, auth,
   addressInfo, setLoading, user,
-  dispatch, history, setErrors, users,
+  dispatch, history, setErrors, storedUsers,
 }) => {
-  console.log('🚀 ~ file: controller.js ~ line 130 ~ users', users);
+  console.log('🚀 ~ file: controller.js ~ line 130 ~ storedUsers', storedUsers);
   event.preventDefault();
   try {
     setLoading('validando usuário...');
@@ -172,7 +172,7 @@ export const registerAction = async ({
     });
     const registeredUser = await sendUserToApi(mappedUser, user);
     const updatedUser = registeredUser.data.updateUser;
-    const allUsers = users.map((usr) => {
+    const allUsers = storedUsers.map((usr) => {
       if (usr.id === updatedUser.id) return updatedUser;
       return usr;
     })
