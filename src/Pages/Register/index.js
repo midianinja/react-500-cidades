@@ -213,7 +213,7 @@ const Register = ({ history }) => {
           onSubmit={(event) => registerAction({
             event, userInfo, dispatch, history,
             addressInfo, setLoading, skills,
-            setErrors, auth: state.auth, users: state.allUsers
+            setErrors, auth: state.auth, users: state.allusers
           })}
           setLoading={setLoading}
           loading={loading}
