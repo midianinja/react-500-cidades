@@ -50,12 +50,12 @@ const ShowProfile = () => {
                     </p>
                     <SocialIcon
                         onClick={() => openSocialMedia(agent.facebook, 'facebook')}
-                        src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/004-facebook.svg"
+                        src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/facebook-dark-purple.svg"
                         customStyle="margin: 20px; width: 30px;"
                     />
                     <SocialIcon
                         onClick={() => openSocialMedia(agent.instagram, 'instagram')}
-                        src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/001-instagram.svg"
+                        src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/instagram-dark-purple.svg"
                         customStyle="margin: 20px; width: 30px;"
                     />
                 </section>
