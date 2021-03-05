@@ -181,6 +181,7 @@ export const registerAction = async ({
     setLoading(false);
   } catch(err) {
     try {
+    console.log('🚀 ~ file: controller.js ~ line 184 ~ err', [err]);
       if (err.graphQLErrors) {
         return getGraphqlErrors({
           err: err.graphQLErrors, setErrors, setLoading, dispatch,
