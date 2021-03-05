@@ -125,7 +125,7 @@ const getGraphqlErrors = ({
 
 export const registerAction = async ({
   skills, event, userInfo, auth,
-  addressInfo, setLoading,
+  addressInfo, setLoading, users,
   dispatch, history, setErrors,
 }) => {
   event.preventDefault();
@@ -172,6 +172,9 @@ export const registerAction = async ({
     setLoading(false);
     history.push('/');
     dispatch({ type: 'CLOSE_MODAL' });
+    dispatch({ type: 'SET_USER', data: registeredUser.data.createUser });
+    const allUsers = JSON.parse(JSON.stringify(users));
+    dispatch({ type: 'SET_ALL_USERS', data: [...allUsers, registeredUser.data.createUser] });
   } catch(err) {
     try {
       if (err.graphQLErrors) {

@@ -34,7 +34,6 @@ const getUsersToCarousel = (users) => {
   const arr = users.filter((usr) => {
     return (usr.biography.length > 200 && usr.profile_image.mimified)
   });
-  console.log(users);
   return arr.slice(0, 20);
 }
 

@@ -25,6 +25,7 @@ export const NavLinkList = styled.ul`
     align-items: center;
     justify-content: center;
     width: 100%;
+    font-family: 'Roboto Medium', sans-serif;
 `;
 
 export const ListItemSometimesHide = styled.li`
@@ -49,8 +50,9 @@ export const BrandImage = styled.img`
 `;
 
 export const UserProfileImage = styled.img`
-    height: 30px;
     width: 30px;
+    height: 30px;
+    object-fit: cover;
     border-radius: 100%;
 `;
 

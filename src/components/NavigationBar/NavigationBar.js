@@ -9,6 +9,13 @@ import {
     RegistrationField, UserProfileImage, SignOutButton, BrandImage,
   } from './navigationBar.styled';
 
+  const getAvatarImage = (user) => {
+    if (!user) return "https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/500-cities/images/500cidades-asset-avatar-2.png";
+    if (!user.profile_image) return "https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/500-cities/images/500cidades-asset-avatar-2.png";
+    if (!user.profile_image.mimified) return "https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/500-cities/images/500cidades-asset-avatar-2.png";
+    return user.profile_image.mimified;
+  }
+
   const renderAuthSide = (history, state) => (
     <NavLinkList>
         <ListItemAlwaysDisplayed>
@@ -34,7 +41,7 @@ const renderLoggedSide = (history, state, dispatch) => (
     <NavLinkList>
         <ListItemAlwaysDisplayed>
             <UserProfileImage
-                src={state.user ? state.user.profile_image.mimified : ''}
+                src={getAvatarImage(state.user)}
                 alt="Imagem de perfil"
                 onClick={() => {
                     history.push('/landing/?page=editar');

@@ -125,7 +125,7 @@ const getGraphqlErrors = ({
 export const registerAction = async ({
   skills, event, userInfo, auth,
   addressInfo, setLoading, user,
-  dispatch, history, setErrors,
+  dispatch, history, setErrors, users,
 }) => {
   event.preventDefault();
   try {
@@ -162,7 +162,6 @@ export const registerAction = async ({
     if (urlImageCover.mimified) mappedUser.cover_image = urlImageCover;
     if (urlImageProfile.mimified) mappedUser.profile_image = urlImageProfile;
     
-    const registeredUser = await sendUserToApi(mappedUser, user);
     const updatedAddress = await apollo.mutate({
       mutation: updateAddressMutation,
       variables: {
@@ -170,9 +169,16 @@ export const registerAction = async ({
         address_id: user.address.id
       }
     });
-    setLoading(false);
-    history.push('/')
+    const registeredUser = await sendUserToApi(mappedUser, user);
+    const updatedUser = registeredUser.data.updateUser;
+    const allUsers = users.map((usr) => {
+      if (usr.id === updatedUser.id) return updatedUser;
+      return usr;
+    })
+    dispatch({ type: 'SET_ALL_USERS', data: allUsers });
     dispatch({ type: 'CLOSE_MODAL' })
+    history.push('/')
+    setLoading(false);
   } catch(err) {
     try {
       if (err.graphQLErrors) {

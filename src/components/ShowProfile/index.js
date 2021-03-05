@@ -4,8 +4,6 @@ import Store from '../../store/Store';
 import { SocialIcon } from '../../Pages/About/about.style';
 
 const openSocialMedia = (media, domain) => {
-    console.log('🚀 ~ file: index.js ~ line 7 ~ openSocialMedia ~ domain', domain);
-    console.log('🚀 ~ file: index.js ~ line 7 ~ openSocialMedia ~ media', media);
     const reg = new RegExp(`${domain}`, '');
     if (reg.test(media)) window.open(media, '_blank');
     else window.open(`https://${domain}.com/${media}`, '_blank');
@@ -15,10 +13,7 @@ const ShowProfile = () => {
     const { state, dispatch } = useContext(Store);
 
     if (!state.profile) return null
-    console.log('🚀 ~ file: index.js ~ line 39 ~ ShowProfile ~ state.profile', state.profile);
-
     const agent = state.allusers.find(agent => agent.id === state.profile)
-    console.log('🚀 ~ file: index.js ~ line 13 ~ ShowProfile ~ agent', agent);
 
     return (
         <div className="wrapper">
@@ -56,12 +51,12 @@ const ShowProfile = () => {
                     <SocialIcon
                         onClick={() => openSocialMedia(agent.facebook, 'facebook')}
                         src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/004-facebook.svg"
-                        customStyle="margin: 10px; width: 30px;"
+                        customStyle="margin: 20px; width: 30px;"
                     />
                     <SocialIcon
                         onClick={() => openSocialMedia(agent.instagram, 'instagram')}
                         src="https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/001-instagram.svg"
-                        customStyle="margin: 10px; width: 30px;"
+                        customStyle="margin: 20px; width: 30px;"
                     />
                 </section>
             </article>
