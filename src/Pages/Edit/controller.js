@@ -127,6 +127,7 @@ export const registerAction = async ({
   addressInfo, setLoading, user,
   dispatch, history, setErrors, users,
 }) => {
+  console.log('🚀 ~ file: controller.js ~ line 130 ~ users', users);
   event.preventDefault();
   try {
     setLoading('validando usuário...');
