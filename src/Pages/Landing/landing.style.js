@@ -168,28 +168,11 @@ export const ShortTextWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 0;
-  position: relative;
-  top: 8%;
-  bottom: -5%;
+  position: absolute;
   width: 100%;
-  @media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-    top: 5%;
-    bottom: -20%;
-  }
-  @media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3) { 
-    bottom: -20%;
-  }
+  bottom: 100px;
   @media (min-width: 768px) {
     margin: 0;
-    top:25%;
-    bottom: -20%;
-    width: 100%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
