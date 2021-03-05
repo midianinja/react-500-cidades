@@ -162,6 +162,7 @@ export const registerAction = async ({
     
     setLoading('Salvando usuário...');
     const registeredUser = await sendUserToApi(mappedUser);
+    console.log('🚀 ~ file: controller.js ~ line 165 ~ registeredUser', registeredUser);
     setLoading('Salvando Endereço...');
     const registeredAddress = await apollo.mutate({
       mutation: registerAddressMutation,
@@ -169,11 +170,14 @@ export const registerAction = async ({
         address: { ...addressInfo, user: registeredUser.data.createUser.id },
       }
     });
+    console.log('🚀 ~ file: controller.js ~ line 173 ~ registeredAddress', registeredAddress);
     setLoading(false);
     history.push('/');
     dispatch({ type: 'CLOSE_MODAL' });
-    dispatch({ type: 'SET_USER', data: registeredUser.data.createUser });
+    dispatch({ type: 'SET_USER', data: {...registeredUser.data.createUser, address: registeredAddress.data.createAddress } });
+    console.log('🚀 ~ file: controller.js ~ line 182 ~ users', users);
     const allUsers = JSON.parse(JSON.stringify(users));
+    console.log('🚀 ~ file: controller.js ~ line 180 ~ allUsers', allUsers);
     dispatch({ type: 'SET_ALL_USERS', data: [...allUsers, {...registeredUser.data.createUser, address: registeredAddress.data.createAddress }] });
   } catch(err) {
     try {
