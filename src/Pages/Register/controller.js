@@ -160,8 +160,6 @@ export const registerAction = async ({
       auth,
     });
     
-    setLoading('Salvando usuário...');
-    const registeredUser = await sendUserToApi(mappedUser);
     setLoading('Salvando Endereço...');
     await apollo.mutate({
       mutation: registerAddressMutation,
@@ -169,6 +167,8 @@ export const registerAction = async ({
         address: { ...addressInfo, user: registeredUser.data.createUser.id },
       }
     });
+    setLoading('Salvando usuário...');
+    const registeredUser = await sendUserToApi(mappedUser);
     setLoading(false);
     history.push('/');
     dispatch({ type: 'CLOSE_MODAL' });
@@ -177,6 +177,7 @@ export const registerAction = async ({
     dispatch({ type: 'SET_ALL_USERS', data: [...allUsers, registeredUser.data.createUser] });
   } catch(err) {
     try {
+    console.log('🚀 ~ file: controller.js ~ line 180 ~ err', [err]);
       if (err.graphQLErrors) {
         return getGraphqlErrors({
           err: err.graphQLErrors, setErrors, setLoading, dispatch,
