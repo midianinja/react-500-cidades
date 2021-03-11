@@ -12,7 +12,7 @@ import {
   CoverSize, MainFields, AddPhotoButton,
   CoverWrapper, Cover, RegisterContainer,
   RegisterWrapper, customInputStyle, Wrapperinputs,
-  AddPhotoButtonMobile, ProfileImageConteiner,
+  AddPhotoButtonMobile, ProfileImageConteiner, ErrorText,
 } from './register.style';
 import JobInput from './components/job-input/jobInput';
 import { dateToStrDDMMYYYY } from '../../utils/date.utils';
@@ -215,6 +215,7 @@ const Edit = ({ history }) => {
                   style={{ "width": userInfo.name.length + 'ch' }}
                   onBlur={() => setEdit(false)}
                   />
+                  {errors.name ? <ErrorText>{errors.name}</ErrorText> : null}
                 <JobInput
                   options={options.job.sort()}
                   name="job"

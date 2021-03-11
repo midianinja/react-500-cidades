@@ -7,6 +7,7 @@ import { strToDateDDMMYYYY } from "../../utils/date.utils";
 const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 const filterNumbers = (value) =>  value.replace(/\D/g, "");
+const validateUrl = new RegExp('/^https:\/\/', '');
 
 const validateUser = (user) => {
   const errors = [];
@@ -16,13 +17,13 @@ const validateUser = (user) => {
     if(
       !user.birth_date
       || new Date(`${user.birth_date.slice(-4)}-${user.birth_date.slice(2, -4)}-${user.birth_date.slice(0, 2)}`).toString() === 'Invalid Date'
-    ) errors.push({ type: 'birth_date', error: 'Data de nascimento inválida' });
+    ) errors.push({ type: 'birth_date', error: 'Data de nascimento inválida ou vazia' });
   
     // if(!user.cover_image) errors.push({ type: 'cover_image', error: 'Insira uma imagem de fundo' });
-    if(!regexEmail.test(user.email)) errors.push({ type: 'email', error: 'E-mail inválido' });
-    // if(!user.facebook) errors.push({ type: 'facebook', error: 'Campo obrigatório' });
+    if(!regexEmail.test(user.email)) errors.push({ type: 'email', error: 'E-mail inválido ou vazio' });
+    if(user.facebook && validateUrl.test(user.facebook)) errors.push({ type: 'facebook', error: 'Campo obrigatório deve começar com "https://"' });
     // if(!user.gender) errors.push({ type: 'gender', error: 'Campo obrigatório' });
-    // if(!user.instagram) errors.push({ type: 'instagram', error: 'Campo obrigatório' });
+    if(user.instagram && validateUrl.test(user.instagram)) errors.push({ type: 'instagram', error: 'Campo obrigatório deve começar com "https://"' });
     // if(!user.job) errors.push({ type: 'job', error: 'Campo obrigatório' });
     if(!user.name) errors.push({ type: 'name', error: 'Campo obrigatório' });
     // if(!user.phone) errors.push({ type: 'phone', error: 'Telefone inválido' });

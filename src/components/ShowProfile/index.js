@@ -3,6 +3,8 @@ import './styles.css';
 import Store from '../../store/Store';
 import { SocialIcon } from '../../Pages/About/about.style';
 
+const defaultUserImage = "https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/500-cities/images/500cidades-asset-avatar-2.png";
+
 const openSocialMedia = (media, domain) => {
     const reg = new RegExp(`${domain}`, '');
     if (reg.test(media)) window.open(media, '_blank');
@@ -26,7 +28,7 @@ const ShowProfile = () => {
                 />
                 <header className="header-profile" style={{ backgroundImage: `url(${agent.cover_image.mimified})` }}>
                     <div className="show-profile-wrapper">
-                        <img className="image-profile" src={agent.profile_image.mimified} alt="Foto de perfil do Agente"></img>
+                        <img className="image-profile" src={agent.profile_image.mimified || defaultUserImage} alt="Foto de perfil do Agente"></img>
                         <div className="header-title">
                             <h2 className="user-name">{agent.name}</h2>
                             {/* <h5 className="user-profession">{agent.job}</h5> */}
@@ -34,10 +36,10 @@ const ShowProfile = () => {
                     </div>
                 </header>
                 <section className="contact-info">
-                    {state.auth && state.user ? <p><strong>Email</strong> {agent.email}</p> : null}
-                    {state.auth && state.user ? <p><strong>Celular</strong> {agent.phone}</p> : null}
+                    {/* {state.auth && state.user ? <p><strong>Email</strong> {agent.email}</p> : null}
+                    {state.auth && state.user ? <p><strong>Celular</strong> {agent.phone}</p> : null} */}
                     <p><strong>Localidade</strong> {agent.address.city} <span className="minor-text">{agent.address.state}</span></p>
-                    <p><strong>Endereço</strong> {agent.address.street} {agent.address.complement} {agent.address.district} <span className="minor-text">{agent.address.zipcode}</span></p>
+                    <p><strong>Bairro</strong> {agent.address.district} {/* <span className="minor-text">{agent.address.zipcode}</span> */}</p>
                     <h3 className="subtitle-profile">T A G S</h3>
                     <div>
                         {agent.skills.map((skill) => (

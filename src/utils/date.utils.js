@@ -45,7 +45,7 @@ export const dateToStrDDMMYYYY = (date) => {
   let myDate = date;
   if (!myDate) return '';
   if (myDate.toString() ===  'Invalid Date') return '';
-  const day = myDate.getDate();
+  const day = myDate.getDate() < 9 ? (`0${myDate.getDate()}`) : myDate.getDate();
   const month = myDate.getMonth() < 9 ? (`0${myDate.getMonth() +1 }`) : (myDate.getMonth() + 1);
   const year = myDate.getFullYear();
   const dateClass = `${day}${month}${year}`;

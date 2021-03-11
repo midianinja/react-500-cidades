@@ -1,3 +1,5 @@
+const defaultUserImage = "https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/500-cities/images/500cidades-asset-avatar-2.png";
+
 
 export const startMap = ({
   state, mapRef, setAutocomplete, searchInputRef, showMore,
@@ -42,7 +44,7 @@ export const insertPins = ({ allusers, mapRef, setSamePlaceList }) => {
             <img
             class='user-info-img'
             alt="user-photo"
-            src=${agent.profile_image.mimified}
+            src=${agent.profile_image.mimified || defaultUserImage}
             >
           </div>
           <div>

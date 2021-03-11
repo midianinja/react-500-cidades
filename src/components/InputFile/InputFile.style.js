@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.span`
   position: relative;
   display: flex;
   justify-content: center;
@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
   background-size: cover;
   background-image: url(${props => props.bgImage});
   border-radius: ${props => (props.borderRadius || 0)};
+  cursor: pointer;
+  * {
+    cursor: pointer;
+  }
   ${props => props.customStyle}
 `;
 

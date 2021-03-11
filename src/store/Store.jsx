@@ -9,6 +9,7 @@ const initialModals = {
   register: false,
   list: false,
   landing: false,
+  loading: false,
   edit: false,
 };
 

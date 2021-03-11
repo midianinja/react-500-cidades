@@ -8,6 +8,10 @@ import idaLib from './service/ida.lib';
 
 const verifyAuth = async (auth, dispatch, history) => {
   if (!auth) return;
+  dispatch({
+    type: 'OPEN_MODAL',
+    modal: 'loading'
+  });
   try {
     const user = await apollo.query({
       query: oneUserQuery,
@@ -21,6 +25,10 @@ const verifyAuth = async (auth, dispatch, history) => {
       type: 'SET_AUTH',
       data: auth,
     });
+    dispatch({
+      type: 'CLOSE_MODAL',
+    });
+
     if (!user.data.oneUser) {
       history.push('/?page=cadastre-se');
       dispatch({
@@ -34,6 +42,7 @@ const verifyAuth = async (auth, dispatch, history) => {
       type: 'SET_USER',
       data: user.data.oneUser,
     });
+    
   } catch (err) {
   }
 }

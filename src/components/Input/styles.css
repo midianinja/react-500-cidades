@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 .input-field.error {
-    border: 1px solid red;
+    border: 1px solid #FF7D7D;
 }
 .input-field{
     border-radius: 10px;
@@ -11,7 +11,7 @@
 }
 
 .error {
-    color: var(--red);
+    color: #FF7D7D;
     font-size: .69em
 }
 

@@ -4,10 +4,10 @@ import Input from '../Input';
 import { Wrapper, Icon, Label } from './InputFile.style';
 
 const InputFile = ({
-    customStyle, value, borderRadius, name, id, onChange, label
+    customStyle, value, borderRadius, name, id, onChange, label, title
 }) => {
     return (
-        <Wrapper customStyle={customStyle} bgImage={value.file} borderRadius={borderRadius}>
+        <Wrapper title={title} customStyle={customStyle} bgImage={value.file} borderRadius={borderRadius}>
             <Input
                 name={name}
                 id={id}

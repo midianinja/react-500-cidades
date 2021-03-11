@@ -123,7 +123,7 @@ export const Wrapperinputs = styled.div`
 export const customInputStyle = `
   background-color: transparent;
   font-size: 1.8em;
-  font-weight: bold;margin-bottom: 10px;
+  font-weight: bold;
   color: #FFF;
   ::placeholder {
     color: rgba(255,255,255,.8);
@@ -132,4 +132,15 @@ export const customInputStyle = `
     border-bottom: 1px solid #FFF;
     border-radius: 0;
   }
+`;
+
+export const ErrorText = styled.span`
+  font-size: 0.8em;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  font-weight: 600;   
+  background-color: #FF7D7D;  
+  color: #FFF;  
+  padding: 5px;
+  border-radius: 4px;
 `;

@@ -1,4 +1,4 @@
-.text-area{
+.text-area {
   border-radius: 10px;
   border:none;
   resize: none;
@@ -6,6 +6,10 @@
   padding: 1rem;
   width: 100%;
   height: 23vh;
+  font-family: Roboto, sans-serif;
+}
+.text-area::placeholder {
+  font-family: Roboto, sans-serif;
 }
 
 .text-area-container {

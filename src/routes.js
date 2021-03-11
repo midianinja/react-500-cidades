@@ -12,6 +12,7 @@ import ValidationEmailToken from './Pages/ValidationEmailToken/ValidationEmailTo
 import UserList from './Pages/UserList';
 import UserMap from './Pages/UserMap';
 import Edit from './Pages/Edit';
+import Loading from './Pages/loading/loading';
 
 
 export default function Routes() {
@@ -27,6 +28,7 @@ export default function Routes() {
                 <Landing />
                 <UserList />
                 <Edit />
+                <Loading />
             </AuthWrapper>
         </BrowserRouter>
     );

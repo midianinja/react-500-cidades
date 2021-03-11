@@ -31,7 +31,7 @@ export const CoverWrapper = styled.div`
 `;
 
 export const Cover = styled.div`
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%,  rgba(0, 0, 0, 0.3) 50%);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%,  rgba(0, 0, 0, 0.6) 50%);
   width: 100%;
   z-index: 0;
   padding: 1rem 1rem 2rem 1rem;
@@ -58,7 +58,6 @@ export const AddPhotoButton = styled.div`
   background-position: center;
   background-size: cover;
   box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.3);
-  
 `;
 
 export const ProfileImageConteiner = styled.div`
@@ -123,7 +122,7 @@ export const Wrapperinputs = styled.div`
 export const customInputStyle = `
   background-color: transparent;
   font-size: 1.8em;
-  font-weight: bold;margin-bottom: 10px;
+  font-weight: bold;
   color: #FFF;
   ::placeholder {
     color: rgba(255,255,255,.8);
@@ -132,4 +131,15 @@ export const customInputStyle = `
     border-bottom: 1px solid #FFF;
     border-radius: 0;
   }
+`;
+
+export const ErrorText = styled.span`
+  font-size: 0.8em;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  font-weight: 600;   
+  background-color: #FF7D7D;  
+  color: #FFF;  
+  padding: 5px;
+  border-radius: 4px;
 `;

@@ -7,6 +7,6 @@ export const Input = styled.input`
     color: var(--light-gray);
     opacity: 1;
   }
-  ${props => props.error ? 'border: 1px solid red;' : ''}
+  ${props => props.error ? 'border: 1px solid #FF7D7D;' : ''}
   ${props => props.customStyle}
 `;

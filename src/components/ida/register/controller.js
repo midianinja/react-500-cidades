@@ -124,7 +124,7 @@ export async function sendConfirmationEmail({
     const { error } = err.response.data;
     const dataError = {};
     if (error && error === 'email/invalid-email') {
-      dataError.email = 'Email inválido';
+      dataError.email = 'Email inválido ou vazio';
       setError(dataError);
     }
 

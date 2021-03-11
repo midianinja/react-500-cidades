@@ -5,10 +5,12 @@ import { registerUserMutation, registerAddressMutation } from "./mutations";
 import { strToDateDDMMYYYY } from "../../utils/date.utils";
 
 const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const validateUrl = new RegExp('/^https:\/\/', '');
 
 const filterNumbers = (value) =>  value.replace(/\D/g, "");
 
 const validateUser = (user) => {
+console.log('🚀 ~ file: controller.js ~ line 13 ~ validateUser ~ user', user);
   const errors = [];
   try {
     // if(user.biography.length < 20) errors.push({ type: 'biography', error: 'Biografia inválida' });
@@ -20,6 +22,8 @@ const validateUser = (user) => {
   
     // if(!user.cover_image) errors.push({ type: 'cover_image', error: 'Insira uma imagem de fundo' });
     if(!regexEmail.test(user.email)) errors.push({ type: 'email', error: 'E-mail inválido' });
+    if(user.facebook && !validateUrl.test(user.facebook)) errors.push({ type: 'facebook', error: 'Campo obrigatório deve começar com "https://"' });
+    if(user.instagram && !validateUrl.test(user.instagram)) errors.push({ type: 'instagram', error: 'Campo obrigatório deve começar com "https://"' });
     // if(!user.facebook) errors.push({ type: 'facebook', error: 'Campo obrigatório' });
     // if(!user.gender) errors.push({ type: 'gender', error: 'Campo obrigatório' });
     // if(!user.instagram) errors.push({ type: 'instagram', error: 'Campo obrigatório' });
@@ -134,6 +138,7 @@ export const registerAction = async ({
     setLoading('validando usuário...');
   
     const userValidation = validateUser({ ...userInfo, skills, addressInfo, auth });
+    console.log('🚀 ~ file: controller.js ~ line 137 ~ userValidation', userValidation);
     if (!userValidation.valid) {
       window.scrollTo(0, 0);
       throw new Error(JSON.stringify(userValidation.errors));
