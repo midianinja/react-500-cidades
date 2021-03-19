@@ -1,6 +1,5 @@
 const defaultUserImage = "https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/500-cities/images/500cidades-asset-avatar-2.png";
 
-
 export const startMap = ({
   state, mapRef, setAutocomplete, searchInputRef, showMore,
 }) => {

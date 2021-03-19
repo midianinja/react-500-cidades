@@ -29,6 +29,7 @@
     height: 200px;
     background-image: linear-gradient(to bottom, var(--light-gray) 50%, var(--gray) 100% );
     color: var(--white);
+    background-size: 100% 100%;
 }
 
 .image-profile {

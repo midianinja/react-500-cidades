@@ -5,7 +5,7 @@ import { registerUserMutation, registerAddressMutation } from "./mutations";
 import { strToDateDDMMYYYY } from "../../utils/date.utils";
 
 const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-const validateUrl = new RegExp('/^https:\/\/', '');
+const validateUrl = /https:\/\//;
 
 const filterNumbers = (value) =>  value.replace(/\D/g, "");
 

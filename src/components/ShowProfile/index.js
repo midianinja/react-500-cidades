@@ -4,6 +4,7 @@ import Store from '../../store/Store';
 import { SocialIcon } from '../../Pages/About/about.style';
 
 const defaultUserImage = "https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/500-cities/images/500cidades-asset-avatar-2.png";
+const defaultCoverImage = "https://500-cidades-profile-images.s3-us-west-2.amazonaws.com/assets/500cidades-cover-default.png";
 
 const openSocialMedia = (media, domain) => {
     const reg = new RegExp(`${domain}`, '');
@@ -26,7 +27,7 @@ const ShowProfile = () => {
                     alt="Fechar"
                     onClick={() => dispatch({ type: 'HIDE_PROFILE', data: agent.id })}
                 />
-                <header className="header-profile" style={{ backgroundImage: `url(${agent.cover_image.mimified})` }}>
+                <header className="header-profile" style={{ backgroundImage: `url(${agent.cover_image.mimified || defaultCoverImage})` }}>
                     <div className="show-profile-wrapper">
                         <img className="image-profile" src={agent.profile_image.mimified || defaultUserImage} alt="Foto de perfil do Agente"></img>
                         <div className="header-title">
